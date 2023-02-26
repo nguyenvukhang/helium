@@ -15,7 +15,6 @@
 		56C1407D2487233300C98DD2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C1407C2487233300C98DD2 /* CoreData.framework */; };
 		56C1407F2487234100C98DD2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C1407E2487234100C98DD2 /* Foundation.framework */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
-		D181C87A2966106F008D11D8 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D181C8792966106F008D11D8 /* WindowController.m */; };
 		D1C717F4296F57BE00C273F9 /* NSAppleEventDescriptorHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C717EF296F57BD00C273F9 /* NSAppleEventDescriptorHelperCategory.m */; };
 		D1C717F5296F57BE00C273F9 /* WacomTabletDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C717F2296F57BD00C273F9 /* WacomTabletDriver.m */; };
 /* End PBXBuildFile section */
@@ -25,15 +24,13 @@
 		0BA347BE10FD0A81002D46D1 /* TabletMapping_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabletMapping_Prefix.pch; sourceTree = "<group>"; };
 		0BA347BF10FD0A81002D46D1 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		0BA347C010FD0A81002D46D1 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
+		0CA68D4D29ABB810009FA9DF /* Tablet Mapping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tablet Mapping.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56C140782487231100C98DD2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		56C1407A2487232900C98DD2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		56C1407C2487233300C98DD2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		56C1407E2487234100C98DD2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		56C140802488554000C98DD2 /* Tablet Mapping.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Tablet Mapping.entitlements"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TabletMapping-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TabletMapping-Info.plist"; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* Tablet Mapping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Tablet Mapping.app"; path = "/Users/khang/repos/wacom/objc/build/Debug/Tablet Mapping.app"; sourceTree = "<absolute>"; };
-		D181C8782966106F008D11D8 /* WindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
-		D181C8792966106F008D11D8 /* WindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
 		D1C717EF296F57BD00C273F9 /* NSAppleEventDescriptorHelperCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSAppleEventDescriptorHelperCategory.m; sourceTree = "<group>"; };
 		D1C717F0296F57BD00C273F9 /* TabletAEDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabletAEDictionary.h; sourceTree = "<group>"; };
 		D1C717F1296F57BD00C273F9 /* NSAppleEventDescriptorHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSAppleEventDescriptorHelperCategory.h; sourceTree = "<group>"; };
@@ -86,10 +83,16 @@
 				0BA347BE10FD0A81002D46D1 /* TabletMapping_Prefix.pch */,
 				0BA347BF10FD0A81002D46D1 /* AppController.h */,
 				0BA347C010FD0A81002D46D1 /* AppController.m */,
-				D181C8782966106F008D11D8 /* WindowController.h */,
-				D181C8792966106F008D11D8 /* WindowController.m */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		0CA68D4E29ABB810009FA9DF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0CA68D4D29ABB810009FA9DF /* Tablet Mapping.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		29B97314FDCFA39411CA2CEA /* Tablet Events Only Cocoa */ = {
@@ -99,6 +102,7 @@
 				0BA347BB10FD0A81002D46D1 /* Source */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				0CA68D4E29ABB810009FA9DF /* Products */,
 			);
 			name = "Tablet Events Only Cocoa";
 			sourceTree = "<group>";
@@ -142,7 +146,7 @@
 			name = "Tablet Mapping";
 			productInstallPath = "$(HOME)/Applications";
 			productName = "Tablet Events Only Cocoa";
-			productReference = 8D1107320486CEB800E47090 /* Tablet Mapping.app */;
+			productReference = 0CA68D4D29ABB810009FA9DF /* Tablet Mapping.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -175,6 +179,7 @@
 				en,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Tablet Events Only Cocoa */;
+			productRefGroup = 0CA68D4E29ABB810009FA9DF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -200,7 +205,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D181C87A2966106F008D11D8 /* WindowController.m in Sources */,
 				0BA347C510FD0A81002D46D1 /* main.m in Sources */,
 				0BA347C610FD0A81002D46D1 /* AppController.m in Sources */,
 				D1C717F4296F57BE00C273F9 /* NSAppleEventDescriptorHelperCategory.m in Sources */,

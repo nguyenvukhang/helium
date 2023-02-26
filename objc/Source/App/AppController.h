@@ -13,12 +13,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TabletAEDictionary.h"
-#import "WindowController.h"
 
 @interface AppController : NSObject <NSApplicationDelegate>
 {
-	// IBOutlet NSWindow		*mWindow;
-	// IBOutlet WindowController *mWindowCtr;
     NSStatusItem *barItem;
 	
 	UInt32	mContextID;
