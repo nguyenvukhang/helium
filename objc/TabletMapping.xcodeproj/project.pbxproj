@@ -31,7 +31,7 @@
 		56C1407E2487234100C98DD2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		56C140802488554000C98DD2 /* Tablet Mapping.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Tablet Mapping.entitlements"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TabletMapping-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TabletMapping-Info.plist"; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* Tablet Mapping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tablet Mapping.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* Tablet Mapping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Tablet Mapping.app"; path = "/Users/khang/repos/wacom/objc/build/Debug/Tablet Mapping.app"; sourceTree = "<absolute>"; };
 		D181C8782966106F008D11D8 /* WindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
 		D181C8792966106F008D11D8 /* WindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
 		D1C717EF296F57BD00C273F9 /* NSAppleEventDescriptorHelperCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSAppleEventDescriptorHelperCategory.m; sourceTree = "<group>"; };
@@ -92,14 +92,6 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		19C28FACFE9D520D11CA2CBB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8D1107320486CEB800E47090 /* Tablet Mapping.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		29B97314FDCFA39411CA2CEA /* Tablet Events Only Cocoa */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,7 +99,6 @@
 				0BA347BB10FD0A81002D46D1 /* Source */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
-				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
 			name = "Tablet Events Only Cocoa";
 			sourceTree = "<group>";
