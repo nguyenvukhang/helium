@@ -9,10 +9,8 @@ import Cocoa
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-    @IBOutlet var window: NSWindow!
-
-
+    let statusItemController = StatusItemController(title: "Click Me")
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
     }
@@ -24,7 +22,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return true
     }
-
-
 }
 
