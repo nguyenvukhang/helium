@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8D1107260486CEB800E47090"
-               BuildableName = "Tablet Mapping.app"
-               BlueprintName = "Tablet Mapping"
-               ReferencedContainer = "container:TabletMapping.xcodeproj">
+               BuildableName = "Wacom Kit.app"
+               BlueprintName = "Wacom Kit"
+               ReferencedContainer = "container:WacomKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D1107260486CEB800E47090"
-            BuildableName = "Tablet Mapping.app"
-            BlueprintName = "Tablet Mapping"
-            ReferencedContainer = "container:TabletMapping.xcodeproj">
+            BuildableName = "Wacom Kit.app"
+            BlueprintName = "Wacom Kit"
+            ReferencedContainer = "container:WacomKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D1107260486CEB800E47090"
-            BuildableName = "Tablet Mapping.app"
-            BlueprintName = "Tablet Mapping"
-            ReferencedContainer = "container:TabletMapping.xcodeproj">
+            BuildableName = "Wacom Kit.app"
+            BlueprintName = "Wacom Kit"
+            ReferencedContainer = "container:WacomKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

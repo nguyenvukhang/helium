@@ -1,2 +1,2 @@
-fmt:
-	swiftformat .
+dev:
+	open WacomKit.xcodeproj

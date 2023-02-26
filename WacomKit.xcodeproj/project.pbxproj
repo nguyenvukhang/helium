@@ -14,29 +14,27 @@
 		56C1407B2487232900C98DD2 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C1407A2487232900C98DD2 /* AppKit.framework */; };
 		56C1407D2487233300C98DD2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C1407C2487233300C98DD2 /* CoreData.framework */; };
 		56C1407F2487234100C98DD2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C1407E2487234100C98DD2 /* Foundation.framework */; };
-		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		D1C717F4296F57BE00C273F9 /* NSAppleEventDescriptorHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C717EF296F57BD00C273F9 /* NSAppleEventDescriptorHelperCategory.m */; };
 		D1C717F5296F57BE00C273F9 /* WacomTabletDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C717F2296F57BD00C273F9 /* WacomTabletDriver.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0BA347BD10FD0A81002D46D1 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		0BA347BE10FD0A81002D46D1 /* TabletMapping_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabletMapping_Prefix.pch; sourceTree = "<group>"; };
+		0BA347BE10FD0A81002D46D1 /* WacomKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WacomKit_Prefix.pch; sourceTree = "<group>"; };
 		0BA347BF10FD0A81002D46D1 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		0BA347C010FD0A81002D46D1 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
-		0CA68D4D29ABB810009FA9DF /* Tablet Mapping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tablet Mapping.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CA68D4D29ABB810009FA9DF /* Wacom Kit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wacom Kit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56C140782487231100C98DD2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		56C1407A2487232900C98DD2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		56C1407C2487233300C98DD2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		56C1407E2487234100C98DD2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		56C140802488554000C98DD2 /* Tablet Mapping.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Tablet Mapping.entitlements"; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* TabletMapping-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TabletMapping-Info.plist"; sourceTree = "<group>"; };
+		56C140802488554000C98DD2 /* Wacom Kit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Wacom Kit.entitlements"; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* WacomKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WacomKit-Info.plist"; sourceTree = "<group>"; };
 		D1C717EF296F57BD00C273F9 /* NSAppleEventDescriptorHelperCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSAppleEventDescriptorHelperCategory.m; sourceTree = "<group>"; };
 		D1C717F0296F57BD00C273F9 /* TabletAEDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabletAEDictionary.h; sourceTree = "<group>"; };
 		D1C717F1296F57BD00C273F9 /* NSAppleEventDescriptorHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSAppleEventDescriptorHelperCategory.h; sourceTree = "<group>"; };
 		D1C717F2296F57BD00C273F9 /* WacomTabletDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WacomTabletDriver.m; sourceTree = "<group>"; };
 		D1C717F3296F57BD00C273F9 /* WacomTabletDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WacomTabletDriver.h; sourceTree = "<group>"; };
-		DB2CEDB823A3513B00F519DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DBF4ED1723A3512600F0FB0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,7 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				0BA347BD10FD0A81002D46D1 /* main.m */,
-				0BA347BE10FD0A81002D46D1 /* TabletMapping_Prefix.pch */,
+				0BA347BE10FD0A81002D46D1 /* WacomKit_Prefix.pch */,
 				0BA347BF10FD0A81002D46D1 /* AppController.h */,
 				0BA347C010FD0A81002D46D1 /* AppController.m */,
 			);
@@ -90,7 +88,7 @@
 		0CA68D4E29ABB810009FA9DF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0CA68D4D29ABB810009FA9DF /* Tablet Mapping.app */,
+				0CA68D4D29ABB810009FA9DF /* Wacom Kit.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,7 +96,7 @@
 		29B97314FDCFA39411CA2CEA /* Tablet Events Only Cocoa */ = {
 			isa = PBXGroup;
 			children = (
-				56C140802488554000C98DD2 /* Tablet Mapping.entitlements */,
+				56C140802488554000C98DD2 /* Wacom Kit.entitlements */,
 				0BA347BB10FD0A81002D46D1 /* Source */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -110,8 +108,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107310486CEB800E47090 /* TabletMapping-Info.plist */,
-				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				8D1107310486CEB800E47090 /* WacomKit-Info.plist */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
 			);
 			name = Resources;
@@ -131,9 +128,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D1107260486CEB800E47090 /* Tablet Mapping */ = {
+		8D1107260486CEB800E47090 /* Wacom Kit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Tablet Mapping" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Wacom Kit" */;
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
@@ -143,10 +140,10 @@
 			);
 			dependencies = (
 			);
-			name = "Tablet Mapping";
+			name = "Wacom Kit";
 			productInstallPath = "$(HOME)/Applications";
 			productName = "Tablet Events Only Cocoa";
-			productReference = 0CA68D4D29ABB810009FA9DF /* Tablet Mapping.app */;
+			productReference = 0CA68D4D29ABB810009FA9DF /* Wacom Kit.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -170,7 +167,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TabletMapping" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "WacomKit" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 1;
@@ -183,7 +180,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* Tablet Mapping */,
+				8D1107260486CEB800E47090 /* Wacom Kit */,
 			);
 		};
 /* End PBXProject section */
@@ -193,7 +190,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,14 +211,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DB2CEDB823A3513B00F519DC /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		1DDD58140DA1D0A300B32029 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -239,7 +227,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_ENTITLEMENTS = "Tablet Mapping.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Wacom Kit.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				COPY_PHASE_STRIP = NO;
@@ -251,13 +239,13 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Source/App/TabletMapping_Prefix.pch;
-				INFOPLIST_FILE = "TabletMapping-Info.plist";
+				GCC_PREFIX_HEADER = Source/App/WacomKit_Prefix.pch;
+				INFOPLIST_FILE = "WacomKit-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.TabletMapping;
-				PRODUCT_NAME = "Tablet Mapping";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.WacomKit;
+				PRODUCT_NAME = "Wacom Kit";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -267,7 +255,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_ENTITLEMENTS = "Tablet Mapping.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Wacom Kit.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				DEAD_CODE_STRIPPING = YES;
@@ -277,13 +265,13 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Source/App/TabletMapping_Prefix.pch;
-				INFOPLIST_FILE = "TabletMapping-Info.plist";
+				GCC_PREFIX_HEADER = Source/App/WacomKit_Prefix.pch;
+				INFOPLIST_FILE = "WacomKit-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.TabletMapping;
-				PRODUCT_NAME = "Tablet Mapping";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.WacomKit;
+				PRODUCT_NAME = "Wacom Kit";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -370,7 +358,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Tablet Mapping" */ = {
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Wacom Kit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,
@@ -379,7 +367,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TabletMapping" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "WacomKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
