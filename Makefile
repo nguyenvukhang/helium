@@ -1,2 +1,0 @@
-dev:
-	open WacomKit.xcodeproj
