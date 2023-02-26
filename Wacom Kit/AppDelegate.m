@@ -89,6 +89,12 @@
   return scaled;
 }
 
+- (NSRect)center:(NSRect)parent child:(NSRect)child {
+  child.origin.x = (parent.size.width / 2) - (child.size.width / 2);
+  child.origin.y = (parent.size.height / 2) - (child.size.height / 2);
+  return child;
+}
+
 // Tries to center the precision area at the cursor. Moves it minimally in order
 // to fit in the screen.
 - (void)setSmart {
@@ -124,7 +130,9 @@
   [self makeContextForCurrentTablet];
 
   if (self->mPrecisionOn) {
-    [self setPortionOfScreen:[self getScaled:1 aspectRatio:1.6]];
+    NSRect full = [self getScaled:1 aspectRatio:1.6];
+    full = [self center:([NSScreen screens][0].frame) child:full];
+    [self setPortionOfScreen:full];
     [self setButton:@"square" description:@"full screen"];
   } else {
     [self setSmart];
