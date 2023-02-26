@@ -1,0 +1,3 @@
+[submodule "Wacom"]
+	path = Wacom
+	url = git@github.com:Wacom-Developer/wacom-device-kit-macos-api.git
