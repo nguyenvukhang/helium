@@ -6,18 +6,18 @@
 //
 
 #import <Cocoa/Cocoa.h>
+
 #import "TabletAEDictionary.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
-{
+@interface AppDelegate : NSObject <NSApplicationDelegate> {
+  CGPoint cursorAtToggle;
   NSStatusItem *barItem;
-	UInt32	mContextID;
-  NSUInteger	lastUsedTablet;
-	BOOL		mPrecisionOn;
+  UInt32 mContextID;
+  NSUInteger lastUsedTablet;
+  BOOL mPrecisionOn;
 }
 
-- (void) makeContextForCurrentTablet;
-- (void) setPortionOfScreen:(NSRect)screenPortion_I;
+- (void)makeContextForCurrentTablet;
+- (void)setPortionOfScreen:(NSRect)screenPortion_I;
 
 @end
-

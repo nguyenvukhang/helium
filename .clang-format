@@ -1,0 +1,17 @@
+BasedOnStyle: LLVM
+AllowShortIfStatementsOnASingleLine: false
+AllowShortBlocksOnASingleLine: true
+AllowShortFunctionsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AlwaysBreakBeforeMultilineStrings: false
+IndentCaseLabels: true
+ColumnLimit: 100
+ObjCSpaceAfterProperty: true
+KeepEmptyLinesAtTheStartOfBlocks: true
+PenaltyBreakString: 1000000
+SpacesInContainerLiterals: false
+ObjCBinPackProtocolList: Never
+ObjCBlockIndentWidth: 4
+ObjCBreakBeforeNestedBlockParam: true
+ObjCSpaceAfterProperty: false
+ObjCSpaceBeforeProtocolList: true

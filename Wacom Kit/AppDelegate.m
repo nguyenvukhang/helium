@@ -13,57 +13,43 @@
 // /////////////////////////////////////////////////////////////////////////////
 // Initialize this object.
 
-- (void)setButton:(NSString *)icon description:(NSString *)description {
-  if (@available(macOS 11.0, *)) {
-    [self->barItem.button
-        setImage:[NSImage imageWithSystemSymbolName:icon
-                           accessibilityDescription:description]];
-  }
-}
-
-- (void)addMenuItem:(NSString *)title
-      keyEquivalent:(NSString *)key
-             action:(SEL _Nullable)action {
-  NSMenuItem *it = [[NSMenuItem alloc] init];
-  [it setTitle:title];
-  [it setKeyEquivalent:key];
-  [it setAction:action];
-  [it setTarget:self];
-  [self->barItem.menu addItem:it];
-}
-
 - (id)init {
-  [NSEvent setMouseCoalescingEnabled:NO];
-  NSLog(@"Begin execution!");
   self = [super init];
 
-  self->mPrecisionOn = NO;
-  self->barItem = [NSStatusBar.systemStatusBar
-      statusItemWithLength:NSVariableStatusItemLength];
-
+  // initialize menu bar state
+  self->barItem = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
   [self->barItem.button setTitle:@"WacomKit"];
   [self->barItem setMenu:[[NSMenu alloc] init]];
-
   [self setButton:@"viewfinder" description:@"full screen"];
-
   [self addMenuItem:@"Toggle" keyEquivalent:@"t" action:@selector(toggle)];
   [self addMenuItem:@"Quit" keyEquivalent:@"q" action:@selector(quit)];
 
-  [NSEvent addGlobalMonitorForEventsMatchingMask:NSEventMaskTabletProximity
-                                         handler:^(NSEvent *event) {
-                                           self->lastUsedTablet =
-                                               [event systemTabletID];
-                                         }];
+  // track tablet proximity sensor to grab latest tablet used
+  [self track:NSEventMaskTabletProximity
+      handler:^(NSEvent *event) { self->lastUsedTablet = [event systemTabletID]; }];
 
-  [NSEvent addGlobalMonitorForEventsMatchingMask:NSEventMaskKeyDown
-                                         handler:^(NSEvent *e) {
-                                           [self handleKeyDown:e];
-                                         }];
+  // track keystrokes to listen for toggle key combination
+  [self track:NSEventMaskKeyDown handler:^(NSEvent *e) { [self handleKeyDown:e]; }];
+
+  // track frontmost application to refresh context when it changes
+  [NSWorkspace.sharedWorkspace addObserver:self
+                                forKeyPath:@"frontmostApplication"
+                                   options:0
+                                   context:nil];
 
   lastUsedTablet = 0;
   mContextID = 0; // 0 is an invalid context number.
+  mPrecisionOn = NO;
 
   return self;
+}
+
+// refresh mode
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context {
+  [self setMode:self->cursorAtToggle];
 }
 
 /**
@@ -97,8 +83,7 @@
 
 // Tries to center the precision area at the cursor. Moves it minimally in order
 // to fit in the screen.
-- (void)setSmart {
-  CGPoint cursor = [NSEvent mouseLocation];
+- (void)setSmart:(NSPoint)cursor {
   NSRect screen = [NSScreen screens][0].frame;
   NSRect rect = [self getScaled:0.56 aspectRatio:1.6];
 
@@ -121,25 +106,28 @@
   }
 
   [self setPortionOfScreen:rect];
+  self->cursorAtToggle = cursor;
 }
 
 /**
  * Toggle between full-screen coverage and precision mode
  */
 - (void)toggle {
-  [self makeContextForCurrentTablet];
+  self->mPrecisionOn = !self->mPrecisionOn;
+  [self setMode:[NSEvent mouseLocation]];
+}
 
+- (void)setMode:(NSPoint)cursor {
+  [self makeContextForCurrentTablet];
   if (self->mPrecisionOn) {
+    [self setSmart:cursor];
+    [self setButton:@"scope" description:@"precision mode"];
+  } else {
     NSRect full = [self getScaled:1 aspectRatio:1.6];
     full = [self center:([NSScreen screens][0].frame) child:full];
     [self setPortionOfScreen:full];
     [self setButton:@"viewfinder" description:@"full screen"];
-  } else {
-    [self setSmart];
-    [self setButton:@"scope" description:@"precision mode"];
   }
-
-  self->mPrecisionOn = !self->mPrecisionOn;
 }
 
 - (void)quit {
@@ -169,9 +157,8 @@
 
   // If no context, create one.
   if (mContextID == 0) {
-    mContextID =
-        [WacomTabletDriver createContextForTablet:(UInt32)lastUsedTablet
-                                             type:pContextTypeDefault];
+    mContextID = [WacomTabletDriver createContextForTablet:(UInt32)lastUsedTablet
+                                                      type:pContextTypeDefault];
   }
 }
 
@@ -181,8 +168,7 @@
 - (void)setPortionOfScreen:(NSRect)screenPortion_I {
   if (mContextID != 0) {
     NSRect rectPrimary = [NSScreen screens][0].frame;
-    NSAppleEventDescriptor *routingDesc =
-        [WacomTabletDriver routingTableForContext:mContextID];
+    NSAppleEventDescriptor *routingDesc = [WacomTabletDriver routingTableForContext:mContextID];
     Rect screenArea = {0};
 
     // Convert Cocoa rect to old QuickDraw rect.
@@ -191,13 +177,32 @@
     screenArea.right = NSMaxX(screenPortion_I);
     screenArea.bottom = NSMaxY(rectPrimary) - NSMinY(screenPortion_I) + 1;
 
-    NSLog(@"tell the driver!");
     [WacomTabletDriver setBytes:&screenArea
                          ofSize:sizeof(Rect)
                          ofType:typeQDRectangle
                    forAttribute:pContextMapScreenArea
                    routingTable:routingDesc];
   }
+}
+
+- (void)setButton:(NSString *)icon description:(NSString *)description {
+  if (@available(macOS 11.0, *)) {
+    [self->barItem.button setImage:[NSImage imageWithSystemSymbolName:icon
+                                             accessibilityDescription:description]];
+  }
+}
+
+- (void)addMenuItem:(NSString *)title keyEquivalent:(NSString *)key action:(SEL _Nullable)action {
+  NSMenuItem *it = [[NSMenuItem alloc] init];
+  [it setTitle:title];
+  [it setKeyEquivalent:key];
+  [it setAction:action];
+  [it setTarget:self];
+  [self->barItem.menu addItem:it];
+}
+
+- (void)track:(NSEventMask)mask handler:(nonnull void (^)(NSEvent *_Nonnull))handler {
+  [NSEvent addGlobalMonitorForEventsMatchingMask:mask handler:handler];
 }
 
 @end
