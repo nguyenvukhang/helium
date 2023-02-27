@@ -14,7 +14,6 @@
 	UInt32	mContextID;
   NSUInteger	lastUsedTablet;
 	BOOL		mPrecisionOn;
-	
 }
 
 - (void) makeContextForCurrentTablet;

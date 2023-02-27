@@ -41,10 +41,10 @@
   self->barItem = [NSStatusBar.systemStatusBar
       statusItemWithLength:NSVariableStatusItemLength];
 
-  [self->barItem.button setTitle:@"Wacom Kit"];
+  [self->barItem.button setTitle:@"WacomKit"];
   [self->barItem setMenu:[[NSMenu alloc] init]];
 
-  [self setButton:@"square" description:@"full screen"];
+  [self setButton:@"viewfinder" description:@"full screen"];
 
   [self addMenuItem:@"Toggle" keyEquivalent:@"t" action:@selector(toggle)];
   [self addMenuItem:@"Quit" keyEquivalent:@"q" action:@selector(quit)];
@@ -133,10 +133,10 @@
     NSRect full = [self getScaled:1 aspectRatio:1.6];
     full = [self center:([NSScreen screens][0].frame) child:full];
     [self setPortionOfScreen:full];
-    [self setButton:@"square" description:@"full screen"];
+    [self setButton:@"viewfinder" description:@"full screen"];
   } else {
     [self setSmart];
-    [self setButton:@"circle" description:@"precision mode"];
+    [self setButton:@"scope" description:@"precision mode"];
   }
 
   self->mPrecisionOn = !self->mPrecisionOn;
