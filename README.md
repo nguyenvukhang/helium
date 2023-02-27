@@ -5,7 +5,7 @@ Intuous without the translucent overlay. Current build stands at
 200kB.
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/10664455/221425593-73206b9c-70b4-4fda-a08c-59666c1e2a6f.jpg" height="100">
+  <img src="https://user-images.githubusercontent.com/10664455/221524723-9fe385c7-aff7-4006-8476-bce40849c07c.png">
 </p>
 
 When triggered, the precision mode will be centered at your cursor's
