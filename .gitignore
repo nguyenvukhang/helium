@@ -1,2 +1,4 @@
 DerivedData/
+build/
 .DS_Store
+Wacom Kit.xcarchive
