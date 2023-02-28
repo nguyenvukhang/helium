@@ -25,11 +25,21 @@
   [self addMenuItem:@"Quit" keyEquivalent:@"q" action:@selector(quit)];
 
   // track tablet proximity sensor to grab latest tablet used
-  [self track:NSEventMaskTabletProximity
-      handler:^(NSEvent *event) { self->lastUsedTablet = [event systemTabletID]; }];
-
   // track keystrokes to listen for toggle key combination
-  [self track:NSEventMaskKeyDown handler:^(NSEvent *e) { [self handleKeyDown:e]; }];
+  [self track:NSEventMaskTabletProximity | NSEventMaskKeyDown
+      handler:^(NSEvent *event) {
+          if ([event type] == NSEventTypeTabletProximity && event.isEnteringProximity) {
+
+            NSLog(@"NSEventMaskTabletProximity -> %@", event);
+
+            self->lastUsedTablet = [event systemTabletID];
+
+          } else if (event.type == NSEventTypeKeyDown) {
+
+            NSLog(@"NSEventMaskTabletProximity -> %@", event);
+            [self handleKeyDown:event];
+          }
+      }];
 
   // track frontmost application to refresh context when it changes
   [NSWorkspace.sharedWorkspace addObserver:self
@@ -61,6 +71,7 @@
   // 0x13 is '2'
   if (!(cmd && shift) || [event keyCode] != 0x13)
     return;
+  NSLog(@"Key down toggle!");
   [self toggle];
 }
 
@@ -132,6 +143,7 @@
 
 - (void)quit {
   NSLog(@"End of execution!");
+  [WacomTabletDriver destroyContext:mContextID];
   [[NSApplication sharedApplication] terminate:nil];
 }
 
