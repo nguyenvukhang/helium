@@ -11,9 +11,9 @@ build: FORCE
 		-archivePath 'Wacom Kit.xcarchive'
 
 install:
-	rm -rf '/Applications/Wacom Kit.app'
 	make build
-	cp -r 'Wacom Kit.xcarchive/Products/Applications/Wacom Kit.app' \
+	rm -rf '/Applications/Wacom Kit.app'
+	cp -a 'Wacom Kit.xcarchive/Products/Applications/Wacom Kit.app' \
 		'/Applications/Wacom Kit.app'
 
 open:
