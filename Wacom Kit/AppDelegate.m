@@ -10,7 +10,7 @@
 
 @implementation AppDelegate
 
-const double SCALE = 0.4;
+const double SCALE = 0.48;
 
 // /////////////////////////////////////////////////////////////////////////////
 // Initialize this object.
