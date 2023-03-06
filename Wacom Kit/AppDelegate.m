@@ -10,6 +10,8 @@
 
 @implementation AppDelegate
 
+const double SCALE = 0.4;
+
 // /////////////////////////////////////////////////////////////////////////////
 // Initialize this object.
 
@@ -96,7 +98,7 @@
 // to fit in the screen.
 - (void)setSmart:(NSPoint)cursor {
   NSRect screen = [NSScreen screens][0].frame;
-  NSRect rect = [self getScaled:0.48 aspectRatio:1.6];
+  NSRect rect = [self getScaled:SCALE aspectRatio:1.6];
 
   // center rect at cursor
   rect.origin = cursor;
