@@ -20,9 +20,9 @@ const double SCALE = 0.48;
 
   // initialize menu bar state
   self->barItem = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
-  [self->barItem.button setTitle:@"W"];
+  /* [self->barItem.button setTitle:@"W"]; */
   [self->barItem setMenu:[[NSMenu alloc] init]];
-  [self setButton:@"viewfinder" description:@"full screen"];
+  [self setButton:PRECISION_OFF_ICON description:@"full screen"];
   [self addMenuItem:@"Toggle" keyEquivalent:@"t" action:@selector(toggle)];
   [self addMenuItem:@"Quit" keyEquivalent:@"q" action:@selector(quit)];
 
@@ -134,12 +134,12 @@ const double SCALE = 0.48;
   [self makeContextForCurrentTablet];
   if (self->mPrecisionOn) {
     [self setSmart:cursor];
-    [self setButton:@"scope" description:@"precision mode"];
+    [self setButton:PRECISION_ON_ICON description:@"precision mode"];
   } else {
     NSRect full = [self getScaled:1 aspectRatio:1.6];
     full = [self center:([NSScreen screens][0].frame) child:full];
     [self setPortionOfScreen:full];
-    [self setButton:@"viewfinder" description:@"full screen"];
+    [self setButton:PRECISION_OFF_ICON description:@"full screen"];
   }
 }
 

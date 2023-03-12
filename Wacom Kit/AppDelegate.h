@@ -9,6 +9,9 @@
 
 #import "TabletAEDictionary.h"
 
+NSString* PRECISION_ON_ICON = @"plus.rectangle.fill";
+NSString* PRECISION_OFF_ICON = @"plus.rectangle";
+
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
   CGPoint cursorAtToggle;
   NSStatusItem *barItem;
