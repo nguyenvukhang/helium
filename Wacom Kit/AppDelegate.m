@@ -23,8 +23,8 @@ const double SCALE = 0.48;
   [self->barItem setMenu:[[NSMenu alloc] init]];
   [self setButton:PRECISION_OFF_ICON description:@"full screen"];
 
-  // create banner using a dummy button
   [self addBanner:@"Wacom Kit"];
+  [self->barItem.menu addItem:[NSMenuItem separatorItem]];
 
   [self addMenuItem:@"Toggle" keyEquivalent:@"t" action:@selector(toggle)];
   [self addMenuItem:@"Quit" keyEquivalent:@"q" action:@selector(quit)];
