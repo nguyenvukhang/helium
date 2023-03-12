@@ -20,7 +20,7 @@ const double SCALE = 0.48;
 
   // initialize menu bar state
   self->barItem = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
-  [self->barItem.button setTitle:@"WacomKit"];
+  [self->barItem.button setTitle:@"W"];
   [self->barItem setMenu:[[NSMenu alloc] init]];
   [self setButton:@"viewfinder" description:@"full screen"];
   [self addMenuItem:@"Toggle" keyEquivalent:@"t" action:@selector(toggle)];
