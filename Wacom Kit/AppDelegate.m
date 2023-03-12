@@ -20,9 +20,12 @@ const double SCALE = 0.48;
 
   // initialize menu bar state
   self->barItem = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
-  /* [self->barItem.button setTitle:@"W"]; */
   [self->barItem setMenu:[[NSMenu alloc] init]];
   [self setButton:PRECISION_OFF_ICON description:@"full screen"];
+
+  // create banner using a dummy button
+  [self addBanner:@"Wacom Kit"];
+
   [self addMenuItem:@"Toggle" keyEquivalent:@"t" action:@selector(toggle)];
   [self addMenuItem:@"Quit" keyEquivalent:@"q" action:@selector(quit)];
 
@@ -204,6 +207,12 @@ const double SCALE = 0.48;
     [self->barItem.button setImage:[NSImage imageWithSystemSymbolName:icon
                                              accessibilityDescription:description]];
   }
+}
+
+- (void)addBanner:(NSString *)title {
+  NSMenuItem *it = [[NSMenuItem alloc] init];
+  [it setTitle:title];
+  [self->barItem.menu addItem:it];
 }
 
 - (void)addMenuItem:(NSString *)title keyEquivalent:(NSString *)key action:(SEL _Nullable)action {
