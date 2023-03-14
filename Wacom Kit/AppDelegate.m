@@ -134,7 +134,6 @@ const double SCALE = 0.48;
 }
 
 - (void)setMode:(NSPoint)cursor {
-  [self makeContextForCurrentTablet];
   if (self->mPrecisionOn) {
     [self setSmart:cursor];
     [self setButton:PRECISION_ON_ICON description:@"precision mode"];
@@ -183,6 +182,7 @@ const double SCALE = 0.48;
 // Sets the portion of the desktop the current tablet context maps to.
 
 - (void)setPortionOfScreen:(NSRect)screenPortion_I {
+  [self makeContextForCurrentTablet];
   if (mContextID != 0) {
     NSRect rectPrimary = [NSScreen screens][0].frame;
     NSAppleEventDescriptor *routingDesc = [WacomTabletDriver routingTableForContext:mContextID];
