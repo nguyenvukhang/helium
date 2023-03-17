@@ -25,6 +25,7 @@
 
 - (void)makeContextForCurrentTablet;
 - (void)setPortionOfScreen:(NSRect)screenPortion_I;
+- (void)log:(NSString *)text;
 
 @end
 

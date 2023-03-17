@@ -22,7 +22,7 @@
   self->item = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
   self->parent = parent;
   [self->item setMenu:[[NSMenu alloc] init]];
-  [self setButton:PRECISION_OFF_ICON description:PRECISION_OFF_DESC];
+  [self setOff];
   [self addBanner:@"Wacom Kit"];
   [self->item.menu addItem:[NSMenuItem separatorItem]];
   return self;
@@ -48,6 +48,14 @@
   [it setAction:action];
   [it setTarget:self->parent];
   [self->item.menu addItem:it];
+}
+
+- (void)setOn {
+  [self setButton:PRECISION_ON_ICON description:PRECISION_ON_DESC];
+}
+
+- (void)setOff {
+  [self setButton:PRECISION_OFF_ICON description:PRECISION_OFF_DESC];
 }
 
 @end

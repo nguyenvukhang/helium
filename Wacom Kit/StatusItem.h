@@ -25,6 +25,8 @@
 - (void)addMenuItem:(NSString *_Nonnull)title
       keyEquivalent:(NSString *_Nonnull)key
              action:(SEL _Nullable)action;
+- (void)setOn;
+- (void)setOff;
 
 @end
 

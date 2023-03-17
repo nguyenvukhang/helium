@@ -30,13 +30,11 @@ const double SCALE = 0.48;
       handler:^(NSEvent *event) {
           if ([event type] == NSEventTypeTabletProximity && event.isEnteringProximity) {
 
-            NSLog(@"NSEventMaskTabletProximity -> %@", event);
-
             self->lastUsedTablet = [event systemTabletID];
+            /* [self log:[NSString stringWithFormat:@"NSEventMaskTabletProximity -> %lu",
+             * self->lastUsedTablet]]; */
 
           } else if (event.type == NSEventTypeKeyDown) {
-
-            NSLog(@"NSEventMaskTabletProximity -> %@", event);
             [self handleKeyDown:event];
           }
       }];
@@ -129,12 +127,12 @@ const double SCALE = 0.48;
 - (void)setMode:(NSPoint)cursor {
   if (self->mPrecisionOn) {
     [self setSmart:cursor];
-    /* [self setButton:PRECISION_ON_ICON description:@"precision mode"]; */
+    [self->bar setOn];
   } else {
     NSRect full = [self getScaled:1 aspectRatio:1.6];
     full = [self center:([NSScreen screens][0].frame) child:full];
     [self setPortionOfScreen:full];
-    /* [self setButton:PRECISION_OFF_ICON description:@"full screen"]; */
+    [self->bar setOff];
   }
 }
 
@@ -159,7 +157,10 @@ const double SCALE = 0.48;
 //    current tablet, discarding the old context if necessary.
 
 - (void)makeContextForCurrentTablet {
+  [self log:@"makeContextForCurrentTablet"];
+
   if (mContextID != 0) {
+    [self log:[NSString stringWithFormat:@"DESTROY: %d", mContextID]];
     [WacomTabletDriver destroyContext:mContextID];
     mContextID = 0;
   }
@@ -168,6 +169,8 @@ const double SCALE = 0.48;
   if (mContextID == 0) {
     mContextID = [WacomTabletDriver createContextForTablet:(UInt32)lastUsedTablet
                                                       type:pContextTypeDefault];
+
+    [self log:[NSString stringWithFormat:@"NEW_CONTEXT: %d", mContextID]];
   }
 }
 
@@ -177,6 +180,7 @@ const double SCALE = 0.48;
 - (void)setPortionOfScreen:(NSRect)screenPortion_I {
   [self makeContextForCurrentTablet];
   if (mContextID != 0) {
+    [self log:@"Setting portion of screen!"];
     NSRect rectPrimary = [NSScreen screens][0].frame;
     NSAppleEventDescriptor *routingDesc = [WacomTabletDriver routingTableForContext:mContextID];
     Rect screenArea = {0};
@@ -197,6 +201,16 @@ const double SCALE = 0.48;
 
 - (void)track:(NSEventMask)mask handler:(nonnull void (^)(NSEvent *_Nonnull))handler {
   [NSEvent addGlobalMonitorForEventsMatchingMask:mask handler:handler];
+}
+
+- (void)log:(NSString *)text {
+  NSString *path = @"/Users/khang/.cache/wacom-kit.txt";
+  NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:path];
+  /* [text writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:NULL]; */
+  [fileHandle seekToEndOfFile];
+  [fileHandle writeData:[text dataUsingEncoding:NSUTF8StringEncoding]];
+  [fileHandle writeData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+  [fileHandle closeFile];
 }
 
 @end
