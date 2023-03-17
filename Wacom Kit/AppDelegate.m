@@ -6,6 +6,7 @@
 //
 
 #import "AppDelegate.h"
+
 #import "WacomTabletDriver.h"
 
 @implementation AppDelegate
@@ -18,16 +19,10 @@ const double SCALE = 0.48;
 - (id)init {
   self = [super init];
 
-  // initialize menu bar state
-  self->barItem = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
-  [self->barItem setMenu:[[NSMenu alloc] init]];
-  [self setButton:PRECISION_OFF_ICON description:@"full screen"];
-
-  [self addBanner:@"Wacom Kit"];
-  [self->barItem.menu addItem:[NSMenuItem separatorItem]];
-
-  [self addMenuItem:@"Toggle" keyEquivalent:@"t" action:@selector(toggle)];
-  [self addMenuItem:@"Quit" keyEquivalent:@"q" action:@selector(quit)];
+  // initialize menu bar
+  self->bar = [[WKStatusItem alloc] initWithParent:self];
+  [self->bar addMenuItem:@"Toggle" keyEquivalent:@"t" action:@selector(toggle)];
+  [self->bar addMenuItem:@"Quit" keyEquivalent:@"q" action:@selector(quit)];
 
   // track tablet proximity sensor to grab latest tablet used
   // track keystrokes to listen for toggle key combination
@@ -51,7 +46,6 @@ const double SCALE = 0.48;
                                 forKeyPath:@"frontmostApplication"
                                    options:0
                                    context:nil];
-
   lastUsedTablet = 0;
   mContextID = 0; // 0 is an invalid context number.
   mPrecisionOn = NO;
@@ -59,7 +53,7 @@ const double SCALE = 0.48;
   return self;
 }
 
-// refresh mode
+// Called everytime the frontmost application changes
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
@@ -67,9 +61,7 @@ const double SCALE = 0.48;
   [self setMode:self->cursorAtToggle];
 }
 
-/**
- * Trigger a toggle on Cmd + Shift + 2
- */
+/// Trigger a toggle on Cmd + Shift + 2
 - (void)handleKeyDown:(NSEvent *)event {
   BOOL cmd = [event modifierFlags] & NSEventModifierFlagCommand;
   BOOL shift = [event modifierFlags] & NSEventModifierFlagShift;
@@ -80,7 +72,7 @@ const double SCALE = 0.48;
   [self toggle];
 }
 
-// get a scaled version of the screen's width, at a given aspect ratio.
+/// get a scaled version of the screen's width, at a given aspect ratio.
 - (NSRect)getScaled:(float)scale aspectRatio:(float)aspectRatio {
   NSRect screen = [NSScreen screens][0].frame;
   NSRect scaled = NSZeroRect;
@@ -91,14 +83,15 @@ const double SCALE = 0.48;
   return scaled;
 }
 
+/// center the child with respect to the parent
 - (NSRect)center:(NSRect)parent child:(NSRect)child {
   child.origin.x = (parent.size.width / 2) - (child.size.width / 2);
   child.origin.y = (parent.size.height / 2) - (child.size.height / 2);
   return child;
 }
 
-// Tries to center the precision area at the cursor. Moves it minimally in order
-// to fit in the screen.
+/// Tries to center the precision area at the cursor. Moves it minimally in order
+/// to fit in the screen.
 - (void)setSmart:(NSPoint)cursor {
   NSRect screen = [NSScreen screens][0].frame;
   NSRect rect = [self getScaled:SCALE aspectRatio:1.6];
@@ -136,12 +129,12 @@ const double SCALE = 0.48;
 - (void)setMode:(NSPoint)cursor {
   if (self->mPrecisionOn) {
     [self setSmart:cursor];
-    [self setButton:PRECISION_ON_ICON description:@"precision mode"];
+    /* [self setButton:PRECISION_ON_ICON description:@"precision mode"]; */
   } else {
     NSRect full = [self getScaled:1 aspectRatio:1.6];
     full = [self center:([NSScreen screens][0].frame) child:full];
     [self setPortionOfScreen:full];
-    [self setButton:PRECISION_OFF_ICON description:@"full screen"];
+    /* [self setButton:PRECISION_OFF_ICON description:@"full screen"]; */
   }
 }
 
@@ -200,28 +193,6 @@ const double SCALE = 0.48;
                    forAttribute:pContextMapScreenArea
                    routingTable:routingDesc];
   }
-}
-
-- (void)setButton:(NSString *)icon description:(NSString *)description {
-  if (@available(macOS 11.0, *)) {
-    [self->barItem.button setImage:[NSImage imageWithSystemSymbolName:icon
-                                             accessibilityDescription:description]];
-  }
-}
-
-- (void)addBanner:(NSString *)title {
-  NSMenuItem *it = [[NSMenuItem alloc] init];
-  [it setTitle:title];
-  [self->barItem.menu addItem:it];
-}
-
-- (void)addMenuItem:(NSString *)title keyEquivalent:(NSString *)key action:(SEL _Nullable)action {
-  NSMenuItem *it = [[NSMenuItem alloc] init];
-  [it setTitle:title];
-  [it setKeyEquivalent:key];
-  [it setAction:action];
-  [it setTarget:self];
-  [self->barItem.menu addItem:it];
 }
 
 - (void)track:(NSEventMask)mask handler:(nonnull void (^)(NSEvent *_Nonnull))handler {
