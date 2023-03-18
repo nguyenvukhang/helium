@@ -1,0 +1,69 @@
+----- Fri 18 Mar, 18:45:00
+makeContextForCurrentTablet
+DESTROY: 2310
+NEW_CONTEXT: 2311
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2311
+NEW_CONTEXT: 2312
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2312
+NEW_CONTEXT: 2313
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2313
+NEW_CONTEXT: 2313
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2313
+NEW_CONTEXT: 2313
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2313
+NEW_CONTEXT: 2314
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2314
+NEW_CONTEXT: 2315
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2315
+NEW_CONTEXT: 2316
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2316
+NEW_CONTEXT: 2317
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2317
+NEW_CONTEXT: 2318
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2318
+NEW_CONTEXT: 2319
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2319
+NEW_CONTEXT: 2320
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2320
+NEW_CONTEXT: 2321
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2321
+NEW_CONTEXT: 2322
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2322
+NEW_CONTEXT: 2322
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2322
+NEW_CONTEXT: 2322
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2322
+NEW_CONTEXT: 2323
+Setting portion of screen!

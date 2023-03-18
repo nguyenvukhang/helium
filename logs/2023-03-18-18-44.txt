@@ -1,0 +1,1561 @@
+----- Fri 17 Mar, 17:36:00
+makeContextForCurrentTablet
+DESTROY: 2052
+NEW_CONTEXT: 2053
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2053
+NEW_CONTEXT: 2054
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2054
+NEW_CONTEXT: 2055
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2055
+NEW_CONTEXT: 2055
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2055
+NEW_CONTEXT: 2055
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2055
+NEW_CONTEXT: 2056
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2056
+NEW_CONTEXT: 2057
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2057
+NEW_CONTEXT: 2058
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2058
+NEW_CONTEXT: 2059
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2059
+NEW_CONTEXT: 2059
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2059
+NEW_CONTEXT: 2059
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2059
+NEW_CONTEXT: 2059
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2059
+NEW_CONTEXT: 2059
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2059
+NEW_CONTEXT: 2059
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2059
+NEW_CONTEXT: 2060
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2060
+NEW_CONTEXT: 2061
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2061
+NEW_CONTEXT: 2061
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2061
+NEW_CONTEXT: 2061
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2061
+NEW_CONTEXT: 2061
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2061
+NEW_CONTEXT: 2061
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2061
+NEW_CONTEXT: 2061
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2061
+NEW_CONTEXT: 2061
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2061
+NEW_CONTEXT: 2062
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2062
+NEW_CONTEXT: 2062
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2062
+NEW_CONTEXT: 2062
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2062
+NEW_CONTEXT: 2063
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2063
+NEW_CONTEXT: 2063
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2063
+NEW_CONTEXT: 2063
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2063
+NEW_CONTEXT: 2064
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2064
+NEW_CONTEXT: 2064
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2064
+NEW_CONTEXT: 2064
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2064
+NEW_CONTEXT: 2065
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2065
+NEW_CONTEXT: 2065
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2065
+NEW_CONTEXT: 2066
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2066
+NEW_CONTEXT: 2066
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2066
+NEW_CONTEXT: 2067
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2067
+NEW_CONTEXT: 2067
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2067
+NEW_CONTEXT: 2068
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2068
+NEW_CONTEXT: 2069
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2069
+NEW_CONTEXT: 2069
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2069
+NEW_CONTEXT: 2070
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2070
+NEW_CONTEXT: 2070
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2070
+NEW_CONTEXT: 2071
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2071
+NEW_CONTEXT: 2071
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2071
+NEW_CONTEXT: 2071
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2071
+NEW_CONTEXT: 2071
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2071
+NEW_CONTEXT: 2071
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2071
+NEW_CONTEXT: 2071
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2071
+NEW_CONTEXT: 2071
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2071
+NEW_CONTEXT: 2071
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2071
+NEW_CONTEXT: 2072
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2072
+NEW_CONTEXT: 2073
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2073
+NEW_CONTEXT: 2073
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2073
+NEW_CONTEXT: 2073
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2073
+NEW_CONTEXT: 2073
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2073
+NEW_CONTEXT: 2073
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2073
+NEW_CONTEXT: 2073
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2073
+NEW_CONTEXT: 2073
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2073
+NEW_CONTEXT: 2073
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2073
+NEW_CONTEXT: 2073
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2073
+NEW_CONTEXT: 2073
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2073
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2074
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2074
+NEW_CONTEXT: 2075
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2075
+NEW_CONTEXT: 2076
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2076
+NEW_CONTEXT: 2077
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2077
+NEW_CONTEXT: 2078
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2078
+NEW_CONTEXT: 2079
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2079
+NEW_CONTEXT: 2079
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2079
+NEW_CONTEXT: 2079
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2079
+NEW_CONTEXT: 2079
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2079
+NEW_CONTEXT: 2079
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2079
+NEW_CONTEXT: 2079
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2079
+NEW_CONTEXT: 2079
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2079
+NEW_CONTEXT: 2080
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2080
+NEW_CONTEXT: 2081
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2081
+NEW_CONTEXT: 2082
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2082
+NEW_CONTEXT: 2083
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2083
+NEW_CONTEXT: 2083
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2083
+NEW_CONTEXT: 2083
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2083
+NEW_CONTEXT: 2083
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2083
+NEW_CONTEXT: 2083
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2083
+NEW_CONTEXT: 2083
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2083
+NEW_CONTEXT: 2083
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2083
+NEW_CONTEXT: 2084
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2084
+NEW_CONTEXT: 2085
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2085
+NEW_CONTEXT: 2086
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2086
+NEW_CONTEXT: 2087
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2087
+NEW_CONTEXT: 2088
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2088
+NEW_CONTEXT: 2089
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2089
+NEW_CONTEXT: 2090
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2090
+NEW_CONTEXT: 2091
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2091
+NEW_CONTEXT: 2092
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2092
+NEW_CONTEXT: 2093
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2093
+NEW_CONTEXT: 2094
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2094
+NEW_CONTEXT: 2095
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2095
+NEW_CONTEXT: 2096
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2096
+NEW_CONTEXT: 2097
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2097
+NEW_CONTEXT: 2098
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2098
+NEW_CONTEXT: 2099
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2099
+NEW_CONTEXT: 2100
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2100
+NEW_CONTEXT: 2101
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2101
+NEW_CONTEXT: 2102
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2102
+NEW_CONTEXT: 2103
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2103
+NEW_CONTEXT: 2104
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2104
+NEW_CONTEXT: 2105
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2105
+NEW_CONTEXT: 2106
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2106
+NEW_CONTEXT: 2107
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2107
+NEW_CONTEXT: 2108
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2108
+NEW_CONTEXT: 2109
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2109
+NEW_CONTEXT: 2110
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2110
+NEW_CONTEXT: 2111
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2111
+NEW_CONTEXT: 2112
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2112
+NEW_CONTEXT: 2113
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2113
+NEW_CONTEXT: 2114
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2114
+NEW_CONTEXT: 2115
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2115
+NEW_CONTEXT: 2116
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2116
+NEW_CONTEXT: 2117
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2117
+NEW_CONTEXT: 2118
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2118
+NEW_CONTEXT: 2119
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2119
+NEW_CONTEXT: 2120
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2120
+NEW_CONTEXT: 2121
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2121
+NEW_CONTEXT: 2122
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2122
+NEW_CONTEXT: 2123
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2123
+NEW_CONTEXT: 2124
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2124
+NEW_CONTEXT: 2125
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2125
+NEW_CONTEXT: 2126
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2126
+NEW_CONTEXT: 2127
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2127
+NEW_CONTEXT: 2128
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2128
+NEW_CONTEXT: 2129
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2129
+NEW_CONTEXT: 2130
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2130
+NEW_CONTEXT: 2131
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2131
+NEW_CONTEXT: 2132
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2132
+NEW_CONTEXT: 2133
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2133
+NEW_CONTEXT: 2134
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2134
+NEW_CONTEXT: 2135
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2135
+NEW_CONTEXT: 2136
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2136
+NEW_CONTEXT: 2137
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2137
+NEW_CONTEXT: 2138
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2138
+NEW_CONTEXT: 2139
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2139
+NEW_CONTEXT: 2140
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2140
+NEW_CONTEXT: 2141
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2141
+NEW_CONTEXT: 2142
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2142
+NEW_CONTEXT: 2143
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2143
+NEW_CONTEXT: 2144
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2144
+NEW_CONTEXT: 2145
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2145
+NEW_CONTEXT: 2146
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2146
+NEW_CONTEXT: 2147
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2147
+NEW_CONTEXT: 2148
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2148
+NEW_CONTEXT: 2149
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2149
+NEW_CONTEXT: 2150
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2150
+NEW_CONTEXT: 2151
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2151
+NEW_CONTEXT: 2152
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2152
+NEW_CONTEXT: 2153
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2153
+NEW_CONTEXT: 2154
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2154
+NEW_CONTEXT: 2154
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2154
+NEW_CONTEXT: 2154
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2154
+NEW_CONTEXT: 2155
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2155
+NEW_CONTEXT: 2156
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2156
+NEW_CONTEXT: 2157
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2157
+NEW_CONTEXT: 2158
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2158
+NEW_CONTEXT: 2159
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2159
+NEW_CONTEXT: 2160
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2160
+NEW_CONTEXT: 2160
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2160
+NEW_CONTEXT: 2160
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2160
+NEW_CONTEXT: 2160
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2160
+NEW_CONTEXT: 2160
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2160
+NEW_CONTEXT: 2161
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2161
+NEW_CONTEXT: 2162
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2162
+NEW_CONTEXT: 2163
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2163
+NEW_CONTEXT: 2164
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2164
+NEW_CONTEXT: 2165
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2165
+NEW_CONTEXT: 2166
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2166
+NEW_CONTEXT: 2167
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2167
+NEW_CONTEXT: 2168
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2168
+NEW_CONTEXT: 2169
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2169
+NEW_CONTEXT: 2170
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2170
+NEW_CONTEXT: 2171
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2171
+NEW_CONTEXT: 2172
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2172
+NEW_CONTEXT: 2173
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2173
+NEW_CONTEXT: 2174
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2174
+NEW_CONTEXT: 2175
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2175
+NEW_CONTEXT: 2176
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2176
+NEW_CONTEXT: 2177
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2177
+NEW_CONTEXT: 2178
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2178
+NEW_CONTEXT: 2179
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2179
+NEW_CONTEXT: 2180
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2180
+NEW_CONTEXT: 2181
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2181
+NEW_CONTEXT: 2182
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2182
+NEW_CONTEXT: 2183
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2183
+NEW_CONTEXT: 2184
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2184
+NEW_CONTEXT: 2185
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2185
+NEW_CONTEXT: 2186
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2186
+NEW_CONTEXT: 2187
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2187
+NEW_CONTEXT: 2188
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2188
+NEW_CONTEXT: 2189
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2189
+NEW_CONTEXT: 2190
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2190
+NEW_CONTEXT: 2191
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2191
+NEW_CONTEXT: 2192
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2192
+NEW_CONTEXT: 2193
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2193
+NEW_CONTEXT: 2194
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2194
+NEW_CONTEXT: 2195
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2195
+NEW_CONTEXT: 2196
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2196
+NEW_CONTEXT: 2197
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2197
+NEW_CONTEXT: 2198
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2198
+NEW_CONTEXT: 2199
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2199
+NEW_CONTEXT: 2200
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2200
+NEW_CONTEXT: 2201
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2201
+NEW_CONTEXT: 2202
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2202
+NEW_CONTEXT: 2203
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2203
+NEW_CONTEXT: 2204
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2204
+NEW_CONTEXT: 2205
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2205
+NEW_CONTEXT: 2206
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2206
+NEW_CONTEXT: 2207
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2207
+NEW_CONTEXT: 2208
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2208
+NEW_CONTEXT: 2209
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2209
+NEW_CONTEXT: 2210
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2210
+NEW_CONTEXT: 2211
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2211
+NEW_CONTEXT: 2212
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2212
+NEW_CONTEXT: 2213
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2213
+NEW_CONTEXT: 2214
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2214
+NEW_CONTEXT: 2215
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2215
+NEW_CONTEXT: 2216
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2216
+NEW_CONTEXT: 2217
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2217
+NEW_CONTEXT: 2218
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2218
+NEW_CONTEXT: 2219
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2219
+NEW_CONTEXT: 2220
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2220
+NEW_CONTEXT: 2221
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2221
+NEW_CONTEXT: 2222
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2222
+NEW_CONTEXT: 2223
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2223
+NEW_CONTEXT: 2224
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2224
+NEW_CONTEXT: 2225
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2225
+NEW_CONTEXT: 2226
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2226
+NEW_CONTEXT: 2227
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2227
+NEW_CONTEXT: 2227
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2227
+NEW_CONTEXT: 2227
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2227
+NEW_CONTEXT: 2228
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2228
+NEW_CONTEXT: 2229
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2229
+NEW_CONTEXT: 2230
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2230
+NEW_CONTEXT: 2231
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2231
+NEW_CONTEXT: 2232
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2232
+NEW_CONTEXT: 2233
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2233
+NEW_CONTEXT: 2233
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2233
+NEW_CONTEXT: 2233
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2233
+NEW_CONTEXT: 2233
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2233
+NEW_CONTEXT: 2233
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2233
+NEW_CONTEXT: 2234
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2234
+NEW_CONTEXT: 2235
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2235
+NEW_CONTEXT: 2236
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2236
+NEW_CONTEXT: 2237
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2237
+NEW_CONTEXT: 2238
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2238
+NEW_CONTEXT: 2239
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2239
+NEW_CONTEXT: 2240
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2240
+NEW_CONTEXT: 2241
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2241
+NEW_CONTEXT: 2242
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2242
+NEW_CONTEXT: 2243
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2243
+NEW_CONTEXT: 2244
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2244
+NEW_CONTEXT: 2245
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2245
+NEW_CONTEXT: 2246
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2246
+NEW_CONTEXT: 2247
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2247
+NEW_CONTEXT: 2247
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2247
+NEW_CONTEXT: 2248
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2248
+NEW_CONTEXT: 2249
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2249
+NEW_CONTEXT: 2250
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2250
+NEW_CONTEXT: 2251
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2251
+NEW_CONTEXT: 2252
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2252
+NEW_CONTEXT: 2252
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2252
+NEW_CONTEXT: 2252
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2252
+NEW_CONTEXT: 2252
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2252
+NEW_CONTEXT: 2252
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2252
+NEW_CONTEXT: 2253
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2253
+NEW_CONTEXT: 2254
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2254
+NEW_CONTEXT: 2255
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2255
+NEW_CONTEXT: 2256
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2256
+NEW_CONTEXT: 2257
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2257
+NEW_CONTEXT: 2258
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2258
+NEW_CONTEXT: 2259
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2259
+NEW_CONTEXT: 2260
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2260
+NEW_CONTEXT: 2261
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2261
+NEW_CONTEXT: 2262
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2262
+NEW_CONTEXT: 2263
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2263
+NEW_CONTEXT: 2264
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2264
+NEW_CONTEXT: 2265
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2265
+NEW_CONTEXT: 2266
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2266
+NEW_CONTEXT: 2267
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2267
+NEW_CONTEXT: 2268
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2268
+NEW_CONTEXT: 2269
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2269
+NEW_CONTEXT: 2270
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2270
+NEW_CONTEXT: 2271
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2271
+NEW_CONTEXT: 2272
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2272
+NEW_CONTEXT: 2273
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2273
+NEW_CONTEXT: 2274
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2274
+NEW_CONTEXT: 2275
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2275
+NEW_CONTEXT: 2276
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2276
+NEW_CONTEXT: 2277
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2277
+NEW_CONTEXT: 2277
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2277
+NEW_CONTEXT: 2277
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2277
+NEW_CONTEXT: 2277
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2277
+NEW_CONTEXT: 2277
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2277
+NEW_CONTEXT: 2278
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2278
+NEW_CONTEXT: 2279
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2279
+NEW_CONTEXT: 2280
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2280
+NEW_CONTEXT: 2281
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2281
+NEW_CONTEXT: 2282
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2282
+NEW_CONTEXT: 2282
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2282
+NEW_CONTEXT: 2282
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2282
+NEW_CONTEXT: 2283
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2283
+NEW_CONTEXT: 2284
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2284
+NEW_CONTEXT: 2285
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2285
+NEW_CONTEXT: 2286
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2286
+NEW_CONTEXT: 2287
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2287
+NEW_CONTEXT: 2288
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2288
+NEW_CONTEXT: 2289
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2289
+NEW_CONTEXT: 2290
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2290
+NEW_CONTEXT: 2291
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2291
+NEW_CONTEXT: 2292
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2292
+NEW_CONTEXT: 2293
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2293
+NEW_CONTEXT: 2294
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2294
+NEW_CONTEXT: 2295
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2295
+NEW_CONTEXT: 2296
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2296
+NEW_CONTEXT: 2297
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2297
+NEW_CONTEXT: 2298
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2298
+NEW_CONTEXT: 2299
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2299
+NEW_CONTEXT: 2300
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2300
+NEW_CONTEXT: 2301
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2301
+NEW_CONTEXT: 2302
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2302
+NEW_CONTEXT: 2303
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2303
+NEW_CONTEXT: 2304
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2304
+NEW_CONTEXT: 2305
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2305
+NEW_CONTEXT: 2306
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2306
+NEW_CONTEXT: 2306
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2306
+NEW_CONTEXT: 2306
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2306
+NEW_CONTEXT: 2306
+Setting portion of screen!
+makeContextForCurrentTablet
+DESTROY: 2306
+NEW_CONTEXT: 2307
+Setting portion of screen!
