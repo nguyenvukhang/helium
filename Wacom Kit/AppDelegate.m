@@ -56,7 +56,6 @@ const double SCALE = 0.48;
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
-  [self destroyContext];
   [self setMode:self->cursorAtToggle];
 }
 
@@ -143,53 +142,50 @@ const double SCALE = 0.48;
   [[NSApplication sharedApplication] terminate:nil];
 }
 
-// /////////////////////////////////////////////////////////////////////////////
-// Contexts should be destroyed, otherwise they will live on in the
-//    driver unnecessarily.
-
 - (void)applicationWillTerminate:(NSNotification *)notification_I {
   if (mContextID != 0) {
     [WacomTabletDriver destroyContext:mContextID];
   }
 }
 
-// /////////////////////////////////////////////////////////////////////////////
-// Updates the Wacom driver context to be associated with the
-//    current tablet, discarding the old context if necessary.
+/**
+ * Makes a new context. Does not override existing context.
+ */
+- (void)makeContext {
+  [self log:@"[makeContext]"];
+  [self log:mContextID == 0 ? @"made new context!" : @"context already exists"];
+  if (mContextID != 0)
+    return;
 
-- (void)destroyContext {
-  [self log:@"try to destroy context..."];
-  if (mContextID != 0) {
-    [self log:[NSString stringWithFormat:@"DESTROY: %d", mContextID]];
-    [WacomTabletDriver destroyContext:mContextID];
-    mContextID = 0;
-    [self log:@"context destroyed!"];
-  } else {
-
-    [self log:@"context already zero"];
-  }
+  mContextID = [WacomTabletDriver createContextForTablet:(UInt32)lastUsedTablet
+                                                    type:pContextTypeDefault];
+  [self log:[NSString stringWithFormat:@"NEW_CONTEXT: %d", mContextID]];
 }
 
-- (void)makeContext {
-  [self log:@"try to make new context..."];
+/**
+ * Destroys existing context.
+ */
+- (void)destroyContext {
+  [self log:@"[destroyContext]"];
+  [self log:mContextID == 0 ? @"context already zero" : @"context destroyed!"];
+  if (mContextID == 0)
+    return;
 
-  // If no context, create one.
-  if (mContextID == 0) {
-    mContextID = [WacomTabletDriver createContextForTablet:(UInt32)lastUsedTablet
-                                                      type:pContextTypeDefault];
+  [WacomTabletDriver destroyContext:mContextID];
+  [self log:[NSString stringWithFormat:@"DESTROY: %d", mContextID]];
+  mContextID = 0;
+}
 
-    [self log:[NSString stringWithFormat:@"NEW_CONTEXT: %d", mContextID]];
-    [self log:@"made new context!"];
-  } else {
-    [self log:@"context already exists"];
-  }
+- (void)resetContext {
+  [self destroyContext];
+  [self makeContext];
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // Sets the portion of the desktop the current tablet context maps to.
 
 - (void)setPortionOfScreen:(NSRect)screenPortion_I {
-  [self makeContext];
+  [self resetContext];
   if (mContextID != 0) {
     [self log:@"Setting portion of screen!"];
     NSRect rectPrimary = [NSScreen screens][0].frame;
@@ -207,6 +203,8 @@ const double SCALE = 0.48;
                          ofType:typeQDRectangle
                    forAttribute:pContextMapScreenArea
                    routingTable:routingDesc];
+  } else {
+    [self log:@"Failed portion of screen!"];
   }
 }
 

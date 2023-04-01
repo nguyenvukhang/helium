@@ -25,6 +25,7 @@
 
 - (void)makeContext;
 - (void)destroyContext;
+- (void)resetContext;
 - (void)setPortionOfScreen:(NSRect)screenPortion_I;
 - (void)log:(NSString *)text;
 
