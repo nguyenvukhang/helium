@@ -56,6 +56,7 @@ const double SCALE = 0.48;
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
+  [self destroyContext];
   [self setMode:self->cursorAtToggle];
 }
 
@@ -156,14 +157,21 @@ const double SCALE = 0.48;
 // Updates the Wacom driver context to be associated with the
 //    current tablet, discarding the old context if necessary.
 
-- (void)makeContextForCurrentTablet {
-  [self log:@"makeContextForCurrentTablet"];
-
+- (void)destroyContext {
+  [self log:@"try to destroy context..."];
   if (mContextID != 0) {
     [self log:[NSString stringWithFormat:@"DESTROY: %d", mContextID]];
     [WacomTabletDriver destroyContext:mContextID];
     mContextID = 0;
+    [self log:@"context destroyed!"];
+  } else {
+
+    [self log:@"context already zero"];
   }
+}
+
+- (void)makeContext {
+  [self log:@"try to make new context..."];
 
   // If no context, create one.
   if (mContextID == 0) {
@@ -171,6 +179,9 @@ const double SCALE = 0.48;
                                                       type:pContextTypeDefault];
 
     [self log:[NSString stringWithFormat:@"NEW_CONTEXT: %d", mContextID]];
+    [self log:@"made new context!"];
+  } else {
+    [self log:@"context already exists"];
   }
 }
 
@@ -178,7 +189,7 @@ const double SCALE = 0.48;
 // Sets the portion of the desktop the current tablet context maps to.
 
 - (void)setPortionOfScreen:(NSRect)screenPortion_I {
-  [self makeContextForCurrentTablet];
+  [self makeContext];
   if (mContextID != 0) {
     [self log:@"Setting portion of screen!"];
     NSRect rectPrimary = [NSScreen screens][0].frame;
@@ -204,7 +215,7 @@ const double SCALE = 0.48;
 }
 
 - (void)log:(NSString *)text {
-  NSString *path = @"/Users/khang/.cache/wacom-kit.txt";
+  NSString *path = @"/Users/khang/.cache/wacom/log.txt";
   NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:path];
   /* [text writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:NULL]; */
   [fileHandle seekToEndOfFile];

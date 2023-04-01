@@ -24,4 +24,7 @@ lsp:
 open:
 	open 'Wacom Kit.xcodeproj'
 
+run:
+	open '/Applications/Wacom Kit.app'
+
 FORCE: ;

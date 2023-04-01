@@ -23,7 +23,8 @@
   BOOL mPrecisionOn;
 }
 
-- (void)makeContextForCurrentTablet;
+- (void)makeContext;
+- (void)destroyContext;
 - (void)setPortionOfScreen:(NSRect)screenPortion_I;
 - (void)log:(NSString *)text;
 
