@@ -45,7 +45,7 @@ const double SCALE = 0.48;
   return self;
 }
 
-/// Trigger a toggle on Cmd + Shift + 2
+/// Trigger a toggle on Cmd + Shift + F2
 - (void)handleKeyDown:(NSEvent *)event {
   BOOL cmd = [event modifierFlags] & NSEventModifierFlagCommand;
   BOOL shift = [event modifierFlags] & NSEventModifierFlagShift;
