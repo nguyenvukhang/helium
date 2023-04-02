@@ -28,6 +28,7 @@
 - (void)toggle;
 - (void)setPrecisionMode:(NSPoint)cursor;
 - (void)setFullScreenMode;
+- (void)refreshMode:(NSPoint)cursor;
 
 - (void)makeContext;
 - (void)destroyContext;

@@ -35,6 +35,12 @@ const double SCALE = 0.48;
           }
       }];
 
+  // track frontmost application to refresh context when it changes
+  [NSWorkspace.sharedWorkspace addObserver:self
+                                forKeyPath:@"frontmostApplication"
+                                   options:0
+                                   context:nil];
+
   lastUsedTablet = 0;
   mContextID = 0; // 0 is an invalid context number.
   mPrecisionOn = NO;
@@ -60,11 +66,7 @@ const double SCALE = 0.48;
  */
 - (void)toggle {
   self->mPrecisionOn = !self->mPrecisionOn;
-  if (mPrecisionOn) {
-    [self setPrecisionMode:[NSEvent mouseLocation]];
-  } else {
-    [self setFullScreenMode];
-  }
+  [self refreshMode:[NSEvent mouseLocation]];
 }
 
 - (void)setPrecisionMode:(NSPoint)cursor {
@@ -80,6 +82,13 @@ const double SCALE = 0.48;
   full = [WRect center:([NSScreen screens][0].frame) child:full];
   [self setPortionOfScreen:full];
   [self->bar setOff];
+}
+
+- (void)refreshMode:(NSPoint)cursor {
+  if (mPrecisionOn)
+    [self setPrecisionMode:cursor];
+  else
+    [self setFullScreenMode];
 }
 
 /**
@@ -126,6 +135,16 @@ const double SCALE = 0.48;
 
 - (void)track:(NSEventMask)mask handler:(nonnull void (^)(NSEvent *_Nonnull))handler {
   [NSEvent addGlobalMonitorForEventsMatchingMask:mask handler:handler];
+}
+
+/**
+ * Called everytime the frontmost application changes
+ */
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context {
+  [self refreshMode:[NSEvent mouseLocation]];
 }
 
 - (void)quit {
