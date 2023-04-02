@@ -123,18 +123,6 @@ const double SCALE = 0.48;
   }
 }
 
-- (void)quit {
-  NSLog(@"End of execution!");
-  [WacomTabletDriver destroyContext:mContextID];
-  [[NSApplication sharedApplication] terminate:nil];
-}
-
-- (void)applicationWillTerminate:(NSNotification *)notification_I {
-  if (mContextID != 0) {
-    [WacomTabletDriver destroyContext:mContextID];
-  }
-}
-
 /**
  * Makes a new context. Does not override existing context.
  */
@@ -207,6 +195,16 @@ const double SCALE = 0.48;
   [fileHandle writeData:[text dataUsingEncoding:NSUTF8StringEncoding]];
   [fileHandle writeData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
   [fileHandle closeFile];
+}
+
+- (void)quit {
+  NSLog(@"End of execution!");
+  [self destroyContext];
+  [[NSApplication sharedApplication] terminate:nil];
+}
+
+- (void)applicationWillTerminate:(NSNotification *)notification_I {
+  [self destroyContext];
 }
 
 @end
