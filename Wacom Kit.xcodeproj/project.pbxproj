@@ -11,6 +11,7 @@
 		0C366C6F29ABBDB40012D53F /* WacomTabletDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C366C6929ABBDB40012D53F /* WacomTabletDriver.m */; };
 		0C366C7029ABBDB40012D53F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0C366C6A29ABBDB40012D53F /* LICENSE */; };
 		0C366C7129ABBDB40012D53F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0C366C6B29ABBDB40012D53F /* README.md */; };
+		0C82D52629D96AAD0060AFB9 /* Rect.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C82D52529D96AAD0060AFB9 /* Rect.m */; };
 		0CE7EE0029C3F1F500452BA7 /* StatusItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE7EDFF29C3F1F500452BA7 /* StatusItem.m */; };
 		0CED2C3129ABBC470023BBEE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CED2C3029ABBC470023BBEE /* AppDelegate.m */; };
 		0CED2C3329ABBC470023BBEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CED2C3229ABBC470023BBEE /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		0C366C6D29ABBDB40012D53F /* WacomTabletDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WacomTabletDriver.h; sourceTree = "<group>"; };
 		0C366C7229ABBED90012D53F /* WacomKit_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WacomKit_Prefix.pch; sourceTree = "<group>"; };
 		0C366C7329ABBF840012D53F /* Wacom-Kit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Wacom-Kit-Info.plist"; sourceTree = SOURCE_ROOT; };
+		0C82D52529D96AAD0060AFB9 /* Rect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rect.m; path = "Wacom Kit/Rect.m"; sourceTree = SOURCE_ROOT; };
 		0CE7EDFE29C3F1D200452BA7 /* StatusItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatusItem.h; sourceTree = "<group>"; };
 		0CE7EDFF29C3F1F500452BA7 /* StatusItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatusItem.m; sourceTree = "<group>"; };
 		0CED2C2C29ABBC470023BBEE /* Wacom Kit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wacom Kit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,13 +55,13 @@
 		0C366C6629ABBDB40012D53F /* Wacom */ = {
 			isa = PBXGroup;
 			children = (
-				0C366C6729ABBDB40012D53F /* NSAppleEventDescriptorHelperCategory.m */,
-				0C366C6829ABBDB40012D53F /* TabletAEDictionary.h */,
-				0C366C6929ABBDB40012D53F /* WacomTabletDriver.m */,
-				0C366C6A29ABBDB40012D53F /* LICENSE */,
-				0C366C6B29ABBDB40012D53F /* README.md */,
-				0C366C6C29ABBDB40012D53F /* NSAppleEventDescriptorHelperCategory.h */,
 				0C366C6D29ABBDB40012D53F /* WacomTabletDriver.h */,
+				0C366C6929ABBDB40012D53F /* WacomTabletDriver.m */,
+				0C366C6829ABBDB40012D53F /* TabletAEDictionary.h */,
+				0C366C6C29ABBDB40012D53F /* NSAppleEventDescriptorHelperCategory.h */,
+				0C366C6729ABBDB40012D53F /* NSAppleEventDescriptorHelperCategory.m */,
+				0C366C6B29ABBDB40012D53F /* README.md */,
+				0C366C6A29ABBDB40012D53F /* LICENSE */,
 			);
 			path = Wacom;
 			sourceTree = "<group>";
@@ -89,6 +91,7 @@
 				0CED2C3029ABBC470023BBEE /* AppDelegate.m */,
 				0CE7EDFE29C3F1D200452BA7 /* StatusItem.h */,
 				0CE7EDFF29C3F1F500452BA7 /* StatusItem.m */,
+				0C82D52529D96AAD0060AFB9 /* Rect.m */,
 				0CED2C3229ABBC470023BBEE /* Assets.xcassets */,
 				0CED2C3429ABBC470023BBEE /* MainMenu.xib */,
 				0CED2C3729ABBC470023BBEE /* main.m */,
@@ -172,6 +175,7 @@
 				0C366C6E29ABBDB40012D53F /* NSAppleEventDescriptorHelperCategory.m in Sources */,
 				0C366C6F29ABBDB40012D53F /* WacomTabletDriver.m in Sources */,
 				0CE7EE0029C3F1F500452BA7 /* StatusItem.m in Sources */,
+				0C82D52629D96AAD0060AFB9 /* Rect.m in Sources */,
 				0CED2C3829ABBC470023BBEE /* main.m in Sources */,
 				0CED2C3129ABBC470023BBEE /* AppDelegate.m in Sources */,
 			);
