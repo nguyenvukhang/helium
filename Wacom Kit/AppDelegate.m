@@ -50,8 +50,8 @@ const double SCALE = 0.48;
 - (void)handleKeyDown:(NSEvent *)event {
   BOOL cmd = [event modifierFlags] & NSEventModifierFlagCommand;
   BOOL shift = [event modifierFlags] & NSEventModifierFlagShift;
-  // 0x13 is '2'
-  if (!(cmd && shift) || [event keyCode] != 0x13)
+  // 0x78 is 'f2'
+  if (!(cmd && shift) || [event keyCode] != 0x78)
     return;
   NSLog(@"Key down toggle!");
   [self toggle];
