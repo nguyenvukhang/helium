@@ -13,13 +13,10 @@
 @implementation AppDelegate
 
 const double SCALE = 0.48;
-
-// /////////////////////////////////////////////////////////////////////////////
-// Initialize this object.
+NSString *_Nonnull logfilePath = @"/Users/khang/.cache/wacom/log.txt";
 
 - (id)init {
   self = [super init];
-  self->logfilePath = @"/Users/khang/.cache/wacom/log.txt";
   [self startLog:@"--- start ---\n"];
 
   // initialize menu bar
@@ -45,7 +42,9 @@ const double SCALE = 0.48;
   return self;
 }
 
-/// Trigger a toggle on Cmd + Shift + F2
+/**
+ * Trigger a toggle on Cmd + Shift + F2
+ */
 - (void)handleKeyDown:(NSEvent *)event {
   BOOL cmd = [event modifierFlags] & NSEventModifierFlagCommand;
   BOOL shift = [event modifierFlags] & NSEventModifierFlagShift;
@@ -56,8 +55,10 @@ const double SCALE = 0.48;
   [self toggle];
 }
 
-/// Tries to center the precision area at the cursor. Moves it minimally in order
-/// to fit in the screen.
+/**
+ * Tries to center the precision area at the cursor. Moves it
+ * minimally in order to fit in the screen.
+ */
 - (void)setSmart:(NSPoint)cursor {
   NSRect rect = [WRect scaled:SCALE aspectRatio:1.6];
   NSRect smart = [WRect smart:cursor rect:rect];
@@ -150,8 +151,7 @@ const double SCALE = 0.48;
 }
 
 - (void)log:(NSString *)text {
-  NSString *path = self->logfilePath;
-  NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:path];
+  NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:logfilePath];
   [fileHandle seekToEndOfFile];
   [fileHandle writeData:[text dataUsingEncoding:NSUTF8StringEncoding]];
   [fileHandle writeData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
@@ -159,7 +159,7 @@ const double SCALE = 0.48;
 }
 
 - (void)startLog:(NSString *)text {
-  [text writeToFile:self->logfilePath atomically:YES encoding:NSUTF8StringEncoding error:NULL];
+  [text writeToFile:logfilePath atomically:YES encoding:NSUTF8StringEncoding error:NULL];
 }
 
 - (void)quit {

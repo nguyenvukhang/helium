@@ -19,7 +19,6 @@
   UInt32 mContextID;
   NSUInteger lastUsedTablet;
   BOOL mPrecisionOn;
-  NSString *logfilePath;
 }
 
 - (void)makeContext;
