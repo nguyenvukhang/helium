@@ -57,7 +57,6 @@ const double SCALE = 0.48;
 /// Tries to center the precision area at the cursor. Moves it minimally in order
 /// to fit in the screen.
 - (void)setSmart:(NSPoint)cursor {
-  NSRect screen = [NSScreen screens][0].frame;
   NSRect rect = [WRect scaled:SCALE aspectRatio:1.6];
   NSRect smart = [WRect smart:cursor rect:rect];
   [self setPortionOfScreen:smart];
