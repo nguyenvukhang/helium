@@ -68,7 +68,8 @@ const double SCALE = 0.48;
  */
 - (void)toggle {
   self->mPrecisionOn = !self->mPrecisionOn;
-  [self refreshMode:[NSEvent mouseLocation]];
+  self->cursorAtToggle = [NSEvent mouseLocation];
+  [self refreshMode:self->cursorAtToggle];
 }
 
 /**
@@ -78,7 +79,6 @@ const double SCALE = 0.48;
   NSRect rect = [WRect scaled:SCALE aspectRatio:1.6];
   NSRect smart = [WRect smart:cursor rect:rect];
   [self setPortionOfScreen:smart];
-  self->cursorAtToggle = cursor;
   [self->bar setOn];
 }
 
@@ -164,7 +164,7 @@ const double SCALE = 0.48;
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
-  [self refreshMode:[NSEvent mouseLocation]];
+  [self refreshMode:self->cursorAtToggle];
 }
 
 - (void)quit {
