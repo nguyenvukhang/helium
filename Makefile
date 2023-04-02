@@ -27,4 +27,12 @@ open:
 run:
 	open '/Applications/Wacom Kit.app'
 
+quit:
+	osascript -e 'quit app "Wacom Kit"'
+
+dev:
+	@make quit
+	@make install
+	@make run
+
 FORCE: ;
