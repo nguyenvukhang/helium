@@ -7,7 +7,7 @@
 
 #import "AppDelegate.h"
 
-#import "WacomTabletDriver.h"
+#import "Wacom/WacomTabletDriver.h"
 
 @implementation AppDelegate
 

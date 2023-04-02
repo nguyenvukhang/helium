@@ -2,3 +2,4 @@ DerivedData/
 build/
 .DS_Store
 Wacom Kit.xcarchive
+compile_commands.json
