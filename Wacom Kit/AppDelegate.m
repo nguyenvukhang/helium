@@ -56,34 +56,30 @@ const double SCALE = 0.48;
 }
 
 /**
- * Tries to center the precision area at the cursor. Moves it
- * minimally in order to fit in the screen.
- */
-- (void)setSmart:(NSPoint)cursor {
-  NSRect rect = [WRect scaled:SCALE aspectRatio:1.6];
-  NSRect smart = [WRect smart:cursor rect:rect];
-  [self setPortionOfScreen:smart];
-  self->cursorAtToggle = cursor;
-}
-
-/**
  * Toggle between full-screen coverage and precision mode
  */
 - (void)toggle {
   self->mPrecisionOn = !self->mPrecisionOn;
-  [self setMode:[NSEvent mouseLocation]];
+  if (mPrecisionOn) {
+    [self setPrecisionMode:[NSEvent mouseLocation]];
+  } else {
+    [self setFullScreenMode];
+  }
 }
 
-- (void)setMode:(NSPoint)cursor {
-  if (self->mPrecisionOn) {
-    [self setSmart:cursor];
-    [self->bar setOn];
-  } else {
-    NSRect full = [WRect scaled:1 aspectRatio:1.6];
-    full = [WRect center:([NSScreen screens][0].frame) child:full];
-    [self setPortionOfScreen:full];
-    [self->bar setOff];
-  }
+- (void)setPrecisionMode:(NSPoint)cursor {
+  NSRect rect = [WRect scaled:SCALE aspectRatio:1.6];
+  NSRect smart = [WRect smart:cursor rect:rect];
+  [self setPortionOfScreen:smart];
+  self->cursorAtToggle = cursor;
+  [self->bar setOn];
+}
+
+- (void)setFullScreenMode {
+  NSRect full = [WRect scaled:1 aspectRatio:1.6];
+  full = [WRect center:([NSScreen screens][0].frame) child:full];
+  [self setPortionOfScreen:full];
+  [self->bar setOff];
 }
 
 /**

@@ -23,6 +23,12 @@
   BOOL mPrecisionOn;
 }
 
+- (void)handleKeyDown:(NSEvent *)event;
+
+- (void)toggle;
+- (void)setPrecisionMode:(NSPoint)cursor;
+- (void)setFullScreenMode;
+
 - (void)makeContext;
 - (void)destroyContext;
 - (void)resetContext;
