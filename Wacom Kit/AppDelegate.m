@@ -119,33 +119,15 @@ NSString *_Nonnull logfilePath = @"/Users/khang/.cache/wacom/log.txt";
   [self makeContext];
 }
 
-- (void)setPortionOfScreen:(NSRect)screenPortion_I {
-  [self log:@"Setting portion of screen!"];
-  NSRect rectPrimary = [NSScreen screens][0].frame;
-  [self log:[NSString stringWithFormat:@"routing table for: %lu", lastUsedTablet]];
+- (void)setPortionOfScreen:(NSRect)portion {
+  [self resetContext];
+  Rect r = [WRect legacy:portion];
 
-  bool useGlobal = false;
-  NSAppleEventDescriptor *routingDesc;
-  if (useGlobal) {
-    routingDesc = [WacomTabletDriver routingTableForTablet:lastUsedTablet];
-  } else {
-    [self resetContext];
-    routingDesc = [WacomTabletDriver routingTableForContext:mContextID];
-  }
-
-  Rect screenArea = {0};
-
-  // Convert Cocoa rect to old QuickDraw rect.
-  screenArea.left = NSMinX(screenPortion_I);
-  screenArea.top = NSMaxY(rectPrimary) - NSMaxY(screenPortion_I) + 1;
-  screenArea.right = NSMaxX(screenPortion_I);
-  screenArea.bottom = NSMaxY(rectPrimary) - NSMinY(screenPortion_I) + 1;
-
-  [WacomTabletDriver setBytes:&screenArea
+  [WacomTabletDriver setBytes:&r
                        ofSize:sizeof(Rect)
                        ofType:typeQDRectangle
                  forAttribute:pMapScreenArea
-                 routingTable:routingDesc];
+                 routingTable:[WacomTabletDriver routingTableForContext:mContextID]];
 }
 
 - (void)track:(NSEventMask)mask handler:(nonnull void (^)(NSEvent *_Nonnull))handler {

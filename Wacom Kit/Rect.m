@@ -55,4 +55,19 @@
   return rect;
 }
 
+/**
+ * Convert Cocoa rect to old QuickDraw rect.
+ */
++ (Rect)legacy:(NSRect)rect {
+  NSRect s = [NSScreen screens][0].frame;
+  Rect r = {0};
+
+  r.left = NSMinX(rect);
+  r.top = NSMaxY(s) - NSMaxY(rect) + 1;
+  r.right = NSMaxX(rect);
+  r.bottom = NSMaxY(s) - NSMinY(rect) + 1;
+
+  return r;
+}
+
 @end
