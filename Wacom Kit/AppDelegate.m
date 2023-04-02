@@ -123,7 +123,16 @@ NSString *_Nonnull logfilePath = @"/Users/khang/.cache/wacom/log.txt";
   [self log:@"Setting portion of screen!"];
   NSRect rectPrimary = [NSScreen screens][0].frame;
   [self log:[NSString stringWithFormat:@"routing table for: %lu", lastUsedTablet]];
-  NSAppleEventDescriptor *routingDesc = [WacomTabletDriver routingTableForTablet:lastUsedTablet];
+
+  bool useGlobal = false;
+  NSAppleEventDescriptor *routingDesc;
+  if (useGlobal) {
+    routingDesc = [WacomTabletDriver routingTableForTablet:lastUsedTablet];
+  } else {
+    [self resetContext];
+    routingDesc = [WacomTabletDriver routingTableForContext:mContextID];
+  }
+
   Rect screenArea = {0};
 
   // Convert Cocoa rect to old QuickDraw rect.
@@ -135,7 +144,7 @@ NSString *_Nonnull logfilePath = @"/Users/khang/.cache/wacom/log.txt";
   [WacomTabletDriver setBytes:&screenArea
                        ofSize:sizeof(Rect)
                        ofType:typeQDRectangle
-                 forAttribute:pContextMapScreenArea
+                 forAttribute:pMapScreenArea
                  routingTable:routingDesc];
 }
 
