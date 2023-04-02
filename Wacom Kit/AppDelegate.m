@@ -16,11 +16,17 @@ const double SCALE = 0.48;
 
 - (id)init {
   self = [super init];
+
+  // initialize attributes
   logger = [[WLogger alloc] init:@".cache/wacom/log.txt"];
+  bar = [[WStatusItem alloc] initWithParent:self];
+  lastUsedTablet = 0;
+  mContextID = 0; // 0 is an invalid context number.
+  mPrecisionOn = NO;
+
   [logger start:@"--- start ---"];
 
   // initialize menu bar
-  bar = [[WKStatusItem alloc] initWithParent:self];
   [bar addMenuItem:@"Toggle" keyEquivalent:@"t" action:@selector(toggle)];
   [bar addMenuItem:@"Quit" keyEquivalent:@"q" action:@selector(quit)];
 
@@ -40,10 +46,6 @@ const double SCALE = 0.48;
                                 forKeyPath:@"frontmostApplication"
                                    options:0
                                    context:nil];
-
-  lastUsedTablet = 0;
-  mContextID = 0; // 0 is an invalid context number.
-  mPrecisionOn = NO;
 
   return self;
 }

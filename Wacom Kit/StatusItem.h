@@ -10,7 +10,7 @@
 #ifndef StatusItem_h
 #define StatusItem_h
 
-@interface WKStatusItem : NSObject {
+@interface WStatusItem : NSObject {
   NSObject *parent;
   NSStatusItem *item;
   NSString *PRECISION_ON_ICON;

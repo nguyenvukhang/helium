@@ -16,7 +16,7 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
   CGPoint cursorAtToggle;
   NSStatusItem *barItem;
-  WKStatusItem *bar;
+  WStatusItem *bar;
   WLogger *logger;
   UInt32 mContextID;
   NSUInteger lastUsedTablet;

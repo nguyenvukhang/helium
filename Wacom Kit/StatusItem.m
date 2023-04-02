@@ -7,7 +7,7 @@
 
 #import "StatusItem.h"
 
-@implementation WKStatusItem
+@implementation WStatusItem
 
 - (id)initWithParent:(NSObject *_Nonnull)parent {
   self = [super init];
