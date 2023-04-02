@@ -39,24 +39,11 @@ const double SCALE = 0.48;
           }
       }];
 
-  // track frontmost application to refresh context when it changes
-  [NSWorkspace.sharedWorkspace addObserver:self
-                                forKeyPath:@"frontmostApplication"
-                                   options:0
-                                   context:nil];
   lastUsedTablet = 0;
   mContextID = 0; // 0 is an invalid context number.
   mPrecisionOn = NO;
 
   return self;
-}
-
-// Called everytime the frontmost application changes
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context {
-  [self setMode:self->cursorAtToggle];
 }
 
 /// Trigger a toggle on Cmd + Shift + 2

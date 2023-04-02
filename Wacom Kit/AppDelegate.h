@@ -12,8 +12,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "TabletAEDictionary.h"
-
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
   CGPoint cursorAtToggle;
   NSStatusItem *barItem;
