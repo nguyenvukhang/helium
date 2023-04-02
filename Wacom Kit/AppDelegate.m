@@ -13,23 +13,23 @@
 @implementation AppDelegate
 
 const double SCALE = 0.48;
-NSString *_Nonnull logfilePath = @"/Users/khang/.cache/wacom/log.txt";
 
 - (id)init {
   self = [super init];
-  [self startLog:@"--- start ---\n"];
+  logger = [[WLogger alloc] init:@".cache/wacom/log.txt"];
+  [logger start:@"--- start ---"];
 
   // initialize menu bar
-  self->bar = [[WKStatusItem alloc] initWithParent:self];
-  [self->bar addMenuItem:@"Toggle" keyEquivalent:@"t" action:@selector(toggle)];
-  [self->bar addMenuItem:@"Quit" keyEquivalent:@"q" action:@selector(quit)];
+  bar = [[WKStatusItem alloc] initWithParent:self];
+  [bar addMenuItem:@"Toggle" keyEquivalent:@"t" action:@selector(toggle)];
+  [bar addMenuItem:@"Quit" keyEquivalent:@"q" action:@selector(quit)];
 
   // track tablet proximity sensor to grab latest tablet used
   // track keystrokes to listen for toggle key combination
   [self track:NSEventMaskTabletProximity | NSEventMaskKeyDown
       handler:^(NSEvent *event) {
           if (event.type == NSEventTypeTabletProximity && event.isEnteringProximity) {
-            self->lastUsedTablet = [event systemTabletID];
+            lastUsedTablet = [event systemTabletID];
           } else if (event.type == NSEventTypeKeyDown) {
             [self handleKeyDown:event];
           }
@@ -51,7 +51,7 @@ NSString *_Nonnull logfilePath = @"/Users/khang/.cache/wacom/log.txt";
   // 0x78 is 'f2'
   if (!(cmd && shift) || [event keyCode] != 0x78)
     return;
-  NSLog(@"Key down toggle!");
+  [logger log:@"Key down toggle!"];
   [self toggle];
 }
 
@@ -90,27 +90,25 @@ NSString *_Nonnull logfilePath = @"/Users/khang/.cache/wacom/log.txt";
  * Makes a new context. Does not override existing context.
  */
 - (void)makeContext {
-  [self log:@"[makeContext]"];
-  [self log:mContextID == 0 ? @"made new context!" : @"context already exists"];
+  [logger log:@"[ make context ]" t:mContextID == 0 y:@"make new!" n:@"keep existing."];
   if (mContextID != 0)
     return;
 
   mContextID = [WacomTabletDriver createContextForTablet:(UInt32)lastUsedTablet
                                                     type:pContextTypeDefault];
-  [self log:[NSString stringWithFormat:@"NEW_CONTEXT: %d", mContextID]];
+  [logger log:@"new context" val:mContextID];
 }
 
 /**
  * Destroys existing context.
  */
 - (void)destroyContext {
-  [self log:@"[destroyContext]"];
-  [self log:mContextID == 0 ? @"context already zero" : @"context destroyed!"];
+  [logger log:@"[ destroy context ]" t:mContextID == 0 y:@"nothing." n:@"boom!"];
   if (mContextID == 0)
     return;
 
   [WacomTabletDriver destroyContext:mContextID];
-  [self log:[NSString stringWithFormat:@"DESTROY: %d", mContextID]];
+  [logger log:@"id destroyed" val:mContextID];
   mContextID = 0;
 }
 
@@ -134,22 +132,10 @@ NSString *_Nonnull logfilePath = @"/Users/khang/.cache/wacom/log.txt";
   [NSEvent addGlobalMonitorForEventsMatchingMask:mask handler:handler];
 }
 
-- (void)log:(NSString *)text {
-  NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:logfilePath];
-  [fileHandle seekToEndOfFile];
-  [fileHandle writeData:[text dataUsingEncoding:NSUTF8StringEncoding]];
-  [fileHandle writeData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
-  [fileHandle closeFile];
-}
-
-- (void)startLog:(NSString *)text {
-  [text writeToFile:logfilePath atomically:YES encoding:NSUTF8StringEncoding error:NULL];
-}
-
 - (void)quit {
-  NSLog(@"End of execution!");
   [self destroyContext];
   [[NSApplication sharedApplication] terminate:nil];
+  [logger log:@"End of execution!"];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification_I {

@@ -8,6 +8,7 @@
 #ifndef AppDelegate_h
 #define AppDelegate_h
 
+#import "Logger.h"
 #import "StatusItem.h"
 
 #import <Cocoa/Cocoa.h>
@@ -16,6 +17,7 @@
   CGPoint cursorAtToggle;
   NSStatusItem *barItem;
   WKStatusItem *bar;
+  WLogger *logger;
   UInt32 mContextID;
   NSUInteger lastUsedTablet;
   BOOL mPrecisionOn;
@@ -25,8 +27,6 @@
 - (void)destroyContext;
 - (void)resetContext;
 - (void)setPortionOfScreen:(NSRect)p;
-- (void)log:(NSString *)text;
-- (void)startLog:(NSString *)text;
 
 @end
 

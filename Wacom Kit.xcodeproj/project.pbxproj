@@ -11,6 +11,7 @@
 		0C366C6F29ABBDB40012D53F /* WacomTabletDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C366C6929ABBDB40012D53F /* WacomTabletDriver.m */; };
 		0C366C7029ABBDB40012D53F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0C366C6A29ABBDB40012D53F /* LICENSE */; };
 		0C366C7129ABBDB40012D53F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0C366C6B29ABBDB40012D53F /* README.md */; };
+		0C5E8CF029D9951000E9E705 /* Logger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E8CEF29D9951000E9E705 /* Logger.m */; };
 		0C82D52629D96AAD0060AFB9 /* Rect.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C82D52529D96AAD0060AFB9 /* Rect.m */; };
 		0CE7EE0029C3F1F500452BA7 /* StatusItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE7EDFF29C3F1F500452BA7 /* StatusItem.m */; };
 		0CED2C3129ABBC470023BBEE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CED2C3029ABBC470023BBEE /* AppDelegate.m */; };
@@ -29,6 +30,8 @@
 		0C366C6D29ABBDB40012D53F /* WacomTabletDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WacomTabletDriver.h; sourceTree = "<group>"; };
 		0C366C7229ABBED90012D53F /* WacomKit_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WacomKit_Prefix.pch; sourceTree = "<group>"; };
 		0C366C7329ABBF840012D53F /* Wacom-Kit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Wacom-Kit-Info.plist"; sourceTree = SOURCE_ROOT; };
+		0C5E8CEE29D9951000E9E705 /* Logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
+		0C5E8CEF29D9951000E9E705 /* Logger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Logger.m; sourceTree = "<group>"; };
 		0C7BB14D29D96C9300F5560A /* Rect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rect.h; sourceTree = "<group>"; };
 		0C82D52529D96AAD0060AFB9 /* Rect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rect.m; path = "Wacom Kit/Rect.m"; sourceTree = SOURCE_ROOT; };
 		0CE7EDFE29C3F1D200452BA7 /* StatusItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatusItem.h; sourceTree = "<group>"; };
@@ -94,6 +97,8 @@
 				0CE7EDFF29C3F1F500452BA7 /* StatusItem.m */,
 				0C7BB14D29D96C9300F5560A /* Rect.h */,
 				0C82D52529D96AAD0060AFB9 /* Rect.m */,
+				0C5E8CEE29D9951000E9E705 /* Logger.h */,
+				0C5E8CEF29D9951000E9E705 /* Logger.m */,
 				0CED2C3229ABBC470023BBEE /* Assets.xcassets */,
 				0CED2C3429ABBC470023BBEE /* MainMenu.xib */,
 				0CED2C3729ABBC470023BBEE /* main.m */,
@@ -179,6 +184,7 @@
 				0CE7EE0029C3F1F500452BA7 /* StatusItem.m in Sources */,
 				0C82D52629D96AAD0060AFB9 /* Rect.m in Sources */,
 				0CED2C3829ABBC470023BBEE /* main.m in Sources */,
+				0C5E8CF029D9951000E9E705 /* Logger.m in Sources */,
 				0CED2C3129ABBC470023BBEE /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
