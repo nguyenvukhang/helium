@@ -19,6 +19,8 @@ const double SCALE = 0.48;
 
 - (id)init {
   self = [super init];
+  self->logfilePath = @"/Users/khang/.cache/wacom/log.txt";
+  [self startLog:@"--- start ---\n"];
 
   // initialize menu bar
   self->bar = [[WKStatusItem alloc] initWithParent:self];
@@ -148,13 +150,16 @@ const double SCALE = 0.48;
 }
 
 - (void)log:(NSString *)text {
-  NSString *path = @"/Users/khang/.cache/wacom/log.txt";
+  NSString *path = self->logfilePath;
   NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:path];
-  /* [text writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:NULL]; */
   [fileHandle seekToEndOfFile];
   [fileHandle writeData:[text dataUsingEncoding:NSUTF8StringEncoding]];
   [fileHandle writeData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
   [fileHandle closeFile];
+}
+
+- (void)startLog:(NSString *)text {
+  [text writeToFile:self->logfilePath atomically:YES encoding:NSUTF8StringEncoding error:NULL];
 }
 
 - (void)quit {

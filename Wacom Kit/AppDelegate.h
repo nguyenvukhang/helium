@@ -19,6 +19,7 @@
   UInt32 mContextID;
   NSUInteger lastUsedTablet;
   BOOL mPrecisionOn;
+  NSString *logfilePath;
 }
 
 - (void)makeContext;
@@ -26,6 +27,7 @@
 - (void)resetContext;
 - (void)setPortionOfScreen:(NSRect)screenPortion_I;
 - (void)log:(NSString *)text;
+- (void)startLog:(NSString *)text;
 
 @end
 
