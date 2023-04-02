@@ -71,6 +71,9 @@ const double SCALE = 0.48;
   [self refreshMode:[NSEvent mouseLocation]];
 }
 
+/**
+ * Start Precision Mode
+ */
 - (void)setPrecisionMode:(NSPoint)cursor {
   NSRect rect = [WRect scaled:SCALE aspectRatio:1.6];
   NSRect smart = [WRect smart:cursor rect:rect];
@@ -79,6 +82,9 @@ const double SCALE = 0.48;
   [self->bar setOn];
 }
 
+/**
+ * Start FullScreen Mode
+ */
 - (void)setFullScreenMode {
   NSRect full = [WRect scaled:1 aspectRatio:1.6];
   full = [WRect center:([NSScreen screens][0].frame) child:full];
@@ -86,6 +92,9 @@ const double SCALE = 0.48;
   [self->bar setOff];
 }
 
+/**
+ * Refresh the current mode based on current state
+ */
 - (void)refreshMode:(NSPoint)cursor {
   if (mPrecisionOn)
     [self setPrecisionMode:cursor];
@@ -119,11 +128,17 @@ const double SCALE = 0.48;
   mContextID = 0;
 }
 
+/**
+ * Destroys and then re-creates a context.
+ */
 - (void)resetContext {
   [self destroyContext];
   [self makeContext];
 }
 
+/**
+ * Sets the tablet to cover a specified portion of the screen.
+ */
 - (void)setPortionOfScreen:(NSRect)portion {
   [self resetContext];
   Rect r = [WRect legacy:portion];
@@ -135,12 +150,15 @@ const double SCALE = 0.48;
                  routingTable:[WacomTabletDriver routingTableForContext:mContextID]];
 }
 
+/**
+ * Track keystrokes.
+ */
 - (void)track:(NSEventMask)mask handler:(nonnull void (^)(NSEvent *_Nonnull))handler {
   [NSEvent addGlobalMonitorForEventsMatchingMask:mask handler:handler];
 }
 
 /**
- * Called everytime the frontmost application changes
+ * Called everytime the frontmost application changes.
  */
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object

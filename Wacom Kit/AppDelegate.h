@@ -33,7 +33,7 @@
 - (void)makeContext;
 - (void)destroyContext;
 - (void)resetContext;
-- (void)setPortionOfScreen:(NSRect)p;
+- (void)setPortionOfScreen:(NSRect)portion;
 
 @end
 
