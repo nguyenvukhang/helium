@@ -18,14 +18,11 @@ const double SCALE = 0.48;
   self = [super init];
 
   // initialize attributes
-  total = 0;
-  logger = [[WLogger alloc] init:@".cache/wacom/log.txt"];
   bar = [[WStatusItem alloc] initWithParent:self];
-  lastUsedTablet = 0;
-  mContextID = 0; // 0 is an invalid context number.
+  lastUsedTablet = 0; // 0 is an invalid tablet index.
+  mContextID = 0;     // 0 is an invalid context number.
   mPrecisionOn = NO;
-
-  [logger start:@"--- start ---"];
+  [self setFullScreenMode];
 
   // initialize menu bar
   [bar addMenuItem:@"Toggle" keyEquivalent:@"t" action:@selector(toggle)];
@@ -46,7 +43,7 @@ const double SCALE = 0.48;
 }
 
 /**
- * Trigger a toggle on Cmd + Shift + F2
+ * Trigger a toggle on Cmd + Shift + F2.
  */
 - (void)handleKeyDown:(NSEvent *)event {
   BOOL cmd = [event modifierFlags] & NSEventModifierFlagCommand;
@@ -58,7 +55,7 @@ const double SCALE = 0.48;
 }
 
 /**
- * Toggle between full-screen coverage and precision mode
+ * Toggle between full-screen coverage and precision mode.
  */
 - (void)toggle {
   self->mPrecisionOn = !self->mPrecisionOn;
@@ -67,7 +64,7 @@ const double SCALE = 0.48;
 }
 
 /**
- * Start Precision Mode
+ * Start Precision Mode.
  */
 - (void)setPrecisionMode:(NSPoint)cursor {
   NSRect rect = [WRect scaled:SCALE aspectRatio:1.6];
@@ -77,7 +74,7 @@ const double SCALE = 0.48;
 }
 
 /**
- * Start FullScreen Mode
+ * Start FullScreen Mode.
  */
 - (void)setFullScreenMode {
   NSRect full = [WRect scaled:1 aspectRatio:1.6];
@@ -87,7 +84,7 @@ const double SCALE = 0.48;
 }
 
 /**
- * Refresh the current mode based on current state
+ * Refresh the current mode based on current state.
  */
 - (void)refreshMode:(NSPoint)cursor {
   if (mPrecisionOn)
@@ -101,7 +98,6 @@ const double SCALE = 0.48;
  */
 - (void)setPortionOfScreen:(NSRect)portion {
   Rect r = [WRect legacy:portion];
-
   [WacomTabletDriver setBytes:&r
                        ofSize:sizeof(Rect)
                        ofType:typeQDRectangle
@@ -119,7 +115,6 @@ const double SCALE = 0.48;
 
 - (void)quit {
   [[NSApplication sharedApplication] terminate:nil];
-  [logger log:@"End of execution!"];
 }
 
 @end

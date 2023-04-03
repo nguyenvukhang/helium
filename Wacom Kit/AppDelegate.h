@@ -15,17 +15,14 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
   CGPoint cursorAtToggle;
-  int total;
   NSStatusItem *barItem;
   WStatusItem *bar;
-  WLogger *logger;
   UInt32 mContextID;
   NSUInteger lastUsedTablet;
   BOOL mPrecisionOn;
 }
 
 - (void)handleKeyDown:(NSEvent *)event;
-
 - (void)toggle;
 - (void)setPrecisionMode:(NSPoint)cursor;
 - (void)setFullScreenMode;
