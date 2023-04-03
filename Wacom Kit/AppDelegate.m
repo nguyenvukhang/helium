@@ -97,40 +97,6 @@ const double SCALE = 0.48;
 }
 
 /**
- * Makes a new context. Does not override existing context.
- */
-- (void)makeContext {
-  int prev = mContextID;
-  if (mContextID == 0) {
-    total++;
-    mContextID = [WacomTabletDriver createContextForTablet:(UInt32)lastUsedTablet
-                                                      type:pContextTypeDefault];
-  }
-  [logger log:@"[ up ]" prev:prev next:mContextID];
-  [logger log:@"[total]" val:total];
-}
-
-/**
- * Destroys existing context.
- */
-- (void)destroyContext {
-  int prev = mContextID;
-  if (mContextID != 0) {
-    [WacomTabletDriver destroyContext:mContextID];
-    mContextID = 0;
-  }
-  [logger log:@"[down]" prev:prev next:mContextID];
-}
-
-/**
- * Destroys and then re-creates a context.
- */
-- (void)resetContext {
-  [self destroyContext];
-  [self makeContext];
-}
-
-/**
  * Sets the tablet to cover a specified portion of the screen.
  */
 - (void)setPortionOfScreen:(NSRect)portion {
@@ -152,13 +118,8 @@ const double SCALE = 0.48;
 }
 
 - (void)quit {
-  [self destroyContext];
   [[NSApplication sharedApplication] terminate:nil];
   [logger log:@"End of execution!"];
-}
-
-- (void)applicationWillTerminate:(NSNotification *)notification_I {
-  [self destroyContext];
 }
 
 @end
