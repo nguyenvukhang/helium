@@ -161,6 +161,8 @@ const double SCALE = 0.48;
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
+  NSRunningApplication *front = [NSWorkspace.sharedWorkspace frontmostApplication];
+  [logger log:@"[app]" detail:[front bundleIdentifier]];
   [self refreshMode:self->cursorAtToggle];
 }
 

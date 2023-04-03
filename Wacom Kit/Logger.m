@@ -28,6 +28,10 @@
   [fh closeFile];
 }
 
+- (void)log:(NSString *)title detail:(NSString *)detail {
+  [self log:[NSString stringWithFormat:@"%@: %@", title, detail]];
+}
+
 - (void)log:(NSString *)text val:(int)val {
   [self log:[NSString stringWithFormat:@"%@: %d", text, val]];
 }

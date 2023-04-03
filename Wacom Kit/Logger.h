@@ -17,6 +17,7 @@
 - (id)init:(NSString *_Nonnull)path;
 - (void)start:(NSString *)text;
 - (void)log:(NSString *)text;
+- (void)log:(NSString *)title detail:(NSString *)detail;
 - (void)log:(NSString *)text val:(int)val;
 - (void)log:(NSString *)text prev:(int)prev next:(int)next;
 - (void)log:(NSString *)base t:(bool)t y:(NSString *)y n:(NSString *)n;
