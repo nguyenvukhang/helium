@@ -15,6 +15,7 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
   CGPoint cursorAtToggle;
+  int total;
   NSStatusItem *barItem;
   WStatusItem *bar;
   WLogger *logger;

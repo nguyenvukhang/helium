@@ -18,6 +18,7 @@ const double SCALE = 0.48;
   self = [super init];
 
   // initialize attributes
+  total = 0;
   logger = [[WLogger alloc] init:@".cache/wacom/log.txt"];
   bar = [[WStatusItem alloc] initWithParent:self];
   lastUsedTablet = 0;
@@ -40,12 +41,6 @@ const double SCALE = 0.48;
             [self handleKeyDown:event];
           }
       }];
-
-  // track frontmost application to refresh context when it changes
-  [NSWorkspace.sharedWorkspace addObserver:self
-                                forKeyPath:@"frontmostApplication"
-                                   options:0
-                                   context:nil];
 
   return self;
 }
@@ -107,10 +102,12 @@ const double SCALE = 0.48;
 - (void)makeContext {
   int prev = mContextID;
   if (mContextID == 0) {
+    total++;
     mContextID = [WacomTabletDriver createContextForTablet:(UInt32)lastUsedTablet
                                                       type:pContextTypeDefault];
   }
   [logger log:@"[ up ]" prev:prev next:mContextID];
+  [logger log:@"[total]" val:total];
 }
 
 /**
@@ -137,14 +134,14 @@ const double SCALE = 0.48;
  * Sets the tablet to cover a specified portion of the screen.
  */
 - (void)setPortionOfScreen:(NSRect)portion {
-  [self resetContext];
   Rect r = [WRect legacy:portion];
 
   [WacomTabletDriver setBytes:&r
                        ofSize:sizeof(Rect)
                        ofType:typeQDRectangle
                  forAttribute:pMapScreenArea
-                 routingTable:[WacomTabletDriver routingTableForContext:mContextID]];
+                 routingTable:[WacomTabletDriver routingTableForTablet:lastUsedTablet
+                                                            transducer:1]];
 }
 
 /**
@@ -152,18 +149,6 @@ const double SCALE = 0.48;
  */
 - (void)track:(NSEventMask)mask handler:(nonnull void (^)(NSEvent *_Nonnull))handler {
   [NSEvent addGlobalMonitorForEventsMatchingMask:mask handler:handler];
-}
-
-/**
- * Called everytime the frontmost application changes.
- */
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context {
-  NSRunningApplication *front = [NSWorkspace.sharedWorkspace frontmostApplication];
-  [logger log:@"[app]" detail:[front bundleIdentifier]];
-  [self refreshMode:self->cursorAtToggle];
 }
 
 - (void)quit {
