@@ -106,26 +106,24 @@ const double SCALE = 0.48;
  * Makes a new context. Does not override existing context.
  */
 - (void)makeContext {
-  [logger log:@"[ make context ]" t:mContextID == 0 y:@"make new!" n:@"keep existing."];
-  if (mContextID != 0)
-    return;
-
-  mContextID = [WacomTabletDriver createContextForTablet:(UInt32)lastUsedTablet
-                                                    type:pContextTypeDefault];
-  [logger log:@"new context" val:mContextID];
+  int prev = mContextID;
+  if (mContextID == 0) {
+    mContextID = [WacomTabletDriver createContextForTablet:(UInt32)lastUsedTablet
+                                                      type:pContextTypeDefault];
+  }
+  [logger log:@"[make context]" prev:prev next:mContextID];
 }
 
 /**
  * Destroys existing context.
  */
 - (void)destroyContext {
-  [logger log:@"[ destroy context ]" t:mContextID == 0 y:@"nothing." n:@"boom!"];
-  if (mContextID == 0)
-    return;
-
-  [WacomTabletDriver destroyContext:mContextID];
-  [logger log:@"id destroyed" val:mContextID];
-  mContextID = 0;
+  int prev = mContextID;
+  if (mContextID != 0) {
+    [WacomTabletDriver destroyContext:mContextID];
+    mContextID = 0;
+  }
+  [logger log:@"[destroy context]" prev:prev next:mContextID];
 }
 
 /**

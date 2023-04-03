@@ -32,6 +32,10 @@
   [self log:[NSString stringWithFormat:@"%@: %d", text, val]];
 }
 
+- (void)log:(NSString *)text prev:(int)prev next:(int)next {
+  [self log:[NSString stringWithFormat:@"%@: %d -> %d", text, prev, next]];
+}
+
 - (void)log:(NSString *)base t:(bool)t y:(NSString *)y n:(NSString *)n {
   [self log:[NSString stringWithFormat:@"%@ %@", base, t ? y : n]];
 }
