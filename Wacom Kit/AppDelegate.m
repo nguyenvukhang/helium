@@ -56,11 +56,10 @@ const double SCALE = 0.48;
 - (void)handleKeyDown:(NSEvent *)event {
   BOOL cmd = [event modifierFlags] & NSEventModifierFlagCommand;
   BOOL shift = [event modifierFlags] & NSEventModifierFlagShift;
-  // 0x78 is 'f2'
-  if (!(cmd && shift) || [event keyCode] != 0x78)
-    return;
-  [logger log:@"Key down toggle!"];
-  [self toggle];
+  BOOL key = [event keyCode] == 0x78; // 0x78 is 'f2'
+  if (cmd && shift && key) {
+    [self toggle];
+  }
 }
 
 /**
@@ -111,7 +110,7 @@ const double SCALE = 0.48;
     mContextID = [WacomTabletDriver createContextForTablet:(UInt32)lastUsedTablet
                                                       type:pContextTypeDefault];
   }
-  [logger log:@"[make context]" prev:prev next:mContextID];
+  [logger log:@"[ up ]" prev:prev next:mContextID];
 }
 
 /**
@@ -123,7 +122,7 @@ const double SCALE = 0.48;
     [WacomTabletDriver destroyContext:mContextID];
     mContextID = 0;
   }
-  [logger log:@"[destroy context]" prev:prev next:mContextID];
+  [logger log:@"[down]" prev:prev next:mContextID];
 }
 
 /**
