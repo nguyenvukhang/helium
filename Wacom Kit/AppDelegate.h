@@ -20,6 +20,7 @@
   WStatusItem *bar;
   int lastUsedTablet;
   BOOL mPrecisionOn;
+  BOOL mPrecisionBoundsOn;
 }
 
 - (void)handleKeyDown:(NSEvent *)event;

@@ -24,6 +24,7 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   bar = [[WStatusItem alloc] initWithParent:self];
   lastUsedTablet = 0; // 0 is an invalid tablet index.
   mPrecisionOn = NO;
+  mPrecisionBoundsOn = YES;
   [self setFullScreenMode];
 
   // create overlay
@@ -33,6 +34,7 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
 
   // initialize menu bar
   [bar addMenuItem:@"Toggle" keyEquivalent:@"t" action:@selector(toggle)];
+  [bar addMenuItem:@"Show precision bounds" keyEquivalent:@"b" action:@selector(togglePrecisionBounds)];
   [bar addMenuItem:@"Quit" keyEquivalent:@"q" action:@selector(quit)];
 
   // listen to global events
@@ -63,6 +65,20 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
 }
 
 /**
+ * Toggle setting to show precision bounds. Useful for presenting.
+ */
+- (void)togglePrecisionBounds {
+  mPrecisionBoundsOn = !mPrecisionBoundsOn;
+  if (mPrecisionBoundsOn) {
+    if (mPrecisionOn) {
+      [overlay show];
+    }
+  } else {
+    [overlay hide];
+  }
+}
+
+/**
  * Start Precision Mode.
  */
 - (void)setPrecisionMode:(NSPoint)cursor {
@@ -71,7 +87,9 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   [self setPortionOfScreen:smart];
   [bar setOn];
   [overlay move:smart];
-  [overlay show];
+  if (mPrecisionBoundsOn) {
+    [overlay show];
+  }
 }
 
 /**
