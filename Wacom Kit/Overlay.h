@@ -11,13 +11,16 @@
 #define WacomKitOverlay_h
 
 @interface WOverlay : NSWindow {
+  BOOL enabled;
 }
 
 - (id)initWithRect:(NSRect)contentRect;
 - (void)move:(NSRect)rect;
 - (void)show;
-- (void)fade;
 - (void)hide;
+- (void)flash;
+- (void)enable;
+- (void)disable;
 
 @end
 

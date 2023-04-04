@@ -9,53 +9,54 @@
 
 @implementation WOverlay
 
-- (id)initWithRect:(NSRect)contentRect {
-  self = [super initWithContentRect:contentRect
+- (id)init {
+  self = [super initWithContentRect:NSMakeRect(0, 0, 1, 1)
                           styleMask:NSWindowStyleMaskBorderless
                             backing:NSBackingStoreBuffered
                               defer:YES];
-
-  if (self) {
-    [self setOpaque:YES];
-    [self setBackgroundColor:[self addBorderToBackground]];
-    [self setIgnoresMouseEvents:YES];
-    [self setLevel:NSFloatingWindowLevel];
-    [self setAlphaValue:0];
-  }
-
+  [self setIgnoresMouseEvents:YES];
+  [self setLevel:NSFloatingWindowLevel];
+  [self setAlphaValue:0];
+  enabled = true;
   return self;
 }
 
 - (void)show {
+  if (!enabled)
+    return;
   [self setAlphaValue:1];
 }
 
-- (void)fade {
-  float alpha = [self alphaValue];
-  [self setAlphaValue:alpha];
-  [self makeKeyAndOrderFront:self];
+- (void)animate:(CGFloat)duration to:(NSTimeInterval)to {
   [NSAnimationContext beginGrouping];
-  [[NSAnimationContext currentContext] setDuration:1.5f];
-  [[self animator] setAlphaValue:0.f];
+  [[NSAnimationContext currentContext] setDuration:duration];
+  [[self animator] setAlphaValue:to];
   [NSAnimationContext endGrouping];
 }
 
 - (void)hide {
-  [self setAlphaValue:0];
+  [self animate:1.5f to:0];
 }
 
-- (void)move:(NSRect)to {
-  [self setFrame:to display:YES];
-  [self setBackgroundColor:[self addBorderToBackground]];
+- (void)flash {
+  if (!enabled)
+    return;
+  [self setAlphaValue:1];
+  [self animate:1.5f to:0];
 }
 
-- (NSColor *)addBorderToBackground {
+- (void)move:(NSRect)toRect {
+  [self setFrame:toRect display:YES];
+  [self drawBorder];
+}
+
+- (void)drawBorder {
   NSImage *bg = [[NSImage alloc] initWithSize:[self frame].size];
 
   // Prepares the image to receive drawing commands.
   [bg lockFocus];
 
-  [[NSColor colorWithRed:0.925 green:0.282 blue:0.600 alpha:0.5] set];
+  [[NSColor colorWithRed:0.925 green:0.282 blue:0.600 alpha:1] set];
   NSRect f = [self frame];
   f = NSMakeRect(0, 0, f.size.width, f.size.height);
   NSBezierPath *bz = [NSBezierPath bezierPathWithRect:f];
@@ -63,7 +64,16 @@
 
   [bg unlockFocus];
 
-  return [NSColor colorWithPatternImage:bg];
+  [self setBackgroundColor:[NSColor colorWithPatternImage:bg]];
+}
+
+- (void)enable {
+  enabled = YES;
+}
+
+- (void)disable {
+  enabled = NO;
+  [self hide];
 }
 
 @end

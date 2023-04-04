@@ -28,7 +28,7 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   [self setFullScreenMode];
 
   // create overlay
-  overlay = [[WOverlay alloc] initWithRect:NSMakeRect(0, 0, 2, 2)];
+  overlay = [[WOverlay alloc] init];
   wc = [[NSWindowController alloc] initWithWindow:overlay];
   [wc showWindow:overlay];
 
@@ -72,9 +72,9 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
 - (void)togglePrecisionBounds {
   mPrecisionBoundsOn = !mPrecisionBoundsOn;
   if (mPrecisionBoundsOn)
-    [self showOverlay];
+    [overlay show];
   else
-    [self hideOverlay];
+    [overlay hide];
 }
 
 /**
@@ -86,8 +86,7 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   [self setPortionOfScreen:smart];
   [bar setOn];
   [overlay move:smart];
-  [self showOverlay];
-  [self fadeOverlay];
+  [overlay flash];
 }
 
 /**
@@ -98,7 +97,7 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   full = [WRect center:([NSScreen screens][0].frame) child:full];
   [self setPortionOfScreen:full];
   [bar setOff];
-  [self hideOverlay];
+  [overlay hide];
 }
 
 /**
@@ -124,29 +123,15 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
       if (ev.type == NSEventTypeTabletProximity) {
         if (ev.isEnteringProximity) {
           self->lastUsedTablet = (int)[ev systemTabletID];
-          [self showOverlay];
+          [overlay show];
         } else {
-          [self fadeOverlay];
+          [overlay hide];
         }
       }
       if (ev.type == NSEventTypeKeyDown)
         [self handleKeyDown:ev];
   };
   [NSEvent addGlobalMonitorForEventsMatchingMask:mask handler:handler];
-}
-
-- (void)showOverlay {
-  if (mPrecisionBoundsOn && mPrecisionOn)
-    [overlay show];
-}
-
-- (void)fadeOverlay {
-  if (mPrecisionBoundsOn)
-    [overlay fade];
-}
-
-- (void)hideOverlay {
-  [overlay hide];
 }
 
 - (void)quit {
