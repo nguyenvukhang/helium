@@ -28,16 +28,8 @@ const double SCALE = 0.48;
   [bar addMenuItem:@"Toggle" keyEquivalent:@"t" action:@selector(toggle)];
   [bar addMenuItem:@"Quit" keyEquivalent:@"q" action:@selector(quit)];
 
-  // track tablet proximity sensor to grab latest tablet used
-  // track keystrokes to listen for toggle key combination
-  [self track:NSEventMaskTabletProximity | NSEventMaskKeyDown
-      handler:^(NSEvent *event) {
-          if (event.type == NSEventTypeTabletProximity && event.isEnteringProximity) {
-            lastUsedTablet = [event systemTabletID];
-          } else if (event.type == NSEventTypeKeyDown) {
-            [self handleKeyDown:event];
-          }
-      }];
+  // listen to global events
+  [self trackKeys];
 
   return self;
 }
@@ -108,8 +100,17 @@ const double SCALE = 0.48;
 
 /**
  * Track keystrokes.
+ *   - track tablet proximity sensor to grab latest tablet used
+ *   - track keystrokes to listen for toggle key combination
  */
-- (void)track:(NSEventMask)mask handler:(nonnull void (^)(NSEvent *_Nonnull))handler {
+- (void)trackKeys {
+  NSEventMask mask = NSEventMaskTabletProximity | NSEventMaskKeyDown;
+  id handler = ^(NSEvent *event) {
+      if (event.type == NSEventTypeTabletProximity && event.isEnteringProximity)
+        lastUsedTablet = [event systemTabletID];
+      if (event.type == NSEventTypeKeyDown)
+        [self handleKeyDown:event];
+  };
   [NSEvent addGlobalMonitorForEventsMatchingMask:mask handler:handler];
 }
 
