@@ -23,15 +23,6 @@
   BOOL mPrecisionBoundsOn;
 }
 
-- (void)handleKeyDown:(NSEvent *)event;
-- (void)toggle;
-- (void)setPrecisionMode:(NSPoint)cursor;
-- (void)setFullScreenMode;
-- (void)setPortionOfScreen:(NSRect)portion;
-- (void)showOverlay;
-- (void)fadeOverlay;
-- (void)hideOverlay;
-
 @end
 
 #endif /* AppDelegate_h */

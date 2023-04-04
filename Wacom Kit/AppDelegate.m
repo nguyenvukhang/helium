@@ -8,7 +8,6 @@
 #import "AppDelegate.h"
 #import "Overlay.h"
 #import "Rect.h"
-#include <AppKit/AppKit.h>
 
 #import "Wacom/WacomTabletDriver.h"
 
@@ -60,7 +59,7 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
  * Toggle between full-screen coverage and precision mode.
  */
 - (void)toggle {
-  self->mPrecisionOn = !self->mPrecisionOn;
+  mPrecisionOn = !mPrecisionOn;
   if (mPrecisionOn)
     [self setPrecisionMode:[NSEvent mouseLocation]];
   else
