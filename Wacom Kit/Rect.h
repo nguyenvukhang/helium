@@ -13,9 +13,18 @@
 @interface WRect : NSObject {
 }
 
-+ (NSRect)scaled:(float)scale aspectRatio:(float)aspectRatio;
-+ (NSRect)center:(NSRect)parent child:(NSRect)child;
-+ (NSRect)smart:(NSRect)rect at:(NSPoint)cursor;
++ (NSRect)screen;
++ (NSRect)scale:(NSRect)rect by:(CGFloat)ratio;
+
++ (NSRect)move:(NSRect)rect to:(NSPoint)cursor bounds:(NSRect)bounds;
++ (NSRect)moveInScreen:(NSRect)rect to:(NSPoint)cursor;
+
++ (NSRect)fill:(NSRect)parent aspectRatio:(CGFloat)r;
++ (NSRect)fillScreen:(CGFloat)aspectRatio;
+
++ (NSRect)center:(NSRect)child in:(NSRect)parent;
++ (NSRect)centerInScreen:(NSRect)rect;
+
 + (Rect)legacy:(NSRect)rect;
 
 @end

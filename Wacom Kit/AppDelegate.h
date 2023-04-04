@@ -14,6 +14,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
+  NSRect PRECISE_RECT;
   WOverlay *overlay;
   NSWindowController *wc;
   NSStatusItem *barItem;

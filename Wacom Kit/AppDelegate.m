@@ -22,7 +22,6 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   // initialize attributes
   bar = [[WStatusItem alloc] initWithParent:self];
   lastUsedTablet = 0; // 0 is an invalid tablet index.
-
   mPrecisionOn = NO;
   mPrecisionBoundsOn = YES;
   [self setFullScreenMode];
@@ -85,11 +84,11 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
  * Start Precision Mode.
  */
 - (void)setPrecisionMode:(NSPoint)cursor {
-  NSRect rect = [WRect scaled:SCALE aspectRatio:ASPECT_RATIO];
-  NSRect smart = [WRect smart:rect at:cursor];
-  [self setPortionOfScreen:smart];
+  NSRect rect = [WRect scale:[WRect fillScreen:ASPECT_RATIO] by:SCALE];
+  rect = [WRect moveInScreen:rect to:cursor];
+  [self setPortionOfScreen:rect];
   [bar setPrecisionOn];
-  [overlay move:smart];
+  [overlay move:rect];
   [overlay flash];
 }
 
@@ -97,9 +96,8 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
  * Start FullScreen Mode.
  */
 - (void)setFullScreenMode {
-  NSRect full = [WRect scaled:1 aspectRatio:ASPECT_RATIO];
-  full = [WRect center:([NSScreen screens][0].frame) child:full];
-  [self setPortionOfScreen:full];
+  NSRect rect = [WRect fillScreen:ASPECT_RATIO];
+  [self setPortionOfScreen:[WRect centerInScreen:rect]];
   [bar setPrecisionOff];
   [overlay hide];
 }
