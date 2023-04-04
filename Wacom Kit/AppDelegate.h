@@ -16,7 +16,7 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
   NSStatusItem *barItem;
   WStatusItem *bar;
-  NSUInteger lastUsedTablet;
+  int lastUsedTablet;
   BOOL mPrecisionOn;
 }
 

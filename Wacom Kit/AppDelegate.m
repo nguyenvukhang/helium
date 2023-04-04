@@ -21,7 +21,6 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   // initialize attributes
   bar = [[WStatusItem alloc] initWithParent:self];
   lastUsedTablet = 0; // 0 is an invalid tablet index.
-  mContextID = 0;     // 0 is an invalid context number.
   mPrecisionOn = NO;
   [self setFullScreenMode];
 
@@ -98,7 +97,7 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   NSEventMask mask = NSEventMaskTabletProximity | NSEventMaskKeyDown;
   id handler = ^(NSEvent *event) {
       if (event.type == NSEventTypeTabletProximity && event.isEnteringProximity)
-        lastUsedTablet = [event systemTabletID];
+        self->lastUsedTablet = (int)[event systemTabletID];
       if (event.type == NSEventTypeKeyDown)
         [self handleKeyDown:event];
   };

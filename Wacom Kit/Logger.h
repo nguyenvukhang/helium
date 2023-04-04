@@ -14,13 +14,13 @@
   NSString *_Nonnull path;
 }
 
-- (id)init:(NSString *_Nonnull)path;
-- (void)start:(NSString *)text;
-- (void)log:(NSString *)text;
-- (void)log:(NSString *)title detail:(NSString *)detail;
-- (void)log:(NSString *)text val:(int)val;
-- (void)log:(NSString *)text prev:(int)prev next:(int)next;
-- (void)log:(NSString *)base t:(bool)t y:(NSString *)y n:(NSString *)n;
+- (id _Nonnull)init:(NSString *_Nonnull)path;
+- (void)start:(NSString *_Nonnull)text;
+- (void)log:(NSString *_Nonnull)text;
+- (void)log:(NSString *_Nonnull)title detail:(NSString *_Nonnull)detail;
+- (void)log:(NSString *_Nonnull)text val:(int)val;
+- (void)log:(NSString *_Nonnull)text prev:(int)prev next:(int)next;
+- (void)log:(NSString *_Nonnull)base t:(bool)t y:(NSString *_Nonnull)y n:(NSString *_Nonnull)n;
 
 @end
 
