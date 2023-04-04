@@ -17,12 +17,12 @@
   [self setIgnoresMouseEvents:YES];
   [self setLevel:NSFloatingWindowLevel];
   [self setAlphaValue:0];
-  enabled = true;
+  mEnabled = YES;
   return self;
 }
 
 - (void)show {
-  if (!enabled)
+  if (!mEnabled)
     return;
   [self setAlphaValue:1];
 }
@@ -35,14 +35,14 @@
 }
 
 - (void)hide {
-  [self animate:1.5f to:0];
+  [self animate:1.0f to:0];
 }
 
 - (void)flash {
-  if (!enabled)
+  if (!mEnabled)
     return;
   [self setAlphaValue:1];
-  [self animate:1.5f to:0];
+  [self animate:1.0f to:0];
 }
 
 - (void)move:(NSRect)toRect {
@@ -67,13 +67,10 @@
   [self setBackgroundColor:[NSColor colorWithPatternImage:bg]];
 }
 
-- (void)enable {
-  enabled = YES;
-}
-
-- (void)disable {
-  enabled = NO;
-  [self hide];
+- (void)setEnabled:(bool)state {
+  mEnabled = state;
+  if (!state)
+    [self hide];
 }
 
 @end

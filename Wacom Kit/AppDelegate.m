@@ -71,6 +71,7 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
  */
 - (void)togglePrecisionBounds {
   mPrecisionBoundsOn = !mPrecisionBoundsOn;
+  [overlay setEnabled:mPrecisionBoundsOn];
   if (mPrecisionBoundsOn)
     [overlay show];
   else
@@ -123,9 +124,10 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
       if (ev.type == NSEventTypeTabletProximity) {
         if (ev.isEnteringProximity) {
           self->lastUsedTablet = (int)[ev systemTabletID];
-          [overlay show];
+          if (self->mPrecisionOn)
+            [self->overlay show];
         } else {
-          [overlay hide];
+          [self->overlay hide];
         }
       }
       if (ev.type == NSEventTypeKeyDown)
