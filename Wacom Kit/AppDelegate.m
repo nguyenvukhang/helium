@@ -44,13 +44,6 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   return self;
 }
 
-- (void)hideOverlay {
-  if (mWaitingToHide) {
-    [overlay hide];
-  }
-  mWaitingToHide = false;
-}
-
 /**
  * Trigger a toggle on Cmd + Shift + F2.
  */
@@ -77,15 +70,10 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
  */
 - (void)togglePrecisionBounds {
   mPrecisionBoundsOn = !mPrecisionBoundsOn;
-  mWaitingToHide = false;
-
-  if (mPrecisionBoundsOn) {
-    if (mPrecisionOn) {
-      [overlay show];
-    }
-  } else {
-    [overlay hide];
-  }
+  if (mPrecisionBoundsOn)
+    [self showOverlay];
+  else
+    [self hideOverlay];
 }
 
 /**
@@ -97,10 +85,7 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   [self setPortionOfScreen:smart];
   [bar setOn];
   [overlay move:smart];
-  if (mPrecisionBoundsOn) {
-    [overlay show];
-  }
-  mWaitingToHide = false;
+  [self showOverlay];
 }
 
 /**
@@ -111,7 +96,7 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   full = [WRect center:([NSScreen screens][0].frame) child:full];
   [self setPortionOfScreen:full];
   [bar setOff];
-  [overlay hide];
+  [self hideOverlay];
 }
 
 /**
@@ -133,25 +118,33 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
  */
 - (void)trackKeys {
   NSEventMask mask = NSEventMaskTabletProximity | NSEventMaskKeyDown;
-  id handler = ^(NSEvent *event) {
-      if (event.type == NSEventTypeTabletProximity) {
-        if (event.isEnteringProximity) {
-          self->lastUsedTablet = (int)[event systemTabletID];
-          if (mPrecisionOn && mPrecisionBoundsOn) {
-            mWaitingToHide = false;
-            [overlay show];
-          }
+  id handler = ^(NSEvent *ev) {
+      if (ev.type == NSEventTypeTabletProximity) {
+        if (ev.isEnteringProximity) {
+          self->lastUsedTablet = (int)[ev systemTabletID];
+          [self showOverlay];
         } else {
-          if (!mWaitingToHide) {
-            mWaitingToHide = true;
-            [self performSelector:@selector(hideOverlay) withObject:nil afterDelay:3.0];
-          }
+          [self fadeOverlay];
         }
       }
-      if (event.type == NSEventTypeKeyDown)
-        [self handleKeyDown:event];
+      if (ev.type == NSEventTypeKeyDown)
+        [self handleKeyDown:ev];
   };
   [NSEvent addGlobalMonitorForEventsMatchingMask:mask handler:handler];
+}
+
+- (void)showOverlay {
+  if (mPrecisionBoundsOn && mPrecisionOn)
+    [overlay show];
+}
+
+- (void)fadeOverlay {
+  if (mPrecisionBoundsOn)
+    [overlay fade];
+}
+
+- (void)hideOverlay {
+  [overlay hide];
 }
 
 - (void)quit {

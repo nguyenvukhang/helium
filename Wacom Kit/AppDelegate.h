@@ -21,7 +21,6 @@
   int lastUsedTablet;
   BOOL mPrecisionOn;
   BOOL mPrecisionBoundsOn;
-  BOOL mWaitingToHide;
 }
 
 - (void)handleKeyDown:(NSEvent *)event;
@@ -29,6 +28,9 @@
 - (void)setPrecisionMode:(NSPoint)cursor;
 - (void)setFullScreenMode;
 - (void)setPortionOfScreen:(NSRect)portion;
+- (void)showOverlay;
+- (void)fadeOverlay;
+- (void)hideOverlay;
 
 @end
 

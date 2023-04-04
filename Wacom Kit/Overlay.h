@@ -15,8 +15,9 @@
 
 - (id)initWithRect:(NSRect)contentRect;
 - (void)move:(NSRect)rect;
-- (void)hide;
 - (void)show;
+- (void)fade;
+- (void)hide;
 
 @end
 

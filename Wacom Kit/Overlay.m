@@ -26,12 +26,22 @@
   return self;
 }
 
-- (void)hide {
-  [self setAlphaValue:0];
-}
-
 - (void)show {
   [self setAlphaValue:1];
+}
+
+- (void)fade {
+  float alpha = [self alphaValue];
+  [self setAlphaValue:alpha];
+  [self makeKeyAndOrderFront:self];
+  [NSAnimationContext beginGrouping];
+  [[NSAnimationContext currentContext] setDuration:1.5f];
+  [[self animator] setAlphaValue:0.f];
+  [NSAnimationContext endGrouping];
+}
+
+- (void)hide {
+  [self setAlphaValue:0];
 }
 
 - (void)move:(NSRect)to {
@@ -45,7 +55,7 @@
   // Prepares the image to receive drawing commands.
   [bg lockFocus];
 
-  [[NSColor colorWithRed:0.925 green:0.282 blue:0.600 alpha:0.3] set];
+  [[NSColor colorWithRed:0.925 green:0.282 blue:0.600 alpha:0.5] set];
   NSRect f = [self frame];
   f = NSMakeRect(0, 0, f.size.width, f.size.height);
   NSBezierPath *bz = [NSBezierPath bezierPathWithRoundedRect:f xRadius:0 yRadius:0];
