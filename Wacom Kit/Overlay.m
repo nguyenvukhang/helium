@@ -55,9 +55,9 @@
   [self drawBorder];
 }
 
-- (void)drawBounds:(NSBezierPath *)bz bounds:(NSRect)r length:(CGFloat)l {
-  CGFloat x1 = PADDING, x2 = r.size.width - PADDING;
-  CGFloat y1 = PADDING, y2 = r.size.height - PADDING;
+- (void)drawBounds:(NSBezierPath *)bz bounds:(NSRect)r length:(CGFloat)l padding:(CGFloat)p {
+  CGFloat x1 = p, x2 = r.size.width - p;
+  CGFloat y1 = p, y2 = r.size.height - p;
 
   [bz moveToPoint:NSMakePoint(x1 + l, y1)];
   [bz lineToPoint:NSMakePoint(x1, y1)];
@@ -85,10 +85,10 @@
   [color set];
 
   NSRect f = [self frame];
-  CGFloat w = f.size.width, h = f.size.height;
+  CGFloat w = f.size.width, h = f.size.height, lw = 5;
   NSBezierPath *bz = [NSBezierPath bezierPath];
-  [bz setLineWidth:5];
-  [self drawBounds:bz bounds:[self frame] length:32];
+  [bz setLineWidth:lw];
+  [self drawBounds:bz bounds:[self frame] length:32 padding:PADDING - lw / 2];
   [bz stroke];
 
   [bg unlockFocus];
