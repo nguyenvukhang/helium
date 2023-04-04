@@ -36,6 +36,7 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   [bar addMenuItem:@"Toggle" keyEquivalent:@"t" action:@selector(toggle)];
   [bar addMenuItem:@"Show precision bounds" keyEquivalent:@"b" action:@selector(togglePrecisionBounds)];
   [bar addMenuItem:@"Quit" keyEquivalent:@"q" action:@selector(quit)];
+  [bar build];
 
   // listen to global events
   [self trackKeys];

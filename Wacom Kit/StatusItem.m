@@ -6,11 +6,13 @@
 //
 
 #import "StatusItem.h"
+#include <Foundation/Foundation.h>
 
 @implementation WStatusItem
 
 - (id)initWithParent:(NSObject *_Nonnull)p {
   self = [super init];
+  self->parent = p;
 
   // set icons
   PRECISION_ON_ICON = @"plus.rectangle.fill";
@@ -18,27 +20,29 @@
   PRECISION_OFF_ICON = @"plus.rectangle";
   PRECISION_OFF_DESC = @"full screen";
 
-  // build status bar
-  item = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
-  parent = p;
-  [item setMenu:[[NSMenu alloc] init]];
+  items = [NSMutableArray arrayWithCapacity:2];
+  bar = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
+  [bar setMenu:[[NSMenu alloc] init]];
   [self setOff];
   [self addBanner:@"Wacom Kit"];
-  [item.menu addItem:[NSMenuItem separatorItem]];
   return self;
 }
 
 - (void)setButton:(NSString *)icon description:(NSString *)description {
   if (@available(macOS 11.0, *)) {
     NSImage *img = [NSImage imageWithSystemSymbolName:icon accessibilityDescription:description];
-    [item.button setImage:img];
+    [bar.button setImage:img];
   }
 }
 
+/**
+ * Add a greyed-out menu entry that serves as a banner
+ */
 - (void)addBanner:(NSString *)title {
   NSMenuItem *it = [[NSMenuItem alloc] init];
   [it setTitle:title];
-  [item.menu addItem:it];
+  [items addObject:it];
+  [items addObject:[NSMenuItem separatorItem]];
 }
 
 - (void)addMenuItem:(NSString *)title keyEquivalent:(NSString *)key action:(SEL _Nullable)action {
@@ -47,7 +51,7 @@
   [it setKeyEquivalent:key];
   [it setAction:action];
   [it setTarget:parent];
-  [item.menu addItem:it];
+  [items addObject:it];
 }
 
 - (void)setOn {
@@ -56,6 +60,10 @@
 
 - (void)setOff {
   [self setButton:PRECISION_OFF_ICON description:PRECISION_OFF_DESC];
+}
+
+- (void)build {
+  [bar.menu setItemArray:items];
 }
 
 @end

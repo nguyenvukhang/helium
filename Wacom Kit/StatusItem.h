@@ -11,8 +11,9 @@
 #define StatusItem_h
 
 @interface WStatusItem : NSObject {
+  NSMutableArray<NSMenuItem *> *items;
   NSObject *parent;
-  NSStatusItem *item;
+  NSStatusItem *bar;
   NSString *PRECISION_ON_ICON;
   NSString *PRECISION_ON_DESC;
   NSString *PRECISION_OFF_ICON;
@@ -25,6 +26,7 @@
 - (void)addMenuItem:(NSString *_Nonnull)title keyEquivalent:(NSString *_Nonnull)key action:(SEL _Nullable)action;
 - (void)setOn;
 - (void)setOff;
+- (void)build;
 
 @end
 
