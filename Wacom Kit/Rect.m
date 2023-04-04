@@ -11,12 +11,8 @@
 
 + (NSRect)scaled:(float)scale aspectRatio:(float)aspectRatio {
   NSRect screen = [NSScreen screens][0].frame;
-  NSRect scaled = NSZeroRect;
-  scaled.origin.x = 0;
-  scaled.origin.y = 0;
-  scaled.size.width = screen.size.width * scale;
-  scaled.size.height = scaled.size.width / aspectRatio;
-  return scaled;
+  float w = screen.size.width * scale;
+  return NSMakeRect(0, 0, w, w / aspectRatio);
 }
 
 + (NSRect)center:(NSRect)parent child:(NSRect)child {

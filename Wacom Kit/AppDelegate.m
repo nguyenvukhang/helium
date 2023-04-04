@@ -105,6 +105,7 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
 }
 
 - (void)quit {
+  [self setFullScreenMode];
   [[NSApplication sharedApplication] terminate:nil];
 }
 
