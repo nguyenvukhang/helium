@@ -8,12 +8,14 @@
 #ifndef AppDelegate_h
 #define AppDelegate_h
 
-#import "Logger.h"
+#import "Overlay.h"
 #import "StatusItem.h"
 
 #import <Cocoa/Cocoa.h>
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
+  WOverlay *overlay;
+  NSWindowController *wc;
   NSStatusItem *barItem;
   WStatusItem *bar;
   int lastUsedTablet;

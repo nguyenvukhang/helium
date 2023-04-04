@@ -5,7 +5,7 @@ AllowShortFunctionsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
 AlwaysBreakBeforeMultilineStrings: false
 IndentCaseLabels: true
-ColumnLimit: 100
+ColumnLimit: 120
 ObjCSpaceAfterProperty: true
 KeepEmptyLinesAtTheStartOfBlocks: true
 PenaltyBreakString: 1000000

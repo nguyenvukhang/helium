@@ -15,7 +15,6 @@
 		D096F3C613CCF2170038BF93 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D096F3C413CCF2170038BF93 /* Credits.rtf */; };
 		D096F3CC13CCF2170038BF93 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D096F3CA13CCF2170038BF93 /* MainMenu.xib */; };
 		D096F3E713CD07070038BF93 /* ColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D096F3DF13CD07070038BF93 /* ColorView.m */; };
-		D096F3E813CD07070038BF93 /* DragMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = D096F3E113CD07070038BF93 /* DragMatrix.m */; };
 		D096F3E913CD07070038BF93 /* OverlayWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D096F3E313CD07070038BF93 /* OverlayWindow.m */; };
 		D096F3EA13CD07070038BF93 /* TransparentButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D096F3E513CD07070038BF93 /* TransparentButtonCell.m */; };
 /* End PBXBuildFile section */
@@ -36,8 +35,6 @@
 		D096F3CB13CCF2170038BF93 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		D096F3DE13CD07070038BF93 /* ColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorView.h; sourceTree = "<group>"; };
 		D096F3DF13CD07070038BF93 /* ColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorView.m; sourceTree = "<group>"; };
-		D096F3E013CD07070038BF93 /* DragMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragMatrix.h; sourceTree = "<group>"; };
-		D096F3E113CD07070038BF93 /* DragMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragMatrix.m; sourceTree = "<group>"; };
 		D096F3E213CD07070038BF93 /* OverlayWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayWindow.h; sourceTree = "<group>"; };
 		D096F3E313CD07070038BF93 /* OverlayWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayWindow.m; sourceTree = "<group>"; };
 		D096F3E413CD07070038BF93 /* TransparentButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransparentButtonCell.h; sourceTree = "<group>"; };
@@ -100,8 +97,6 @@
 			children = (
 				D096F3DE13CD07070038BF93 /* ColorView.h */,
 				D096F3DF13CD07070038BF93 /* ColorView.m */,
-				D096F3E013CD07070038BF93 /* DragMatrix.h */,
-				D096F3E113CD07070038BF93 /* DragMatrix.m */,
 				D096F3E213CD07070038BF93 /* OverlayWindow.h */,
 				D096F3E313CD07070038BF93 /* OverlayWindow.m */,
 				D096F3E413CD07070038BF93 /* TransparentButtonCell.h */,
@@ -158,6 +153,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = D096F3A613CCF2170038BF93;
@@ -191,7 +187,6 @@
 			files = (
 				D096F3C213CCF2170038BF93 /* main.m in Sources */,
 				D096F3E713CD07070038BF93 /* ColorView.m in Sources */,
-				D096F3E813CD07070038BF93 /* DragMatrix.m in Sources */,
 				D096F3E913CD07070038BF93 /* OverlayWindow.m in Sources */,
 				D096F3EA13CD07070038BF93 /* TransparentButtonCell.m in Sources */,
 			);

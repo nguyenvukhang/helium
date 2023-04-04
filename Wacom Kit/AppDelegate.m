@@ -6,7 +6,9 @@
 //
 
 #import "AppDelegate.h"
+#import "Overlay.h"
 #import "Rect.h"
+#include <AppKit/AppKit.h>
 
 #import "Wacom/WacomTabletDriver.h"
 
@@ -23,6 +25,11 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   lastUsedTablet = 0; // 0 is an invalid tablet index.
   mPrecisionOn = NO;
   [self setFullScreenMode];
+
+  // create overlay
+  overlay = [[WOverlay alloc] initWithRect:NSMakeRect(0, 0, 2, 2)];
+  wc = [[NSWindowController alloc] initWithWindow:overlay];
+  [wc showWindow:overlay];
 
   // initialize menu bar
   [bar addMenuItem:@"Toggle" keyEquivalent:@"t" action:@selector(toggle)];
@@ -62,7 +69,9 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   NSRect rect = [WRect scaled:SCALE aspectRatio:ASPECT_RATIO];
   NSRect smart = [WRect smart:rect at:cursor];
   [self setPortionOfScreen:smart];
-  [self->bar setOn];
+  [bar setOn];
+  [overlay move:smart];
+  [overlay show];
 }
 
 /**
@@ -72,7 +81,8 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   NSRect full = [WRect scaled:1 aspectRatio:ASPECT_RATIO];
   full = [WRect center:([NSScreen screens][0].frame) child:full];
   [self setPortionOfScreen:full];
-  [self->bar setOff];
+  [bar setOff];
+  [overlay hide];
 }
 
 /**
@@ -84,8 +94,7 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
                        ofSize:sizeof(Rect)
                        ofType:typeQDRectangle
                  forAttribute:pMapScreenArea
-                 routingTable:[WacomTabletDriver routingTableForTablet:lastUsedTablet
-                                                            transducer:1]];
+                 routingTable:[WacomTabletDriver routingTableForTablet:lastUsedTablet transducer:1]];
 }
 
 /**

@@ -22,9 +22,7 @@
 - (id _Nonnull)initWithParent:(NSObject *_Nonnull)parent;
 - (void)setButton:(NSString *_Nonnull)icon description:(NSString *_Nonnull)description;
 - (void)addBanner:(NSString *_Nonnull)title;
-- (void)addMenuItem:(NSString *_Nonnull)title
-      keyEquivalent:(NSString *_Nonnull)key
-             action:(SEL _Nullable)action;
+- (void)addMenuItem:(NSString *_Nonnull)title keyEquivalent:(NSString *_Nonnull)key action:(SEL _Nullable)action;
 - (void)setOn;
 - (void)setOff;
 

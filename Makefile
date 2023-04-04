@@ -9,7 +9,6 @@ fmt:
 	clang-format -i 'Wacom Kit'/*.m 'Wacom Kit'/*.h
 
 build: FORCE
-	rm -rf DerivedData
 	$(BUILD_CMD)
 
 install:

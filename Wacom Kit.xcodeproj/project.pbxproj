@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C03D93C29DBC44D00338DCA /* Overlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C03D93B29DBC44D00338DCA /* Overlay.m */; };
 		0C366C6E29ABBDB40012D53F /* NSAppleEventDescriptorHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C366C6729ABBDB40012D53F /* NSAppleEventDescriptorHelperCategory.m */; };
 		0C366C6F29ABBDB40012D53F /* WacomTabletDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C366C6929ABBDB40012D53F /* WacomTabletDriver.m */; };
 		0C366C7029ABBDB40012D53F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0C366C6A29ABBDB40012D53F /* LICENSE */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C03D93A29DBC44D00338DCA /* Overlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Overlay.h; sourceTree = "<group>"; };
+		0C03D93B29DBC44D00338DCA /* Overlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Overlay.m; sourceTree = "<group>"; };
 		0C366C6729ABBDB40012D53F /* NSAppleEventDescriptorHelperCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSAppleEventDescriptorHelperCategory.m; sourceTree = "<group>"; };
 		0C366C6829ABBDB40012D53F /* TabletAEDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabletAEDictionary.h; sourceTree = "<group>"; };
 		0C366C6929ABBDB40012D53F /* WacomTabletDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WacomTabletDriver.m; sourceTree = "<group>"; };
@@ -95,6 +98,8 @@
 				0CED2C3029ABBC470023BBEE /* AppDelegate.m */,
 				0CE7EDFE29C3F1D200452BA7 /* StatusItem.h */,
 				0CE7EDFF29C3F1F500452BA7 /* StatusItem.m */,
+				0C03D93A29DBC44D00338DCA /* Overlay.h */,
+				0C03D93B29DBC44D00338DCA /* Overlay.m */,
 				0C7BB14D29D96C9300F5560A /* Rect.h */,
 				0C82D52529D96AAD0060AFB9 /* Rect.m */,
 				0C5E8CEE29D9951000E9E705 /* Logger.h */,
@@ -135,7 +140,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					0CED2C2B29ABBC470023BBEE = {
 						CreatedOnToolsVersion = 14.2;
@@ -185,6 +190,7 @@
 				0C82D52629D96AAD0060AFB9 /* Rect.m in Sources */,
 				0CED2C3829ABBC470023BBEE /* main.m in Sources */,
 				0C5E8CF029D9951000E9E705 /* Logger.m in Sources */,
+				0C03D93C29DBC44D00338DCA /* Overlay.m in Sources */,
 				0CED2C3129ABBC470023BBEE /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,6 +242,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -294,6 +301,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -321,6 +329,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = PM9Q9WAP3Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -336,6 +345,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nguyenvukhang.Wacom-Kit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -352,6 +362,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = PM9Q9WAP3Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -367,6 +378,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nguyenvukhang.Wacom-Kit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
