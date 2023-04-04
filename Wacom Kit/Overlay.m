@@ -58,8 +58,7 @@
   [[NSColor colorWithRed:0.925 green:0.282 blue:0.600 alpha:0.5] set];
   NSRect f = [self frame];
   f = NSMakeRect(0, 0, f.size.width, f.size.height);
-  NSBezierPath *bz = [NSBezierPath bezierPathWithRoundedRect:f xRadius:0 yRadius:0];
-  [bz setLineWidth:2];
+  NSBezierPath *bz = [NSBezierPath bezierPathWithRect:f];
   [bz stroke];
 
   [bg unlockFocus];
