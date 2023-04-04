@@ -14,6 +14,7 @@
                           styleMask:NSWindowStyleMaskBorderless
                             backing:NSBackingStoreBuffered
                               defer:YES];
+  PADDING = 10;
   [self setIgnoresMouseEvents:YES];
   [self setLevel:NSFloatingWindowLevel];
   [self setAlphaValue:0];
@@ -46,8 +47,33 @@
 }
 
 - (void)move:(NSRect)toRect {
+  toRect.size.height += 2 * PADDING;
+  toRect.size.width += 2 * PADDING;
+  toRect.origin.x -= PADDING;
+  toRect.origin.y -= PADDING;
   [self setFrame:toRect display:YES];
   [self drawBorder];
+}
+
+- (void)drawBounds:(NSBezierPath *)bz bounds:(NSRect)r length:(CGFloat)l {
+  CGFloat x1 = PADDING, x2 = r.size.width - PADDING;
+  CGFloat y1 = PADDING, y2 = r.size.height - PADDING;
+
+  [bz moveToPoint:NSMakePoint(x1 + l, y1)];
+  [bz lineToPoint:NSMakePoint(x1, y1)];
+  [bz lineToPoint:NSMakePoint(x1, y1 + l)];
+
+  [bz moveToPoint:NSMakePoint(x1 + l, y2)];
+  [bz lineToPoint:NSMakePoint(x1, y2)];
+  [bz lineToPoint:NSMakePoint(x1, y2 - l)];
+
+  [bz moveToPoint:NSMakePoint(x2 - l, y1)];
+  [bz lineToPoint:NSMakePoint(x2, y1)];
+  [bz lineToPoint:NSMakePoint(x2, y1 + l)];
+
+  [bz moveToPoint:NSMakePoint(x2 - l, y2)];
+  [bz lineToPoint:NSMakePoint(x2, y2)];
+  [bz lineToPoint:NSMakePoint(x2, y2 - l)];
 }
 
 - (void)drawBorder {
@@ -55,11 +81,14 @@
 
   // Prepares the image to receive drawing commands.
   [bg lockFocus];
+  NSColor *color = [NSColor colorWithRed:0.925 green:0.282 blue:0.600 alpha:0.5];
+  [color set];
 
-  [[NSColor colorWithRed:0.925 green:0.282 blue:0.600 alpha:1] set];
   NSRect f = [self frame];
-  f = NSMakeRect(0, 0, f.size.width, f.size.height);
-  NSBezierPath *bz = [NSBezierPath bezierPathWithRect:f];
+  CGFloat w = f.size.width, h = f.size.height;
+  NSBezierPath *bz = [NSBezierPath bezierPath];
+  [bz setLineWidth:5];
+  [self drawBounds:bz bounds:[self frame] length:32];
   [bz stroke];
 
   [bg unlockFocus];

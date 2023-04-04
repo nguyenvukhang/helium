@@ -12,6 +12,7 @@
 
 @interface WOverlay : NSWindow {
   BOOL mEnabled;
+  CGFloat PADDING;
 }
 
 - (void)move:(NSRect)rect;
