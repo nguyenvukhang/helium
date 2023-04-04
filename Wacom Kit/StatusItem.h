@@ -18,15 +18,25 @@
   NSString *PRECISION_ON_DESC;
   NSString *PRECISION_OFF_ICON;
   NSString *PRECISION_OFF_DESC;
+  NSString *BOUNDS_HIDE_DESC;
+  NSString *BOUNDS_SHOW_DESC;
+
+  SEL _Nullable togglePrecisionMode;
+  SEL _Nullable togglePrecisionBounds;
+  SEL _Nullable quitApp;
 }
 
 - (id _Nonnull)initWithParent:(NSObject *_Nonnull)parent;
 - (void)setButton:(NSString *_Nonnull)icon description:(NSString *_Nonnull)description;
 - (void)addBanner:(NSString *_Nonnull)title;
 - (void)addMenuItem:(NSString *_Nonnull)title keyEquivalent:(NSString *_Nonnull)key action:(SEL _Nullable)action;
-- (void)setOn;
-- (void)setOff;
+- (void)setPrecisionOn;
+- (void)setPrecisionOff;
+- (void)setPrecisionBounds:(bool)state;
 - (void)build;
+- (void)setTogglePrecisionModeAction:(SEL _Nullable)a;
+- (void)setTogglePrecisionBoundsAction:(SEL _Nullable)a;
+- (void)setQuitAction:(SEL _Nullable)a;
 
 @end
 

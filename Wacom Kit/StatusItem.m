@@ -19,11 +19,13 @@
   PRECISION_ON_DESC = @"precision mode";
   PRECISION_OFF_ICON = @"plus.rectangle";
   PRECISION_OFF_DESC = @"full screen";
+  BOUNDS_HIDE_DESC = @"Hide bounds";
+  BOUNDS_SHOW_DESC = @"Show bounds";
 
   items = [NSMutableArray arrayWithCapacity:2];
   bar = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
   [bar setMenu:[[NSMenu alloc] init]];
-  [self setOff];
+  [self setPrecisionOff];
   [self addBanner:@"Wacom Kit"];
   return self;
 }
@@ -54,16 +56,36 @@
   [items addObject:it];
 }
 
-- (void)setOn {
+- (void)setPrecisionOn {
   [self setButton:PRECISION_ON_ICON description:PRECISION_ON_DESC];
 }
 
-- (void)setOff {
+- (void)setPrecisionOff {
   [self setButton:PRECISION_OFF_ICON description:PRECISION_OFF_DESC];
+}
+
+- (void)setPrecisionBounds:(bool)show {
+  NSString *q = show ? BOUNDS_SHOW_DESC : BOUNDS_HIDE_DESC;
+  NSPredicate *p = [NSPredicate predicateWithFormat:@"title == %@", q];
+  NSArray *f = [items filteredArrayUsingPredicate:p];
+  [f[0] setTitle:show ? BOUNDS_HIDE_DESC : BOUNDS_SHOW_DESC];
 }
 
 - (void)build {
   [bar.menu setItemArray:items];
+}
+
+- (void)setTogglePrecisionModeAction:(SEL _Nullable)a {
+  [self addMenuItem:@"Toggle precision" keyEquivalent:@"t" action:a];
+  self->togglePrecisionMode = a;
+}
+- (void)setTogglePrecisionBoundsAction:(SEL _Nullable)a {
+  [self addMenuItem:BOUNDS_HIDE_DESC keyEquivalent:@"b" action:a];
+  self->togglePrecisionBounds = a;
+}
+- (void)setQuitAction:(SEL _Nullable)a {
+  [self addMenuItem:@"Quit" keyEquivalent:@"q" action:a];
+  self->quitApp = a;
 }
 
 @end

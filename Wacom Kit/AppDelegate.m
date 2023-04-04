@@ -33,9 +33,9 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   [wc showWindow:overlay];
 
   // initialize menu bar
-  [bar addMenuItem:@"Toggle" keyEquivalent:@"t" action:@selector(toggle)];
-  [bar addMenuItem:@"Show precision bounds" keyEquivalent:@"b" action:@selector(togglePrecisionBounds)];
-  [bar addMenuItem:@"Quit" keyEquivalent:@"q" action:@selector(quit)];
+  [bar setTogglePrecisionModeAction:@selector(toggle)];
+  [bar setTogglePrecisionBoundsAction:@selector(togglePrecisionBounds)];
+  [bar setQuitAction:@selector(quit)];
   [bar build];
 
   // listen to global events
@@ -73,10 +73,12 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
 - (void)togglePrecisionBounds {
   mPrecisionBoundsOn = !mPrecisionBoundsOn;
   [overlay setEnabled:mPrecisionBoundsOn];
-  if (mPrecisionBoundsOn)
-    [overlay show];
-  else
+  [bar setPrecisionBounds:mPrecisionBoundsOn];
+  if (mPrecisionBoundsOn) {
+    [overlay flash];
+  } else {
     [overlay hide];
+  }
 }
 
 /**
@@ -86,7 +88,7 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   NSRect rect = [WRect scaled:SCALE aspectRatio:ASPECT_RATIO];
   NSRect smart = [WRect smart:rect at:cursor];
   [self setPortionOfScreen:smart];
-  [bar setOn];
+  [bar setPrecisionOn];
   [overlay move:smart];
   [overlay flash];
 }
@@ -98,7 +100,7 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   NSRect full = [WRect scaled:1 aspectRatio:ASPECT_RATIO];
   full = [WRect center:([NSScreen screens][0].frame) child:full];
   [self setPortionOfScreen:full];
-  [bar setOff];
+  [bar setPrecisionOff];
   [overlay hide];
 }
 
