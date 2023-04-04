@@ -12,7 +12,8 @@
 
 @implementation AppDelegate
 
-const double SCALE = 0.48;
+const double SCALE = 0.48;       // personal preference
+const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
 
 - (id)init {
   self = [super init];
@@ -40,10 +41,8 @@ const double SCALE = 0.48;
 - (void)handleKeyDown:(NSEvent *)event {
   BOOL cmd = [event modifierFlags] & NSEventModifierFlagCommand;
   BOOL shift = [event modifierFlags] & NSEventModifierFlagShift;
-  BOOL key = [event keyCode] == 0x78; // 0x78 is 'f2'
-  if (cmd && shift && key) {
+  if (cmd && shift && [event keyCode] == 0x78) // 0x78 is 'f2'
     [self toggle];
-  }
 }
 
 /**
@@ -51,16 +50,18 @@ const double SCALE = 0.48;
  */
 - (void)toggle {
   self->mPrecisionOn = !self->mPrecisionOn;
-  self->cursorAtToggle = [NSEvent mouseLocation];
-  [self refreshMode:self->cursorAtToggle];
+  if (mPrecisionOn)
+    [self setPrecisionMode:[NSEvent mouseLocation]];
+  else
+    [self setFullScreenMode];
 }
 
 /**
  * Start Precision Mode.
  */
 - (void)setPrecisionMode:(NSPoint)cursor {
-  NSRect rect = [WRect scaled:SCALE aspectRatio:1.6];
-  NSRect smart = [WRect smart:cursor rect:rect];
+  NSRect rect = [WRect scaled:SCALE aspectRatio:ASPECT_RATIO];
+  NSRect smart = [WRect smart:rect at:cursor];
   [self setPortionOfScreen:smart];
   [self->bar setOn];
 }
@@ -69,20 +70,10 @@ const double SCALE = 0.48;
  * Start FullScreen Mode.
  */
 - (void)setFullScreenMode {
-  NSRect full = [WRect scaled:1 aspectRatio:1.6];
+  NSRect full = [WRect scaled:1 aspectRatio:ASPECT_RATIO];
   full = [WRect center:([NSScreen screens][0].frame) child:full];
   [self setPortionOfScreen:full];
   [self->bar setOff];
-}
-
-/**
- * Refresh the current mode based on current state.
- */
-- (void)refreshMode:(NSPoint)cursor {
-  if (mPrecisionOn)
-    [self setPrecisionMode:cursor];
-  else
-    [self setFullScreenMode];
 }
 
 /**

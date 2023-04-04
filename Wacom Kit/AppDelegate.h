@@ -14,10 +14,8 @@
 #import <Cocoa/Cocoa.h>
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
-  CGPoint cursorAtToggle;
   NSStatusItem *barItem;
   WStatusItem *bar;
-  UInt32 mContextID;
   NSUInteger lastUsedTablet;
   BOOL mPrecisionOn;
 }
@@ -26,7 +24,6 @@
 - (void)toggle;
 - (void)setPrecisionMode:(NSPoint)cursor;
 - (void)setFullScreenMode;
-- (void)refreshMode:(NSPoint)cursor;
 - (void)setPortionOfScreen:(NSRect)portion;
 
 @end

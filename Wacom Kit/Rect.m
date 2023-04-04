@@ -25,7 +25,7 @@
   return child;
 }
 
-+ (NSRect)smart:(NSPoint)cursor rect:(NSRect)rect {
++ (NSRect)smart:(NSRect)rect at:(NSPoint)cursor {
   // bounds
   NSRect screen = [NSScreen screens][0].frame;
 

@@ -15,7 +15,7 @@
 
 + (NSRect)scaled:(float)scale aspectRatio:(float)aspectRatio;
 + (NSRect)center:(NSRect)parent child:(NSRect)child;
-+ (NSRect)smart:(NSPoint)cursor rect:(NSRect)rect;
++ (NSRect)smart:(NSRect)rect at:(NSPoint)cursor;
 + (Rect)legacy:(NSRect)rect;
 
 @end
