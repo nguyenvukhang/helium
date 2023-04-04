@@ -50,8 +50,10 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
 - (void)handleKeyDown:(NSEvent *)event {
   BOOL cmd = [event modifierFlags] & NSEventModifierFlagCommand;
   BOOL shift = [event modifierFlags] & NSEventModifierFlagShift;
-  if (cmd && shift && [event keyCode] == 0x78) // 0x78 is 'f2'
-    [self toggle];
+  if (cmd && shift && [event keyCode] == 0x78) { // 0x78 is 'f2'
+    mPrecisionOn = YES;
+    [self setPrecisionMode:[NSEvent mouseLocation]];
+  }
 }
 
 /**
@@ -86,6 +88,7 @@ const double ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
   [bar setOn];
   [overlay move:smart];
   [self showOverlay];
+  [self fadeOverlay];
 }
 
 /**
