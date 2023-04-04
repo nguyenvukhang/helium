@@ -21,6 +21,7 @@
   int lastUsedTablet;
   BOOL mPrecisionOn;
   BOOL mPrecisionBoundsOn;
+  BOOL mWaitingToHide;
 }
 
 - (void)handleKeyDown:(NSEvent *)event;
