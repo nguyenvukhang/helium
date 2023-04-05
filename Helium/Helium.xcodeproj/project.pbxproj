@@ -18,6 +18,7 @@
 		0C68296D29DD159500A52EC6 /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68296C29DD159500A52EC6 /* StatusBar.swift */; };
 		0C68296F29DD23A900A52EC6 /* Wacom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68296E29DD23A900A52EC6 /* Wacom.swift */; };
 		0C68297229DD248600A52EC6 /* Helium.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C68297129DD248600A52EC6 /* Helium.m */; };
+		0C68297429DD273A00A52EC6 /* Rekt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68297329DD273A00A52EC6 /* Rekt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		0C68296E29DD23A900A52EC6 /* Wacom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wacom.swift; sourceTree = "<group>"; };
 		0C68297029DD247900A52EC6 /* Helium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helium.h; sourceTree = "<group>"; };
 		0C68297129DD248600A52EC6 /* Helium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helium.m; sourceTree = "<group>"; };
+		0C68297329DD273A00A52EC6 /* Rekt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rekt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				0C68295929DD07F400A52EC6 /* Helium.entitlements */,
 				0C68295F29DD0B4700A52EC6 /* Bridge.h */,
 				0C68295029DD07F300A52EC6 /* AppDelegate.swift */,
+				0C68297329DD273A00A52EC6 /* Rekt.swift */,
 				0C68296A29DD0F8A00A52EC6 /* Types.swift */,
 				0C68296C29DD159500A52EC6 /* StatusBar.swift */,
 				0C68295229DD07F300A52EC6 /* ViewController.swift */,
@@ -172,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C68296F29DD23A900A52EC6 /* Wacom.swift in Sources */,
+				0C68297429DD273A00A52EC6 /* Rekt.swift in Sources */,
 				0C68296B29DD0F8A00A52EC6 /* Types.swift in Sources */,
 				0C68296729DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m in Sources */,
 				0C68296829DD0B9000A52EC6 /* WacomTabletDriver.m in Sources */,
