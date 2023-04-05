@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var showBounds: Bool
     private var overlay: Overlay
     private var windowController: NSWindowController
-    private var pwc: NSWindowController?
+    private var prefsWindowController: NSWindowController?
     private let store: Store
 
     override init() {
@@ -28,16 +28,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.store = Store()
         super.init()
         listenForEvents()
-        bar.linkActions(togglePrecision: #selector(togglePrecision), togglePrecisionBounds: #selector(togglePrecisionBounds), openPrefs: #selector(openPreferences), quit: #selector(quit))
+        bar.linkActions(toggleMode: #selector(toggleMode), togglePrecisionBounds: #selector(togglePrecisionBounds), openPrefs: #selector(openPreferences), quit: #selector(quit))
         windowController.showWindow(overlay)
         setFullScreenMode()
     }
 
+    /**
+     * Open the preferences window.
+     */
     @objc func openPreferences() {
-        if pwc == nil {
-            let board = NSStoryboard(name: "Main", bundle: nil)
-            pwc = board.instantiateController(withIdentifier: "PrefsWindowController") as? NSWindowController
-            let svc = pwc?.contentViewController as? SettingsViewController
+        if prefsWindowController == nil {
+            prefsWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "PrefsWindowController") as? NSWindowController
+            let svc = prefsWindowController?.contentViewController as? SettingsViewController
             svc?.hydrate(overlay: overlay, store: store, update: {
                 if self.mode == .precision {
                     self.setPrecisionMode(at: NSEvent.mouseLocation)
@@ -45,10 +47,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             })
         }
         NSApp.activate(ignoringOtherApps: true)
-        pwc?.showWindow(self)
+        prefsWindowController?.showWindow(self)
     }
 
-    @objc func togglePrecision() {
+    /**
+     * Menu bar action: Toggle between modes.
+     */
+    @objc func toggleMode() {
         mode = mode.next()
         bar.updateMode(mode)
         switch mode {
@@ -59,6 +64,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    /**
+     * Menu bar action: Toggle show/hide precision bounds
+     */
     @objc func togglePrecisionBounds() {
         showBounds = !showBounds
         overlay.setEnabled(to: showBounds)
@@ -70,6 +78,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    /**
+     * Menu bar action: Quit the app
+     */
     @objc func quit() {
         exit(EXIT_SUCCESS)
     }
@@ -111,10 +122,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    /**
+     * API call to Wacom Drivers to set map area.
+     */
     private func setScreenMapArea(_ rect: NSRect) {
         HRect.setScreenMapArea(rect, screen: NSRect.screen(), forTablet: Int32(lastUsedTablet))
     }
 
+    /**
+     * Set focus on the area around the cursor.
+     */
     func setPrecisionMode(at: NSPoint) {
         var rect = NSZeroRect
         rect.fillScreen(withAspectRatio: store.aspectRatio)
@@ -125,20 +142,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         overlay.flash()
     }
 
+    /**
+     * Make the tablet cover the whole screen.
+     */
     func setFullScreenMode() {
         var rect = NSZeroRect
         rect.fillScreen(withAspectRatio: store.aspectRatio)
         rect.centerInScreen()
         setScreenMapArea(rect)
         overlay.hide()
-    }
-
-    func applicationDidFinishLaunching(_: Notification) {
-        // Insert code here to initialize your application
-    }
-
-    func applicationWillTerminate(_: Notification) {
-        // Insert code here to tear down your application
     }
 
     func applicationSupportsSecureRestorableState(_: NSApplication) -> Bool {

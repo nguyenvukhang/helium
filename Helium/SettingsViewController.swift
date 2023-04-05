@@ -7,6 +7,11 @@
 
 import Cocoa
 
+/**
+ * A whole bunch of pointing-and-clicking is required to build and
+ * make sense of this. Best to open in XCode and view this together
+ * with ./Base.lproj/Main.storyboard
+ */
 class SettingsViewController: NSViewController {
     @IBOutlet var scaleValue: NSTextField!
     @IBOutlet var cornerLength: NSTextField!
@@ -25,13 +30,13 @@ class SettingsViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // so that the color picker will have alpha
         NSColor.ignoresAlpha = false
     }
 
     private func loadAllFromStore() {
-        guard let store = store else {
-            return
-        }
+        let store = store!
         setScale(store.scale)
         lineColor.color = store.lineColor
         lineWidth.stringValue = round2(store.lineWidth)

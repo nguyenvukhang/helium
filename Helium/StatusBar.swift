@@ -23,7 +23,7 @@ class StatusBar: NSObject {
     private let BOUNDS_HIDE_DESC = "Hide bounds"
     private let BOUNDS_SHOW_DESC = "Show bounds"
 
-    private let TAG_TOGGLE_PRECISION = 1
+    private let TAG_TOGGLE_MODE = 1
     private let TAG_TOGGLE_BOUNDS = 2
     private let TAG_OPEN_PREFERENCES = 3
     private let TAG_QUIT = 4
@@ -35,18 +35,13 @@ class StatusBar: NSObject {
         let menu = NSMenu()
         menu.addItem(withTitle: "Helium", action: nil, keyEquivalent: "")
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(title: "Toggle", key: "t", tag: TAG_TOGGLE_PRECISION)
+        menu.addItem(title: "Toggle", key: "t", tag: TAG_TOGGLE_MODE)
         menu.addItem(title: "Hide precision bounds", key: "b", tag: TAG_TOGGLE_BOUNDS)
         menu.addItem(title: "Preferences", key: ",", tag: TAG_OPEN_PREFERENCES)
         menu.addItem(title: "Quit", key: "q", tag: TAG_QUIT)
         bar.menu = menu
         super.init()
         updateMode(nil)
-    }
-
-    private func setButton(_ icon: String, _ desc: String) {
-        bar.button?.image =
-            NSImage(systemSymbolName: icon, accessibilityDescription: desc)
     }
 
     /**
@@ -62,16 +57,30 @@ class StatusBar: NSObject {
         }
     }
 
+    /**
+     * Update state (show/hide) for precision bounds.
+     */
     func setPrecisionBounds(to: Bool) {
         let item = bar.menu?.item(withTag: TAG_TOGGLE_BOUNDS)
         item?.title = to ? BOUNDS_HIDE_DESC : BOUNDS_SHOW_DESC
     }
 
-    func linkActions(togglePrecision: Selector, togglePrecisionBounds: Selector, openPrefs: Selector, quit: Selector) {
+    /**
+     * Link selectors to menubar buttons.
+     */
+    func linkActions(toggleMode: Selector, togglePrecisionBounds: Selector, openPrefs: Selector, quit: Selector) {
         let menu = bar.menu!
-        menu.item(withTag: TAG_TOGGLE_PRECISION)?.action = togglePrecision
+        menu.item(withTag: TAG_TOGGLE_MODE)?.action = toggleMode
         menu.item(withTag: TAG_TOGGLE_BOUNDS)?.action = togglePrecisionBounds
         menu.item(withTag: TAG_OPEN_PREFERENCES)?.action = openPrefs
         menu.item(withTag: TAG_QUIT)?.action = quit
+    }
+
+    /**
+     * Convenience routine to update the state of a button
+     */
+    private func setButton(_ icon: String, _ desc: String) {
+        bar.button?.image =
+            NSImage(systemSymbolName: icon, accessibilityDescription: desc)
     }
 }
