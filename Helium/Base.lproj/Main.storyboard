@@ -70,6 +70,7 @@
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <rect key="contentRect" x="550" y="440" width="320" height="240"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="320" height="240"/>
                         <value key="maxSize" type="size" width="320" height="240"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
@@ -87,12 +88,43 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="SettingsViewController" customModule="Helium" customModuleProvider="target" sceneMemberID="viewController">
-                    <stackView key="view" distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="8vc-o4-i1E">
+                    <customView key="view" id="OnX-G1-Owr" userLabel="View">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </stackView>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5aM-Oa-gCc">
+                                <rect key="frame" x="16" y="208" width="288" height="16"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BRz-zD-2XK">
+                                        <rect key="frame" x="-2" y="0.0" width="38" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Scale" id="d3f-AX-mxc">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="5aM-Oa-gCc" secondAttribute="trailing" constant="16" id="GNl-wS-tjg"/>
+                            <constraint firstItem="5aM-Oa-gCc" firstAttribute="leading" secondItem="OnX-G1-Owr" secondAttribute="leading" constant="16" id="IKp-Ak-QvO"/>
+                            <constraint firstItem="5aM-Oa-gCc" firstAttribute="top" secondItem="OnX-G1-Owr" secondAttribute="top" constant="16" id="tVT-zy-qNf"/>
+                        </constraints>
+                    </customView>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <textFieldCell lineBreakMode="clipping" title="Scale" id="DAm-uZ-QZq">
+                    <font key="font" usesAppearanceFont="YES"/>
+                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                </textFieldCell>
             </objects>
             <point key="canvasLocation" x="756" y="428"/>
         </scene>

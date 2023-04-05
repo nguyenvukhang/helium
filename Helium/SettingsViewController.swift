@@ -16,7 +16,7 @@ class SettingsViewController: NSViewController {
     }
     
     override func awakeFromNib() {
-        butt.title = "le button"
+        
     }
 
     override var representedObject: Any? {
