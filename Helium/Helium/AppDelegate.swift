@@ -24,6 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc func togglePrecision() {
         mode = mode.next()
+        bar.updateMode(mode)
         NSLog(mode.debug())
     }
 

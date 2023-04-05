@@ -40,20 +40,26 @@ class StatusBar: NSObject {
         menu.addItem(title: "Quit", key: "q", tag: TAG_QUIT)
         bar.menu = menu
         super.init()
-        setFullscreenMode()
+        updateMode(nil)
     }
 
     private func setButton(_ icon: String, _ desc: String) {
         bar.button?.image =
             NSImage(systemSymbolName: icon, accessibilityDescription: desc)
     }
-
-    private func setPrecisionMode() {
-        setButton(PRECISION_ICON, PRECISION_DESC)
-    }
-
-    private func setFullscreenMode() {
-        setButton(FULLSCREEN_ICON, FULLSCREEN_DESC)
+    
+    /**
+     * Update state to match mode. Defaults to fullscreen.
+     */
+    func updateMode(_ mode: Mode?) {
+        let mode = mode ?? .fullscreen
+        switch mode {
+        case .fullscreen:
+            setButton(FULLSCREEN_ICON, FULLSCREEN_DESC)
+        case.precision:
+            setButton(PRECISION_ICON, PRECISION_DESC)
+        }
+        
     }
 
     func linkActions(togglePrecision: Selector, togglePrecisionBounds: Selector, quit: Selector) {
