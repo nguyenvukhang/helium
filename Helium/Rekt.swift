@@ -26,8 +26,8 @@ extension NSRect {
      * cursor while still being in the bounds.
      */
     mutating func move(to: NSPoint, within: NSRect) {
-        let lx = size.width / 2, ly = size.height / 2
-        let rx = within.size.width - lx, ry = within.size.height - lx
+        let lx = width / 2, ly = height / 2
+        let rx = within.width - lx, ry = within.height - ly
         origin.x = min(max(lx, to.x), rx) - lx
         origin.y = min(max(ly, to.y), ry) - ly
     }
