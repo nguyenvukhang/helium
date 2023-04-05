@@ -5,7 +5,7 @@
 //  Created by khang on 2/4/23.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 #ifndef WacomKitRect_h
 #define WacomKitRect_h

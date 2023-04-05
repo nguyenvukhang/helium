@@ -9,5 +9,7 @@
 #define Bridge_h
 
 #import "WacomTabletDriver.h"
+#import "Helium.h"
+
 
 #endif /* Bridge_h */
