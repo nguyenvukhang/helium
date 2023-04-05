@@ -47,7 +47,7 @@ class StatusBar: NSObject {
         bar.button?.image =
             NSImage(systemSymbolName: icon, accessibilityDescription: desc)
     }
-    
+
     /**
      * Update state to match mode. Defaults to fullscreen.
      */
@@ -56,10 +56,14 @@ class StatusBar: NSObject {
         switch mode {
         case .fullscreen:
             setButton(FULLSCREEN_ICON, FULLSCREEN_DESC)
-        case.precision:
+        case .precision:
             setButton(PRECISION_ICON, PRECISION_DESC)
         }
-        
+    }
+
+    func setPrecisionBounds(to: Bool) {
+        let item = bar.menu?.item(withTag: TAG_TOGGLE_BOUNDS)
+        item?.title = to ? BOUNDS_HIDE_DESC : BOUNDS_SHOW_DESC
     }
 
     func linkActions(togglePrecision: Selector, togglePrecisionBounds: Selector, quit: Selector) {

@@ -7,22 +7,23 @@
 
 import Cocoa
 
-let SCALE = 0.48;       // personal preference
-let ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
-
+let SCALE = 0.48 // personal preference
+let ASPECT_RATIO = 1.6 // Wacom Intuous' aspect ratio
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     private var lastUsedTablet: Int
     private var bar: StatusBar
     private var mode: Mode
+    private var showBounds: Bool
     private var overlay: Overlay
     private var windowController: NSWindowController
 
     override init() {
         self.lastUsedTablet = 0 // 0 is an invalid tablet ID
-        self.bar = StatusBar()
+        self.showBounds = true
         self.mode = .fullscreen
+        self.bar = StatusBar()
         self.overlay = Overlay()
         self.windowController = NSWindowController(window: overlay)
         super.init()
@@ -43,7 +44,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func togglePrecisionBounds() {
-        NSLog("Toggle precision bounds!")
+        showBounds = !showBounds
+        overlay.setEnabled(to: showBounds)
+        bar.setPrecisionBounds(to: showBounds)
+        if showBounds {
+            overlay.flash()
+        } else {
+            overlay.hide()
+        }
     }
 
     @objc func quit() {
@@ -70,8 +78,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      */
     private func listenForEvents() {
         NSEvent.addGlobalMonitorForEvents(matching: [.tabletProximity, .keyDown]) { event in
-            if event.type == .tabletProximity && event.isEnteringProximity {
-                self.lastUsedTablet = event.systemTabletID
+            if event.type == .tabletProximity {
+                if event.isEnteringProximity {
+                    self.lastUsedTablet = event.systemTabletID
+                    if self.mode == .precision {
+                        self.overlay.show()
+                    }
+                } else {
+                    self.overlay.hide()
+                }
             } else if event.type == .keyDown {
                 self.handleKeyDown(event)
             }
@@ -88,11 +103,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         rect.scale(by: SCALE)
         rect.moveWithinScreen(to: at)
         setScreenMapArea(rect)
-        NSLog("Show overlay!")
-        NSLog(rect.debugDescription)
-        self.overlay.move(to: rect)
-        self.overlay.show()
-        
+        overlay.move(to: rect)
+        overlay.flash()
     }
 
     func setFullScreenMode() {
@@ -100,6 +112,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         rect.fillScreen(withAspectRatio: ASPECT_RATIO)
         rect.centerInScreen()
         setScreenMapArea(rect)
+        overlay.hide()
     }
 
     func applicationDidFinishLaunching(_: Notification) {

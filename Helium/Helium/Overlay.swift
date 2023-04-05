@@ -79,7 +79,7 @@ class Overlay: NSWindow {
     }
 
     private func drawBorder() {
-        let bg = NSImage.init(size: frame.size)
+        let bg = NSImage(size: frame.size)
         bg.lockFocus()
 
         let color = NSColor(red: 0.925, green: 0.282, blue: 0.600, alpha: 0.5)
@@ -92,5 +92,9 @@ class Overlay: NSWindow {
 
         bg.unlockFocus()
         backgroundColor = NSColor(patternImage: bg)
+    }
+
+    func setEnabled(to: Bool) {
+        enabled = to
     }
 }
