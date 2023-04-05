@@ -23,9 +23,9 @@ class StatusBar: NSObject {
     private let BOUNDS_HIDE_DESC = "Hide bounds"
     private let BOUNDS_SHOW_DESC = "Show bounds"
     
-    private let TAG_TOGGLE_PRECISION = 0;
-    private let TAG_TOGGLE_BOUNDS = 1;
-    private let TAG_QUIT = 2;
+    private let TAG_TOGGLE_PRECISION = 1;
+    private let TAG_TOGGLE_BOUNDS = 2;
+    private let TAG_QUIT = 3;
     
     private let bar: NSStatusItem
 
@@ -55,16 +55,11 @@ class StatusBar: NSObject {
     private func setFullscreenMode() {
         setButton(FULLSCREEN_ICON, FULLSCREEN_DESC)
     }
-
-    func linkTogglePrecisionAction(to: Selector?) {
-        bar.menu?.item(withTag: TAG_TOGGLE_PRECISION)?.action = to
-    }
-
-    func linkToggleBoundsAction(to: Selector?) {
-        bar.menu?.item(withTag: TAG_TOGGLE_BOUNDS)?.action = to
-    }
-
-    func linkQuitAction(to: Selector?) {
-        bar.menu?.item(withTag: TAG_QUIT)?.action = to
+    
+    func linkActions(togglePrecision: Selector, togglePrecisionBounds: Selector, quit: Selector) {
+        let menu = bar.menu!
+        menu.item(withTag: TAG_TOGGLE_PRECISION)?.action = togglePrecision
+        menu.item(withTag: TAG_TOGGLE_BOUNDS)?.action = togglePrecisionBounds
+        menu.item(withTag: TAG_QUIT)?.action = quit
     }
 }

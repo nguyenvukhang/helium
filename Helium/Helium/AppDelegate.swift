@@ -17,7 +17,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.lastUsedTablet = 0 // 0 is an invalid tablet ID
         self.bar = StatusBar()
         super.init()
-        self.listenForEvents()
+        listenForEvents()
+        bar.linkActions(togglePrecision: #selector(togglePrecision), togglePrecisionBounds: #selector(togglePrecisionBounds), quit: #selector(quit))
+    }
+
+    @objc func togglePrecision() {
+        NSLog("Toggle precision!")
+    }
+
+    @objc func togglePrecisionBounds() {
+        NSLog("Toggle precision bounds!")
+    }
+
+    @objc func quit() {
+        exit(EXIT_SUCCESS)
     }
 
     /**
