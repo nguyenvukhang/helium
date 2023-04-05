@@ -21,7 +21,8 @@ class SettingsViewController: NSViewController {
     @IBOutlet var aspectRatioWidth: NSTextField!
     @IBOutlet var aspectRatioHeight: NSTextField!
     @IBOutlet var resetAll: NSButton!
-
+    @IBOutlet var moveOnEdgeTouch: NSButton!
+    
     private var overlay: Overlay?
     private var store: Store?
     private var update: (() -> Void)?
@@ -43,6 +44,7 @@ class SettingsViewController: NSViewController {
         cornerLength.stringValue = round2(store.cornerLength)
         aspectRatioWidth.stringValue = round2(store.aspectRatioWidth)
         aspectRatioHeight.stringValue = round2(store.aspectRatioHeight)
+        moveOnEdgeTouch.state = store.moveOnEdgeTouch ? .on : .off
     }
 
     override func awakeFromNib() {}
@@ -109,6 +111,11 @@ class SettingsViewController: NSViewController {
 
     @IBAction func cornerLengthDidChange(_ sender: NSTextField) {
         store?.cornerLength = sender.doubleValue
+        preview()
+    }
+    
+    @IBAction func moveOnEdgeTouchDidChange(_ sender: NSButton) {
+        store?.moveOnEdgeTouch = sender.state == .on
         preview()
     }
 

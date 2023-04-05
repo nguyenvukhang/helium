@@ -95,10 +95,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      */
     private func handleKeyDown(_ e: NSEvent) {
         if e.modifierFlags.contains([.command, .shift]) && e.keyCode == KeyCode.f2.rawValue {
-            NSLog("[keypress] Command + Shift + F2")
             setPrecisionMode(at: NSEvent.mouseLocation)
             mode = .precision
             bar.updateMode(mode)
+        }
+    }
+
+    /**
+     * Handles [.tabletProximity, .keyDown] events for now.
+     */
+    private func handleEvent(_ event: NSEvent) {
+        if event.type == .keyDown {
+            handleKeyDown(event)
+            return
+        }
+        // at this point, event.type is guaranteed to be .tabletProximity, based on the matcher
+        if !event.isEnteringProximity {
+            let cursor = NSEvent.mouseLocation
+            if store.moveOnEdgeTouch && lastRect.nearEdge(point: cursor, tolerance: 10) {
+                setPrecisionMode(at: cursor)
+            } else {
+                overlay.hide()
+            }
+            return
+        }
+        // event.isEnteringProximity == true
+        lastUsedTablet = event.systemTabletID
+        if mode == .precision {
+            overlay.show()
         }
     }
 
@@ -107,24 +131,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      */
     private func listenForEvents() {
         NSEvent.addGlobalMonitorForEvents(matching: [.tabletProximity, .keyDown]) { event in
-            if event.type == .keyDown {
-                self.handleKeyDown(event)
-                return
-            }
-            // at this point, event.type is guaranteed to be .tabletProximity, based on the matcher
-            if !event.isEnteringProximity {
-                let cursor = NSEvent.mouseLocation
-                if self.lastRect.nearEdge(point: cursor, tolerance: 10) {
-                    self.setPrecisionMode(at: cursor)
-                } else {
-                    self.overlay.hide()
-                }
-            }
-            // event.isEnteringProximity == true
-            self.lastUsedTablet = event.systemTabletID
-            if self.mode == .precision {
-                self.overlay.show()
-            }
+            self.handleEvent(event)
         }
     }
 
