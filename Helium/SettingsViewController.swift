@@ -41,11 +41,7 @@ class SettingsViewController: NSViewController {
         NSLog("GOTTEM HAHAHAHA")
     }
     
-    @IBAction func scaleSliderDidChange(_ sender: NSSlider) {
-        setScale(sender.doubleValue)
-    }
-    
-    @IBAction func scaleTextDidChange(_ sender: NSTextFieldCell) {
+    @IBAction func scaleDidChange(_ sender: AnyObject) {
         setScale(sender.doubleValue)
     }
 }

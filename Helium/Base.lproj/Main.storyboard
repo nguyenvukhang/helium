@@ -113,7 +113,7 @@
                                                         <rect key="frame" x="-2" y="-6" width="96" height="29"/>
                                                         <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="68.598090277777786" tickMarkPosition="above" sliderType="linear" id="hIx-hE-20D"/>
                                                         <connections>
-                                                            <action selector="scaleSliderDidChange:" target="XfG-lQ-9wD" id="zuF-dV-MBb"/>
+                                                            <action selector="scaleDidChange:" target="XfG-lQ-9wD" id="5TT-ds-91U"/>
                                                         </connections>
                                                     </slider>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RnF-pg-PEV">
@@ -127,10 +127,10 @@
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                            <connections>
-                                                                <action selector="scaleTextDidChange:" target="XfG-lQ-9wD" id="ZZV-Wm-uIS"/>
-                                                            </connections>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <action selector="scaleDidChange:" target="XfG-lQ-9wD" id="RvG-Wj-0cw"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
