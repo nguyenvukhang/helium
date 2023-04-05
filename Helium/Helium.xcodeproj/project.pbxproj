@@ -14,6 +14,7 @@
 		0C68296729DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C68296129DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m */; };
 		0C68296829DD0B9000A52EC6 /* WacomTabletDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C68296329DD0B9000A52EC6 /* WacomTabletDriver.m */; };
 		0C68296929DD0B9000A52EC6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0C68296429DD0B9000A52EC6 /* LICENSE */; };
+		0C68296B29DD0F8A00A52EC6 /* KeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68296A29DD0F8A00A52EC6 /* KeyCode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		0C68296429DD0B9000A52EC6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		0C68296529DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSAppleEventDescriptorHelperCategory.h; sourceTree = "<group>"; };
 		0C68296629DD0B9000A52EC6 /* WacomTabletDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WacomTabletDriver.h; sourceTree = "<group>"; };
+		0C68296A29DD0F8A00A52EC6 /* KeyCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,13 +64,14 @@
 		0C68294F29DD07F300A52EC6 /* Helium */ = {
 			isa = PBXGroup;
 			children = (
-				0C68296029DD0B9000A52EC6 /* Wacom */,
-				0C68295029DD07F300A52EC6 /* AppDelegate.swift */,
-				0C68295429DD07F400A52EC6 /* Assets.xcassets */,
-				0C68295F29DD0B4700A52EC6 /* Bridge.h */,
 				0C68295929DD07F400A52EC6 /* Helium.entitlements */,
-				0C68295629DD07F400A52EC6 /* Main.storyboard */,
+				0C68295F29DD0B4700A52EC6 /* Bridge.h */,
+				0C68295029DD07F300A52EC6 /* AppDelegate.swift */,
+				0C68296A29DD0F8A00A52EC6 /* KeyCode.swift */,
 				0C68295229DD07F300A52EC6 /* ViewController.swift */,
+				0C68295429DD07F400A52EC6 /* Assets.xcassets */,
+				0C68295629DD07F400A52EC6 /* Main.storyboard */,
+				0C68296029DD0B9000A52EC6 /* Wacom */,
 			);
 			path = Helium;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C68296B29DD0F8A00A52EC6 /* KeyCode.swift in Sources */,
 				0C68296729DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m in Sources */,
 				0C68296829DD0B9000A52EC6 /* WacomTabletDriver.m in Sources */,
 				0C68295329DD07F300A52EC6 /* ViewController.swift in Sources */,
@@ -297,14 +301,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Helium/Helium.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development: Khang Nguyen (M8QD22MDJ5)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PM9Q9WAP3Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Helium;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "This app uses AppleEvents to communicate with the Tablet Driver.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -327,14 +332,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Helium/Helium.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development: Khang Nguyen (M8QD22MDJ5)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PM9Q9WAP3Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Helium;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "This app uses AppleEvents to communicate with the Tablet Driver.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
