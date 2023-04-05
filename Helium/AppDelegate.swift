@@ -17,6 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var windowController: NSWindowController
     private var prefsWindowController: NSWindowController?
     private let store: Store
+    private var lastRect: NSRect
 
     override init() {
         self.lastUsedTablet = 0 // 0 is an invalid tablet ID
@@ -26,6 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.overlay = Overlay()
         self.windowController = NSWindowController(window: overlay)
         self.store = Store()
+        self.lastRect = NSZeroRect
         super.init()
         listenForEvents()
         bar.linkActions(toggleMode: #selector(toggleMode), togglePrecisionBounds: #selector(togglePrecisionBounds), openPrefs: #selector(openPreferences), quit: #selector(quit))
@@ -111,8 +113,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             // at this point, event.type is guaranteed to be .tabletProximity, based on the matcher
             if !event.isEnteringProximity {
-                self.overlay.hide()
-                return
+                let cursor = NSEvent.mouseLocation
+                if self.lastRect.nearEdge(point: cursor, tolerance: 10) {
+                    self.setPrecisionMode(at: cursor)
+                } else {
+                    self.overlay.hide()
+                }
             }
             // event.isEnteringProximity == true
             self.lastUsedTablet = event.systemTabletID
@@ -139,6 +145,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         rect.moveWithinScreen(to: at)
         setScreenMapArea(rect)
         overlay.move(to: rect)
+        lastRect = rect
         overlay.flash()
     }
 

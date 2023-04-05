@@ -70,4 +70,17 @@ extension NSRect {
     mutating func centerInScreen() {
         center(within: NSRect.screen())
     }
+    
+    /**
+     * Checks if point is within a distance from edge.
+     */
+    func nearEdge(point: NSPoint, tolerance: Double) -> Bool {
+        if min(abs(point.x - self.minX), abs(point.x - self.maxX)) <= tolerance {
+            return true
+        }
+        if min(abs(point.y - self.minY), abs(point.y - self.maxY)) <= tolerance {
+            return true
+        }
+        return false;
+    }
 }
