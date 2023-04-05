@@ -16,14 +16,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var lastUsedTablet: Int
     private var bar: StatusBar
     private var mode: Mode
+    private var overlay: Overlay
+    private var windowController: NSWindowController
 
     override init() {
         self.lastUsedTablet = 0 // 0 is an invalid tablet ID
         self.bar = StatusBar()
         self.mode = .fullscreen
+        self.overlay = Overlay()
+        self.windowController = NSWindowController(window: overlay)
         super.init()
         listenForEvents()
         bar.linkActions(togglePrecision: #selector(togglePrecision), togglePrecisionBounds: #selector(togglePrecisionBounds), quit: #selector(quit))
+        windowController.showWindow(overlay)
     }
 
     @objc func togglePrecision() {
@@ -83,6 +88,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         rect.scale(by: SCALE)
         rect.moveWithinScreen(to: at)
         setScreenMapArea(rect)
+        NSLog("Show overlay!")
+        NSLog(rect.debugDescription)
+        self.overlay.move(to: rect)
+        self.overlay.show()
+        
     }
 
     func setFullScreenMode() {
