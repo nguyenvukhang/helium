@@ -28,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.windowController = NSWindowController(window: overlay)
         super.init()
         listenForEvents()
-        bar.linkActions(togglePrecision: #selector(togglePrecision), togglePrecisionBounds: #selector(togglePrecisionBounds), quit: #selector(quit))
+        bar.linkActions(togglePrecision: #selector(togglePrecision), togglePrecisionBounds: #selector(togglePrecisionBounds), openPreferenes: #selector(openPreferences), quit: #selector(quit))
         windowController.showWindow(overlay)
     }
 
@@ -52,6 +52,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else {
             overlay.hide()
         }
+    }
+
+    @objc func openPreferences() {
+        NSApp.activate(ignoringOtherApps: true)
+        NSLog("Open Preferences")
     }
 
     @objc func quit() {

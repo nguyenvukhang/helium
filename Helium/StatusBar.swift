@@ -25,18 +25,19 @@ class StatusBar: NSObject {
 
     private let TAG_TOGGLE_PRECISION = 1
     private let TAG_TOGGLE_BOUNDS = 2
-    private let TAG_QUIT = 3
+    private let TAG_OPEN_PREFERENCES = 3
+    private let TAG_QUIT = 4
 
     private let bar: NSStatusItem
 
     override init() {
         self.bar = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         let menu = NSMenu()
-
         menu.addItem(withTitle: "Helium", action: nil, keyEquivalent: "")
         menu.addItem(NSMenuItem.separator())
         menu.addItem(title: "Toggle", key: "t", tag: TAG_TOGGLE_PRECISION)
         menu.addItem(title: "Hide precision bounds", key: "b", tag: TAG_TOGGLE_BOUNDS)
+        menu.addItem(title: "Preferences", key: ",", tag: TAG_OPEN_PREFERENCES)
         menu.addItem(title: "Quit", key: "q", tag: TAG_QUIT)
         bar.menu = menu
         super.init()
@@ -66,10 +67,11 @@ class StatusBar: NSObject {
         item?.title = to ? BOUNDS_HIDE_DESC : BOUNDS_SHOW_DESC
     }
 
-    func linkActions(togglePrecision: Selector, togglePrecisionBounds: Selector, quit: Selector) {
+    func linkActions(togglePrecision: Selector, togglePrecisionBounds: Selector, openPreferenes: Selector, quit: Selector) {
         let menu = bar.menu!
         menu.item(withTag: TAG_TOGGLE_PRECISION)?.action = togglePrecision
         menu.item(withTag: TAG_TOGGLE_BOUNDS)?.action = togglePrecisionBounds
+        menu.item(withTag: TAG_OPEN_PREFERENCES)?.action = openPreferenes
         menu.item(withTag: TAG_QUIT)?.action = quit
     }
 }
