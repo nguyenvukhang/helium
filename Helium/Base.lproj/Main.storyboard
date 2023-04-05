@@ -93,39 +93,49 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5aM-Oa-gCc">
-                                <rect key="frame" x="20" y="196" width="280" height="20"/>
+                                <rect key="frame" x="20" y="195" width="280" height="21"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="32" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCe-7I-AIh">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="20"/>
+                                    <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="32" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCe-7I-AIh">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="21"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BRz-zD-2XK">
-                                                <rect key="frame" x="-2" y="4" width="122" height="16"/>
+                                                <rect key="frame" x="-2" y="5" width="38" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Scale" id="d3f-AX-mxc">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IMG-cF-CmG">
-                                                <rect key="frame" x="150" y="0.0" width="130" height="20"/>
+                                            <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IMG-cF-CmG">
+                                                <rect key="frame" x="126" y="0.0" width="154" height="21"/>
                                                 <subviews>
                                                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Chc-0m-9Cr">
-                                                        <rect key="frame" x="-2" y="-6" width="96" height="28"/>
+                                                        <rect key="frame" x="-2" y="-6" width="96" height="29"/>
                                                         <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="68.598090277777786" tickMarkPosition="above" sliderType="linear" id="hIx-hE-20D">
                                                             <connections>
                                                                 <action selector="scaleDidChange:" target="XfG-lQ-9wD" id="jUZ-mc-OXE"/>
                                                             </connections>
                                                         </sliderCell>
                                                     </slider>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a82-iL-K88" userLabel="ScaleValue">
-                                                        <rect key="frame" x="102" y="4" width="30" height="16"/>
-                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="1.00" id="Jdf-qy-ZM9">
-                                                            <font key="font" usesAppearanceFont="YES"/>
-                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RnF-pg-PEV">
+                                                        <rect key="frame" x="104" y="0.0" width="50" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="UdK-6P-YHX"/>
+                                                            <constraint firstAttribute="height" constant="21" id="iT0-Qe-Olg"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="kce-Dw-xta">
+                                                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="1F9-Cp-Kjt"/>
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="RnF-pg-PEV" firstAttribute="leading" secondItem="IMG-cF-CmG" secondAttribute="leading" constant="104" id="gQf-Ux-Icg"/>
+                                                    <constraint firstItem="RnF-pg-PEV" firstAttribute="centerY" secondItem="Chc-0m-9Cr" secondAttribute="centerY" id="sb0-aO-XCF"/>
+                                                    <constraint firstItem="RnF-pg-PEV" firstAttribute="top" secondItem="Chc-0m-9Cr" secondAttribute="top" id="xuU-r6-gSN"/>
+                                                </constraints>
                                                 <visibilityPriorities>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
@@ -166,7 +176,7 @@
                     </customView>
                     <connections>
                         <outlet property="scaleSlider" destination="hIx-hE-20D" id="1Dt-bu-ION"/>
-                        <outlet property="scaleValue" destination="Jdf-qy-ZM9" id="oMe-Kr-6fV"/>
+                        <outlet property="scaleValue" destination="RnF-pg-PEV" id="tEG-OX-g9Q"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

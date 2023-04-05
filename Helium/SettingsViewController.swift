@@ -8,7 +8,7 @@
 import Cocoa
 
 class SettingsViewController: NSViewController {
-    @IBOutlet weak var scaleValue: NSTextFieldCell!
+    @IBOutlet weak var scaleValue: NSTextField!
     @IBOutlet weak var scaleSlider: NSSliderCell!
     
     override func viewDidLoad() {
@@ -30,9 +30,7 @@ class SettingsViewController: NSViewController {
         NSLog("GOTTEM HAHAHAHA")
     }
     @IBAction func scaleDidChange(_ sender: NSSliderCell) {
-        NSLog("Print")
-        NSLog("%0.4f",sender.doubleValue)
-        scaleValue.title = String(format: "%0.2f", sender.doubleValue)
+        scaleValue.stringValue = String(format: "%0.2f", sender.doubleValue)
     }
     
 }
