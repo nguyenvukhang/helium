@@ -30,6 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         listenForEvents()
         bar.linkActions(togglePrecision: #selector(togglePrecision), togglePrecisionBounds: #selector(togglePrecisionBounds), openPrefs: #selector(openPreferences), quit: #selector(quit))
         windowController.showWindow(overlay)
+        setFullScreenMode()
     }
 
     @objc func openPreferences() {
@@ -37,7 +38,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let board = NSStoryboard(name: "Main", bundle: nil)
             pwc = board.instantiateController(withIdentifier: "PrefsWindowController") as? NSWindowController
             let svc = pwc?.contentViewController as? SettingsViewController
-            svc?.hydrate(overlay: overlay, store: store)
+            svc?.hydrate(overlay: overlay, store: store, update: {
+                if self.mode == .precision {
+                    self.setPrecisionMode(at: NSEvent.mouseLocation)
+                }
+            })
         }
         NSApp.activate(ignoringOtherApps: true)
         pwc?.showWindow(self)

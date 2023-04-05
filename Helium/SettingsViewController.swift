@@ -16,8 +16,10 @@ class SettingsViewController: NSViewController {
     @IBOutlet var aspectRatioWidth: NSTextField!
     @IBOutlet var aspectRatioHeight: NSTextField!
     @IBOutlet var resetAll: NSButton!
+
     private var overlay: Overlay?
     private var store: Store?
+    private var update: (() -> Void)?
 
     private var readyToReset = false
 
@@ -50,9 +52,10 @@ class SettingsViewController: NSViewController {
         store?.scale = s
     }
 
-    func hydrate(overlay: Overlay, store: Store) {
+    func hydrate(overlay: Overlay, store: Store, update: @escaping () -> Void) {
         self.overlay = overlay
         self.store = store
+        self.update = update
         if store.firstTime {
             store.initializeDefaults()
         }
@@ -66,6 +69,7 @@ class SettingsViewController: NSViewController {
         r.centerInScreen()
         overlay?.move(to: r)
         overlay?.flash(force: true)
+        update?()
     }
 
     @IBAction func scaleSliderDidChange(_ sender: AnyObject) {
