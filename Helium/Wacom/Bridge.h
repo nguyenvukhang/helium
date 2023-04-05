@@ -1,12 +1,14 @@
 //
-//  Helium.h
+//  Bridge.h
 //  Helium
 //
 //  Created by khang on 5/4/23.
 //
 
-#ifndef Helium_h
-#define Helium_h
+#ifndef Bridge_h
+#define Bridge_h
+
+#import "WacomTabletDriver.h"
 
 #import <Foundation/Foundation.h>
 
@@ -18,6 +20,4 @@
 
 @end
 
-#endif /* Helium_h */
-
-// vim:ft=objc
+#endif /* Bridge_h */
