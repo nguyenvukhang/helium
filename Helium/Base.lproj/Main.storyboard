@@ -111,7 +111,11 @@
                                                 <subviews>
                                                     <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Chc-0m-9Cr">
                                                         <rect key="frame" x="-2" y="-6" width="96" height="28"/>
-                                                        <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="hIx-hE-20D"/>
+                                                        <sliderCell key="cell" alignment="left" maxValue="100" doubleValue="68.598090277777786" tickMarkPosition="above" sliderType="linear" id="hIx-hE-20D">
+                                                            <connections>
+                                                                <action selector="scaleDidChange:" target="XfG-lQ-9wD" id="jUZ-mc-OXE"/>
+                                                            </connections>
+                                                        </sliderCell>
                                                     </slider>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a82-iL-K88" userLabel="ScaleValue">
                                                         <rect key="frame" x="102" y="4" width="30" height="16"/>
@@ -160,6 +164,10 @@
                             <constraint firstItem="5aM-Oa-gCc" firstAttribute="top" secondItem="OnX-G1-Owr" secondAttribute="top" constant="24" id="tVT-zy-qNf"/>
                         </constraints>
                     </customView>
+                    <connections>
+                        <outlet property="scaleSlider" destination="hIx-hE-20D" id="1Dt-bu-ION"/>
+                        <outlet property="scaleValue" destination="Jdf-qy-ZM9" id="oMe-Kr-6fV"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <textFieldCell lineBreakMode="clipping" title="Scale" id="DAm-uZ-QZq">
