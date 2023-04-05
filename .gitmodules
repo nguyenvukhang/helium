@@ -1,3 +1,0 @@
-[submodule "Wacom Kit/Wacom"]
-	path = Wacom Kit/Wacom
-	url = git@github.com:Wacom-Developer/wacom-device-kit-macos-api.git
