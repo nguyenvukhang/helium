@@ -27,7 +27,7 @@ class Store {
             x.set(w, forKey: "aspect-ratio-width")
         }
     }
-    
+
     var moveOnEdgeTouch: Bool {
         get {
             x.bool(forKey: "move-on-edge-touch")

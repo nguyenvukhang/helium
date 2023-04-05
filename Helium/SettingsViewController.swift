@@ -22,7 +22,7 @@ class SettingsViewController: NSViewController {
     @IBOutlet var aspectRatioHeight: NSTextField!
     @IBOutlet var resetAll: NSButton!
     @IBOutlet var moveOnEdgeTouch: NSButton!
-    
+
     private var overlay: Overlay?
     private var store: Store?
     private var update: (() -> Void)?
@@ -113,7 +113,7 @@ class SettingsViewController: NSViewController {
         store?.cornerLength = sender.doubleValue
         preview()
     }
-    
+
     @IBAction func moveOnEdgeTouchDidChange(_ sender: NSButton) {
         store?.moveOnEdgeTouch = sender.state == .on
         preview()
