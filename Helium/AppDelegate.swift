@@ -7,9 +7,6 @@
 
 import Cocoa
 
-let SCALE = 0.48 // personal preference
-let ASPECT_RATIO = 1.6 // Wacom Intuous' aspect ratio
-
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     private var lastUsedTablet: Int
@@ -19,6 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var overlay: Overlay
     private var windowController: NSWindowController
     private var pwc: NSWindowController?
+    private let store: Store
 
     override init() {
         self.lastUsedTablet = 0 // 0 is an invalid tablet ID
@@ -27,20 +25,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.bar = StatusBar()
         self.overlay = Overlay()
         self.windowController = NSWindowController(window: overlay)
+        self.store = Store()
         super.init()
         listenForEvents()
         bar.linkActions(togglePrecision: #selector(togglePrecision), togglePrecisionBounds: #selector(togglePrecisionBounds), openPrefs: #selector(openPreferences), quit: #selector(quit))
         windowController.showWindow(overlay)
-        openPreferences() // for debugging
-        
     }
-    
+
     @objc func openPreferences() {
         if pwc == nil {
             let board = NSStoryboard(name: "Main", bundle: nil)
-            NSLog("done with boarding")
             pwc = board.instantiateController(withIdentifier: "PrefsWindowController") as? NSWindowController
-            NSLog("done instancing")
+            let svc = pwc?.contentViewController as? SettingsViewController
+            svc?.hydrate(overlay: overlay, store: store)
         }
         NSApp.activate(ignoringOtherApps: true)
         pwc?.showWindow(self)
@@ -115,8 +112,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func setPrecisionMode(at: NSPoint) {
         var rect = NSZeroRect
-        rect.fillScreen(withAspectRatio: ASPECT_RATIO)
-        rect.scale(by: SCALE)
+        rect.fillScreen(withAspectRatio: store.aspectRatio)
+        rect.scale(by: store.scale)
         rect.moveWithinScreen(to: at)
         setScreenMapArea(rect)
         overlay.move(to: rect)
@@ -125,7 +122,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func setFullScreenMode() {
         var rect = NSZeroRect
-        rect.fillScreen(withAspectRatio: ASPECT_RATIO)
+        rect.fillScreen(withAspectRatio: store.aspectRatio)
         rect.centerInScreen()
         setScreenMapArea(rect)
         overlay.hide()

@@ -19,6 +19,7 @@
 		0C68297229DD248600A52EC6 /* Helium.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C68297129DD248600A52EC6 /* Helium.m */; };
 		0C68297429DD273A00A52EC6 /* Rekt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68297329DD273A00A52EC6 /* Rekt.swift */; };
 		0C68297629DD2C7500A52EC6 /* Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68297529DD2C7500A52EC6 /* Overlay.swift */; };
+		0CD15E6829DD81D1006C101F /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD15E6729DD81D1006C101F /* Store.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		0C68297129DD248600A52EC6 /* Helium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helium.m; sourceTree = "<group>"; };
 		0C68297329DD273A00A52EC6 /* Rekt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rekt.swift; sourceTree = "<group>"; };
 		0C68297529DD2C7500A52EC6 /* Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overlay.swift; sourceTree = "<group>"; };
+		0CD15E6729DD81D1006C101F /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				0C68297329DD273A00A52EC6 /* Rekt.swift */,
 				0C68296C29DD159500A52EC6 /* StatusBar.swift */,
 				0C68296A29DD0F8A00A52EC6 /* Types.swift */,
+				0CD15E6729DD81D1006C101F /* Store.swift */,
 				0C68295229DD07F300A52EC6 /* SettingsViewController.swift */,
 				0C68295429DD07F400A52EC6 /* Assets.xcassets */,
 				0C68295629DD07F400A52EC6 /* Main.storyboard */,
@@ -176,6 +179,7 @@
 				0C68297629DD2C7500A52EC6 /* Overlay.swift in Sources */,
 				0C68296B29DD0F8A00A52EC6 /* Types.swift in Sources */,
 				0C68296729DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m in Sources */,
+				0CD15E6829DD81D1006C101F /* Store.swift in Sources */,
 				0C68296829DD0B9000A52EC6 /* WacomTabletDriver.m in Sources */,
 				0C68296D29DD159500A52EC6 /* StatusBar.swift in Sources */,
 				0C68295329DD07F300A52EC6 /* SettingsViewController.swift in Sources */,

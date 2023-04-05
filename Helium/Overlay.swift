@@ -20,8 +20,10 @@ extension NSBezierPath {
 class Overlay: NSWindow {
     private var enabled: Bool
     private let padding: CGFloat = 10
+    private let store: Store
 
     init() {
+        self.store = Store()
         self.enabled = true
         super.init(contentRect: NSMakeRect(0, 0, 1, 1), styleMask: .borderless, backing: .buffered, defer: true)
         ignoresMouseEvents = true
@@ -48,7 +50,11 @@ class Overlay: NSWindow {
     }
 
     func flash() {
-        if !enabled {
+        flash(force: false)
+    }
+
+    func flash(force: Bool) {
+        if !force && !enabled {
             return
         }
         alphaValue = 1
@@ -62,7 +68,7 @@ class Overlay: NSWindow {
     }
 
     private func drawCorners(_ bz: NSBezierPath, length: CGFloat, padding: CGFloat) {
-        let f = frame, p = padding, l = length
+        let f = frame, p = padding, l = store.cornerLength
         let x1 = p, x2 = f.size.width - p, y1 = p, y2 = f.size.height - p
         bz.moveTo(x1 + l, y1)
         bz.lineTo(x1, y1)
@@ -82,11 +88,10 @@ class Overlay: NSWindow {
         let bg = NSImage(size: frame.size)
         bg.lockFocus()
 
-        let color = NSColor(red: 0.925, green: 0.282, blue: 0.600, alpha: 0.5)
-        color.set()
+        store.lineColor.set()
 
         let bz = NSBezierPath()
-        bz.lineWidth = 5.0
+        bz.lineWidth = store.lineWidth
         drawCorners(bz, length: 32, padding: padding - bz.lineWidth / 2)
         bz.stroke()
 
