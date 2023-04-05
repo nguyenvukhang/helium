@@ -14,7 +14,7 @@
 }
 
 + (Rect)legacy:(NSRect)rect screen:(NSRect)screen;
-+ (void)setMapArea:(NSRect)rect screen:(NSRect)s forTablet:(int)tabletId;
++ (void)setScreenMapArea:(NSRect)rect screen:(NSRect)s forTablet:(int)tabletId;
 
 @end
 

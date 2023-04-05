@@ -25,6 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func togglePrecision() {
         mode = mode.next()
         bar.updateMode(mode)
+        setScreenMapArea()
         NSLog(mode.debug())
     }
 
@@ -59,6 +60,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.handleKeyDown(event)
             }
         }
+    }
+    
+    func screen() -> NSRect {
+        NSScreen.screens[0].frame
+    }
+    
+    func setScreenMapArea() {
+        HRect.setScreenMapArea(NSMakeRect(100, 100, 200, 200), screen: screen(), forTablet:  Int32(lastUsedTablet))
+        
     }
 
     func applicationDidFinishLaunching(_: Notification) {

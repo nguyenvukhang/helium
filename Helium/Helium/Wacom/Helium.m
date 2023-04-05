@@ -25,7 +25,7 @@
 /**
  * Set tablet to only cover a specified Rect on the screen.
  */
-+ (void)setMapArea:(NSRect)rect screen:(NSRect)s forTablet:(int)tabletId {
++ (void)setScreenMapArea:(NSRect)rect screen:(NSRect)s forTablet:(int)tabletId {
   Rect r = [HRect legacy:rect screen:s];
   [WacomTabletDriver setBytes:&r
                        ofSize:sizeof(Rect)
