@@ -11,6 +11,9 @@
 		0C68295329DD07F300A52EC6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68295229DD07F300A52EC6 /* ViewController.swift */; };
 		0C68295529DD07F400A52EC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C68295429DD07F400A52EC6 /* Assets.xcassets */; };
 		0C68295829DD07F400A52EC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C68295629DD07F400A52EC6 /* Main.storyboard */; };
+		0C68296729DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C68296129DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m */; };
+		0C68296829DD0B9000A52EC6 /* WacomTabletDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C68296329DD0B9000A52EC6 /* WacomTabletDriver.m */; };
+		0C68296929DD0B9000A52EC6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0C68296429DD0B9000A52EC6 /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,13 @@
 		0C68295429DD07F400A52EC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C68295729DD07F400A52EC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0C68295929DD07F400A52EC6 /* Helium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Helium.entitlements; sourceTree = "<group>"; };
+		0C68295F29DD0B4700A52EC6 /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
+		0C68296129DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSAppleEventDescriptorHelperCategory.m; sourceTree = "<group>"; };
+		0C68296229DD0B9000A52EC6 /* TabletAEDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabletAEDictionary.h; sourceTree = "<group>"; };
+		0C68296329DD0B9000A52EC6 /* WacomTabletDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WacomTabletDriver.m; sourceTree = "<group>"; };
+		0C68296429DD0B9000A52EC6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		0C68296529DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSAppleEventDescriptorHelperCategory.h; sourceTree = "<group>"; };
+		0C68296629DD0B9000A52EC6 /* WacomTabletDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WacomTabletDriver.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,13 +62,28 @@
 		0C68294F29DD07F300A52EC6 /* Helium */ = {
 			isa = PBXGroup;
 			children = (
+				0C68296029DD0B9000A52EC6 /* Wacom */,
 				0C68295029DD07F300A52EC6 /* AppDelegate.swift */,
-				0C68295229DD07F300A52EC6 /* ViewController.swift */,
 				0C68295429DD07F400A52EC6 /* Assets.xcassets */,
-				0C68295629DD07F400A52EC6 /* Main.storyboard */,
+				0C68295F29DD0B4700A52EC6 /* Bridge.h */,
 				0C68295929DD07F400A52EC6 /* Helium.entitlements */,
+				0C68295629DD07F400A52EC6 /* Main.storyboard */,
+				0C68295229DD07F300A52EC6 /* ViewController.swift */,
 			);
 			path = Helium;
+			sourceTree = "<group>";
+		};
+		0C68296029DD0B9000A52EC6 /* Wacom */ = {
+			isa = PBXGroup;
+			children = (
+				0C68296529DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.h */,
+				0C68296129DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m */,
+				0C68296629DD0B9000A52EC6 /* WacomTabletDriver.h */,
+				0C68296329DD0B9000A52EC6 /* WacomTabletDriver.m */,
+				0C68296229DD0B9000A52EC6 /* TabletAEDictionary.h */,
+				0C68296429DD0B9000A52EC6 /* LICENSE */,
+			);
+			path = Wacom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +144,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C68296929DD0B9000A52EC6 /* LICENSE in Resources */,
 				0C68295529DD07F400A52EC6 /* Assets.xcassets in Resources */,
 				0C68295829DD07F400A52EC6 /* Main.storyboard in Resources */,
 			);
@@ -131,6 +157,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C68296729DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m in Sources */,
+				0C68296829DD0B9000A52EC6 /* WacomTabletDriver.m in Sources */,
 				0C68295329DD07F300A52EC6 /* ViewController.swift in Sources */,
 				0C68295129DD07F300A52EC6 /* AppDelegate.swift in Sources */,
 			);
@@ -288,6 +316,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nguyenvukhang.Helium;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = Helium/Bridge.h;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -317,6 +346,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nguyenvukhang.Helium;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = Helium/Bridge.h;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
