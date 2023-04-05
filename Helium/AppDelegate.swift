@@ -78,17 +78,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      */
     private func listenForEvents() {
         NSEvent.addGlobalMonitorForEvents(matching: [.tabletProximity, .keyDown]) { event in
-            if event.type == .tabletProximity {
-                if event.isEnteringProximity {
-                    self.lastUsedTablet = event.systemTabletID
-                    if self.mode == .precision {
-                        self.overlay.show()
-                    }
-                } else {
-                    self.overlay.hide()
-                }
-            } else if event.type == .keyDown {
+            if event.type == .keyDown {
                 self.handleKeyDown(event)
+                return
+            }
+            // at this point, event.type is guaranteed to be .tabletProximity, based on the matcher
+            if !event.isEnteringProximity {
+                self.overlay.hide()
+                return
+            }
+            // event.isEnteringProximity == true
+            self.lastUsedTablet = event.systemTabletID
+            if self.mode == .precision {
+                self.overlay.show()
             }
         }
     }
