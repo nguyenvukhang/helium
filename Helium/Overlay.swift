@@ -27,7 +27,7 @@ class Overlay: NSWindow {
         self.enabled = true
         super.init(contentRect: NSMakeRect(0, 0, 1, 1), styleMask: .borderless, backing: .buffered, defer: true)
         ignoresMouseEvents = true
-        level = .floating
+        level = .screenSaver
         alphaValue = 0
     }
 
