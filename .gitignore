@@ -1,5 +1,5 @@
 DerivedData/
 build/
 .DS_Store
-Wacom Kit.xcarchive
+* Kit.xcarchive
 compile_commands.json
