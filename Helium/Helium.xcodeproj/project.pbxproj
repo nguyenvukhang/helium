@@ -15,6 +15,7 @@
 		0C68296829DD0B9000A52EC6 /* WacomTabletDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C68296329DD0B9000A52EC6 /* WacomTabletDriver.m */; };
 		0C68296929DD0B9000A52EC6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0C68296429DD0B9000A52EC6 /* LICENSE */; };
 		0C68296B29DD0F8A00A52EC6 /* KeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68296A29DD0F8A00A52EC6 /* KeyCode.swift */; };
+		0C68296D29DD159500A52EC6 /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68296C29DD159500A52EC6 /* StatusBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		0C68296529DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSAppleEventDescriptorHelperCategory.h; sourceTree = "<group>"; };
 		0C68296629DD0B9000A52EC6 /* WacomTabletDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WacomTabletDriver.h; sourceTree = "<group>"; };
 		0C68296A29DD0F8A00A52EC6 /* KeyCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCode.swift; sourceTree = "<group>"; };
+		0C68296C29DD159500A52EC6 /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				0C68295F29DD0B4700A52EC6 /* Bridge.h */,
 				0C68295029DD07F300A52EC6 /* AppDelegate.swift */,
 				0C68296A29DD0F8A00A52EC6 /* KeyCode.swift */,
+				0C68296C29DD159500A52EC6 /* StatusBar.swift */,
 				0C68295229DD07F300A52EC6 /* ViewController.swift */,
 				0C68295429DD07F400A52EC6 /* Assets.xcassets */,
 				0C68295629DD07F400A52EC6 /* Main.storyboard */,
@@ -163,6 +166,7 @@
 				0C68296B29DD0F8A00A52EC6 /* KeyCode.swift in Sources */,
 				0C68296729DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m in Sources */,
 				0C68296829DD0B9000A52EC6 /* WacomTabletDriver.m in Sources */,
+				0C68296D29DD159500A52EC6 /* StatusBar.swift in Sources */,
 				0C68295329DD07F300A52EC6 /* ViewController.swift in Sources */,
 				0C68295129DD07F300A52EC6 /* AppDelegate.swift in Sources */,
 			);

@@ -9,10 +9,13 @@ import Cocoa
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-    var lastUsedTablet: Int
+    private var lastUsedTablet: Int
+    private var bar: StatusBar
+    var statusBarItem: NSStatusItem!
 
     override init() {
         self.lastUsedTablet = 0 // 0 is an invalid tablet ID
+        self.bar = StatusBar()
         super.init()
         self.listenForEvents()
     }
