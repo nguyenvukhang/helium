@@ -10,14 +10,25 @@ import Cocoa
 class SettingsViewController: NSViewController {
     @IBOutlet weak var scaleValue: NSTextField!
     @IBOutlet weak var scaleSlider: NSSliderCell!
+    private let store = UserDefaults.standard
+    
+    private let SCALE_KEY = "scale"
+    private let ASPECT_RATIO_KEY = "aspect-ratio"
+    private let COLOR_KEY = "color"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setScale(store.double(forKey: SCALE_KEY))
     }
     
     override func awakeFromNib() {
         
+    }
+    
+    private func setScale(_ s: CGFloat) {
+        scaleValue.stringValue = String(format: "%0.2f", s)
+        scaleSlider.doubleValue = s
+        store.setValue(s, forKey: SCALE_KEY)
     }
 
     override var representedObject: Any? {
@@ -31,11 +42,11 @@ class SettingsViewController: NSViewController {
     }
     
     @IBAction func scaleSliderDidChange(_ sender: NSSlider) {
-        scaleValue.stringValue = String(format: "%0.2f", sender.doubleValue)
+        setScale(sender.doubleValue)
     }
     
     @IBAction func scaleTextDidChange(_ sender: NSTextFieldCell) {
-        scaleSlider.doubleValue = sender.doubleValue
+        setScale(sender.doubleValue)
     }
 }
 
