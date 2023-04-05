@@ -11,18 +11,21 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     private var lastUsedTablet: Int
     private var bar: StatusBar
-    var statusBarItem: NSStatusItem!
+    private var statusBarItem: NSStatusItem!
+    private var mode: Mode
 
     override init() {
         self.lastUsedTablet = 0 // 0 is an invalid tablet ID
         self.bar = StatusBar()
+        self.mode = .fullscreen
         super.init()
         listenForEvents()
         bar.linkActions(togglePrecision: #selector(togglePrecision), togglePrecisionBounds: #selector(togglePrecisionBounds), quit: #selector(quit))
     }
 
     @objc func togglePrecision() {
-        NSLog("Toggle precision!")
+        mode = mode.next()
+        NSLog(mode.debug())
     }
 
     @objc func togglePrecisionBounds() {

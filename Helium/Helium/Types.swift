@@ -1,9 +1,32 @@
 //
-//  Keycode.swift
+//  Types.swift
 //  intuous
 //
 //  Created by khang on 5/4/23.
 //
+
+enum Mode {
+    case precision
+    case fullscreen
+
+    func next() -> Mode {
+        switch self {
+        case .precision:
+            return .fullscreen
+        case .fullscreen:
+            return .precision
+        }
+    }
+
+    func debug() -> String {
+        switch self {
+        case .fullscreen:
+            return "Mode::Fullscreen"
+        case .precision:
+            return "Mode::Precision"
+        }
+    }
+}
 
 enum KeyCode: UInt16 {
     // https://gist.github.com/swillits/df648e87016772c7f7e5dbed2b345066
