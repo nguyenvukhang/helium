@@ -11,7 +11,6 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     private var lastUsedTablet: Int
     private var bar: StatusBar
-    private var statusBarItem: NSStatusItem!
     private var mode: Mode
 
     override init() {
