@@ -31,6 +31,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         listenForEvents()
         bar.linkActions(togglePrecision: #selector(togglePrecision), togglePrecisionBounds: #selector(togglePrecisionBounds), openPrefs: #selector(openPreferences), quit: #selector(quit))
         windowController.showWindow(overlay)
+        openPreferences() // for debugging
+        
     }
     
     @objc func openPreferences() {
