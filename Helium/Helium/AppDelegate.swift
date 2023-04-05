@@ -7,6 +7,10 @@
 
 import Cocoa
 
+let SCALE = 0.48;       // personal preference
+let ASPECT_RATIO = 1.6; // Wacom Intuous' aspect ratio
+
+
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     private var lastUsedTablet: Int
@@ -25,8 +29,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func togglePrecision() {
         mode = mode.next()
         bar.updateMode(mode)
-        setScreenMapArea()
-        NSLog(mode.debug())
+        switch mode {
+        case .fullscreen:
+            setFullScreenMode()
+        case .precision:
+            setPrecisionMode(at: NSEvent.mouseLocation)
+        }
     }
 
     @objc func togglePrecisionBounds() {
@@ -61,14 +69,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
     }
-    
-    func screen() -> NSRect {
-        NSScreen.screens[0].frame
+
+    private func setScreenMapArea(_ rect: NSRect) {
+        HRect.setScreenMapArea(rect, screen: NSRect.screen(), forTablet: Int32(lastUsedTablet))
     }
-    
-    func setScreenMapArea() {
-        HRect.setScreenMapArea(NSMakeRect(100, 100, 200, 200), screen: screen(), forTablet:  Int32(lastUsedTablet))
-        
+
+    func setPrecisionMode(at: NSPoint) {
+        var rect = NSZeroRect
+        rect.fillScreen(withAspectRatio: ASPECT_RATIO)
+        rect.scale(by: SCALE)
+        rect.moveWithinScreen(to: at)
+        setScreenMapArea(rect)
+    }
+
+    func setFullScreenMode() {
+        var rect = NSZeroRect
+        rect.fillScreen(withAspectRatio: ASPECT_RATIO)
+        rect.centerInScreen()
+        setScreenMapArea(rect)
     }
 
     func applicationDidFinishLaunching(_: Notification) {
