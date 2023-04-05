@@ -18,6 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var showBounds: Bool
     private var overlay: Overlay
     private var windowController: NSWindowController
+    private var pwc: NSWindowController?
 
     override init() {
         self.lastUsedTablet = 0 // 0 is an invalid tablet ID
@@ -28,8 +29,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.windowController = NSWindowController(window: overlay)
         super.init()
         listenForEvents()
-        bar.linkActions(togglePrecision: #selector(togglePrecision), togglePrecisionBounds: #selector(togglePrecisionBounds), openPreferenes: #selector(openPreferences), quit: #selector(quit))
+        bar.linkActions(togglePrecision: #selector(togglePrecision), togglePrecisionBounds: #selector(togglePrecisionBounds), openPrefs: #selector(openPreferences), quit: #selector(quit))
         windowController.showWindow(overlay)
+    }
+    
+    @objc func openPreferences() {
+        if pwc == nil {
+            let board = NSStoryboard(name: "Main", bundle: nil)
+            NSLog("done with boarding")
+            pwc = board.instantiateController(withIdentifier: "PrefsWindowController") as? NSWindowController
+            NSLog("done instancing")
+        }
+        NSApp.activate(ignoringOtherApps: true)
+        pwc?.showWindow(self)
     }
 
     @objc func togglePrecision() {
@@ -52,11 +64,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else {
             overlay.hide()
         }
-    }
-
-    @objc func openPreferences() {
-        NSApp.activate(ignoringOtherApps: true)
-        NSLog("Open Preferences")
     }
 
     @objc func quit() {

@@ -67,11 +67,11 @@ class StatusBar: NSObject {
         item?.title = to ? BOUNDS_HIDE_DESC : BOUNDS_SHOW_DESC
     }
 
-    func linkActions(togglePrecision: Selector, togglePrecisionBounds: Selector, openPreferenes: Selector, quit: Selector) {
+    func linkActions(togglePrecision: Selector, togglePrecisionBounds: Selector, openPrefs: Selector, quit: Selector) {
         let menu = bar.menu!
         menu.item(withTag: TAG_TOGGLE_PRECISION)?.action = togglePrecision
         menu.item(withTag: TAG_TOGGLE_BOUNDS)?.action = togglePrecisionBounds
-        menu.item(withTag: TAG_OPEN_PREFERENCES)?.action = openPreferenes
+        menu.item(withTag: TAG_OPEN_PREFERENCES)?.action = openPrefs
         menu.item(withTag: TAG_QUIT)?.action = quit
     }
 }

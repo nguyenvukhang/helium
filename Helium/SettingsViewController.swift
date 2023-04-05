@@ -7,11 +7,16 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
-
+class SettingsViewController: NSViewController {
+    @IBOutlet weak var butt: NSButtonCell!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+    }
+    
+    override func awakeFromNib() {
+        butt.title = "le button"
     }
 
     override var representedObject: Any? {
@@ -20,6 +25,9 @@ class ViewController: NSViewController {
         }
     }
 
-
+    @IBAction func pressed(_ sender: Any) {
+        NSLog("GOTTEM HAHAHAHA")
+    }
+    
 }
 
