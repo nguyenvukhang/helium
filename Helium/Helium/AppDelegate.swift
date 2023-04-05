@@ -54,6 +54,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func handleKeyDown(_ e: NSEvent) {
         if e.modifierFlags.contains([.command, .shift]) && e.keyCode == KeyCode.f2.rawValue {
             NSLog("[keypress] Command + Shift + F2")
+            setPrecisionMode(at: NSEvent.mouseLocation)
+            mode = .precision
+            bar.updateMode(mode)
         }
     }
 
