@@ -69,6 +69,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      * Menu bar action: Quit the app
      */
     @objc func quit() {
+        self.setFullScreenMode()
         exit(EXIT_SUCCESS)
     }
 
@@ -166,5 +167,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationSupportsSecureRestorableState(_: NSApplication) -> Bool {
         true
+    }
+    
+    private func applicationWillTerminate(_: NSApplication) {
+        self.setFullScreenMode()
     }
 }
