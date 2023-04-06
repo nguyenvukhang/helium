@@ -27,7 +27,12 @@ class SettingsViewController: NSViewController {
     private var store: Store?
     private var update: (() -> Void)?
 
-    private var readyToReset = false
+    private enum Reset: String {
+        case confirm = "Confirm Reset"
+        case base = "Reset All Preferences"
+    }
+
+    private var resetState = Reset.base
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,17 +125,17 @@ class SettingsViewController: NSViewController {
     }
 
     @IBAction func resetDidRequest(_ sender: NSButton) {
-        if !readyToReset {
-            readyToReset = true
+        switch resetState {
+        case .base:
             sender.bezelColor = .red
-            sender.stringValue = "Confirm Reset"
-            sender.title = "Confirm Reset"
-        } else {
+            resetState = .confirm
+            sender.title = resetState.rawValue
+        case .confirm:
             store?.initializeDefaults()
             loadAllFromStore()
             sender.bezelColor = nil
-            readyToReset = false
-            sender.title = "Reset All Preferences"
+            resetState = .base
         }
+        sender.title = resetState.rawValue
     }
 }
