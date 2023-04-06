@@ -12,12 +12,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HRect : NSObject {
+@class Wacom;
+
+@interface Wacom : NSObject {
 }
 
-+ (Rect)legacy:(NSRect)rect screen:(NSRect)screen;
-+ (void)setScreenMapArea:(NSRect)rect screen:(NSRect)s forTablet:(int)tabletId;
++ (void)setScreenMapArea:(NSRect)rect screen:(NSRect)s tabletId:(int)tabletId;
 
 @end
 
 #endif /* Bridge_h */
+
+// vim:ft=objc

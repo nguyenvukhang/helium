@@ -139,7 +139,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      * API call to Wacom Drivers to set map area.
      */
     private func setScreenMapArea(_ rect: NSRect) {
-        HRect.setScreenMapArea(rect, screen: NSRect.screen(), forTablet: Int32(lastUsedTablet))
+        Wacom.setScreenMapArea(rect, screen: NSRect.screen(), tabletId: Int32(lastUsedTablet))
     }
 
     /**

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C2A0B0929DECE8400E41EAC /* Bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2A0B0729DECE8400E41EAC /* Bridge.m */; };
 		0C68295129DD07F300A52EC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68295029DD07F300A52EC6 /* AppDelegate.swift */; };
 		0C68295329DD07F300A52EC6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68295229DD07F300A52EC6 /* SettingsViewController.swift */; };
 		0C68295529DD07F400A52EC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C68295429DD07F400A52EC6 /* Assets.xcassets */; };
@@ -16,20 +17,20 @@
 		0C68296929DD0B9000A52EC6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0C68296429DD0B9000A52EC6 /* LICENSE */; };
 		0C68296B29DD0F8A00A52EC6 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68296A29DD0F8A00A52EC6 /* Types.swift */; };
 		0C68296D29DD159500A52EC6 /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68296C29DD159500A52EC6 /* StatusBar.swift */; };
-		0C68297229DD248600A52EC6 /* Helium.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C68297129DD248600A52EC6 /* Helium.m */; };
 		0C68297429DD273A00A52EC6 /* Rekt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68297329DD273A00A52EC6 /* Rekt.swift */; };
 		0C68297629DD2C7500A52EC6 /* Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68297529DD2C7500A52EC6 /* Overlay.swift */; };
 		0CD15E6829DD81D1006C101F /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD15E6729DD81D1006C101F /* Store.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C2A0B0729DECE8400E41EAC /* Bridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bridge.m; sourceTree = "<group>"; };
+		0C2A0B0829DECE8400E41EAC /* Bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
 		0C68294D29DD07F300A52EC6 /* Helium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C68295029DD07F300A52EC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C68295229DD07F300A52EC6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0C68295429DD07F400A52EC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C68295729DD07F400A52EC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0C68295929DD07F400A52EC6 /* Helium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Helium.entitlements; sourceTree = "<group>"; };
-		0C68295F29DD0B4700A52EC6 /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
 		0C68296129DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSAppleEventDescriptorHelperCategory.m; sourceTree = "<group>"; };
 		0C68296229DD0B9000A52EC6 /* TabletAEDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabletAEDictionary.h; sourceTree = "<group>"; };
 		0C68296329DD0B9000A52EC6 /* WacomTabletDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WacomTabletDriver.m; sourceTree = "<group>"; };
@@ -38,7 +39,6 @@
 		0C68296629DD0B9000A52EC6 /* WacomTabletDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WacomTabletDriver.h; sourceTree = "<group>"; };
 		0C68296A29DD0F8A00A52EC6 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		0C68296C29DD159500A52EC6 /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
-		0C68297129DD248600A52EC6 /* Helium.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helium.m; sourceTree = "<group>"; };
 		0C68297329DD273A00A52EC6 /* Rekt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rekt.swift; sourceTree = "<group>"; };
 		0C68297529DD2C7500A52EC6 /* Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overlay.swift; sourceTree = "<group>"; };
 		0CD15E6729DD81D1006C101F /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -84,6 +84,8 @@
 				0C68295229DD07F300A52EC6 /* SettingsViewController.swift */,
 				0C68295429DD07F400A52EC6 /* Assets.xcassets */,
 				0C68295629DD07F400A52EC6 /* Main.storyboard */,
+				0C2A0B0829DECE8400E41EAC /* Bridge.h */,
+				0C2A0B0729DECE8400E41EAC /* Bridge.m */,
 				0C68296029DD0B9000A52EC6 /* Wacom */,
 			);
 			path = Helium;
@@ -92,13 +94,11 @@
 		0C68296029DD0B9000A52EC6 /* Wacom */ = {
 			isa = PBXGroup;
 			children = (
-				0C68295F29DD0B4700A52EC6 /* Bridge.h */,
 				0C68296529DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.h */,
 				0C68296129DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m */,
 				0C68296629DD0B9000A52EC6 /* WacomTabletDriver.h */,
 				0C68296329DD0B9000A52EC6 /* WacomTabletDriver.m */,
 				0C68296229DD0B9000A52EC6 /* TabletAEDictionary.h */,
-				0C68297129DD248600A52EC6 /* Helium.m */,
 				0C68296429DD0B9000A52EC6 /* LICENSE */,
 			);
 			path = Wacom;
@@ -177,6 +177,7 @@
 			files = (
 				0C68297429DD273A00A52EC6 /* Rekt.swift in Sources */,
 				0C68297629DD2C7500A52EC6 /* Overlay.swift in Sources */,
+				0C2A0B0929DECE8400E41EAC /* Bridge.m in Sources */,
 				0C68296B29DD0F8A00A52EC6 /* Types.swift in Sources */,
 				0C68296729DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m in Sources */,
 				0CD15E6829DD81D1006C101F /* Store.swift in Sources */,
@@ -184,7 +185,6 @@
 				0C68296D29DD159500A52EC6 /* StatusBar.swift in Sources */,
 				0C68295329DD07F300A52EC6 /* SettingsViewController.swift in Sources */,
 				0C68295129DD07F300A52EC6 /* AppDelegate.swift in Sources */,
-				0C68297229DD248600A52EC6 /* Helium.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,7 +343,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nguyenvukhang.Helium;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = Helium/Wacom/Bridge.h;
+				SWIFT_OBJC_BRIDGING_HEADER = Helium/Bridge.h;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -376,7 +376,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nguyenvukhang.Helium;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = Helium/Wacom/Bridge.h;
+				SWIFT_OBJC_BRIDGING_HEADER = Helium/Bridge.h;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

@@ -1,0 +1,3 @@
+[submodule "Helium/Wacom"]
+	path = Helium/Wacom
+	url = git@github.com:Wacom-Developer/wacom-device-kit-macos-api.git
