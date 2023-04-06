@@ -17,23 +17,39 @@ extension NSBezierPath {
     }
 
     func drawBounds(rect: NSRect, length: Double, extraPadding: Double) {
-        let padding = self.lineWidth / 2 + extraPadding
-        let l = length
+        let padding = lineWidth / 2 + extraPadding
+        let d = length
         let x1 = padding, x2 = rect.width - padding
         let y1 = padding, y2 = rect.height - padding
         removeAllPoints()
-        moveTo(x1 + l, y1)
+        // ┌─────────────────────────────────────────┐
+        // │ (x1, y2) +d                 -d (x2, y2) │
+        // │ -d      (2)                 (4)     -d  │
+        // │                                         │
+        // │                                         │
+        // │ +d      (1)                 (3)     +d  │
+        // │ (x1, y1) +d                 -d (x2, y1) │
+        // └─────────────────────────────────────────┘
+
+        // ← ↑
+        moveTo(min(x1 + d, x2), y1)
         lineTo(x1, y1)
-        lineTo(x1, y1 + l)
-        moveTo(x1 + l, y2)
+        lineTo(x1, min(y1 + d, y2))
+
+        // ← ↓
+        moveTo(min(x1 + d, x2), y2)
         lineTo(x1, y2)
-        lineTo(x1, y2 - l)
-        moveTo(x2 - l, y1)
+        lineTo(x1, max(y2 - d, y1))
+
+        // → ↑
+        moveTo(max(x2 - d, x1), y1)
         lineTo(x2, y1)
-        lineTo(x2, y1 + l)
-        moveTo(x2 - l, y2)
+        lineTo(x2, min(y1 + d, y2))
+
+        // → ↓
+        moveTo(max(x2 - d, x1), y2)
         lineTo(x2, y2)
-        lineTo(x2, y2 - l)
+        lineTo(x2, max(y2 - d, y1))
     }
 }
 
@@ -115,9 +131,9 @@ class Overlay: NSWindow {
 
         store.lineColor.set()
         bounds.lineWidth = store.lineWidth
-        bounds.drawBounds(rect: self.frame, length: store.cornerLength, extraPadding: 2)
+        bounds.drawBounds(rect: frame, length: store.cornerLength, extraPadding: 2)
         bounds.stroke()
-        
+
         // addTrueBounds(color: .blue)
 
         bg.unlockFocus()
