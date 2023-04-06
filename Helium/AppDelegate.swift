@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var bar: MenuBar
     let store: Store
     var overlay: Overlay
-    var windowController: NSWindowController
+    var overlayWindowController: NSWindowController
     var prefsWindowController: NSWindowController?
     var lastRect: NSRect
 
@@ -28,14 +28,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.bar = MenuBar(mode: mode)
         self.store = Store()
         self.overlay = Overlay(store, showBounds: showBounds)
-        self.windowController = NSWindowController(window: overlay)
+        self.overlayWindowController = NSWindowController(window: overlay)
         self.lastRect = NSZeroRect
 
         super.init()
 
         listenForEvents()
         bar.linkActions(toggleMode: #selector(toggleMode), togglePrecisionBounds: #selector(togglePrecisionBounds), openPrefs: #selector(openPreferences), quit: #selector(quit))
-        windowController.showWindow(overlay)
+        overlayWindowController.showWindow(overlay)
         setFullScreenMode()
     }
 

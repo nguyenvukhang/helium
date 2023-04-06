@@ -62,6 +62,11 @@ struct Pair<T> {
     }
 }
 
+struct Ref<T> {
+    var val: T
+    init(_ value: T) { self.val = value }
+}
+
 enum KeyCode: UInt16 {
     // https://gist.github.com/swillits/df648e87016772c7f7e5dbed2b345066
 
