@@ -16,9 +16,9 @@ class Store {
         self.aspectRatio = AspectRatio(x)
     }
 
-    var firstTime: Bool {
+    var setupExists: Bool {
         get { x.bool(forKey: "init") }
-        set { x.set(true, forKey: "init") }
+        set(v) { x.set(v, forKey: "init") }
     }
 
     var moveOnEdgeTouch: Bool {
@@ -60,6 +60,7 @@ class Store {
     }
 
     func initializeDefaults() {
+        setupExists = true
         scale = 0.48
         lineColor = NSColor(red: 0.925, green: 0.282, blue: 0.600, alpha: 0.5)
         aspectRatio.width = 16

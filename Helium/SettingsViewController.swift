@@ -63,7 +63,7 @@ class SettingsViewController: NSViewController {
         self.overlay = overlay
         self.store = store
         self.update = update
-        if store.firstTime {
+        if !store.setupExists {
             store.initializeDefaults()
         }
         loadAllFromStore()
