@@ -48,18 +48,14 @@ extension NSBezierPath {
 
 class Overlay: NSWindow {
     private let store: Store
-    private var enabled: Bool
-    private var bounds: NSBezierPath
+    private var showBounds: Bool
     private let margin = 16.0
 
-    init(_ store: Store) {
+    init(_ store: Store, showBounds: Bool) {
         self.store = store
-        self.enabled = true
-        self.bounds = NSBezierPath()
-        bounds.lineJoinStyle = .round
-        
-        super.init(contentRect: NSMakeRect(0, 0, 1, 1), styleMask: .borderless, backing: .buffered, defer: true)
-        drawBorder()
+        self.showBounds = showBounds
+
+        super.init(contentRect: NSMakeRect(0, 0, 0, 1), styleMask: .borderless, backing: .buffered, defer: true)
         ignoresMouseEvents = true
         level = .screenSaver
         alphaValue = 0
@@ -73,7 +69,7 @@ class Overlay: NSWindow {
     }
 
     func show() {
-        if !enabled {
+        if !showBounds {
             return
         }
         alphaValue = 1
@@ -88,7 +84,7 @@ class Overlay: NSWindow {
     }
 
     func flash(force: Bool) {
-        if !force && !enabled {
+        if !force && !showBounds {
             return
         }
         alphaValue = 1
@@ -125,6 +121,10 @@ class Overlay: NSWindow {
         bg.lockFocus()
 
         store.lineColor.set()
+
+        let bounds = NSBezierPath()
+        bounds.lineJoinStyle = .round
+
         bounds.lineWidth = store.lineWidth
         bounds.removeAllPoints()
         bounds.drawBounds(rect: frame, length: store.cornerLength, margin: margin)
@@ -136,7 +136,7 @@ class Overlay: NSWindow {
         backgroundColor = NSColor(patternImage: bg)
     }
 
-    func setEnabled(to: Bool) {
-        enabled = to
+    func setShowBounds(to: Bool) {
+        showBounds = to
     }
 }

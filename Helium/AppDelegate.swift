@@ -27,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         self.bar = MenuBar(mode: mode)
         self.store = Store()
-        self.overlay = Overlay(store)
+        self.overlay = Overlay(store, showBounds: showBounds)
         self.windowController = NSWindowController(window: overlay)
         self.lastRect = NSZeroRect
 
@@ -58,7 +58,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      */
     @objc func togglePrecisionBounds() {
         showBounds = !showBounds
-        overlay.setEnabled(to: showBounds)
+        overlay.setShowBounds(to: showBounds)
         bar.setPrecisionBounds(to: showBounds)
         if showBounds {
             overlay.flash()
