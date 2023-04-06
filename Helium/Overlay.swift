@@ -16,40 +16,40 @@ extension NSBezierPath {
         line(to: NSPoint(x: x, y: y))
     }
 
-    func drawBounds(rect: NSRect, length: Double, extraPadding: Double) {
-        let padding = lineWidth / 2 + extraPadding
-        let d = length
-        let x1 = padding, x2 = rect.width - padding
-        let y1 = padding, y2 = rect.height - padding
+    func take(_ path: NSBezierPath) {
         removeAllPoints()
-        // ┌─────────────────────────────────────────┐
-        // │ (x1, y2) +d                 -d (x2, y2) │
-        // │ -d      (2)                 (4)     -d  │
-        // │                                         │
-        // │                                         │
-        // │ +d      (1)                 (3)     +d  │
-        // │ (x1, y1) +d                 -d (x2, y1) │
-        // └─────────────────────────────────────────┘
+        append(path)
+    }
 
-        // ← ↑
-        moveTo(min(x1 + d, x2), y1)
-        lineTo(x1, y1)
-        lineTo(x1, min(y1 + d, y2))
+    // take a path and append it 4 times in all 4 flipped states
+    func addAll4Orientations(path: NSBezierPath) {
+        let u = NSBezierPath(), v = NSBezierPath()
+        u.take(path)
+        v.take(u)
+        v.transform(using: AffineTransform(scaleByX: -1, byY: 1))
+        u.append(v)
+        v.take(u)
+        v.transform(using: AffineTransform(scaleByX: 1, byY: -1))
+        append(v)
+        append(u)
+    }
 
-        // ← ↓
-        moveTo(min(x1 + d, x2), y2)
-        lineTo(x1, y2)
-        lineTo(x1, max(y2 - d, y1))
+    func drawBounds(rect: NSRect, length: Double, padding: Double) {
+        let p = lineWidth / 2 + padding
+        let pad = AffineTransform(translationByX: p, byY: p)
+        let originToCenter = AffineTransform(translationByX: rect.width / 2, byY: rect.height / 2)
 
-        // → ↑
-        moveTo(max(x2 - d, x1), y1)
-        lineTo(x2, y1)
-        lineTo(x2, min(y1 + d, y2))
+        // Draw an L
+        let l = NSBezierPath()
+        l.moveTo(0, length)
+        l.lineTo(0, 0)
+        l.lineTo(length, 0)
+        l.transform(using: pad)
 
-        // → ↓
-        moveTo(max(x2 - d, x1), y2)
-        lineTo(x2, y2)
-        lineTo(x2, max(y2 - d, y1))
+        // Draw all 4 orientations
+        l.transform(using: originToCenter.inverted()!)
+        addAll4Orientations(path: l)
+        transform(using: originToCenter)
     }
 }
 
@@ -57,6 +57,7 @@ class Overlay: NSWindow {
     private let store: Store
     private var enabled: Bool
     private var bounds: NSBezierPath
+    private let padding = 1.0
 
     init(_ store: Store) {
         self.store = store
@@ -101,7 +102,7 @@ class Overlay: NSWindow {
 
     func move(to: NSRect) {
         var target = to
-        let padding = bounds.lineWidth + 2
+        let padding = store.lineWidth + padding
         target.origin.x -= padding / 2
         target.origin.y -= padding / 2
 
@@ -131,7 +132,8 @@ class Overlay: NSWindow {
 
         store.lineColor.set()
         bounds.lineWidth = store.lineWidth
-        bounds.drawBounds(rect: frame, length: store.cornerLength, extraPadding: 2)
+        bounds.removeAllPoints()
+        bounds.drawBounds(rect: frame, length: store.cornerLength, padding: padding)
         bounds.stroke()
 
         // addTrueBounds(color: .blue)
