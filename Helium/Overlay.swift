@@ -18,13 +18,13 @@ extension NSBezierPath {
 }
 
 class Overlay: NSWindow {
+    private let store: Store
     private var enabled: Bool
     private let padding: Double = 10
-    private let store: Store
     private var bounds: NSBezierPath
 
-    init() {
-        self.store = Store()
+    init(_ store: Store) {
+        self.store = store
         self.enabled = true
         self.bounds = NSBezierPath()
         super.init(contentRect: NSMakeRect(0, 0, 1, 1), styleMask: .borderless, backing: .buffered, defer: true)

@@ -10,23 +10,25 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     private var lastUsedTablet: Int
-    private var bar: StatusBar
-    private var mode: Mode
     private var showBounds: Bool
+    private var mode: Mode
+
+    private var bar: StatusBar
+    private let store: Store
     private var overlay: Overlay
     private var windowController: NSWindowController
     private var prefsWindowController: NSWindowController?
-    private let store: Store
     private var lastRect: NSRect
 
     override init() {
         self.lastUsedTablet = 0 // 0 is an invalid tablet ID
         self.showBounds = true
         self.mode = .fullscreen
+
         self.bar = StatusBar()
-        self.overlay = Overlay()
-        self.windowController = NSWindowController(window: overlay)
         self.store = Store()
+        self.overlay = Overlay(store)
+        self.windowController = NSWindowController(window: overlay)
         self.lastRect = NSZeroRect
         super.init()
         listenForEvents()
