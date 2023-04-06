@@ -48,12 +48,12 @@ extension NSBezierPath {
 
 class Overlay: NSWindow {
     private let store: Store
-    private var showBounds: Bool
+    private let pBounds: Pair<String>
     private let margin = 16.0
 
-    init(_ store: Store, showBounds: Bool) {
+    init(_ store: Store, pBounds: Pair<String>) {
         self.store = store
-        self.showBounds = showBounds
+        self.pBounds = pBounds
 
         super.init(contentRect: NSMakeRect(0, 0, 0, 1), styleMask: .borderless, backing: .buffered, defer: true)
         ignoresMouseEvents = true
@@ -69,7 +69,7 @@ class Overlay: NSWindow {
     }
 
     func show() {
-        if !showBounds {
+        if !pBounds.on {
             return
         }
         alphaValue = 1
@@ -84,7 +84,7 @@ class Overlay: NSWindow {
     }
 
     func flash(force: Bool) {
-        if !force && !showBounds {
+        if !force && !pBounds.on {
             return
         }
         alphaValue = 1
@@ -134,9 +134,5 @@ class Overlay: NSWindow {
 
         bg.unlockFocus()
         backgroundColor = NSColor(patternImage: bg)
-    }
-
-    func setShowBounds(to: Bool) {
-        showBounds = to
     }
 }

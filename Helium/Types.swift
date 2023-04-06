@@ -35,36 +35,22 @@ enum Mode {
     }
 }
 
-struct Pair<T> {
+final class Pair<T> {
     private let v: (T, T)
-    enum State {
-        case on
-        case off
-    }
-
+    enum State { case on; case off }
     var on: Bool
-
     init(on: T, off: T, state: State) {
         self.v = (on, off)
         self.on = state == .on ? true : false
     }
 
-    mutating func toggle() {
-        on = !on
-    }
-
-    mutating func set(_ on: Bool) {
-        self.on = on
-    }
-
-    func get() -> T {
-        on ? v.0 : v.1
-    }
+    func toggle() { on = !on }
+    func get() -> T { on ? v.0 : v.1 }
 }
 
-struct Ref<T> {
+final class Ref<T> {
     var val: T
-    init(_ value: T) { self.val = value }
+    init(_ v: T) { self.val = v }
 }
 
 enum KeyCode: UInt16 {

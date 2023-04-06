@@ -10,8 +10,8 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     var lastUsedTablet: Int
-    var showBounds: Bool
-    var mode: Mode
+    var mode: Ref<Mode>
+    var pBounds = Pair(on: "Hide Bounds", off: "Show Bounds", state: .on)
 
     var bar: MenuBar
     let store: Store
@@ -22,12 +22,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     override init() {
         self.lastUsedTablet = 0 // 0 is an invalid tablet ID
-        self.showBounds = true
-        self.mode = .fullscreen
+        self.mode = Ref(.fullscreen)
 
-        self.bar = MenuBar(mode: mode)
+        self.bar = MenuBar(mode: mode, pBounds: pBounds)
         self.store = Store()
-        self.overlay = Overlay(store, showBounds: showBounds)
+        self.overlay = Overlay(store, pBounds: pBounds)
         self.overlayWindowController = NSWindowController(window: overlay)
         self.lastRect = NSZeroRect
 
@@ -43,9 +42,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      * Menu bar action: Toggle between modes.
      */
     @objc func toggleMode() {
-        mode.next()
-        bar.updateMode(mode)
-        switch mode {
+        mode.val.next()
+        bar.update()
+        switch mode.val {
         case .fullscreen:
             setFullScreenMode()
         case .precision:
@@ -57,10 +56,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      * Menu bar action: Toggle show/hide precision bounds
      */
     @objc func togglePrecisionBounds() {
-        showBounds = !showBounds
-        overlay.setShowBounds(to: showBounds)
-        bar.setPrecisionBounds(to: showBounds)
-        if showBounds {
+        pBounds.toggle()
+        bar.update()
+        if pBounds.on {
             overlay.flash()
         } else {
             overlay.hide()
@@ -83,8 +81,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func handleKeyDown(_ e: NSEvent) {
         if e.modifierFlags.contains([.command, .shift]) && e.keyCode == KeyCode.f2.rawValue {
             setPrecisionMode(at: NSEvent.mouseLocation)
-            mode = .precision
-            bar.updateMode(mode)
+            mode.val = .precision
+            bar.update()
         }
     }
 
@@ -108,7 +106,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         // event.isEnteringProximity == true
         lastUsedTablet = event.systemTabletID
-        if mode == .precision {
+        if mode.val == .precision {
             overlay.show()
         }
     }
@@ -150,7 +148,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             prefsWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "PrefsWindowController") as? NSWindowController
             let svc = prefsWindowController?.contentViewController as? SettingsViewController
             svc?.hydrate(overlay: overlay, store: store, update: {
-                if self.mode == .precision {
+                if self.mode.val == .precision {
                     self.setPrecisionMode(at: NSEvent.mouseLocation)
                 }
             })

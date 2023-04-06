@@ -9,8 +9,8 @@ import Cocoa
 
 class MenuBar {
     private let bar: NSStatusItem
-    private var mode: Mode
-    private var pBounds = Pair(on: "Hide Bounds", off: "Show Bounds", state: .on)
+    private let mode: Ref<Mode>
+    private let pBounds: Pair<String>
     private enum Tag: Int {
         case mode = 1
         case bounds = 2
@@ -18,34 +18,27 @@ class MenuBar {
         case quit = 4
     }
 
-    init(mode: Mode) {
+    init(mode: Ref<Mode>, pBounds: Pair<String>) {
         self.mode = mode
+        self.pBounds = pBounds
         self.bar = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
         let menu = NSMenu()
-        menu.addItem(item(title: mode.text(), key: "t", tag: .mode))
+        menu.addItem(item(title: mode.val.text(), key: "t", tag: .mode))
         menu.addItem(item(title: pBounds.get(), key: "b", tag: .bounds))
         menu.addItem(item(title: "Preferences", key: ",", tag: .prefs))
         menu.addItem(item(title: "Quit Helium", key: "q", tag: .quit))
         bar.menu = menu
 
-        updateMode(self.mode)
+        update()
     }
 
     /**
      * Update state to match mode. Defaults to fullscreen.
      */
-    func updateMode(_ mode: Mode) {
-        self.mode = mode
-        bar.button?.image = mode.image()
-        item(.mode)?.title = mode.text()
-    }
-
-    /**
-     * Update state (show/hide) for precision bounds.
-     */
-    func setPrecisionBounds(to: Bool) {
-        pBounds.set(to)
+    func update() {
+        bar.button?.image = mode.val.image()
+        item(.mode)?.title = mode.val.text()
         item(.bounds)?.title = pBounds.get()
     }
 
