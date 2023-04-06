@@ -9,21 +9,12 @@ enum Mode {
     case precision
     case fullscreen
 
-    func next() -> Mode {
+    mutating func next() {
         switch self {
         case .precision:
-            return .fullscreen
+            self = .fullscreen
         case .fullscreen:
-            return .precision
-        }
-    }
-
-    func debug() -> String {
-        switch self {
-        case .fullscreen:
-            return "Mode::Fullscreen"
-        case .precision:
-            return "Mode::Precision"
+            self = .precision
         }
     }
 }

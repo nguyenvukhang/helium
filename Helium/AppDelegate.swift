@@ -58,7 +58,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      * Menu bar action: Toggle between modes.
      */
     @objc func toggleMode() {
-        mode = mode.next()
+        mode.next()
         bar.updateMode(mode)
         switch mode {
         case .fullscreen:
