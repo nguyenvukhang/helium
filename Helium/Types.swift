@@ -20,20 +20,20 @@ enum Mode {
 }
 
 struct Pair<T> {
-    let v: (T, T)
-    var state: Bool
+    private let v: (T, T)
+    var on: Bool
 
     init(on: T, off: T, state: Bool) {
         self.v = (on, off)
-        self.state = state
+        self.on = state
     }
 
     mutating func toggle() {
-        state = !state
+        on = !on
     }
 
     func get() -> T {
-        state ? v.0 : v.1
+        on ? v.0 : v.1
     }
 }
 
