@@ -13,8 +13,8 @@ build: FORCE
 	$(BUILD_CMD)
 
 install:
-	make build
 	rm -rf /Applications/$(APP)
+	make build
 	cp -a Helium.xcarchive/Products/Applications/$(APP) /Applications/$(APP)
 
 dev:
@@ -24,7 +24,7 @@ open:
 	open /Applications/$(APP)
 
 quit:
-	osascript -e 'quit app "Helium"'
+	osascript -e 'quit app "$(APP)"'
 
 all:
 	@make quit
