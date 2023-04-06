@@ -4,16 +4,13 @@
 //
 //  Created by khang on 5/4/23.
 //
-
 import Foundation
-
 class Store {
     private let x = UserDefaults.standard
 
     var firstTime: Bool {
         get {
             x.bool(forKey: "init")
-
         } set {
             x.set(true, forKey: "init")
         }
@@ -31,7 +28,6 @@ class Store {
     var moveOnEdgeTouch: Bool {
         get {
             x.bool(forKey: "move-on-edge-touch")
-
         } set(v) {
             x.set(v, forKey: "move-on-edge-touch")
         }
@@ -81,17 +77,19 @@ class Store {
 
     var lineColor: NSColor {
         get {
-            let r = x.double(forKey: "line-color-R")
-            let g = x.double(forKey: "line-color-G")
-            let b = x.double(forKey: "line-color-B")
-            let a = x.double(forKey: "line-color-A")
-            return NSColor(red: r, green: g, blue: b, alpha: a)
+            guard
+                let s = x.data(forKey: "line-color"),
+                let u = try? NSKeyedUnarchiver.unarchivedObject(ofClass: NSColor.self, from: s),
+                let color = u as NSColor?
+            else {
+                return NSColor.black
+            }
+            return color
         }
-        set(v) {
-            x.set(v.redComponent, forKey: "line-color-R")
-            x.set(v.greenComponent, forKey: "line-color-G")
-            x.set(v.blueComponent, forKey: "line-color-B")
-            x.set(v.alphaComponent, forKey: "line-color-A")
+        set(color) {
+            if let data = try? NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false) {
+                x.set(data, forKey: "line-color")
+            }
         }
     }
 
