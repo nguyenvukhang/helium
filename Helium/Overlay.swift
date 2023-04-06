@@ -8,18 +8,18 @@
 import Foundation
 
 extension NSBezierPath {
-    func moveTo(_ x: CGFloat, _ y: CGFloat) {
+    func moveTo(_ x: Double, _ y: Double) {
         move(to: NSMakePoint(x, y))
     }
 
-    func lineTo(_ x: CGFloat, _ y: CGFloat) {
+    func lineTo(_ x: Double, _ y: Double) {
         line(to: NSMakePoint(x, y))
     }
 }
 
 class Overlay: NSWindow {
     private var enabled: Bool
-    private let padding: CGFloat = 10
+    private let padding: Double = 10
     private let store: Store
 
     init() {
@@ -31,7 +31,7 @@ class Overlay: NSWindow {
         alphaValue = 0
     }
 
-    private func animateAlpha(to: CGFloat, over: TimeInterval) {
+    private func animateAlpha(to: Double, over: TimeInterval) {
         NSAnimationContext.beginGrouping()
         NSAnimationContext.current.duration = over
         animator().alphaValue = to
@@ -67,7 +67,7 @@ class Overlay: NSWindow {
         drawBorder()
     }
 
-    private func drawCorners(_ bz: NSBezierPath, length: CGFloat, padding: CGFloat) {
+    private func drawCorners(_ bz: NSBezierPath, length: Double, padding: Double) {
         let f = frame, p = padding, l = store.cornerLength
         let x1 = p, x2 = f.size.width - p, y1 = p, y2 = f.size.height - p
         bz.moveTo(x1 + l, y1)

@@ -16,7 +16,7 @@ extension NSRect {
      * Scales a rect. Note that the origin (bottom-left corner)
      * is the invariant of this transformation, not the center.
      */
-    mutating func scale(by: CGFloat) {
+    mutating func scale(by: Double) {
         size.width *= by
         size.height *= by
     }
@@ -43,7 +43,7 @@ extension NSRect {
     /**
      * Fills a parent rect, given an aspect ratio constraint
      */
-    mutating func fill(_ parent: NSRect, withAspectRatio: CGFloat) {
+    mutating func fill(_ parent: NSRect, withAspectRatio: Double) {
         size.width = min(parent.size.height * withAspectRatio, parent.size.width)
         size.height = size.width / withAspectRatio
     }
@@ -51,7 +51,7 @@ extension NSRect {
     /**
      * Fills the current screen, given an aspect ratio constraint
      */
-    mutating func fillScreen(withAspectRatio: CGFloat) {
+    mutating func fillScreen(withAspectRatio: Double) {
         fill(NSRect.screen(), withAspectRatio: withAspectRatio)
     }
 
