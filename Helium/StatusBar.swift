@@ -36,7 +36,7 @@ class StatusBar: NSObject {
         menu.addItem(withTitle: "Helium", action: nil, keyEquivalent: "")
         menu.addItem(NSMenuItem.separator())
         menu.addItem(title: "Toggle", key: "t", tag: TAG_TOGGLE_MODE)
-        menu.addItem(title: "Hide precision bounds", key: "b", tag: TAG_TOGGLE_BOUNDS)
+        menu.addItem(title: BOUNDS_SHOW_DESC, key: "b", tag: TAG_TOGGLE_BOUNDS)
         menu.addItem(title: "Preferences", key: ",", tag: TAG_OPEN_PREFERENCES)
         menu.addItem(title: "Quit", key: "q", tag: TAG_QUIT)
         bar.menu = menu
