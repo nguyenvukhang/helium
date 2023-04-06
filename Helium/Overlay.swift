@@ -15,12 +15,31 @@ extension NSBezierPath {
     func lineTo(_ x: Double, _ y: Double) {
         line(to: NSPoint(x: x, y: y))
     }
+
+    func drawBounds(rect: NSRect, length: Double, extraPadding: Double) {
+        let padding = self.lineWidth / 2 + extraPadding
+        let l = length
+        let x1 = padding, x2 = rect.width - padding
+        let y1 = padding, y2 = rect.height - padding
+        removeAllPoints()
+        moveTo(x1 + l, y1)
+        lineTo(x1, y1)
+        lineTo(x1, y1 + l)
+        moveTo(x1 + l, y2)
+        lineTo(x1, y2)
+        lineTo(x1, y2 - l)
+        moveTo(x2 - l, y1)
+        lineTo(x2, y1)
+        lineTo(x2, y1 + l)
+        moveTo(x2 - l, y2)
+        lineTo(x2, y2)
+        lineTo(x2, y2 - l)
+    }
 }
 
 class Overlay: NSWindow {
     private let store: Store
     private var enabled: Bool
-    private let padding: Double = 10
     private var bounds: NSBezierPath
 
     init(_ store: Store) {
@@ -66,8 +85,9 @@ class Overlay: NSWindow {
 
     func move(to: NSRect) {
         var target = to
-        target.origin.x -= padding
-        target.origin.y -= padding
+        let padding = bounds.lineWidth + 2
+        target.origin.x -= padding / 2
+        target.origin.y -= padding / 2
 
         if frame.size.equalTo(to.size) {
             // no re-draw required, since rect is same size
@@ -75,10 +95,18 @@ class Overlay: NSWindow {
             return
         }
 
-        target.size.width += 2 * padding
-        target.size.height += 2 * padding
+        target.size.width += padding
+        target.size.height += padding
         setFrame(target, display: true)
         drawBorder()
+    }
+
+    // debugging function to add real bounds to the actual NSWindow boundary rect
+    func addTrueBounds(color: NSColor) {
+        let bz = NSBezierPath(rect: NSRect(origin: NSZeroPoint, size: frame.size))
+        bz.lineWidth = 1
+        color.setStroke()
+        bz.stroke()
     }
 
     func drawBorder() {
@@ -87,27 +115,10 @@ class Overlay: NSWindow {
 
         store.lineColor.set()
         bounds.lineWidth = store.lineWidth
-
-        let f = frame, p = padding, l = store.cornerLength
-        let x1 = p, x2 = f.width - p
-        let y1 = p, y2 = f.height - p
-
-        bounds.removeAllPoints()
-
-        bounds.moveTo(x1 + l, y1)
-        bounds.lineTo(x1, y1)
-        bounds.lineTo(x1, y1 + l)
-        bounds.moveTo(x1 + l, y2)
-        bounds.lineTo(x1, y2)
-        bounds.lineTo(x1, y2 - l)
-        bounds.moveTo(x2 - l, y1)
-        bounds.lineTo(x2, y1)
-        bounds.lineTo(x2, y1 + l)
-        bounds.moveTo(x2 - l, y2)
-        bounds.lineTo(x2, y2)
-        bounds.lineTo(x2, y2 - l)
-
+        bounds.drawBounds(rect: self.frame, length: store.cornerLength, extraPadding: 2)
         bounds.stroke()
+        
+        // addTrueBounds(color: .blue)
 
         bg.unlockFocus()
         backgroundColor = NSColor(patternImage: bg)
