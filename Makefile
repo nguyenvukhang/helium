@@ -31,4 +31,7 @@ all:
 	@make install
 	@make open
 
+size:
+	du -sh /Applications/$(APP)
+
 FORCE: ;
