@@ -89,8 +89,8 @@ class Overlay: NSWindow {
         bounds.lineWidth = store.lineWidth
 
         let f = frame, p = padding, l = store.cornerLength
-        let x1 = p, x2 = f.size.width - p
-        let y1 = p, y2 = f.size.height - p
+        let x1 = p, x2 = f.width - p
+        let y1 = p, y2 = f.height - p
 
         bounds.removeAllPoints()
 

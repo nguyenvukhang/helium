@@ -44,8 +44,8 @@ extension NSRect {
      * Fills a parent rect, given an aspect ratio constraint
      */
     mutating func fill(_ parent: NSRect, withAspectRatio: Double) {
-        size.width = min(parent.size.height * withAspectRatio, parent.size.width)
-        size.height = size.width / withAspectRatio
+        size.width = min(parent.height * withAspectRatio, parent.width)
+        size.height = width / withAspectRatio
     }
 
     /**
