@@ -1,5 +1,11 @@
-DerivedData/
-build/
+# Xcode
+DerivedData
+*.xcarchive
 .DS_Store
-* Kit.xcarchive
-compile_commands.json
+build
+*/build/*
+*.pbxuser
+!default.pbxuser
+xcuserdata
+profile
+*.moved-aside
