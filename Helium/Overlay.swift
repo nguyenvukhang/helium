@@ -9,11 +9,11 @@ import Foundation
 
 extension NSBezierPath {
     func moveTo(_ x: Double, _ y: Double) {
-        move(to: NSMakePoint(x, y))
+        move(to: NSPoint(x: x, y: y))
     }
 
     func lineTo(_ x: Double, _ y: Double) {
-        line(to: NSMakePoint(x, y))
+        line(to: NSPoint(x: x, y: y))
     }
 }
 
@@ -21,11 +21,14 @@ class Overlay: NSWindow {
     private var enabled: Bool
     private let padding: Double = 10
     private let store: Store
+    private var bounds: NSBezierPath
 
     init() {
         self.store = Store()
         self.enabled = true
+        self.bounds = NSBezierPath()
         super.init(contentRect: NSMakeRect(0, 0, 1, 1), styleMask: .borderless, backing: .buffered, defer: true)
+        drawBorder()
         ignoresMouseEvents = true
         level = .screenSaver
         alphaValue = 0
@@ -62,38 +65,49 @@ class Overlay: NSWindow {
     }
 
     func move(to: NSRect) {
-        let frame = NSMakeRect(to.origin.x - padding, to.origin.y - padding, to.size.width + 2 * padding, to.size.height + 2 * padding)
-        setFrame(frame, display: true)
+        var target = to
+        target.origin.x -= padding
+        target.origin.y -= padding
+
+        if frame.size.equalTo(to.size) {
+            // no re-draw required, since rect is same size
+            setFrameOrigin(to.origin)
+            return
+        }
+
+        target.size.width += 2 * padding
+        target.size.height += 2 * padding
+        setFrame(target, display: true)
         drawBorder()
     }
 
-    private func drawCorners(_ bz: NSBezierPath, length: Double, padding: Double) {
-        let f = frame, p = padding, l = store.cornerLength
-        let x1 = p, x2 = f.size.width - p, y1 = p, y2 = f.size.height - p
-        bz.moveTo(x1 + l, y1)
-        bz.lineTo(x1, y1)
-        bz.lineTo(x1, y1 + l)
-        bz.moveTo(x1 + l, y2)
-        bz.lineTo(x1, y2)
-        bz.lineTo(x1, y2 - l)
-        bz.moveTo(x2 - l, y1)
-        bz.lineTo(x2, y1)
-        bz.lineTo(x2, y1 + l)
-        bz.moveTo(x2 - l, y2)
-        bz.lineTo(x2, y2)
-        bz.lineTo(x2, y2 - l)
-    }
-
-    private func drawBorder() {
+    func drawBorder() {
         let bg = NSImage(size: frame.size)
         bg.lockFocus()
 
         store.lineColor.set()
+        bounds.lineWidth = store.lineWidth
 
-        let bz = NSBezierPath()
-        bz.lineWidth = store.lineWidth
-        drawCorners(bz, length: 32, padding: padding - bz.lineWidth / 2)
-        bz.stroke()
+        let f = frame, p = padding, l = store.cornerLength
+        let x1 = p, x2 = f.size.width - p
+        let y1 = p, y2 = f.size.height - p
+
+        bounds.removeAllPoints()
+
+        bounds.moveTo(x1 + l, y1)
+        bounds.lineTo(x1, y1)
+        bounds.lineTo(x1, y1 + l)
+        bounds.moveTo(x1 + l, y2)
+        bounds.lineTo(x1, y2)
+        bounds.lineTo(x1, y2 - l)
+        bounds.moveTo(x2 - l, y1)
+        bounds.lineTo(x2, y1)
+        bounds.lineTo(x2, y1 + l)
+        bounds.moveTo(x2 - l, y2)
+        bounds.lineTo(x2, y2)
+        bounds.lineTo(x2, y2 - l)
+
+        bounds.stroke()
 
         bg.unlockFocus()
         backgroundColor = NSColor(patternImage: bg)

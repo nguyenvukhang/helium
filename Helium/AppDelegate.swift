@@ -136,13 +136,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     /**
-     * API call to Wacom Drivers to set map area.
-     */
-    private func setScreenMapArea(_ rect: NSRect) {
-        Wacom.setScreenMapArea(rect, screen: NSRect.screen(), tabletId: Int32(lastUsedTablet))
-    }
-
-    /**
      * Set focus on the area around the cursor.
      */
     func setPrecisionMode(at: NSPoint) {
@@ -165,6 +158,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         rect.centerInScreen()
         setScreenMapArea(rect)
         overlay.hide()
+    }
+
+    /**
+     * API call to Wacom Drivers to set map area.
+     */
+    private func setScreenMapArea(_ rect: NSRect) {
+        Wacom.setScreenMapArea(rect, screen: NSRect.screen(), tabletId: Int32(lastUsedTablet))
     }
 
     func applicationSupportsSecureRestorableState(_: NSApplication) -> Bool {

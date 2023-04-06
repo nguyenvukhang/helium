@@ -64,7 +64,7 @@ class Store {
         lineColor = NSColor(red: 0.925, green: 0.282, blue: 0.600, alpha: 0.5)
         aspectRatio.width = 16
         aspectRatio.height = 10
-        cornerLength = 100
+        cornerLength = 50
         lineWidth = 5
     }
 

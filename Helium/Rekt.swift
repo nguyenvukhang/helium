@@ -60,8 +60,8 @@ extension NSRect {
      * Parent's origin is The origin.
      */
     mutating func center(within: NSRect) {
-        origin.x = (within.size.width - size.width) / 2
-        origin.y = (within.size.height - size.height) / 2
+        origin.x = (within.width - width) / 2
+        origin.y = (within.height - height) / 2
     }
 
     /**
