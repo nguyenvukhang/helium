@@ -129,12 +129,11 @@ class SettingsViewController: NSViewController {
         case .base:
             sender.bezelColor = .red
             resetState = .confirm
-            sender.title = resetState.rawValue
         case .confirm:
-            store?.initializeDefaults()
-            loadAllFromStore()
             sender.bezelColor = nil
             resetState = .base
+            store?.initializeDefaults()
+            loadAllFromStore()
         }
         sender.title = resetState.rawValue
     }
