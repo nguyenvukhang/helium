@@ -19,6 +19,24 @@ enum Mode {
     }
 }
 
+struct Pair<T> {
+    let v: (T, T)
+    var state: Bool
+
+    init(on: T, off: T, state: Bool) {
+        self.v = (on, off)
+        self.state = state
+    }
+
+    mutating func toggle() {
+        state = !state
+    }
+
+    func get() -> T {
+        state ? v.0 : v.1
+    }
+}
+
 enum KeyCode: UInt16 {
     // https://gist.github.com/swillits/df648e87016772c7f7e5dbed2b345066
 
