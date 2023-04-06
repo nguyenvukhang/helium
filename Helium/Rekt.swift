@@ -83,4 +83,19 @@ extension NSRect {
         }
         return false
     }
+
+    static func precision(at: NSPoint, scale: Double, aspectRatio: Double) -> NSRect {
+        var rect = NSZeroRect
+        rect.fillScreen(withAspectRatio: aspectRatio)
+        rect.scale(by: scale)
+        rect.moveWithinScreen(to: at)
+        return rect
+    }
+
+    static func fullscreen(aspectRatio: Double) -> NSRect {
+        var rect = NSZeroRect
+        rect.fillScreen(withAspectRatio: aspectRatio)
+        rect.centerInScreen()
+        return rect
+    }
 }

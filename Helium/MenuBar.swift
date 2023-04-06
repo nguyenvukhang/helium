@@ -8,9 +8,9 @@
 import Cocoa
 
 class MenuBar {
+    private let bar: NSStatusItem
     private var mode: Mode
     private var pBounds = Pair(on: "Hide Bounds", off: "Show Bounds", state: .on)
-
     private enum Tag: Int {
         case mode = 1
         case bounds = 2
@@ -18,25 +18,15 @@ class MenuBar {
         case quit = 4
     }
 
-    private func item(title: String, key: String, tag: Tag) -> NSMenuItem {
-        let item = NSMenuItem(title: title, action: nil, keyEquivalent: key)
-        item.tag = tag.rawValue
-        return item
-    }
-
-    private let bar: NSStatusItem
-
     init(mode: Mode) {
         self.mode = mode
         self.bar = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
         let menu = NSMenu()
-        menu.addItem(withTitle: "Helium", action: nil, keyEquivalent: "")
-        menu.addItem(NSMenuItem.separator())
         menu.addItem(item(title: mode.text(), key: "t", tag: .mode))
         menu.addItem(item(title: pBounds.get(), key: "b", tag: .bounds))
         menu.addItem(item(title: "Preferences", key: ",", tag: .prefs))
-        menu.addItem(item(title: "Quit", key: "q", tag: .quit))
+        menu.addItem(item(title: "Quit Helium", key: "q", tag: .quit))
         bar.menu = menu
 
         updateMode(self.mode)
@@ -74,5 +64,14 @@ class MenuBar {
      */
     private func item(_ tag: Tag) -> NSMenuItem? {
         bar.menu?.item(withTag: tag.rawValue)
+    }
+
+    /**
+     * Create a new NSMenuItem.
+     */
+    private func item(title: String, key: String, tag: Tag) -> NSMenuItem {
+        let item = NSMenuItem(title: title, action: nil, keyEquivalent: key)
+        item.tag = tag.rawValue
+        return item
     }
 }

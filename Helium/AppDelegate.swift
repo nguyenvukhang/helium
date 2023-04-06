@@ -30,28 +30,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.overlay = Overlay(store)
         self.windowController = NSWindowController(window: overlay)
         self.lastRect = NSZeroRect
+
         super.init()
+
         listenForEvents()
         bar.linkActions(toggleMode: #selector(toggleMode), togglePrecisionBounds: #selector(togglePrecisionBounds), openPrefs: #selector(openPreferences), quit: #selector(quit))
         windowController.showWindow(overlay)
         setFullScreenMode()
-    }
-
-    /**
-     * Open the preferences window.
-     */
-    @objc func openPreferences() {
-        if prefsWindowController == nil {
-            prefsWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "PrefsWindowController") as? NSWindowController
-            let svc = prefsWindowController?.contentViewController as? SettingsViewController
-            svc?.hydrate(overlay: overlay, store: store, update: {
-                if self.mode == .precision {
-                    self.setPrecisionMode(at: NSEvent.mouseLocation)
-                }
-            })
-        }
-        NSApp.activate(ignoringOtherApps: true)
-        prefsWindowController?.showWindow(self)
     }
 
     /**
@@ -141,10 +126,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      * Set focus on the area around the cursor.
      */
     func setPrecisionMode(at: NSPoint) {
-        var rect = NSZeroRect
-        rect.fillScreen(withAspectRatio: store.getAspectRatio())
-        rect.scale(by: store.scale)
-        rect.moveWithinScreen(to: at)
+        let rect = NSRect.precision(at: at, scale: store.scale, aspectRatio: store.getAspectRatio())
         setScreenMapArea(rect)
         overlay.move(to: rect)
         lastRect = rect
@@ -155,11 +137,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      * Make the tablet cover the whole screen.
      */
     func setFullScreenMode() {
-        var rect = NSZeroRect
-        rect.fillScreen(withAspectRatio: store.getAspectRatio())
-        rect.centerInScreen()
+        let rect = NSRect.fullscreen(aspectRatio: store.getAspectRatio())
         setScreenMapArea(rect)
         overlay.hide()
+    }
+
+    /**
+     * Open the preferences window.
+     */
+    @objc func openPreferences() {
+        if prefsWindowController == nil {
+            prefsWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "PrefsWindowController") as? NSWindowController
+            let svc = prefsWindowController?.contentViewController as? SettingsViewController
+            svc?.hydrate(overlay: overlay, store: store, update: {
+                if self.mode == .precision {
+                    self.setPrecisionMode(at: NSEvent.mouseLocation)
+                }
+            })
+        }
+        NSApp.activate(ignoringOtherApps: true)
+        prefsWindowController?.showWindow(self)
     }
 
     /**
