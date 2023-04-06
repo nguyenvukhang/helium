@@ -147,7 +147,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      */
     func setPrecisionMode(at: NSPoint) {
         var rect = NSZeroRect
-        rect.fillScreen(withAspectRatio: store.aspectRatio)
+        rect.fillScreen(withAspectRatio: store.getAspectRatio())
         rect.scale(by: store.scale)
         rect.moveWithinScreen(to: at)
         setScreenMapArea(rect)
@@ -161,7 +161,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      */
     func setFullScreenMode() {
         var rect = NSZeroRect
-        rect.fillScreen(withAspectRatio: store.aspectRatio)
+        rect.fillScreen(withAspectRatio: store.getAspectRatio())
         rect.centerInScreen()
         setScreenMapArea(rect)
         overlay.hide()

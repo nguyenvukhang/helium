@@ -42,8 +42,8 @@ class SettingsViewController: NSViewController {
         lineColor.color = store.lineColor
         lineWidth.stringValue = round2(store.lineWidth)
         cornerLength.stringValue = round2(store.cornerLength)
-        aspectRatioWidth.stringValue = round2(store.aspectRatioWidth)
-        aspectRatioHeight.stringValue = round2(store.aspectRatioHeight)
+        aspectRatioWidth.stringValue = round2(store.aspectRatio.width)
+        aspectRatioHeight.stringValue = round2(store.aspectRatio.height)
         moveOnEdgeTouch.state = store.moveOnEdgeTouch ? .on : .off
     }
 
@@ -71,7 +71,7 @@ class SettingsViewController: NSViewController {
 
     private func preview() {
         var r = NSZeroRect
-        r.fillScreen(withAspectRatio: store!.aspectRatio)
+        r.fillScreen(withAspectRatio: store!.getAspectRatio())
         r.scale(by: store!.scale)
         r.centerInScreen()
         overlay?.move(to: r)
@@ -100,12 +100,12 @@ class SettingsViewController: NSViewController {
     }
 
     @IBAction func aspectRatioWidthDidChange(_ sender: NSTextField) {
-        store?.aspectRatioWidth = sender.doubleValue
+        store?.aspectRatio.width = sender.doubleValue
         preview()
     }
 
     @IBAction func aspectRatioHeightDidChange(_ sender: NSTextField) {
-        store?.aspectRatioHeight = sender.doubleValue
+        store?.aspectRatio.height = sender.doubleValue
         preview()
     }
 

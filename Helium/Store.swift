@@ -4,75 +4,41 @@
 //
 //  Created by khang on 5/4/23.
 //
-import Foundation
-class Store {
-    private let x = UserDefaults.standard
 
-    var firstTime: Bool {
-        get {
-            x.bool(forKey: "init")
-        } set {
-            x.set(true, forKey: "init")
-        }
+import Foundation
+
+class Store {
+    private let x: UserDefaults
+    var aspectRatio: AspectRatio
+
+    init() {
+        self.x = UserDefaults.standard
+        self.aspectRatio = AspectRatio(x)
     }
 
-    var aspectRatioWidth: Double {
-        get {
-            x.double(forKey: "aspect-ratio-width")
-        }
-        set(w) {
-            x.set(w, forKey: "aspect-ratio-width")
-        }
+    var firstTime: Bool {
+        get { x.bool(forKey: "init") }
+        set { x.set(true, forKey: "init") }
     }
 
     var moveOnEdgeTouch: Bool {
-        get {
-            x.bool(forKey: "move-on-edge-touch")
-        } set(v) {
-            x.set(v, forKey: "move-on-edge-touch")
-        }
-    }
-
-    var aspectRatioHeight: Double {
-        get {
-            x.double(forKey: "aspect-ratio-height")
-        }
-        set(h) {
-            x.set(h, forKey: "aspect-ratio-height")
-        }
-    }
-
-    var aspectRatio: Double {
-        let w = x.double(forKey: "aspect-ratio-width")
-        let h = x.double(forKey: "aspect-ratio-height")
-        return w / h
+        get { x.bool(forKey: "move-on-edge-touch") }
+        set(v) { x.set(v, forKey: "move-on-edge-touch") }
     }
 
     var scale: Double {
-        get {
-            x.double(forKey: "scale")
-        }
-        set(v) {
-            x.set(v, forKey: "scale")
-        }
+        get { x.double(forKey: "scale") }
+        set(v) { x.set(v, forKey: "scale") }
     }
 
     var cornerLength: Double {
-        get {
-            x.double(forKey: "corner-length")
-        }
-        set(v) {
-            x.set(v, forKey: "corner-length")
-        }
+        get { x.double(forKey: "corner-length") }
+        set(v) { x.set(v, forKey: "corner-length") }
     }
 
     var lineWidth: Double {
-        get {
-            x.double(forKey: "line-width")
-        }
-        set(v) {
-            x.set(v, forKey: "line-width")
-        }
+        get { x.double(forKey: "line-width") }
+        set(v) { x.set(v, forKey: "line-width") }
     }
 
     var lineColor: NSColor {
@@ -96,9 +62,29 @@ class Store {
     func initializeDefaults() {
         scale = 0.48
         lineColor = NSColor(red: 0.925, green: 0.282, blue: 0.600, alpha: 0.5)
-        aspectRatioWidth = 16
-        aspectRatioHeight = 10
+        aspectRatio.width = 16
+        aspectRatio.height = 10
         cornerLength = 100
         lineWidth = 5
+    }
+
+    func getAspectRatio() -> Double {
+        aspectRatio.width / aspectRatio.height
+    }
+
+    struct AspectRatio {
+        private let x: UserDefaults
+
+        init(_ x: UserDefaults) { self.x = x }
+
+        var height: Double {
+            get { x.double(forKey: "aspect-ratio-height") }
+            set(h) { x.set(h, forKey: "aspect-ratio-height") }
+        }
+
+        var width: Double {
+            get { x.double(forKey: "aspect-ratio-width") }
+            set(w) { x.set(w, forKey: "aspect-ratio-width") }
+        }
     }
 }
