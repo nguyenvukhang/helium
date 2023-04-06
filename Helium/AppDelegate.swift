@@ -13,7 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var showBounds: Bool
     var mode: Mode
 
-    var bar: StatusBar
+    var bar: MenuBar
     let store: Store
     var overlay: Overlay
     var windowController: NSWindowController
@@ -25,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.showBounds = true
         self.mode = .fullscreen
 
-        self.bar = StatusBar()
+        self.bar = MenuBar(mode: mode)
         self.store = Store()
         self.overlay = Overlay(store)
         self.windowController = NSWindowController(window: overlay)

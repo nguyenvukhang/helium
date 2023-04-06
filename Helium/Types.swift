@@ -11,25 +11,50 @@ enum Mode {
 
     mutating func next() {
         switch self {
-        case .precision:
-            self = .fullscreen
-        case .fullscreen:
-            self = .precision
+        case .precision: self = .fullscreen
+        case .fullscreen: self = .precision
         }
+    }
+
+    func text() -> String {
+        switch self {
+        case .fullscreen: return "Precision Mode"
+        case .precision: return "Fullscreen Mode"
+        }
+    }
+
+    private func icon() -> String {
+        switch self {
+        case .fullscreen: return "plus.rectangle"
+        case .precision: return "plus.rectangle.fill"
+        }
+    }
+
+    func image() -> NSImage? {
+        NSImage(systemSymbolName: icon(), accessibilityDescription: text())
     }
 }
 
 struct Pair<T> {
     private let v: (T, T)
+    enum State {
+        case on
+        case off
+    }
+
     var on: Bool
 
-    init(on: T, off: T, state: Bool) {
+    init(on: T, off: T, state: State) {
         self.v = (on, off)
-        self.on = state
+        self.on = state == .on ? true : false
     }
 
     mutating func toggle() {
         on = !on
+    }
+
+    mutating func set(_ on: Bool) {
+        self.on = on
     }
 
     func get() -> T {

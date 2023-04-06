@@ -27,7 +27,7 @@ class SettingsViewController: NSViewController {
     private var store: Store?
     private var update: (() -> Void)?
 
-    private var reset = Pair(on: "Confirm Reset", off: "Reset All Preferences", state: false)
+    private var reset = Pair(on: "Confirm Reset", off: "Reset All Preferences", state: .off)
 
     override func viewDidLoad() {
         super.viewDidLoad()
