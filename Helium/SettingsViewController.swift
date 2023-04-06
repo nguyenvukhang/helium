@@ -71,9 +71,10 @@ class SettingsViewController: NSViewController {
 
     private func preview() {
         var r = NSZeroRect
-        r.fillScreen(withAspectRatio: store!.getAspectRatio())
+        let screen = NSRect.screen()
+        r.fill(screen, withAspectRatio: store!.getAspectRatio())
         r.scale(by: store!.scale)
-        r.centerInScreen()
+        r.center(within: screen)
         overlay?.move(to: r)
         overlay?.flash(force: true)
         update?()
