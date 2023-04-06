@@ -9,16 +9,16 @@ import Cocoa
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-    private var lastUsedTablet: Int
-    private var showBounds: Bool
-    private var mode: Mode
+    var lastUsedTablet: Int
+    var showBounds: Bool
+    var mode: Mode
 
-    private var bar: StatusBar
-    private let store: Store
-    private var overlay: Overlay
-    private var windowController: NSWindowController
-    private var prefsWindowController: NSWindowController?
-    private var lastRect: NSRect
+    var bar: StatusBar
+    let store: Store
+    var overlay: Overlay
+    var windowController: NSWindowController
+    var prefsWindowController: NSWindowController?
+    var lastRect: NSRect
 
     override init() {
         self.lastUsedTablet = 0 // 0 is an invalid tablet ID
@@ -95,7 +95,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      * Current list of effective keypresses:
      *   - Cmd + Shift + F2: start precision mode at cursor location
      */
-    private func handleKeyDown(_ e: NSEvent) {
+    func handleKeyDown(_ e: NSEvent) {
         if e.modifierFlags.contains([.command, .shift]) && e.keyCode == KeyCode.f2.rawValue {
             setPrecisionMode(at: NSEvent.mouseLocation)
             mode = .precision
@@ -106,7 +106,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /**
      * Handles [.tabletProximity, .keyDown] events for now.
      */
-    private func handleEvent(_ event: NSEvent) {
+    func handleEvent(_ event: NSEvent) {
         if event.type == .keyDown {
             handleKeyDown(event)
             return
@@ -131,7 +131,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /**
      * This must only be called once.
      */
-    private func listenForEvents() {
+    func listenForEvents() {
         NSEvent.addGlobalMonitorForEvents(matching: [.tabletProximity, .keyDown]) { event in
             self.handleEvent(event)
         }
@@ -165,7 +165,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /**
      * API call to Wacom Drivers to set map area.
      */
-    private func setScreenMapArea(_ rect: NSRect) {
+    func setScreenMapArea(_ rect: NSRect) {
         Wacom.setScreenMapArea(rect, screen: NSRect.screen(), tabletId: Int32(lastUsedTablet))
     }
 

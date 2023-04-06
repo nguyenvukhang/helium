@@ -12,8 +12,8 @@ Rect legacyRect(NSRect rect, NSRect screen) {
   Rect r;
   r.left = NSMinX(rect);
   r.right = NSMaxX(rect);
-  r.top = NSMaxY(screen) - NSMaxY(rect);
-  r.bottom = NSMaxY(screen) - NSMinY(rect);
+  r.top = NSMaxY(screen) + 0.5 - NSMaxY(rect);
+  r.bottom = NSMaxY(screen) + 0.5 - NSMinY(rect);
   return r;
 }
 

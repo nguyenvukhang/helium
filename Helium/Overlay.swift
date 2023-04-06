@@ -8,14 +8,6 @@
 import Foundation
 
 extension NSBezierPath {
-    func moveTo(_ x: Double, _ y: Double) {
-        move(to: NSPoint(x: x, y: y))
-    }
-
-    func lineTo(_ x: Double, _ y: Double) {
-        line(to: NSPoint(x: x, y: y))
-    }
-
     func take(_ path: NSBezierPath) {
         removeAllPoints()
         append(path)
@@ -23,8 +15,7 @@ extension NSBezierPath {
 
     // take a path and append it 4 times in all 4 flipped states
     func addAll4Orientations(path: NSBezierPath) {
-        let u = NSBezierPath(), v = NSBezierPath()
-        u.take(path)
+        let u = path, v = NSBezierPath()
         v.take(u)
         v.transform(using: AffineTransform(scaleByX: -1, byY: 1))
         u.append(v)
@@ -34,16 +25,18 @@ extension NSBezierPath {
         append(u)
     }
 
-    func drawBounds(rect: NSRect, length: Double, padding: Double) {
-        let p = lineWidth / 2 + padding
+    func drawBounds(rect: NSRect, length: Double, margin: Double) {
+        // px that the drawing will exceed the frame
+        let exceed = lineWidth / 2
+        let p = margin - exceed
         let pad = AffineTransform(translationByX: p, byY: p)
         let originToCenter = AffineTransform(translationByX: rect.width / 2, byY: rect.height / 2)
 
         // Draw an L
         let l = NSBezierPath()
-        l.moveTo(0, length)
-        l.lineTo(0, 0)
-        l.lineTo(length, 0)
+        l.move(to: NSPoint(x: 0, y: length))
+        l.line(to: NSPoint(x: 0, y: 0))
+        l.line(to: NSPoint(x: length, y: 0))
         l.transform(using: pad)
 
         // Draw all 4 orientations
@@ -57,12 +50,14 @@ class Overlay: NSWindow {
     private let store: Store
     private var enabled: Bool
     private var bounds: NSBezierPath
-    private let padding = 1.0
+    private let margin = 16.0
 
     init(_ store: Store) {
         self.store = store
         self.enabled = true
         self.bounds = NSBezierPath()
+        bounds.lineJoinStyle = .round
+        
         super.init(contentRect: NSMakeRect(0, 0, 1, 1), styleMask: .borderless, backing: .buffered, defer: true)
         drawBorder()
         ignoresMouseEvents = true
@@ -102,9 +97,8 @@ class Overlay: NSWindow {
 
     func move(to: NSRect) {
         var target = to
-        let padding = store.lineWidth + padding
-        target.origin.x -= padding / 2
-        target.origin.y -= padding / 2
+        target.origin.x -= margin
+        target.origin.y -= margin
 
         if frame.size.equalTo(to.size) {
             // no re-draw required, since rect is same size
@@ -112,14 +106,14 @@ class Overlay: NSWindow {
             return
         }
 
-        target.size.width += padding
-        target.size.height += padding
+        target.size.width += margin * 2
+        target.size.height += margin * 2
         setFrame(target, display: true)
         drawBorder()
     }
 
     // debugging function to add real bounds to the actual NSWindow boundary rect
-    func addTrueBounds(color: NSColor) {
+    func addWindowBounds(color: NSColor) {
         let bz = NSBezierPath(rect: NSRect(origin: NSZeroPoint, size: frame.size))
         bz.lineWidth = 1
         color.setStroke()
@@ -133,10 +127,10 @@ class Overlay: NSWindow {
         store.lineColor.set()
         bounds.lineWidth = store.lineWidth
         bounds.removeAllPoints()
-        bounds.drawBounds(rect: frame, length: store.cornerLength, padding: padding)
+        bounds.drawBounds(rect: frame, length: store.cornerLength, margin: margin)
         bounds.stroke()
 
-        // addTrueBounds(color: .blue)
+        // addWindowBounds(color: .blue)
 
         bg.unlockFocus()
         backgroundColor = NSColor(patternImage: bg)
