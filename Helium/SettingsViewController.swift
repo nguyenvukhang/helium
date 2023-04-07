@@ -32,13 +32,14 @@ class SettingsViewController: NSViewController {
     private var update: (() -> Void)?
     private var actions: Actions?
 
-    private var reset = Pair(on: "Confirm Reset", off: "Reset All Preferences", state: .off)
+    private var reset = Pair(on: "Confirm Restore", off: "Restore Defaults", state: .off)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // so that the color picker will have alpha
         NSColor.ignoresAlpha = false
+        resetAll.title = reset.get()
     }
 
     private func loadAllFromStore() {
