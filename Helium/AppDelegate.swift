@@ -38,9 +38,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         bar.linkActions(toggleMode: #selector(toggleMode), togglePrecisionBounds: #selector(togglePrecisionBounds), openPrefs: #selector(openPreferences), quit: #selector(quit))
         overlayWindowController.showWindow(overlay)
         setFullScreenMode()
-        actions.link(key: .precision, action: {
+        actions.link(key: .precision) {
             self.setPrecisionMode(at: NSEvent.mouseLocation)
-        })
+        }
+        actions.link(key: .fullscreen, action: setFullScreenMode)
+        actions.link(key: .toggle, action: toggleMode)
     }
 
     /**
@@ -74,7 +76,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      * Menu bar action: Quit the app
      */
     @objc func quit() {
-        self.setFullScreenMode()
+        setFullScreenMode()
         exit(EXIT_SUCCESS)
     }
 
@@ -153,7 +155,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if prefsWindowController == nil {
             prefsWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "PrefsWindowController") as? NSWindowController
             let svc = prefsWindowController?.contentViewController as? SettingsViewController
-            svc?.hydrate(overlay: overlay, store: store, update: {
+            svc?.hydrate(overlay: overlay, store: store, actions: actions, update: {
                 if self.mode.val == .precision {
                     self.setPrecisionMode(at: NSEvent.mouseLocation)
                 }
@@ -173,8 +175,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationSupportsSecureRestorableState(_: NSApplication) -> Bool {
         true
     }
-    
+
     private func applicationWillTerminate(_: NSApplication) {
-        self.setFullScreenMode()
+        setFullScreenMode()
     }
 }

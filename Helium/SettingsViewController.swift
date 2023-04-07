@@ -27,17 +27,10 @@ class SettingsViewController: NSViewController {
     @IBOutlet var fullscreenModeAction: MASShortcutView!
     @IBOutlet var toggleModeAction: MASShortcutView!
 
-    private let kToggle = "key-toggle"
-    private let kFullccreen = "key-fullscreen"
-    private let kPrecision = "key-precision"
-
     private var overlay: Overlay?
     private var store: Store?
     private var update: (() -> Void)?
-
-    private var aToggle: (() -> Void)?
-    private var aPrecision: (() -> Void)?
-    private var aFullscreen: (() -> Void)?
+    private var actions: Actions?
 
     private var reset = Pair(on: "Confirm Reset", off: "Reset All Preferences", state: .off)
 
@@ -46,10 +39,6 @@ class SettingsViewController: NSViewController {
 
         // so that the color picker will have alpha
         NSColor.ignoresAlpha = false
-
-        toggleModeAction.associatedUserDefaultsKey = kToggle
-        precisionModeAction.associatedUserDefaultsKey = kPrecision
-        fullscreenModeAction.associatedUserDefaultsKey = kFullccreen
     }
 
     private func loadAllFromStore() {
@@ -75,27 +64,15 @@ class SettingsViewController: NSViewController {
         store?.scale = s
     }
 
-    func hydrate(overlay: Overlay, store: Store, update: @escaping () -> Void) {
+    func hydrate(overlay: Overlay, store: Store, actions: Actions, update: @escaping () -> Void) {
         self.overlay = overlay
         self.store = store
         self.update = update
+        self.actions = actions
         if !store.setupExists {
             store.initializeDefaults()
         }
         loadAllFromStore()
-    }
-
-    private func bindKeys() {
-        MASShortcutBinder().bindShortcut(withDefaultsKey: kToggle, toAction: aToggle)
-        MASShortcutBinder().bindShortcut(withDefaultsKey: kPrecision, toAction: aPrecision)
-        MASShortcutBinder().bindShortcut(withDefaultsKey: kFullccreen, toAction: aFullscreen)
-    }
-
-    func hydrateActions(toggle: @escaping () -> Void, precision: @escaping () -> Void, fullscreen: @escaping () -> Void) {
-        aToggle = toggle
-        aPrecision = precision
-        aFullscreen = precision
-        bindKeys()
     }
 
     private func preview() {
