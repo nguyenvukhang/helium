@@ -28,16 +28,16 @@ extension NSBezierPath {
     func drawBounds(rect: NSRect, length: Double, margin: Double) {
         // px that the drawing will exceed the frame
         let exceed = lineWidth / 2
-        let p = margin - exceed
-        let pad = AffineTransform(translationByX: p, byY: p)
+        let pad = margin - exceed
         let originToCenter = AffineTransform(translationByX: rect.width / 2, byY: rect.height / 2)
+        let length = min(length, (rect.width - margin) / 2, (rect.height - margin) / 2)
 
         // Draw an L
         let l = NSBezierPath()
         l.move(to: NSPoint(x: 0, y: length))
         l.line(to: NSPoint(x: 0, y: 0))
         l.line(to: NSPoint(x: length, y: 0))
-        l.transform(using: pad)
+        l.transform(using: AffineTransform(translationByX: pad, byY: pad))
 
         // Draw all 4 orientations
         l.transform(using: originToCenter.inverted()!)
