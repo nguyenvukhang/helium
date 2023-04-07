@@ -135,6 +135,10 @@ class SettingsViewController: NSViewController {
             sender.bezelColor = nil
             store?.initializeDefaults()
             loadAllFromStore()
+            let d = UserDefaults.standard
+            [toggleModeAction, precisionModeAction, fullscreenModeAction].forEach { view in
+                d.removeObject(forKey: view?.associatedUserDefaultsKey ?? "")
+            }
         } else {
             sender.bezelColor = .red
         }
