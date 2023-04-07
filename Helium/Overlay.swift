@@ -48,8 +48,10 @@ extension NSBezierPath {
 
 class Overlay: NSWindow {
     private let margin = 16.0
+    private let store: Store
 
-    init() {
+    init(store: Store) {
+        self.store = store
         super.init(contentRect: NSMakeRect(0, 0, 0, 1), styleMask: .borderless, backing: .buffered, defer: true)
         ignoresMouseEvents = true
         level = .screenSaver
@@ -60,7 +62,7 @@ class Overlay: NSWindow {
     func hide() { animateAlpha(to: 0, over: 1.0) }
     func flash() { show(); hide() }
 
-    func move(to: NSRect, store: Store) {
+    func move(to: NSRect) {
         var target = to
         target.origin.x -= margin
         target.origin.y -= margin
@@ -74,7 +76,7 @@ class Overlay: NSWindow {
         target.size.width += margin * 2
         target.size.height += margin * 2
         setFrame(target, display: true)
-        drawBorder(store: store)
+        drawBorder()
     }
 
     // debugging function to add real bounds to the actual NSWindow boundary rect
@@ -85,7 +87,7 @@ class Overlay: NSWindow {
         bz.stroke()
     }
 
-    func drawBorder(store: Store) {
+    func drawBorder() {
         let bg = NSImage(size: frame.size)
         bg.lockFocus()
 

@@ -56,11 +56,8 @@ class SettingsViewController: NSViewController {
     }
 
     override func awakeFromNib() {}
-
-    private func round2(_ x: Double) -> String {
-        String(format: "%0.2f", x)
-    }
-
+    private func round2(_ x: Double) -> String { String(format: "%0.2f", x) }
+    private func preview() { helium?.reloadSettings() }
     private func setScale(_ s: Double) {
         scaleValue.stringValue = round2(s * 100)
         scaleSlider.doubleValue = s
@@ -74,13 +71,6 @@ class SettingsViewController: NSViewController {
             helium.store.initializeDefaults()
         }
         loadAllFromStore()
-    }
-
-    private func preview() {
-        helium?.setPrecisionMode()
-        if helium?.mode == .fullscreen {
-            helium?.setFullScreenMode()
-        }
     }
 
     @IBAction func scaleSliderDidChange(_ sender: AnyObject) {

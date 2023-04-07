@@ -12,7 +12,7 @@ enum Mode {
     case precision
     case fullscreen
     mutating func next() { self = self == .precision ? .fullscreen : .precision }
-    var text: String { self == .precision ? "Use Precision Mode" : "Use Fullscreen Mode" }
+    var text: String { self == .precision ? "Use Fullscreen Mode" : "Use Precision Mode" }
     var icon: String { self == .precision ? "plus.rectangle.fill" : "plus.rectangle" }
     var image: NSImage? { NSImage(systemSymbolName: icon, accessibilityDescription: text) }
 }

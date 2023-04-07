@@ -17,7 +17,7 @@ class Wacom {
     }
 
     /** Set focus on the area around the cursor. */
-    func setPrecisionMode(at: NSPoint, scale: Double, aspectRatio: Double) -> NSRect {
+    func setPrecisionBounds(at: NSPoint, scale: Double, aspectRatio: Double) -> NSRect {
         updateCurrentScreen()
         var rect = NSRect(parent: screen, withAspectRatio: aspectRatio)
         rect.scale(by: scale)
@@ -27,7 +27,7 @@ class Wacom {
     }
 
     /** Make the tablet cover the whole screen. */
-    func setFullScreenMode(withAspectRatio: Double) -> NSRect {
+    func setFullScreenBounds(withAspectRatio: Double) -> NSRect {
         updateCurrentScreen()
         var rect = NSRect(parent: screen, withAspectRatio: withAspectRatio)
         rect.center(within: screen)

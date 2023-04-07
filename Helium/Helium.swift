@@ -21,7 +21,7 @@ class Helium: Wacom {
         self.showBounds = Pair(on: "Hide Bounds", off: "Show Bounds", true)
         self.mode = .fullscreen
         self.store = Store()
-        self.overlay = Overlay()
+        self.overlay = Overlay(store: store)
         super.init()
     }
 
@@ -34,7 +34,7 @@ class Helium: Wacom {
     /** Set focus on the area around the specified point. */
     func setPrecisionMode(at: NSPoint) {
         mode = .precision
-        overlay.move(to: setPrecisionMode(at: at, scale: store.scale, aspectRatio: store.getAspectRatio()), store: store)
+        overlay.move(to: setPrecisionBounds(at: at, scale: store.scale, aspectRatio: store.getAspectRatio()))
         overlay.flash()
     }
 
@@ -44,6 +44,12 @@ class Helium: Wacom {
     /** Make the tablet cover the whole screen. */
     func setFullScreenMode() {
         mode = .fullscreen
-        overlay.move(to: setFullScreenMode(withAspectRatio: store.getAspectRatio()), store: store)
+        overlay.move(to: setFullScreenBounds(withAspectRatio: store.getAspectRatio()))
+    }
+
+    func reloadSettings() {
+        let prev = mode
+        setPrecisionMode() // flash updates
+        if prev == .fullscreen { setFullScreenMode() } // restore state
     }
 }
