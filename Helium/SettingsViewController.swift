@@ -69,6 +69,9 @@ class SettingsViewController: NSViewController {
         self.store = store
         self.update = update
         self.actions = actions
+        actions.associateView(toggleModeAction, toKey: .toggle)
+        actions.associateView(precisionModeAction, toKey: .precision)
+        actions.associateView(fullscreenModeAction, toKey: .fullscreen)
         if !store.setupExists {
             store.initializeDefaults()
         }

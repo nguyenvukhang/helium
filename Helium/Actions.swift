@@ -27,13 +27,17 @@ class Actions {
         }
     }
 
-    func link(key: Key, action: @escaping () -> Void) {
+    func bind(key: Key, action: @escaping () -> Void) {
         let a = self.action(key)
         a.val = action
-        MASShortcutBinder().bindShortcut(withDefaultsKey: key.rawValue, toAction: a.val)
+        MASShortcutBinder.shared().bindShortcut(withDefaultsKey: key.rawValue, toAction: a.val)
     }
 
     func call(key: Key) {
         action(key).val?()
+    }
+    
+    func associateView(_ view: MASShortcutView, toKey: Key) {
+        view.associatedUserDefaultsKey = toKey.rawValue
     }
 }

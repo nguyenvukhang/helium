@@ -38,11 +38,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         bar.linkActions(toggleMode: #selector(toggleMode), togglePrecisionBounds: #selector(togglePrecisionBounds), openPrefs: #selector(openPreferences), quit: #selector(quit))
         overlayWindowController.showWindow(overlay)
         setFullScreenMode()
-        actions.link(key: .precision) {
+        actions.bind(key: .precision) {
             self.setPrecisionMode(at: NSEvent.mouseLocation)
         }
-        actions.link(key: .fullscreen, action: setFullScreenMode)
-        actions.link(key: .toggle, action: toggleMode)
+        actions.bind(key: .fullscreen, action: setFullScreenMode)
+        actions.bind(key: .toggle, action: toggleMode)
     }
 
     /**
