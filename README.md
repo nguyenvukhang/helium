@@ -1,10 +1,14 @@
 # Helium
 
 Helium is a tiny MacOS menubar app that brings you precision mode on
-Wacom Tablet **without the [translucent overlay]()**. Current build stands
-at 300kB.
+Wacom Tablet **without the [translucent overlay](#ps)**.
 
-<img src="https://user-images.githubusercontent.com/10664455/230075724-e0196326-d220-48fb-a1fb-39f97d73049f.png">
+<img src="https://user-images.githubusercontent.com/10664455/230542301-fa1971e3-8333-4d07-ad85-e742721666f1.png">
+
+Instead, you can configure a bounded overlay to appear, which will
+only appear when the pen is near to the tablet.
+
+<img src="https://user-images.githubusercontent.com/10664455/230542734-3cf722d6-8152-4ba2-adca-8ab73bc02889.png">
 
 When triggered, the precision mode will be centered at your cursor's
 current location.
