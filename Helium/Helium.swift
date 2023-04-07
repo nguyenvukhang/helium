@@ -48,12 +48,8 @@ class Helium: Wacom {
     }
 
     func reloadSettings() {
-        let prev = mode
-        setPrecisionMode() // flash updates
-        // restore state
-        if prev == .fullscreen {
-            mode = .fullscreen
-            setFullScreenBounds(withAspectRatio: store.getAspectRatio())
-        }
+        let screen = NSRect.screen()
+        overlay.move(to: screen.precision(at: NSEvent.mouseLocation, scale: store.scale, aspectRatio: store.getAspectRatio()))
+        overlay.flash()
     }
 }
