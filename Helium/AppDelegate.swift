@@ -9,129 +9,74 @@ import Cocoa
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-    var lastUsedTablet: Int
-    var mode: Ref<Mode>
-    var pBounds = Pair(on: "Hide Bounds", off: "Show Bounds", state: .on)
-
     var bar: MenuBar
-    let store: Store
     var overlay: Overlay
     var overlayWindowController: NSWindowController
     var prefsWindowController: NSWindowController?
-    let actions: Actions
     var lastRect: NSRect
+    let helium: Helium
 
     override init() {
-        self.lastUsedTablet = 0 // 0 is an invalid tablet ID
-        self.mode = Ref(.fullscreen)
-
-        self.bar = MenuBar(mode: mode, pBounds: pBounds)
-        self.store = Store()
-        self.overlay = Overlay(store, pBounds: pBounds)
+        self.helium = Helium()
+        self.overlay = Overlay(helium: helium)
+        self.bar = MenuBar(helium: helium, overlay: overlay)
         self.overlayWindowController = NSWindowController(window: overlay)
-        self.actions = Actions()
         self.lastRect = NSZeroRect
 
         super.init()
 
-        listenForEvents()
-        bar.linkActions(toggleMode: #selector(toggleMode), togglePrecisionBounds: #selector(togglePrecisionBounds), openPrefs: #selector(openPreferences), quit: #selector(quit))
+        NSEvent.addGlobalMonitorForEvents(matching: .tabletProximity) { event in self.handleEvent(event) }
         overlayWindowController.showWindow(overlay)
-        setFullScreenMode()
-        actions.bind(key: .precision) {
-            self.setPrecisionMode(at: NSEvent.mouseLocation)
-        }
-        actions.bind(key: .fullscreen, action: setFullScreenMode)
-        actions.bind(key: .toggle, action: toggleMode)
-    }
+        let _ = helium.setFullScreenMode()
+        bar.linkOpenPreferencesAction(#selector(openPreferences), target: self)
 
-    /**
-     * Menu bar action: Toggle between modes.
-     */
-    @objc func toggleMode() {
-        mode.val.next()
-        bar.update()
-        switch mode.val {
-        case .fullscreen:
-            setFullScreenMode()
-        case .precision:
-            setPrecisionMode(at: NSEvent.mouseLocation)
+        Actions.bind(.fullscreen) {
+            self.overlay.move(to: self.helium.setFullScreenMode())
+            self.bar.update()
+        }
+
+        Actions.bind(.precision) {
+            self.overlay.move(to: self.helium.setPrecisionMode())
+            self.bar.update()
+            self.overlay.flash()
+        }
+
+        Actions.bind(.toggle) {
+            self.overlay.move(to: self.helium.toggleMode())
+            self.bar.update()
         }
     }
 
     /**
-     * Menu bar action: Toggle show/hide precision bounds
+     * When tablet pen enters proximity
      */
-    @objc func togglePrecisionBounds() {
-        pBounds.toggle()
-        bar.update()
-        if pBounds.on {
-            overlay.flash()
-        } else {
-            overlay.hide()
-        }
-    }
-
-    /**
-     * Menu bar action: Quit the app
-     */
-    @objc func quit() {
-        setFullScreenMode()
-        exit(EXIT_SUCCESS)
-    }
-
-    /**
-     * Handles [.tabletProximity, .keyDown] events for now.
-     */
-    func handleEvent(_ event: NSEvent) {
-        // at this point, event.type is guaranteed to be .tabletProximity, based on the matcher
-        if !event.isEnteringProximity {
-            let cursor = NSEvent.mouseLocation
-            if store.moveOnEdgeTouch && lastRect.nearEdge(point: cursor, tolerance: 10) {
-                setPrecisionMode(at: cursor)
-            } else {
-                overlay.hide()
-            }
-            return
-        }
-        // event.isEnteringProximity == true
-        lastUsedTablet = event.systemTabletID
-        if mode.val == .precision {
+    func handleProximityEntry(_ event: NSEvent) {
+        helium.setLastUsedTablet(event.systemTabletID)
+        if helium.mode == .precision {
             overlay.show()
         }
     }
 
     /**
-     * This must only be called once.
+     * When tablet pen exits proximity
      */
-    func listenForEvents() {
-        NSEvent.addGlobalMonitorForEvents(matching: .tabletProximity) { event in
-            self.handleEvent(event)
+    func handleProximityExit(_ event: NSEvent) {
+        let cursor = NSEvent.mouseLocation
+        if helium.store.moveOnEdgeTouch && lastRect.nearEdge(point: cursor, tolerance: 10) {
+            overlay.move(to: helium.setPrecisionMode(at: cursor))
         }
-    }
-
-    /**
-     * Set focus on the area around the cursor.
-     */
-    func setPrecisionMode(at: NSPoint) {
-        mode.val = .precision
-        let rect = NSRect.precision(at: at, scale: store.scale, aspectRatio: store.getAspectRatio())
-        setScreenMapArea(rect)
-        overlay.move(to: rect)
-        lastRect = rect
-        overlay.flash()
-        bar.update()
-    }
-
-    /**
-     * Make the tablet cover the whole screen.
-     */
-    func setFullScreenMode() {
-        mode.val = .fullscreen
-        let rect = NSRect.fullscreen(aspectRatio: store.getAspectRatio())
-        setScreenMapArea(rect)
         overlay.hide()
-        bar.update()
+    }
+
+    /**
+     * Handles [.tabletProximity] events for now.
+     */
+    func handleEvent(_ event: NSEvent) {
+        if event.isEnteringProximity {
+            handleProximityEntry(event)
+        } else {
+            handleProximityExit(event)
+        }
     }
 
     /**
@@ -141,9 +86,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if prefsWindowController == nil {
             prefsWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "PrefsWindowController") as? NSWindowController
             let svc = prefsWindowController?.contentViewController as? SettingsViewController
-            svc?.hydrate(overlay: overlay, store: store, actions: actions, update: {
-                if self.mode.val == .precision {
-                    self.setPrecisionMode(at: NSEvent.mouseLocation)
+            svc?.hydrate(overlay: overlay, helium: helium, update: {
+                if self.helium.mode == .precision {
+                    self.overlay.move(to: self.helium.setPrecisionMode())
                 }
             })
         }
@@ -151,18 +96,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         prefsWindowController?.showWindow(self)
     }
 
-    /**
-     * API call to Wacom Drivers to set map area.
-     */
-    func setScreenMapArea(_ rect: NSRect) {
-        Wacom.setScreenMapArea(rect, screen: NSRect.screen(), tabletId: Int32(lastUsedTablet))
-    }
-
-    func applicationSupportsSecureRestorableState(_: NSApplication) -> Bool {
-        true
-    }
-
-    private func applicationWillTerminate(_: NSApplication) {
-        setFullScreenMode()
-    }
+    func applicationSupportsSecureRestorableState(_: NSApplication) -> Bool { true }
+    private func applicationWillTerminate(_: NSApplication) { helium.reset() }
 }

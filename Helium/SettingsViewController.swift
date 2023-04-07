@@ -28,11 +28,10 @@ class SettingsViewController: NSViewController {
     @IBOutlet var toggleModeAction: MASShortcutView!
 
     private var overlay: Overlay?
-    private var store: Store?
+    private var helium: Helium?
     private var update: (() -> Void)?
-    private var actions: Actions?
 
-    private var reset = Pair(on: "Confirm Restore", off: "Restore Defaults", state: .off)
+    private var reset = Pair(on: "Confirm Restore", off: "Restore Defaults", false)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +39,14 @@ class SettingsViewController: NSViewController {
         // so that the color picker will have alpha
         NSColor.ignoresAlpha = false
         resetAll.title = reset.get()
+        
+        Actions.associateView(toggleModeAction, toKey: .toggle)
+        Actions.associateView(precisionModeAction, toKey: .precision)
+        Actions.associateView(fullscreenModeAction, toKey: .fullscreen)
     }
 
     private func loadAllFromStore() {
-        let store = store!
+        let store = helium!.store
         setScale(store.scale)
         lineColor.color = store.lineColor
         lineWidth.stringValue = round2(store.lineWidth)
@@ -62,19 +65,15 @@ class SettingsViewController: NSViewController {
     private func setScale(_ s: Double) {
         scaleValue.stringValue = round2(s * 100)
         scaleSlider.doubleValue = s
-        store?.scale = s
+        helium?.store.scale = s
     }
 
-    func hydrate(overlay: Overlay, store: Store, actions: Actions, update: @escaping () -> Void) {
+    func hydrate(overlay: Overlay, helium: Helium, update: @escaping () -> Void) {
         self.overlay = overlay
-        self.store = store
+        self.helium = helium
         self.update = update
-        self.actions = actions
-        actions.associateView(toggleModeAction, toKey: .toggle)
-        actions.associateView(precisionModeAction, toKey: .precision)
-        actions.associateView(fullscreenModeAction, toKey: .fullscreen)
-        if !store.setupExists {
-            store.initializeDefaults()
+        if !helium.store.setupExists {
+            helium.store.initializeDefaults()
         }
         loadAllFromStore()
     }
@@ -82,8 +81,8 @@ class SettingsViewController: NSViewController {
     private func preview() {
         var r = NSZeroRect
         let screen = NSRect.screen()
-        r.fill(screen, withAspectRatio: store!.getAspectRatio())
-        r.scale(by: store!.scale)
+        r.fill(screen, withAspectRatio: helium!.store.getAspectRatio())
+        r.scale(by: helium!.store.scale)
         r.center(within: screen)
         overlay?.move(to: r)
         overlay?.flash(force: true)
@@ -101,39 +100,39 @@ class SettingsViewController: NSViewController {
     }
 
     @IBAction func colorDidChange(_ sender: NSColorWell) {
-        store?.lineColor = sender.color
+        helium?.store.lineColor = sender.color
         preview()
     }
 
     @IBAction func lineWidthDidChange(_ sender: NSTextField) {
-        store?.lineWidth = sender.doubleValue
+        helium?.store.lineWidth = sender.doubleValue
         preview()
     }
 
     @IBAction func aspectRatioWidthDidChange(_ sender: NSTextField) {
-        store?.aspectRatio.width = sender.doubleValue
+        helium?.store.aspectRatio.width = sender.doubleValue
         preview()
     }
 
     @IBAction func aspectRatioHeightDidChange(_ sender: NSTextField) {
-        store?.aspectRatio.height = sender.doubleValue
+        helium?.store.aspectRatio.height = sender.doubleValue
         preview()
     }
 
     @IBAction func cornerLengthDidChange(_ sender: NSTextField) {
-        store?.cornerLength = sender.doubleValue
+        helium?.store.cornerLength = sender.doubleValue
         preview()
     }
 
     @IBAction func moveOnEdgeTouchDidChange(_ sender: NSButton) {
-        store?.moveOnEdgeTouch = sender.state == .on
+        helium?.store.moveOnEdgeTouch = sender.state == .on
         preview()
     }
 
     @IBAction func resetDidRequest(_ sender: NSButton) {
         if reset.on {
             sender.bezelColor = nil
-            store?.initializeDefaults()
+            helium?.store.initializeDefaults()
             loadAllFromStore()
             let d = UserDefaults.standard
             [toggleModeAction, precisionModeAction, fullscreenModeAction].forEach { view in

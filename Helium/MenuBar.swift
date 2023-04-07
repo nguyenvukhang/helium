@@ -9,8 +9,9 @@ import Cocoa
 
 class MenuBar {
     private let bar: NSStatusItem
-    private let mode: Ref<Mode>
-    private let pBounds: Pair<String>
+    private let helium: Helium
+    private let overlay: Overlay
+
     private enum Tag: Int {
         case mode = 1
         case bounds = 2
@@ -18,18 +19,16 @@ class MenuBar {
         case quit = 4
     }
 
-    init(mode: Ref<Mode>, pBounds: Pair<String>) {
-        self.mode = mode
-        self.pBounds = pBounds
+    init(helium: Helium, overlay: Overlay) {
+        self.helium = helium
+        self.overlay = overlay
         self.bar = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
-        let menu = NSMenu()
-        menu.addItem(item(title: mode.val.text(), key: "t", tag: .mode))
-        menu.addItem(item(title: pBounds.get(), key: "b", tag: .bounds))
-        menu.addItem(item(title: "Preferences", key: ",", tag: .prefs))
-        menu.addItem(item(title: "Quit Helium", key: "q", tag: .quit))
-        bar.menu = menu
-
+        bar.menu = NSMenu()
+        addItem(helium.mode.text, action: #selector(toggleMode), tag: .mode, key: "t")
+        addItem(helium.showBounds.get(), action: #selector(toggleBounds), tag: .bounds, key: "b")
+        addItem("Preferences", action: nil, tag: .prefs, key: ",")
+        addItem("Quit", action: #selector(quit), tag: .quit, key: "q")
         update()
     }
 
@@ -37,34 +36,30 @@ class MenuBar {
      * Update state to match mode. Defaults to fullscreen.
      */
     func update() {
-        bar.button?.image = mode.val.image()
-        item(.mode)?.title = mode.val.text()
-        item(.bounds)?.title = pBounds.get()
+        bar.button?.image = helium.mode.image
+        item(.mode)?.title = helium.mode.text
+        item(.bounds)?.title = helium.showBounds.get()
     }
 
     /**
-     * Link selectors to menubar buttons.
+     * Link opening the preferences window.
      */
-    func linkActions(toggleMode: Selector, togglePrecisionBounds: Selector, openPrefs: Selector, quit: Selector) {
-        item(.mode)?.action = toggleMode
-        item(.bounds)?.action = togglePrecisionBounds
-        item(.prefs)?.action = openPrefs
-        item(.quit)?.action = quit
+    func linkOpenPreferencesAction(_ action: Selector, target: AnyObject) {
+        item(.prefs)?.action = action
+        item(.prefs)?.target = target
     }
 
-    /**
-     * Get the tagged item from the menubar list
-     */
-    private func item(_ tag: Tag) -> NSMenuItem? {
-        bar.menu?.item(withTag: tag.rawValue)
-    }
-
-    /**
-     * Create a new NSMenuItem.
-     */
-    private func item(title: String, key: String, tag: Tag) -> NSMenuItem {
-        let item = NSMenuItem(title: title, action: nil, keyEquivalent: key)
+    private func addItem(_ title: String, action: Selector?, tag: Tag, key: String) {
+        let item = NSMenuItem(title: title, action: action, keyEquivalent: key)
         item.tag = tag.rawValue
-        return item
+        item.target = self
+        bar.menu?.addItem(item)
     }
+
+    private func item(_ tag: Tag) -> NSMenuItem? { bar.menu?.item(withTag: tag.rawValue) }
+    @objc func toggleBounds() { helium.showBounds.toggle(); update() }
+    @objc func toggleMode() { overlay.move(to: helium.toggleMode()); update() }
+    @objc func setPrecisionMode() { overlay.move(to: helium.setPrecisionMode()); update() }
+    @objc func setFullScreenMode() { overlay.move(to: helium.setFullScreenMode()); update() }
+    @objc func quit() { helium.reset(); exit(EXIT_SUCCESS) }
 }

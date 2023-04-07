@@ -47,13 +47,11 @@ extension NSBezierPath {
 }
 
 class Overlay: NSWindow {
-    private let store: Store
-    private let pBounds: Pair<String>
+    private let helium: Helium
     private let margin = 16.0
 
-    init(_ store: Store, pBounds: Pair<String>) {
-        self.store = store
-        self.pBounds = pBounds
+    init(helium: Helium) {
+        self.helium = helium
 
         super.init(contentRect: NSMakeRect(0, 0, 0, 1), styleMask: .borderless, backing: .buffered, defer: true)
         ignoresMouseEvents = true
@@ -69,7 +67,7 @@ class Overlay: NSWindow {
     }
 
     func show() {
-        if !pBounds.on {
+        if !helium.showBounds.on {
             return
         }
         alphaValue = 1
@@ -84,7 +82,7 @@ class Overlay: NSWindow {
     }
 
     func flash(force: Bool) {
-        if !force && !pBounds.on {
+        if !force && !helium.showBounds.on {
             return
         }
         alphaValue = 1
@@ -120,14 +118,14 @@ class Overlay: NSWindow {
         let bg = NSImage(size: frame.size)
         bg.lockFocus()
 
-        store.lineColor.set()
+        helium.store.lineColor.set()
 
         let bounds = NSBezierPath()
         bounds.lineJoinStyle = .round
 
-        bounds.lineWidth = store.lineWidth
+        bounds.lineWidth = helium.store.lineWidth
         bounds.removeAllPoints()
-        bounds.drawBounds(rect: frame, length: store.cornerLength, margin: margin)
+        bounds.drawBounds(rect: frame, length: helium.store.cornerLength, margin: margin)
         bounds.stroke()
 
         // addWindowBounds(color: .blue)

@@ -5,39 +5,20 @@
 //  Created by khang on 7/4/23.
 //
 
-import Foundation
 import MASShortcut
 
-class Actions {
+final class Actions {
     enum Key: String {
         case toggle = "key-toggle"
         case precision = "key-precision"
         case fullscreen = "key-fullscreen"
     }
 
-    private var aToggle: (() -> Void)?
-    private var aPrecision: (() -> Void)?
-    private var aFullscreen: (() -> Void)?
-
-    private func action(_ key: Key) -> Ref<(() -> Void)?> {
-        switch key {
-        case .toggle: return Ref(aToggle)
-        case .precision: return Ref(aPrecision)
-        case .fullscreen: return Ref(aFullscreen)
-        }
+    static func bind(_ key: Key, to: @escaping () -> Void) {
+        MASShortcutBinder.shared().bindShortcut(withDefaultsKey: key.rawValue, toAction: to)
     }
 
-    func bind(key: Key, action: @escaping () -> Void) {
-        let a = self.action(key)
-        a.val = action
-        MASShortcutBinder.shared().bindShortcut(withDefaultsKey: key.rawValue, toAction: a.val)
-    }
-
-    func call(key: Key) {
-        action(key).val?()
-    }
-    
-    func associateView(_ view: MASShortcutView, toKey: Key) {
+    static func associateView(_ view: MASShortcutView, toKey: Key) {
         view.associatedUserDefaultsKey = toKey.rawValue
     }
 }

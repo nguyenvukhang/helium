@@ -5,43 +5,24 @@
 //  Created by khang on 5/4/23.
 //
 
+/**
+ * A binary enum that just has better readability
+ */
 enum Mode {
     case precision
     case fullscreen
-
-    mutating func next() {
-        switch self {
-        case .precision: self = .fullscreen
-        case .fullscreen: self = .precision
-        }
-    }
-
-    func text() -> String {
-        switch self {
-        case .fullscreen: return "Precision Mode"
-        case .precision: return "Fullscreen Mode"
-        }
-    }
-
-    private func icon() -> String {
-        switch self {
-        case .fullscreen: return "plus.rectangle"
-        case .precision: return "plus.rectangle.fill"
-        }
-    }
-
-    func image() -> NSImage? {
-        NSImage(systemSymbolName: icon(), accessibilityDescription: text())
-    }
+    mutating func next() -> Mode { self = self == .precision ? .fullscreen : .precision; return self }
+    var text: String { self == .precision ? "Use Precision Mode" : "Use Fullscreen Mode" }
+    var icon: String { self == .precision ? "plus.rectangle.fill" : "plus.rectangle" }
+    var image: NSImage? { NSImage(systemSymbolName: icon, accessibilityDescription: text) }
 }
 
 final class Pair<T> {
     private let v: (T, T)
-    enum State { case on; case off }
     var on: Bool
-    init(on: T, off: T, state: State) {
+    init(on: T, off: T, _ x: Bool) {
         self.v = (on, off)
-        self.on = state == .on ? true : false
+        self.on = x
     }
 
     func toggle() { on = !on }

@@ -12,9 +12,9 @@
 
 #import <Foundation/Foundation.h>
 
-@class Wacom;
+@class ObjCWacom;
 
-@interface Wacom : NSObject {
+@interface ObjCWacom : NSObject {
 }
 
 + (void)setScreenMapArea:(NSRect)rect screen:(NSRect)s tabletId:(int)tabletId;

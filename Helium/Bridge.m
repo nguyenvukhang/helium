@@ -17,7 +17,7 @@ Rect legacyRect(NSRect rect, NSRect screen) {
   return r;
 }
 
-@implementation Wacom
+@implementation ObjCWacom
 
 + (void)setScreenMapArea:(NSRect)rect
                   screen:(NSRect)screen
