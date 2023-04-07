@@ -51,7 +51,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      * When tablet pen enters proximity
      */
     func handleProximityEntry(_ event: NSEvent) {
-        helium.setLastUsedTablet(event.systemTabletID)
+        helium.lastUsedTablet.val = event.systemTabletID
         if helium.mode == .precision {
             overlay.show()
         }

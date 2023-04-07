@@ -9,15 +9,11 @@ import Foundation
 
 class Wacom {
     private var screen: NSRect
-    private var lastUsedTablet: Ref<Int>
+    var lastUsedTablet: Ref<Int>
 
     init() {
         self.screen = NSZeroRect
         self.lastUsedTablet = Ref(0) // invalid tablet ID
-    }
-
-    func setLastUsedTablet(_ id: Int) {
-        lastUsedTablet.val = id
     }
 
     /**
