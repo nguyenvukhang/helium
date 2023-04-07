@@ -16,44 +16,27 @@ class Wacom {
         self.lastUsedTablet = Ref(0) // invalid tablet ID
     }
 
-    /**
-     * Set focus on the area around the cursor.
-     */
+    /** Set focus on the area around the cursor. */
     func setPrecisionMode(at: NSPoint, scale: Double, aspectRatio: Double) -> NSRect {
         updateCurrentScreen()
-        var rect = NSZeroRect
-        rect.fill(screen, withAspectRatio: aspectRatio)
+        var rect = NSRect(parent: screen, withAspectRatio: aspectRatio)
         rect.scale(by: scale)
         rect.move(to: at, within: screen)
         setTablet(to: rect)
         return rect
     }
 
-    /**
-     * Make the tablet cover the whole screen.
-     */
+    /** Make the tablet cover the whole screen. */
     func setFullScreenMode(withAspectRatio: Double) -> NSRect {
         updateCurrentScreen()
-        var rect = NSZeroRect
-        rect.fill(screen, withAspectRatio: withAspectRatio)
+        var rect = NSRect(parent: screen, withAspectRatio: withAspectRatio)
         rect.center(within: screen)
         setTablet(to: rect)
         return rect
     }
 
-    /**
-     * Reset to the entire screen, with aspect ratio out the window.
-     * To use when the app terminates.
-     */
-    func reset() {
-        updateCurrentScreen()
-        setTablet(to: screen)
-    }
-
-    private func updateCurrentScreen() {
-        screen = NSScreen.screens[0].frame
-    }
-
+    func reset() { updateCurrentScreen(); setTablet(to: screen) }
+    private func updateCurrentScreen() { screen = NSScreen.screens[0].frame }
     private func setTablet(to: NSRect) {
         ObjCWacom.setScreenMapArea(to, screen: screen, tabletId: Int32(lastUsedTablet.val))
     }
