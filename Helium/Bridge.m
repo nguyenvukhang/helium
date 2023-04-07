@@ -19,9 +19,8 @@ Rect legacyRect(NSRect rect, NSRect screen) {
 
 @implementation ObjCWacom
 
-+ (void)setScreenMapArea:(NSRect)rect
-                  screen:(NSRect)screen
-                tabletId:(int)tabletId {
++ (void)setScreenMapArea:(NSRect)rect tabletId:(int)tabletId {
+  NSRect screen = [NSScreen screens][0].frame;
   Rect r = legacyRect(rect, screen);
   [WacomTabletDriver setBytes:&r
                        ofSize:sizeof(Rect)

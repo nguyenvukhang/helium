@@ -25,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         NSEvent.addGlobalMonitorForEvents(matching: .tabletProximity) { event in self.handleEvent(event) }
         overlayWindowController.showWindow(helium.overlayWindow())
-        let _ = helium.setFullScreenMode()
+        helium.setFullScreenMode()
         bar.linkOpenPreferencesAction(#selector(openPreferences), target: self)
 
         Actions.bind(.fullscreen) {

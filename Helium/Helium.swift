@@ -31,25 +31,33 @@ class Helium: Wacom {
     func toggleMode() { mode.next(); refresh() }
     func refresh() { mode == .precision ? setPrecisionMode() : setFullScreenMode() }
 
+    /** Set focus on the area around the cursor's current location. */
+    func setPrecisionMode() { setPrecisionMode(at: NSEvent.mouseLocation) }
+
     /** Set focus on the area around the specified point. */
     func setPrecisionMode(at: NSPoint) {
         mode = .precision
-        overlay.move(to: setPrecisionBounds(at: at, scale: store.scale, aspectRatio: store.getAspectRatio()))
+        let screen = NSRect.screen()
+        let area = screen.precision(at: at, scale: store.scale, aspectRatio: store.getAspectRatio())
+        setTablet(to: area)
         overlay.flash()
     }
-
-    /** Set focus on the area around the cursor's current location. */
-    func setPrecisionMode() { setPrecisionMode(at: NSEvent.mouseLocation) }
 
     /** Make the tablet cover the whole screen. */
     func setFullScreenMode() {
         mode = .fullscreen
-        overlay.move(to: setFullScreenBounds(withAspectRatio: store.getAspectRatio()))
+        let screen = NSRect.screen()
+        let area = screen.fullscreen(withAspectRatio: store.getAspectRatio())
+        setTablet(to: area)
     }
 
     func reloadSettings() {
         let screen = NSRect.screen()
-        overlay.move(to: screen.precision(at: NSEvent.mouseLocation, scale: store.scale, aspectRatio: store.getAspectRatio()))
+        let cursor = NSEvent.mouseLocation
+        let area = screen.precision(at: cursor, scale: store.scale, aspectRatio: store.getAspectRatio())
+        overlay.move(to: area)
         overlay.flash()
     }
+
+    override func setTablet(to: NSRect) { super.setTablet(to: to); overlay.move(to: to) }
 }

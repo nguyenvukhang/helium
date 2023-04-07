@@ -8,33 +8,25 @@
 import Foundation
 
 class Wacom {
-    private var screen: NSRect
-    var lastUsedTablet: Ref<Int>
-
-    init() {
-        self.screen = NSZeroRect
-        self.lastUsedTablet = Ref(0) // invalid tablet ID
-    }
+    var lastUsedTablet = Ref(0) // invalid tablet ID
 
     /** Set focus on the area around the cursor. */
     func setPrecisionBounds(at: NSPoint, scale: Double, aspectRatio: Double) -> NSRect {
-        updateCurrentScreen()
-        let rect = screen.precision(at: at, scale: scale, aspectRatio: aspectRatio)
+        let rect = NSRect.screen().precision(at: at, scale: scale, aspectRatio: aspectRatio)
         setTablet(to: rect)
         return rect
     }
 
     /** Make the tablet cover the whole screen. */
     func setFullScreenBounds(withAspectRatio: Double) -> NSRect {
-        updateCurrentScreen()
-        let rect = screen.fullscreen(withAspectRatio: withAspectRatio)
+        let rect = NSRect.screen().fullscreen(withAspectRatio: withAspectRatio)
         setTablet(to: rect)
         return rect
     }
 
-    func reset() { updateCurrentScreen(); setTablet(to: screen) }
-    private func updateCurrentScreen() { screen = NSScreen.screens[0].frame }
-    private func setTablet(to: NSRect) {
-        ObjCWacom.setScreenMapArea(to, screen: screen, tabletId: Int32(lastUsedTablet.val))
+    func reset() { setTablet(to: NSRect.screen()) }
+    func setTablet(to: NSRect) {
+        NSLog("using tablet #%d", lastUsedTablet.val)
+        ObjCWacom.setScreenMapArea(to, tabletId: Int32(lastUsedTablet.val))
     }
 }

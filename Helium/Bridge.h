@@ -17,7 +17,7 @@
 @interface ObjCWacom : NSObject {
 }
 
-+ (void)setScreenMapArea:(NSRect)rect screen:(NSRect)s tabletId:(int)tabletId;
++ (void)setScreenMapArea:(NSRect)rect tabletId:(int)tabletId;
 
 @end
 

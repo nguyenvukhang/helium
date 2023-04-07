@@ -57,7 +57,7 @@ class MenuBar {
     private func item(_ tag: Tag) -> NSMenuItem? { bar.menu?.item(withTag: tag.rawValue) }
     @objc func toggleBounds() { helium.showBounds.toggle(); update() }
     @objc func toggleMode() { helium.toggleMode(); update() }
-    @objc func setPrecisionMode() {  helium.setPrecisionMode(); update() }
+    @objc func setPrecisionMode() { helium.setPrecisionMode(); update() }
     @objc func setFullScreenMode() { helium.setFullScreenMode(); update() }
     @objc func quit() { helium.reset(); exit(EXIT_SUCCESS) }
 }
