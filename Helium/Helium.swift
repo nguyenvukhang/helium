@@ -18,49 +18,32 @@ class Helium: Wacom {
     private let overlay: Overlay
 
     override init() {
-        self.store = Store()
-        self.mode = .fullscreen
-        self.overlay = Overlay()
         self.showBounds = Pair(on: "Hide Bounds", off: "Show Bounds", true)
+        self.mode = .fullscreen
+        self.store = Store()
+        self.overlay = Overlay()
         super.init()
     }
 
     func overlayWindow() -> Overlay { overlay }
     func showOverlay() { if showBounds.on { overlay.show() } }
     func hideOverlay() { overlay.hide() }
+    func toggleMode() { mode.next(); refresh() }
+    func refresh() { mode == .precision ? setPrecisionMode() : setFullScreenMode() }
 
-    /**
-     * Toggles the mode and enters that new mode
-     */
-    func toggleMode() {
-        mode.next() == .fullscreen ? setFullScreenMode() : setPrecisionMode()
-    }
-
-    func refresh() {
-        mode == .fullscreen ? setFullScreenMode() : setPrecisionMode()
-    }
-
-    /**
-     * Set focus on the area around the specified point.
-     */
+    /** Set focus on the area around the specified point. */
     func setPrecisionMode(at: NSPoint) {
         mode = .precision
-        overlay.move(to: super.setPrecisionMode(at: at, scale: store.scale, aspectRatio: store.getAspectRatio()), store: store)
+        overlay.move(to: setPrecisionMode(at: at, scale: store.scale, aspectRatio: store.getAspectRatio()), store: store)
         overlay.flash()
     }
 
-    /**
-     * Set focus on the area around the cursor's current location.
-     */
-    func setPrecisionMode() {
-        setPrecisionMode(at: NSEvent.mouseLocation)
-    }
+    /** Set focus on the area around the cursor's current location. */
+    func setPrecisionMode() { setPrecisionMode(at: NSEvent.mouseLocation) }
 
-    /**
-     * Make the tablet cover the whole screen.
-     */
+    /** Make the tablet cover the whole screen. */
     func setFullScreenMode() {
         mode = .fullscreen
-        overlay.move(to: super.setFullScreenMode(withAspectRatio: store.getAspectRatio()), store: store)
+        overlay.move(to: setFullScreenMode(withAspectRatio: store.getAspectRatio()), store: store)
     }
 }

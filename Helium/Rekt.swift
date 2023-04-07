@@ -34,9 +34,4 @@ extension NSRect {
         origin.x = (within.width - width) / 2
         origin.y = (within.height - height) / 2
     }
-
-    /** Checks if point is within a distance from edge. */
-    func nearEdge(pt: NSPoint, dist: Double) -> Bool {
-        min(abs(pt.x - minX), abs(pt.x - maxX)) <= dist || min(abs(pt.y - minY), abs(pt.y - maxY)) <= dist
-    }
 }

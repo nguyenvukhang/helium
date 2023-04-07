@@ -59,7 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      */
     func handleProximityExit(_ event: NSEvent) {
         let cursor = NSEvent.mouseLocation
-        if helium.store.moveOnEdgeTouch && lastRect.nearEdge(point: cursor, tolerance: 10) {
+        if helium.store.moveOnEdgeTouch && cursor.nearEdge(of: lastRect, by: 10) {
             helium.setPrecisionMode(at: cursor)
         }
         helium.hideOverlay()

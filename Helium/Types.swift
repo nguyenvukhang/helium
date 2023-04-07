@@ -11,7 +11,7 @@
 enum Mode {
     case precision
     case fullscreen
-    mutating func next() -> Mode { self = self == .precision ? .fullscreen : .precision; return self }
+    mutating func next() { self = self == .precision ? .fullscreen : .precision }
     var text: String { self == .precision ? "Use Precision Mode" : "Use Fullscreen Mode" }
     var icon: String { self == .precision ? "plus.rectangle.fill" : "plus.rectangle" }
     var image: NSImage? { NSImage(systemSymbolName: icon, accessibilityDescription: text) }
@@ -32,6 +32,13 @@ final class Pair<T> {
 final class Ref<T> {
     var val: T
     init(_ v: T) { self.val = v }
+}
+
+extension NSPoint {
+    /** Checks if point is within a distance from edge of NSRect. */
+    func nearEdge(of: NSRect, by: Double) -> Bool {
+        min(abs(x - of.minX), abs(x - of.maxX)) <= by || min(abs(y - of.minY), abs(y - of.maxY)) <= by
+    }
 }
 
 enum KeyCode: UInt16 {
