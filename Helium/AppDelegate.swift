@@ -18,6 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var overlay: Overlay
     var overlayWindowController: NSWindowController
     var prefsWindowController: NSWindowController?
+    let actions: Actions
     var lastRect: NSRect
 
     override init() {
@@ -28,6 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.store = Store()
         self.overlay = Overlay(store, pBounds: pBounds)
         self.overlayWindowController = NSWindowController(window: overlay)
+        self.actions = Actions()
         self.lastRect = NSZeroRect
 
         super.init()
@@ -36,6 +38,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         bar.linkActions(toggleMode: #selector(toggleMode), togglePrecisionBounds: #selector(togglePrecisionBounds), openPrefs: #selector(openPreferences), quit: #selector(quit))
         overlayWindowController.showWindow(overlay)
         setFullScreenMode()
+        actions.link(key: .precision, action: {
+            self.setPrecisionMode(at: NSEvent.mouseLocation)
+        })
     }
 
     /**
