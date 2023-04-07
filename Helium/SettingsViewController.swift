@@ -28,8 +28,6 @@ class SettingsViewController: NSViewController {
     @IBOutlet var toggleModeAction: MASShortcutView!
 
     private var helium: Helium?
-    private var update: (() -> Void)?
-
     private var reset = Pair(on: "Confirm Restore", off: "Restore Defaults", false)
 
     override func viewDidLoad() {
@@ -64,9 +62,8 @@ class SettingsViewController: NSViewController {
         helium?.store.scale = s
     }
 
-    func hydrate(helium: Helium, update: @escaping () -> Void) {
+    func hydrate(helium: Helium) {
         self.helium = helium
-        self.update = update
         if !helium.store.setupExists {
             helium.store.initializeDefaults()
         }

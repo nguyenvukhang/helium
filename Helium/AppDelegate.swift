@@ -58,9 +58,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      * When tablet pen exits proximity
      */
     func handleProximityExit(_ event: NSEvent) {
-        let cursor = NSEvent.mouseLocation
-        if helium.store.moveOnEdgeTouch && cursor.nearEdge(of: lastRect, by: 10) {
-            helium.setPrecisionMode(at: cursor)
+        if helium.store.moveOnEdgeTouch {
+            let cursor = NSEvent.mouseLocation
+            if cursor.nearEdge(of: lastRect, by: 10) {
+                helium.setPrecisionMode(at: cursor)
+            }
         }
         helium.hideOverlay()
     }
@@ -83,11 +85,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if prefsWindowController == nil {
             prefsWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "PrefsWindowController") as? NSWindowController
             let svc = prefsWindowController?.contentViewController as? SettingsViewController
-            svc?.hydrate(helium: helium, update: {
-                if self.helium.mode == .precision {
-                    self.helium.setPrecisionMode()
-                }
-            })
+            svc?.hydrate(helium: helium)
         }
         NSApp.activate(ignoringOtherApps: true)
         prefsWindowController?.showWindow(self)
