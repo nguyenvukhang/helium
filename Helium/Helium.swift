@@ -26,7 +26,7 @@ class Helium: Wacom {
     }
 
     func overlayWindow() -> Overlay { overlay }
-    func showOverlay() { if showBounds.on { overlay.show() } }
+    func showOverlay() { if mode == .precision && showBounds.on { overlay.show() } }
     func hideOverlay() { overlay.hide() }
     func toggleMode() { mode.next(); refresh() }
     func refresh() { mode == .precision ? setPrecisionMode() : setFullScreenMode() }

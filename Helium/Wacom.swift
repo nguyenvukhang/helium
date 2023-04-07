@@ -26,7 +26,6 @@ class Wacom {
 
     func reset() { setTablet(to: NSRect.screen()) }
     func setTablet(to: NSRect) {
-        NSLog("using tablet #%d", lastUsedTablet.val)
         ObjCWacom.setScreenMapArea(to, tabletId: Int32(lastUsedTablet.val))
     }
 }

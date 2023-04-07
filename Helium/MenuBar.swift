@@ -10,6 +10,7 @@ import Cocoa
 class MenuBar {
     private let bar: NSStatusItem
     private let helium: Helium
+    private var prefsWindowController: NSWindowController?
 
     private enum Tag: Int {
         case mode = 1
@@ -25,7 +26,7 @@ class MenuBar {
         bar.menu = NSMenu()
         addItem(helium.mode.text, action: #selector(toggleMode), tag: .mode, key: "t")
         addItem(helium.showBounds.get(), action: #selector(toggleBounds), tag: .bounds, key: "b")
-        addItem("Preferences", action: nil, tag: .prefs, key: ",")
+        addItem("Preferences", action: #selector(openPreferences), tag: .prefs, key: ",")
         addItem("Quit", action: #selector(quit), tag: .quit, key: "q")
         update()
     }
@@ -39,14 +40,7 @@ class MenuBar {
         item(.bounds)?.title = helium.showBounds.get()
     }
 
-    /**
-     * Link opening the preferences window.
-     */
-    func linkOpenPreferencesAction(_ action: Selector, target: AnyObject) {
-        item(.prefs)?.action = action
-        item(.prefs)?.target = target
-    }
-
+    private func item(_ tag: Tag) -> NSMenuItem? { bar.menu?.item(withTag: tag.rawValue) }
     private func addItem(_ title: String, action: Selector?, tag: Tag, key: String) {
         let item = NSMenuItem(title: title, action: action, keyEquivalent: key)
         item.tag = tag.rawValue
@@ -54,7 +48,17 @@ class MenuBar {
         bar.menu?.addItem(item)
     }
 
-    private func item(_ tag: Tag) -> NSMenuItem? { bar.menu?.item(withTag: tag.rawValue) }
+    /** Open the preferences window. */
+    @objc func openPreferences() {
+        if prefsWindowController == nil {
+            prefsWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "PrefsWindowController") as? NSWindowController
+            let svc = prefsWindowController?.contentViewController as? SettingsViewController
+            svc?.hydrate(helium: helium)
+        }
+        NSApp.activate(ignoringOtherApps: true)
+        prefsWindowController?.showWindow(self)
+    }
+    
     @objc func toggleBounds() { helium.showBounds.toggle(); update() }
     @objc func toggleMode() { helium.toggleMode(); update() }
     @objc func setPrecisionMode() { helium.setPrecisionMode(); update() }

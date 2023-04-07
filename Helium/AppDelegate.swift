@@ -9,24 +9,24 @@ import Cocoa
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
+    let helium: Helium
     var bar: MenuBar
     var overlayWindowController: NSWindowController
-    var prefsWindowController: NSWindowController?
     var lastRect: NSRect
-    let helium: Helium
 
     override init() {
         self.helium = Helium()
         self.bar = MenuBar(helium: helium)
         self.overlayWindowController = NSWindowController(window: helium.overlayWindow())
         self.lastRect = NSZeroRect
-
         super.init()
+        postInit()
+    }
 
-        NSEvent.addGlobalMonitorForEvents(matching: .tabletProximity) { event in self.handleEvent(event) }
+    func postInit() {
+        NSEvent.addGlobalMonitorForEvents(matching: .tabletProximity) { event in self.handleProximityEvent(event) }
         overlayWindowController.showWindow(helium.overlayWindow())
         helium.setFullScreenMode()
-        bar.linkOpenPreferencesAction(#selector(openPreferences), target: self)
 
         Actions.bind(.fullscreen) {
             self.helium.setFullScreenMode()
@@ -44,19 +44,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    /**
-     * When tablet pen enters proximity
-     */
+    /** When tablet pen enters proximity */
     func handleProximityEntry(_ event: NSEvent) {
         helium.lastUsedTablet.val = event.systemTabletID
-        if helium.mode == .precision {
-            helium.showOverlay()
-        }
+        helium.showOverlay()
     }
 
-    /**
-     * When tablet pen exits proximity
-     */
+    /** When tablet pen exits proximity */
     func handleProximityExit(_ event: NSEvent) {
         if helium.store.moveOnEdgeTouch {
             let cursor = NSEvent.mouseLocation
@@ -67,28 +61,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         helium.hideOverlay()
     }
 
-    /**
-     * Handles [.tabletProximity] events for now.
-     */
-    func handleEvent(_ event: NSEvent) {
-        if event.isEnteringProximity {
-            handleProximityEntry(event)
-        } else {
-            handleProximityExit(event)
-        }
-    }
-
-    /**
-     * Open the preferences window.
-     */
-    @objc func openPreferences() {
-        if prefsWindowController == nil {
-            prefsWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "PrefsWindowController") as? NSWindowController
-            let svc = prefsWindowController?.contentViewController as? SettingsViewController
-            svc?.hydrate(helium: helium)
-        }
-        NSApp.activate(ignoringOtherApps: true)
-        prefsWindowController?.showWindow(self)
+    /** Handles .tabletProximity events. */
+    func handleProximityEvent(_ event: NSEvent) {
+        event.isEnteringProximity ? handleProximityEntry(event) : handleProximityExit(event)
     }
 
     func applicationSupportsSecureRestorableState(_: NSApplication) -> Bool { true }

@@ -82,10 +82,10 @@
 		0C68294F29DD07F300A52EC6 /* Helium */ = {
 			isa = PBXGroup;
 			children = (
-				0C68295929DD07F400A52EC6 /* Helium.entitlements */,
 				0C68295029DD07F300A52EC6 /* AppDelegate.swift */,
-				0C6D513529DFED81001C1DFD /* Helium.swift */,
+				0C68295629DD07F400A52EC6 /* Main.storyboard */,
 				0C4E133229DFC5D300BBA8B3 /* Actions.swift */,
+				0C6D513529DFED81001C1DFD /* Helium.swift */,
 				0CC83A7229DF2D6700FDF1A1 /* MenuBar.swift */,
 				0C68297529DD2C7500A52EC6 /* Overlay.swift */,
 				0C68297329DD273A00A52EC6 /* Rekt.swift */,
@@ -93,10 +93,10 @@
 				0CD15E6729DD81D1006C101F /* Store.swift */,
 				0C68296A29DD0F8A00A52EC6 /* Types.swift */,
 				0C6D513329DFEA84001C1DFD /* Wacom.swift */,
-				0C68295429DD07F400A52EC6 /* Assets.xcassets */,
-				0C68295629DD07F400A52EC6 /* Main.storyboard */,
 				0C2A0B0829DECE8400E41EAC /* Bridge.h */,
 				0C2A0B0729DECE8400E41EAC /* Bridge.m */,
+				0C68295929DD07F400A52EC6 /* Helium.entitlements */,
+				0C68295429DD07F400A52EC6 /* Assets.xcassets */,
 				0C68296029DD0B9000A52EC6 /* Wacom */,
 			);
 			path = Helium;
