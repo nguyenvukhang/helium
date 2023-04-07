@@ -81,27 +81,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     /**
-     * Acts on a detected keypress.
-     *
-     * Current list of effective keypresses:
-     *   - Cmd + Shift + F2: start precision mode at cursor location
-     */
-    func handleKeyDown(_ e: NSEvent) {
-        if e.modifierFlags.contains([.command, .shift]) && e.keyCode == KeyCode.f2.rawValue {
-            setPrecisionMode(at: NSEvent.mouseLocation)
-            mode.val = .precision
-            bar.update()
-        }
-    }
-
-    /**
      * Handles [.tabletProximity, .keyDown] events for now.
      */
     func handleEvent(_ event: NSEvent) {
-        if event.type == .keyDown {
-            handleKeyDown(event)
-            return
-        }
         // at this point, event.type is guaranteed to be .tabletProximity, based on the matcher
         if !event.isEnteringProximity {
             let cursor = NSEvent.mouseLocation
@@ -123,7 +105,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      * This must only be called once.
      */
     func listenForEvents() {
-        NSEvent.addGlobalMonitorForEvents(matching: [.tabletProximity, .keyDown]) { event in
+        NSEvent.addGlobalMonitorForEvents(matching: .tabletProximity) { event in
             self.handleEvent(event)
         }
     }
@@ -132,20 +114,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      * Set focus on the area around the cursor.
      */
     func setPrecisionMode(at: NSPoint) {
+        mode.val = .precision
         let rect = NSRect.precision(at: at, scale: store.scale, aspectRatio: store.getAspectRatio())
         setScreenMapArea(rect)
         overlay.move(to: rect)
         lastRect = rect
         overlay.flash()
+        bar.update()
     }
 
     /**
      * Make the tablet cover the whole screen.
      */
     func setFullScreenMode() {
+        mode.val = .fullscreen
         let rect = NSRect.fullscreen(aspectRatio: store.getAspectRatio())
         setScreenMapArea(rect)
         overlay.hide()
+        bar.update()
     }
 
     /**
