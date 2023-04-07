@@ -26,6 +26,10 @@ class SettingsViewController: NSViewController {
     @IBOutlet var precisionModeAction: MASShortcutView!
     @IBOutlet var fullscreenModeAction: MASShortcutView!
     @IBOutlet var toggleModeAction: MASShortcutView!
+    
+    private let kToggle = "key-toggle"
+    private let kFullccreen = "key-fullscreen"
+    private let kPrecision = "key-precision"
 
     private var overlay: Overlay?
     private var store: Store?
@@ -38,6 +42,10 @@ class SettingsViewController: NSViewController {
 
         // so that the color picker will have alpha
         NSColor.ignoresAlpha = false
+        
+        toggleModeAction.associatedUserDefaultsKey = kToggle;
+        precisionModeAction.associatedUserDefaultsKey = kPrecision
+        fullscreenModeAction.associatedUserDefaultsKey = kFullccreen
     }
 
     private func loadAllFromStore() {
