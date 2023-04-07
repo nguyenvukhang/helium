@@ -50,6 +50,10 @@ class Helium: Wacom {
     func reloadSettings() {
         let prev = mode
         setPrecisionMode() // flash updates
-        if prev == .fullscreen { setFullScreenMode() } // restore state
+        // restore state
+        if prev == .fullscreen {
+            mode = .fullscreen
+            setFullScreenBounds(withAspectRatio: store.getAspectRatio())
+        }
     }
 }

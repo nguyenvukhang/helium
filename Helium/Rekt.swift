@@ -34,4 +34,17 @@ extension NSRect {
         origin.x = (within.width - width) / 2
         origin.y = (within.height - height) / 2
     }
+
+    func fullscreen(withAspectRatio: Double) -> NSRect {
+        var rect = NSRect(parent: self, withAspectRatio: withAspectRatio)
+        rect.center(within: self)
+        return rect
+    }
+
+    func precision(at: NSPoint, scale: Double, aspectRatio: Double) -> NSRect {
+        var rect = NSRect(parent: self, withAspectRatio: aspectRatio)
+        rect.scale(by: scale)
+        rect.move(to: at, within: self)
+        return rect
+    }
 }
