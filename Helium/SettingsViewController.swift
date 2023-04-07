@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import MASShortcut
 
 /**
  * A whole bunch of pointing-and-clicking is required to build and
@@ -22,6 +23,9 @@ class SettingsViewController: NSViewController {
     @IBOutlet var aspectRatioHeight: NSTextField!
     @IBOutlet var resetAll: NSButton!
     @IBOutlet var moveOnEdgeTouch: NSButton!
+    @IBOutlet var precisionModeAction: MASShortcutView!
+    @IBOutlet var fullscreenModeAction: MASShortcutView!
+    @IBOutlet var toggleModeAction: MASShortcutView!
 
     private var overlay: Overlay?
     private var store: Store?

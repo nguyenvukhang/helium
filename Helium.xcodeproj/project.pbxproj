@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C2A0B0929DECE8400E41EAC /* Bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2A0B0729DECE8400E41EAC /* Bridge.m */; };
+		0C4E133129DFC19000BBA8B3 /* MASShortcut in Frameworks */ = {isa = PBXBuildFile; productRef = 0C4E133029DFC19000BBA8B3 /* MASShortcut */; };
 		0C68295129DD07F300A52EC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68295029DD07F300A52EC6 /* AppDelegate.swift */; };
 		0C68295329DD07F300A52EC6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68295229DD07F300A52EC6 /* SettingsViewController.swift */; };
 		0C68295529DD07F400A52EC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C68295429DD07F400A52EC6 /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C4E133129DFC19000BBA8B3 /* MASShortcut in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +122,9 @@
 			dependencies = (
 			);
 			name = Helium;
+			packageProductDependencies = (
+				0C4E133029DFC19000BBA8B3 /* MASShortcut */,
+			);
 			productName = Helium;
 			productReference = 0C68294D29DD07F300A52EC6 /* Helium.app */;
 			productType = "com.apple.product-type.application";
@@ -148,6 +153,9 @@
 				Base,
 			);
 			mainGroup = 0C68294429DD07F300A52EC6;
+			packageReferences = (
+				0C4E132F29DFC19000BBA8B3 /* XCRemoteSwiftPackageReference "MASShortcut" */,
+			);
 			productRefGroup = 0C68294E29DD07F300A52EC6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -403,6 +411,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0C4E132F29DFC19000BBA8B3 /* XCRemoteSwiftPackageReference "MASShortcut" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rxhanson/MASShortcut";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0C4E133029DFC19000BBA8B3 /* MASShortcut */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C4E132F29DFC19000BBA8B3 /* XCRemoteSwiftPackageReference "MASShortcut" */;
+			productName = MASShortcut;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0C68294529DD07F300A52EC6 /* Project object */;
 }
