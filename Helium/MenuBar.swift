@@ -10,7 +10,6 @@ import Cocoa
 class MenuBar {
     private let bar: NSStatusItem
     private let helium: Helium
-    private let overlay: Overlay
 
     private enum Tag: Int {
         case mode = 1
@@ -19,9 +18,8 @@ class MenuBar {
         case quit = 4
     }
 
-    init(helium: Helium, overlay: Overlay) {
+    init(helium: Helium) {
         self.helium = helium
-        self.overlay = overlay
         self.bar = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
         bar.menu = NSMenu()
@@ -58,8 +56,8 @@ class MenuBar {
 
     private func item(_ tag: Tag) -> NSMenuItem? { bar.menu?.item(withTag: tag.rawValue) }
     @objc func toggleBounds() { helium.showBounds.toggle(); update() }
-    @objc func toggleMode() { overlay.move(to: helium.toggleMode()); update() }
-    @objc func setPrecisionMode() { overlay.move(to: helium.setPrecisionMode()); update() }
-    @objc func setFullScreenMode() { overlay.move(to: helium.setFullScreenMode()); update() }
+    @objc func toggleMode() { helium.toggleMode(); update() }
+    @objc func setPrecisionMode() {  helium.setPrecisionMode(); update() }
+    @objc func setFullScreenMode() { helium.setFullScreenMode(); update() }
     @objc func quit() { helium.reset(); exit(EXIT_SUCCESS) }
 }

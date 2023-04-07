@@ -27,7 +27,6 @@ class SettingsViewController: NSViewController {
     @IBOutlet var fullscreenModeAction: MASShortcutView!
     @IBOutlet var toggleModeAction: MASShortcutView!
 
-    private var overlay: Overlay?
     private var helium: Helium?
     private var update: (() -> Void)?
 
@@ -39,7 +38,7 @@ class SettingsViewController: NSViewController {
         // so that the color picker will have alpha
         NSColor.ignoresAlpha = false
         resetAll.title = reset.get()
-        
+
         Actions.associateView(toggleModeAction, toKey: .toggle)
         Actions.associateView(precisionModeAction, toKey: .precision)
         Actions.associateView(fullscreenModeAction, toKey: .fullscreen)
@@ -68,8 +67,7 @@ class SettingsViewController: NSViewController {
         helium?.store.scale = s
     }
 
-    func hydrate(overlay: Overlay, helium: Helium, update: @escaping () -> Void) {
-        self.overlay = overlay
+    func hydrate(helium: Helium, update: @escaping () -> Void) {
         self.helium = helium
         self.update = update
         if !helium.store.setupExists {
@@ -79,14 +77,10 @@ class SettingsViewController: NSViewController {
     }
 
     private func preview() {
-        var r = NSZeroRect
-        let screen = NSRect.screen()
-        r.fill(screen, withAspectRatio: helium!.store.getAspectRatio())
-        r.scale(by: helium!.store.scale)
-        r.center(within: screen)
-        overlay?.move(to: r)
-        overlay?.flash(force: true)
-        update?()
+        helium?.setPrecisionMode()
+        if helium?.mode == .fullscreen {
+            helium?.setFullScreenMode()
+        }
     }
 
     @IBAction func scaleSliderDidChange(_ sender: AnyObject) {
@@ -138,6 +132,7 @@ class SettingsViewController: NSViewController {
             [toggleModeAction, precisionModeAction, fullscreenModeAction].forEach { view in
                 d.removeObject(forKey: view?.associatedUserDefaultsKey ?? "")
             }
+            helium?.refresh()
         } else {
             sender.bezelColor = .red
         }

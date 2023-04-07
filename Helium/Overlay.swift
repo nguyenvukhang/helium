@@ -47,49 +47,20 @@ extension NSBezierPath {
 }
 
 class Overlay: NSWindow {
-    private let helium: Helium
     private let margin = 16.0
 
-    init(helium: Helium) {
-        self.helium = helium
-
+    init() {
         super.init(contentRect: NSMakeRect(0, 0, 0, 1), styleMask: .borderless, backing: .buffered, defer: true)
         ignoresMouseEvents = true
         level = .screenSaver
         alphaValue = 0
     }
 
-    private func animateAlpha(to: Double, over: TimeInterval) {
-        NSAnimationContext.beginGrouping()
-        NSAnimationContext.current.duration = over
-        animator().alphaValue = to
-        NSAnimationContext.endGrouping()
-    }
+    func show() { alphaValue = 1 }
+    func hide() { animateAlpha(to: 0, over: 1.0) }
+    func flash() { show(); hide() }
 
-    func show() {
-        if !helium.showBounds.on {
-            return
-        }
-        alphaValue = 1
-    }
-
-    func hide() {
-        animateAlpha(to: 0, over: 1.0)
-    }
-
-    func flash() {
-        flash(force: false)
-    }
-
-    func flash(force: Bool) {
-        if !force && !helium.showBounds.on {
-            return
-        }
-        alphaValue = 1
-        animateAlpha(to: 0, over: 1.0)
-    }
-
-    func move(to: NSRect) {
+    func move(to: NSRect, store: Store) {
         var target = to
         target.origin.x -= margin
         target.origin.y -= margin
@@ -103,7 +74,7 @@ class Overlay: NSWindow {
         target.size.width += margin * 2
         target.size.height += margin * 2
         setFrame(target, display: true)
-        drawBorder()
+        drawBorder(store: store)
     }
 
     // debugging function to add real bounds to the actual NSWindow boundary rect
@@ -114,23 +85,30 @@ class Overlay: NSWindow {
         bz.stroke()
     }
 
-    func drawBorder() {
+    func drawBorder(store: Store) {
         let bg = NSImage(size: frame.size)
         bg.lockFocus()
 
-        helium.store.lineColor.set()
+        store.lineColor.set()
 
         let bounds = NSBezierPath()
         bounds.lineJoinStyle = .round
 
-        bounds.lineWidth = helium.store.lineWidth
+        bounds.lineWidth = store.lineWidth
         bounds.removeAllPoints()
-        bounds.drawBounds(rect: frame, length: helium.store.cornerLength, margin: margin)
+        bounds.drawBounds(rect: frame, length: store.cornerLength, margin: margin)
         bounds.stroke()
 
         // addWindowBounds(color: .blue)
 
         bg.unlockFocus()
         backgroundColor = NSColor(patternImage: bg)
+    }
+
+    private func animateAlpha(to: Double, over: TimeInterval) {
+        NSAnimationContext.beginGrouping()
+        NSAnimationContext.current.duration = over
+        animator().alphaValue = to
+        NSAnimationContext.endGrouping()
     }
 }

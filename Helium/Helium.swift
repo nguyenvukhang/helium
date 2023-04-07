@@ -15,41 +15,52 @@ class Helium: Wacom {
     var showBounds: Pair<String>
     var mode: Mode
     var store: Store
+    private let overlay: Overlay
 
     override init() {
         self.store = Store()
         self.mode = .fullscreen
+        self.overlay = Overlay()
         self.showBounds = Pair(on: "Hide Bounds", off: "Show Bounds", true)
         super.init()
     }
 
+    func overlayWindow() -> Overlay { overlay }
+    func showOverlay() { if showBounds.on { overlay.show() } }
+    func hideOverlay() { overlay.hide() }
+
     /**
      * Toggles the mode and enters that new mode
      */
-    func toggleMode() -> NSRect {
+    func toggleMode() {
         mode.next() == .fullscreen ? setFullScreenMode() : setPrecisionMode()
+    }
+
+    func refresh() {
+        mode == .fullscreen ? setFullScreenMode() : setPrecisionMode()
     }
 
     /**
      * Set focus on the area around the specified point.
      */
-    func setPrecisionMode(at: NSPoint) -> NSRect {
+    func setPrecisionMode(at: NSPoint) {
         mode = .precision
-        return super.setPrecisionMode(at: at, scale: store.scale, aspectRatio: store.getAspectRatio())
+        overlay.move(to: super.setPrecisionMode(at: at, scale: store.scale, aspectRatio: store.getAspectRatio()), store: store)
+        overlay.flash()
     }
 
     /**
      * Set focus on the area around the cursor's current location.
      */
-    func setPrecisionMode() -> NSRect {
+    func setPrecisionMode() {
         setPrecisionMode(at: NSEvent.mouseLocation)
     }
 
     /**
      * Make the tablet cover the whole screen.
      */
-    func setFullScreenMode() -> NSRect {
+    func setFullScreenMode() {
         mode = .fullscreen
-        return super.setFullScreenMode(withAspectRatio: store.getAspectRatio())
+        overlay.move(to: super.setFullScreenMode(withAspectRatio: store.getAspectRatio()), store: store)
     }
 }
