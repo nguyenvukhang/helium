@@ -25,7 +25,7 @@ class Wacom {
         rect.fill(screen, withAspectRatio: aspectRatio)
         rect.scale(by: scale)
         rect.move(to: at, within: screen)
-        setBounds(to: rect)
+        setTablet(to: rect)
         return rect
     }
 
@@ -37,24 +37,24 @@ class Wacom {
         var rect = NSZeroRect
         rect.fill(screen, withAspectRatio: withAspectRatio)
         rect.center(within: screen)
-        setBounds(to: rect)
+        setTablet(to: rect)
         return rect
     }
-    
+
     /**
      * Reset to the entire screen, with aspect ratio out the window.
      * To use when the app terminates.
      */
     func reset() {
         updateCurrentScreen()
-        setBounds(to: screen)
+        setTablet(to: screen)
     }
 
     private func updateCurrentScreen() {
         screen = NSScreen.screens[0].frame
     }
 
-    private func setBounds(to: NSRect) {
+    private func setTablet(to: NSRect) {
         ObjCWacom.setScreenMapArea(to, screen: screen, tabletId: Int32(lastUsedTablet.val))
     }
 }

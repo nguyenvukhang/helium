@@ -8,18 +8,13 @@
 import Foundation
 
 extension NSRect {
-    static func screen() -> Self {
-        NSScreen.screens[0].frame
-    }
+    static func screen() -> Self { NSScreen.screens[0].frame }
 
     /**
      * Scales a rect. Note that the origin (bottom-left corner)
      * is the invariant of this transformation, not the center.
      */
-    mutating func scale(by: Double) {
-        size.width *= by
-        size.height *= by
-    }
+    mutating func scale(by: Double) { size.width *= by; size.height *= by }
 
     /**
      * Moves the rect such that its center is as close as possible to the
