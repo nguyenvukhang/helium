@@ -8,7 +8,7 @@ Wacom Tablet **without the [translucent overlay](#ps)**.
 Instead, you can configure a bounded overlay to appear, which will
 only appear when the pen is near to the tablet.
 
-<img src="https://user-images.githubusercontent.com/10664455/230542734-3cf722d6-8152-4ba2-adca-8ab73bc02889.png">
+<img src="https://user-images.githubusercontent.com/10664455/230543926-3630e331-20d1-497a-a5bd-1d02ba1707b4.gif">
 
 When triggered, the precision mode will be centered at your cursor's
 current location.
