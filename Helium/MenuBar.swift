@@ -34,7 +34,7 @@ class MenuBar {
         bar.button?.image = helium.mode.image
         item(.toggleMode)?.title = helium.mode.text
         item(.toggleBounds)?.title = helium.showBounds.get()
-        if let x = Shortcuts.getKeyEquivalent(.toggle), let key = x.0 {
+        if let x = Shortcuts.getKeyEquivalent(.toggleMode), let key = x.0 {
             item(.toggleMode)?.keyEquivalent = key
             item(.toggleMode)?.keyEquivalentModifierMask = x.1
         }

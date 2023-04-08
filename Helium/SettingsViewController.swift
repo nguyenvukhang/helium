@@ -37,9 +37,9 @@ class SettingsViewController: NSViewController {
         NSColor.ignoresAlpha = false
         resetAll.title = reset.get()
 
-        Shortcuts.associateView(toggleModeAction, toKey: .toggle)
-        Shortcuts.associateView(precisionModeAction, toKey: .precision)
-        Shortcuts.associateView(fullscreenModeAction, toKey: .fullscreen)
+        Shortcuts.associateView(toggleModeAction, to: .toggleMode)
+        Shortcuts.associateView(precisionModeAction, to: .setPrecision)
+        Shortcuts.associateView(fullscreenModeAction, to: .setFullscreen)
     }
 
     override func awakeFromNib() {}
