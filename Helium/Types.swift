@@ -13,8 +13,8 @@ enum Mode {
     case fullscreen
     mutating func next() { self = self == .precision ? .fullscreen : .precision }
     var text: String { self == .precision ? "Use Fullscreen Mode" : "Use Precision Mode" }
-    var icon: String { self == .precision ? "plus.rectangle.fill" : "plus.rectangle" }
-    var image: NSImage? { NSImage(systemSymbolName: icon, accessibilityDescription: text) }
+    var icon: String { self == .precision ? "Precision" : "Fullscreen" }
+    var image: NSImage? { NSImage(named: icon) }
 }
 
 /** Bind a data pair that is likely to be toggled. */
