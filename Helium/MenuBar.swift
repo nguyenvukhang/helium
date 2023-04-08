@@ -26,8 +26,8 @@ class MenuBar {
         bar.menu = NSMenu()
         addItem(helium.mode.text, action: #selector(toggleMode), tag: .mode, key: "t")
         addItem(helium.showBounds.get(), action: #selector(toggleBounds), tag: .bounds, key: "b")
-        addItem("Preferences", action: #selector(openPreferences), tag: .prefs, key: ",")
-        addItem("Quit", action: #selector(quit), tag: .quit, key: "q")
+        addItem("Preferences…", action: #selector(openPreferences), tag: .prefs, key: "")
+        addItem("Quit Helium", action: #selector(quit), tag: .quit, key: "q")
         update()
     }
 
