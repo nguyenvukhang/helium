@@ -70,9 +70,6 @@ class Helium: Store {
      */
     private func setTablet(to: NSRect) {
         ObjCWacom.setScreenMapArea(to, tabletId: Int32(lastUsedTablet.val))
-        NSLog("set")
-        NSLog(to.debugDescription)
-        NSLog(lastUsedTablet.val.description)
         moveOverlay(to: to)
     }
 
