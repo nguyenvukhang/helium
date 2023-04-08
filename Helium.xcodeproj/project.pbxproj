@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C2A0B0929DECE8400E41EAC /* Bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2A0B0729DECE8400E41EAC /* Bridge.m */; };
 		0C4E133129DFC19000BBA8B3 /* MASShortcut in Frameworks */ = {isa = PBXBuildFile; productRef = 0C4E133029DFC19000BBA8B3 /* MASShortcut */; };
-		0C4E133329DFC5D300BBA8B3 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E133229DFC5D300BBA8B3 /* Actions.swift */; };
+		0C4E133329DFC5D300BBA8B3 /* Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E133229DFC5D300BBA8B3 /* Shortcuts.swift */; };
 		0C68295129DD07F300A52EC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68295029DD07F300A52EC6 /* AppDelegate.swift */; };
 		0C68295329DD07F300A52EC6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68295229DD07F300A52EC6 /* SettingsViewController.swift */; };
 		0C68295529DD07F400A52EC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C68295429DD07F400A52EC6 /* Assets.xcassets */; };
@@ -28,7 +28,7 @@
 /* Begin PBXFileReference section */
 		0C2A0B0729DECE8400E41EAC /* Bridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bridge.m; sourceTree = "<group>"; };
 		0C2A0B0829DECE8400E41EAC /* Bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
-		0C4E133229DFC5D300BBA8B3 /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
+		0C4E133229DFC5D300BBA8B3 /* Shortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortcuts.swift; sourceTree = "<group>"; };
 		0C68294D29DD07F300A52EC6 /* Helium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C68295029DD07F300A52EC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C68295229DD07F300A52EC6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -82,12 +82,12 @@
 			children = (
 				0C68295029DD07F300A52EC6 /* AppDelegate.swift */,
 				0C68295629DD07F400A52EC6 /* Main.storyboard */,
-				0C4E133229DFC5D300BBA8B3 /* Actions.swift */,
 				0C6D513529DFED81001C1DFD /* Helium.swift */,
 				0CC83A7229DF2D6700FDF1A1 /* MenuBar.swift */,
 				0C68297529DD2C7500A52EC6 /* Overlay.swift */,
 				0C68297329DD273A00A52EC6 /* Rekt.swift */,
 				0C68295229DD07F300A52EC6 /* SettingsViewController.swift */,
+				0C4E133229DFC5D300BBA8B3 /* Shortcuts.swift */,
 				0CD15E6729DD81D1006C101F /* Store.swift */,
 				0C68296A29DD0F8A00A52EC6 /* Types.swift */,
 				0C2A0B0829DECE8400E41EAC /* Bridge.h */,
@@ -196,7 +196,7 @@
 				0C68296B29DD0F8A00A52EC6 /* Types.swift in Sources */,
 				0CC83A7329DF2D6700FDF1A1 /* MenuBar.swift in Sources */,
 				0C68296729DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m in Sources */,
-				0C4E133329DFC5D300BBA8B3 /* Actions.swift in Sources */,
+				0C4E133329DFC5D300BBA8B3 /* Shortcuts.swift in Sources */,
 				0CD15E6829DD81D1006C101F /* Store.swift in Sources */,
 				0C68296829DD0B9000A52EC6 /* WacomTabletDriver.m in Sources */,
 				0C68295329DD07F300A52EC6 /* SettingsViewController.swift in Sources */,

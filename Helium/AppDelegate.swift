@@ -28,17 +28,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         overlayWindowController.showWindow(helium.overlayWindow())
         helium.setFullScreenMode()
 
-        Actions.bind(.fullscreen) {
+        Shortcuts.bind(.fullscreen) {
             self.helium.setFullScreenMode()
             self.bar.update()
         }
 
-        Actions.bind(.precision) {
+        Shortcuts.bind(.precision) {
             self.helium.setPrecisionMode()
             self.bar.update()
         }
 
-        Actions.bind(.toggle) {
+        Shortcuts.bind(.toggle) {
             self.helium.toggleMode()
             self.bar.update()
         }

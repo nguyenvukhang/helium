@@ -7,7 +7,7 @@
 
 import MASShortcut
 
-final class Actions {
+final class Shortcuts {
     enum Key: String {
         case toggle = "key-toggle"
         case precision = "key-precision"

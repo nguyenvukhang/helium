@@ -37,9 +37,9 @@ class SettingsViewController: NSViewController {
         NSColor.ignoresAlpha = false
         resetAll.title = reset.get()
 
-        Actions.associateView(toggleModeAction, toKey: .toggle)
-        Actions.associateView(precisionModeAction, toKey: .precision)
-        Actions.associateView(fullscreenModeAction, toKey: .fullscreen)
+        Shortcuts.associateView(toggleModeAction, toKey: .toggle)
+        Shortcuts.associateView(precisionModeAction, toKey: .precision)
+        Shortcuts.associateView(fullscreenModeAction, toKey: .fullscreen)
     }
 
     private func loadAllFromStore() {
