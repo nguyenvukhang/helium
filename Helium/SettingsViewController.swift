@@ -111,19 +111,18 @@ class SettingsViewController: NSViewController {
     }
 
     @IBAction func resetDidRequest(_ sender: NSButton) {
-        if reset.on {
-            sender.bezelColor = nil
-            helium?.initializeDefaults()
-            loadAllFromStore()
-            let d = UserDefaults.standard
-            [toggleModeAction, precisionModeAction, fullscreenModeAction].forEach { view in
-                d.removeObject(forKey: view?.associatedUserDefaultsKey ?? "")
-            }
-            helium?.refresh()
-        } else {
-            sender.bezelColor = .red
-        }
         reset.toggle()
         sender.title = reset.get()
+        if reset.on {
+            sender.bezelColor = .red
+            return
+        }
+        sender.bezelColor = nil
+        helium?.initializeDefaults()
+        loadAllFromStore()
+        [toggleModeAction, precisionModeAction, fullscreenModeAction].forEach { v in
+            UserDefaults.standard.removeObject(forKey: v?.associatedUserDefaultsKey ?? "")
+        }
+        helium?.refresh()
     }
 }
