@@ -20,7 +20,6 @@
 		0C68296B29DD0F8A00A52EC6 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68296A29DD0F8A00A52EC6 /* Types.swift */; };
 		0C68297429DD273A00A52EC6 /* Rekt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68297329DD273A00A52EC6 /* Rekt.swift */; };
 		0C68297629DD2C7500A52EC6 /* Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68297529DD2C7500A52EC6 /* Overlay.swift */; };
-		0C6D513429DFEA84001C1DFD /* Wacom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6D513329DFEA84001C1DFD /* Wacom.swift */; };
 		0C6D513629DFED81001C1DFD /* Helium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6D513529DFED81001C1DFD /* Helium.swift */; };
 		0CC83A7329DF2D6700FDF1A1 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC83A7229DF2D6700FDF1A1 /* MenuBar.swift */; };
 		0CD15E6829DD81D1006C101F /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD15E6729DD81D1006C101F /* Store.swift */; };
@@ -45,7 +44,6 @@
 		0C68296A29DD0F8A00A52EC6 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		0C68297329DD273A00A52EC6 /* Rekt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rekt.swift; sourceTree = "<group>"; };
 		0C68297529DD2C7500A52EC6 /* Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overlay.swift; sourceTree = "<group>"; };
-		0C6D513329DFEA84001C1DFD /* Wacom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wacom.swift; sourceTree = "<group>"; };
 		0C6D513529DFED81001C1DFD /* Helium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helium.swift; sourceTree = "<group>"; };
 		0CC83A7229DF2D6700FDF1A1 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		0CD15E6729DD81D1006C101F /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 				0C68295229DD07F300A52EC6 /* SettingsViewController.swift */,
 				0CD15E6729DD81D1006C101F /* Store.swift */,
 				0C68296A29DD0F8A00A52EC6 /* Types.swift */,
-				0C6D513329DFEA84001C1DFD /* Wacom.swift */,
 				0C2A0B0829DECE8400E41EAC /* Bridge.h */,
 				0C2A0B0729DECE8400E41EAC /* Bridge.m */,
 				0C68295929DD07F400A52EC6 /* Helium.entitlements */,
@@ -194,7 +191,6 @@
 			files = (
 				0C6D513629DFED81001C1DFD /* Helium.swift in Sources */,
 				0C68297429DD273A00A52EC6 /* Rekt.swift in Sources */,
-				0C6D513429DFEA84001C1DFD /* Wacom.swift in Sources */,
 				0C68297629DD2C7500A52EC6 /* Overlay.swift in Sources */,
 				0C2A0B0929DECE8400E41EAC /* Bridge.m in Sources */,
 				0C68296B29DD0F8A00A52EC6 /* Types.swift in Sources */,

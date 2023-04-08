@@ -11,18 +11,18 @@ import Foundation
  * Wraps Wacom with Helium's app state.
  * This includes preferences and running-state variables such as last-used tablet.
  */
-class Helium: Wacom {
+class Helium {
     var showBounds: Pair<String>
     var mode: Mode
     var store: Store
+    var lastUsedTablet = Ref(0) // invalid tablet ID
     private let overlay: Overlay
 
-    override init() {
+    init() {
         self.showBounds = Pair(on: "Hide Bounds", off: "Show Bounds", true)
         self.mode = .fullscreen
         self.store = Store()
         self.overlay = Overlay(store: store)
-        super.init()
     }
 
     func overlayWindow() -> Overlay { overlay }
@@ -59,5 +59,12 @@ class Helium: Wacom {
         overlay.flash()
     }
 
-    override func setTablet(to: NSRect) { super.setTablet(to: to); overlay.move(to: to) }
+    func reset() {
+        ObjCWacom.setScreenMapArea(NSRect.screen(), tabletId: Int32(lastUsedTablet.val))
+    }
+
+    private func setTablet(to: NSRect) {
+        ObjCWacom.setScreenMapArea(to, tabletId: Int32(lastUsedTablet.val))
+        overlay.move(to: to)
+    }
 }
