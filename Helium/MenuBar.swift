@@ -33,6 +33,7 @@ class MenuBar {
     func update() {
         bar.button?.image = helium.mode.image
         item(.toggleMode)?.title = helium.mode.text
+        NSLog("update bar!")
         item(.toggleBounds)?.title = helium.showBounds.get()
         if let x = Shortcuts.getKeyEquivalent(.toggleMode), let key = x.0 {
             item(.toggleMode)?.keyEquivalent = key
@@ -53,7 +54,7 @@ class MenuBar {
         if prefsWindowController == nil {
             prefsWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "PrefsWindowController") as? NSWindowController
             let svc = prefsWindowController?.contentViewController as? SettingsViewController
-            svc?.hydrate(helium: helium)
+            svc?.hydrate(helium: helium, updateBar: update)
         }
         NSApp.activate(ignoringOtherApps: true)
         prefsWindowController?.showWindow(self)

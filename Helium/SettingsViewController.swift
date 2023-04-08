@@ -28,6 +28,7 @@ class SettingsViewController: NSViewController {
     @IBOutlet var resetAll: NSButton!
 
     private var helium: Helium?
+    private var updateBar: (() -> Void)?
     private var reset = Pair(on: "Confirm Restore", off: "Restore Defaults", false)
 
     override func viewDidLoad() {
@@ -44,7 +45,7 @@ class SettingsViewController: NSViewController {
 
     override func awakeFromNib() {}
     private func round2(_ x: Double) -> String { String(format: "%0.2f", x) }
-    private func preview() { helium?.reloadSettings() }
+    private func preview() { helium?.reloadSettings(); updateBar?() }
     private func setScale(_ s: Double) {
         scaleValue.stringValue = round2(s * 100)
         scaleSlider.doubleValue = s
@@ -63,8 +64,9 @@ class SettingsViewController: NSViewController {
         }
     }
 
-    func hydrate(helium: Helium) {
+    func hydrate(helium: Helium, updateBar: @escaping () -> Void) {
         self.helium = helium
+        self.updateBar = updateBar
         loadAllSettings()
     }
 

@@ -42,6 +42,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.helium.toggleMode()
             self.bar.update()
         }
+        
+        bar.update()
     }
 
     /** When tablet pen enters proximity */
