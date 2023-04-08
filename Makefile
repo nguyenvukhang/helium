@@ -1,21 +1,17 @@
 MAKEFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
 MAKEFILE_DIR  := $(dir $(MAKEFILE_PATH))
 
-BUILD_CMD:= xcodebuild -project Helium.xcodeproj -scheme Helium \
-		clean archive -configuration Release \
-		-archivePath Helium.xcarchive
+BUILD:=bash $(MAKEFILE_DIR)/scripts/build.sh
 APP:=Helium.app
 
 fmt:
 	swiftformat **/*.swift
 
 build: FORCE
-	$(BUILD_CMD)
+	$(BUILD) --build
 
 install:
-	rm -rf /Applications/$(APP)
-	make build
-	cp -a Helium.xcarchive/Products/Applications/$(APP) /Applications/$(APP)
+	$(BUILD) --install
 
 dev:
 	open Helium.xcodeproj

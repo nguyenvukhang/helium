@@ -58,7 +58,7 @@ class MenuBar {
         NSApp.activate(ignoringOtherApps: true)
         prefsWindowController?.showWindow(self)
     }
-    
+
     @objc func toggleBounds() { helium.showBounds.toggle(); update() }
     @objc func toggleMode() { helium.toggleMode(); update() }
     @objc func setPrecisionMode() { helium.setPrecisionMode(); update() }
