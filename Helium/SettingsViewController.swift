@@ -48,8 +48,8 @@ class SettingsViewController: NSViewController {
         lineColor.color = helium.lineColor
         lineWidth.stringValue = round2(helium.lineWidth)
         cornerLength.stringValue = round2(helium.cornerLength)
-        aspectRatioWidth.stringValue = round2(helium.aspectRatio.width)
-        aspectRatioHeight.stringValue = round2(helium.aspectRatio.height)
+        aspectRatioWidth.stringValue = String(helium.aspectRatioWidth)
+        aspectRatioHeight.stringValue = String(helium.aspectRatioHeight)
         moveOnEdgeTouch.state = helium.moveOnEdgeTouch ? .on : .off
     }
 
@@ -91,12 +91,12 @@ class SettingsViewController: NSViewController {
     }
 
     @IBAction func aspectRatioWidthDidChange(_ sender: NSTextField) {
-        helium?.aspectRatio.width = sender.doubleValue
+        helium?.aspectRatioWidth = sender.integerValue
         preview()
     }
 
     @IBAction func aspectRatioHeightDidChange(_ sender: NSTextField) {
-        helium?.aspectRatio.height = sender.doubleValue
+        helium?.aspectRatioHeight = sender.integerValue
         preview()
     }
 

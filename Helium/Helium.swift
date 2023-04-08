@@ -37,7 +37,7 @@ class Helium: Store {
     func setPrecisionMode(at: NSPoint) {
         mode = .precision
         let screen = NSRect.screen()
-        let area = screen.precision(at: at, scale: scale, aspectRatio: getAspectRatio())
+        let area = screen.precision(at: at, scale: scale, aspectRatio: aspectRatio)
         setTablet(to: area)
         overlay.flash()
     }
@@ -46,14 +46,14 @@ class Helium: Store {
     func setFullScreenMode() {
         mode = .fullscreen
         let screen = NSRect.screen()
-        let area = screen.fullscreen(withAspectRatio: getAspectRatio())
+        let area = screen.fullscreen(withAspectRatio: aspectRatio)
         setTablet(to: area)
     }
 
     func reloadSettings() {
         let screen = NSRect.screen()
         let cursor = NSEvent.mouseLocation
-        let area = screen.precision(at: cursor, scale: scale, aspectRatio: getAspectRatio())
+        let area = screen.precision(at: cursor, scale: scale, aspectRatio: aspectRatio)
         moveOverlay(to: area)
         overlay.flash()
     }

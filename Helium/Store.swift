@@ -8,13 +8,7 @@
 import Foundation
 
 class Store {
-    private let x: UserDefaults
-    var aspectRatio: AspectRatio
-
-    init() {
-        self.x = UserDefaults.standard
-        self.aspectRatio = AspectRatio(x)
-    }
+    private let x = UserDefaults.standard
 
     var setupExists: Bool {
         get { x.bool(forKey: "init") }
@@ -41,6 +35,18 @@ class Store {
         set(v) { x.set(v, forKey: "line-width") }
     }
 
+    var aspectRatioHeight: Int {
+        get { x.integer(forKey: "aspect-ratio-height") }
+        set(v) { x.set(v, forKey: "aspect-ratio-height") }
+    }
+
+    var aspectRatioWidth: Int {
+        get { x.integer(forKey: "aspect-ratio-width") }
+        set(v) { x.set(v, forKey: "aspect-ratio-width") }
+    }
+
+    var aspectRatio: Double { Double(aspectRatioWidth) / Double(aspectRatioHeight) }
+
     var lineColor: NSColor {
         get {
             guard
@@ -63,29 +69,9 @@ class Store {
         setupExists = true
         scale = 0.48
         lineColor = NSColor(red: 0.925, green: 0.282, blue: 0.600, alpha: 0.5)
-        aspectRatio.width = 16
-        aspectRatio.height = 10
+        aspectRatioWidth = 16
+        aspectRatioHeight = 10
         cornerLength = 50
         lineWidth = 5
-    }
-
-    func getAspectRatio() -> Double {
-        aspectRatio.width / aspectRatio.height
-    }
-
-    struct AspectRatio {
-        private let x: UserDefaults
-
-        init(_ x: UserDefaults) { self.x = x }
-
-        var height: Double {
-            get { x.double(forKey: "aspect-ratio-height") }
-            set(h) { x.set(h, forKey: "aspect-ratio-height") }
-        }
-
-        var width: Double {
-            get { x.double(forKey: "aspect-ratio-width") }
-            set(w) { x.set(w, forKey: "aspect-ratio-width") }
-        }
     }
 }
