@@ -7,107 +7,110 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C2A0B0929DECE8400E41EAC /* Bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2A0B0729DECE8400E41EAC /* Bridge.m */; };
-		0C4E133129DFC19000BBA8B3 /* MASShortcut in Frameworks */ = {isa = PBXBuildFile; productRef = 0C4E133029DFC19000BBA8B3 /* MASShortcut */; };
-		0C4E133329DFC5D300BBA8B3 /* Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4E133229DFC5D300BBA8B3 /* Shortcuts.swift */; };
-		0C68295129DD07F300A52EC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68295029DD07F300A52EC6 /* AppDelegate.swift */; };
-		0C68295329DD07F300A52EC6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68295229DD07F300A52EC6 /* SettingsViewController.swift */; };
-		0C68295529DD07F400A52EC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C68295429DD07F400A52EC6 /* Assets.xcassets */; };
-		0C68295829DD07F400A52EC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C68295629DD07F400A52EC6 /* Main.storyboard */; };
-		0C68296729DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C68296129DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m */; };
-		0C68296829DD0B9000A52EC6 /* WacomTabletDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C68296329DD0B9000A52EC6 /* WacomTabletDriver.m */; };
-		0C68296929DD0B9000A52EC6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0C68296429DD0B9000A52EC6 /* LICENSE */; };
-		0C68296B29DD0F8A00A52EC6 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68296A29DD0F8A00A52EC6 /* Types.swift */; };
-		0C68297429DD273A00A52EC6 /* Rekt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68297329DD273A00A52EC6 /* Rekt.swift */; };
-		0C68297629DD2C7500A52EC6 /* Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C68297529DD2C7500A52EC6 /* Overlay.swift */; };
-		0C6D513629DFED81001C1DFD /* Helium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6D513529DFED81001C1DFD /* Helium.swift */; };
-		0CC83A7329DF2D6700FDF1A1 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC83A7229DF2D6700FDF1A1 /* MenuBar.swift */; };
-		0CD15E6829DD81D1006C101F /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD15E6729DD81D1006C101F /* Store.swift */; };
+		0C3C039829E1809100FF8FF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C3C039729E1809100FF8FF3 /* Assets.xcassets */; };
+		0C3C039B29E1809100FF8FF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C3C039929E1809100FF8FF3 /* Main.storyboard */; };
+		0C3C03C629E1818C00FF8FF3 /* MASShortcut in Frameworks */ = {isa = PBXBuildFile; productRef = 0C3C03C529E1818C00FF8FF3 /* MASShortcut */; };
+		0C3C03CF29E181F400FF8FF3 /* NSAppleEventDescriptorHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C03C829E181F400FF8FF3 /* NSAppleEventDescriptorHelperCategory.m */; };
+		0C3C03D029E181F400FF8FF3 /* WacomTabletDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C03CA29E181F400FF8FF3 /* WacomTabletDriver.m */; };
+		0C3C03D129E181F400FF8FF3 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0C3C03CB29E181F400FF8FF3 /* LICENSE */; };
+		0C3C03D229E181F400FF8FF3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0C3C03CC29E181F400FF8FF3 /* README.md */; };
+		0C3C03D529E181F900FF8FF3 /* Bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C03D329E181F900FF8FF3 /* Bridge.m */; };
+		0CF647D029E18B02005FA204 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF647C729E18B02005FA204 /* MenuBar.swift */; };
+		0CF647D129E18B02005FA204 /* Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF647C829E18B02005FA204 /* Overlay.swift */; };
+		0CF647D229E18B02005FA204 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF647C929E18B02005FA204 /* Types.swift */; };
+		0CF647D329E18B02005FA204 /* Rekt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF647CA29E18B02005FA204 /* Rekt.swift */; };
+		0CF647D429E18B02005FA204 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF647CB29E18B02005FA204 /* SettingsViewController.swift */; };
+		0CF647D529E18B02005FA204 /* Helium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF647CC29E18B02005FA204 /* Helium.swift */; };
+		0CF647D629E18B02005FA204 /* Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF647CD29E18B02005FA204 /* Shortcuts.swift */; };
+		0CF647D729E18B02005FA204 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF647CE29E18B02005FA204 /* Store.swift */; };
+		0CF647D829E18B02005FA204 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF647CF29E18B02005FA204 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0C2A0B0729DECE8400E41EAC /* Bridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bridge.m; sourceTree = "<group>"; };
-		0C2A0B0829DECE8400E41EAC /* Bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
-		0C4E133229DFC5D300BBA8B3 /* Shortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortcuts.swift; sourceTree = "<group>"; };
-		0C68294D29DD07F300A52EC6 /* Helium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helium.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0C68295029DD07F300A52EC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0C68295229DD07F300A52EC6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		0C68295429DD07F400A52EC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0C68295729DD07F400A52EC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0C68295929DD07F400A52EC6 /* Helium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Helium.entitlements; sourceTree = "<group>"; };
-		0C68296129DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSAppleEventDescriptorHelperCategory.m; sourceTree = "<group>"; };
-		0C68296229DD0B9000A52EC6 /* TabletAEDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabletAEDictionary.h; sourceTree = "<group>"; };
-		0C68296329DD0B9000A52EC6 /* WacomTabletDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WacomTabletDriver.m; sourceTree = "<group>"; };
-		0C68296429DD0B9000A52EC6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		0C68296529DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSAppleEventDescriptorHelperCategory.h; sourceTree = "<group>"; };
-		0C68296629DD0B9000A52EC6 /* WacomTabletDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WacomTabletDriver.h; sourceTree = "<group>"; };
-		0C68296A29DD0F8A00A52EC6 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
-		0C68297329DD273A00A52EC6 /* Rekt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rekt.swift; sourceTree = "<group>"; };
-		0C68297529DD2C7500A52EC6 /* Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overlay.swift; sourceTree = "<group>"; };
-		0C6D513529DFED81001C1DFD /* Helium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helium.swift; sourceTree = "<group>"; };
-		0CC83A7229DF2D6700FDF1A1 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
-		0CD15E6729DD81D1006C101F /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		0C3C039029E1809100FF8FF3 /* Helium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helium.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C3C039729E1809100FF8FF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0C3C039A29E1809100FF8FF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0C3C039C29E1809100FF8FF3 /* Helium.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Helium.entitlements; sourceTree = "<group>"; };
+		0C3C03C829E181F400FF8FF3 /* NSAppleEventDescriptorHelperCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSAppleEventDescriptorHelperCategory.m; sourceTree = "<group>"; };
+		0C3C03C929E181F400FF8FF3 /* TabletAEDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabletAEDictionary.h; sourceTree = "<group>"; };
+		0C3C03CA29E181F400FF8FF3 /* WacomTabletDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WacomTabletDriver.m; sourceTree = "<group>"; };
+		0C3C03CB29E181F400FF8FF3 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		0C3C03CC29E181F400FF8FF3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		0C3C03CD29E181F400FF8FF3 /* NSAppleEventDescriptorHelperCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSAppleEventDescriptorHelperCategory.h; sourceTree = "<group>"; };
+		0C3C03CE29E181F400FF8FF3 /* WacomTabletDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WacomTabletDriver.h; sourceTree = "<group>"; };
+		0C3C03D329E181F900FF8FF3 /* Bridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bridge.m; sourceTree = "<group>"; };
+		0C3C03D429E181F900FF8FF3 /* Bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
+		0CF647C729E18B02005FA204 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuBar.swift; path = Helium/MenuBar.swift; sourceTree = SOURCE_ROOT; };
+		0CF647C829E18B02005FA204 /* Overlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Overlay.swift; path = Helium/Overlay.swift; sourceTree = SOURCE_ROOT; };
+		0CF647C929E18B02005FA204 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Types.swift; path = Helium/Types.swift; sourceTree = SOURCE_ROOT; };
+		0CF647CA29E18B02005FA204 /* Rekt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Rekt.swift; path = Helium/Rekt.swift; sourceTree = SOURCE_ROOT; };
+		0CF647CB29E18B02005FA204 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Helium/SettingsViewController.swift; sourceTree = SOURCE_ROOT; };
+		0CF647CC29E18B02005FA204 /* Helium.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Helium.swift; path = Helium/Helium.swift; sourceTree = SOURCE_ROOT; };
+		0CF647CD29E18B02005FA204 /* Shortcuts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Shortcuts.swift; path = Helium/Shortcuts.swift; sourceTree = SOURCE_ROOT; };
+		0CF647CE29E18B02005FA204 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Store.swift; path = Helium/Store.swift; sourceTree = SOURCE_ROOT; };
+		0CF647CF29E18B02005FA204 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Helium/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0C68294A29DD07F300A52EC6 /* Frameworks */ = {
+		0C3C038D29E1809100FF8FF3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C4E133129DFC19000BBA8B3 /* MASShortcut in Frameworks */,
+				0C3C03C629E1818C00FF8FF3 /* MASShortcut in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0C68294429DD07F300A52EC6 = {
+		0C3C038729E1809100FF8FF3 = {
 			isa = PBXGroup;
 			children = (
-				0C68294F29DD07F300A52EC6 /* Helium */,
-				0C68294E29DD07F300A52EC6 /* Products */,
+				0C3C039229E1809100FF8FF3 /* Helium */,
+				0C3C039129E1809100FF8FF3 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		0C68294E29DD07F300A52EC6 /* Products */ = {
+		0C3C039129E1809100FF8FF3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0C68294D29DD07F300A52EC6 /* Helium.app */,
+				0C3C039029E1809100FF8FF3 /* Helium.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0C68294F29DD07F300A52EC6 /* Helium */ = {
+		0C3C039229E1809100FF8FF3 /* Helium */ = {
 			isa = PBXGroup;
 			children = (
-				0C68295029DD07F300A52EC6 /* AppDelegate.swift */,
-				0C68295629DD07F400A52EC6 /* Main.storyboard */,
-				0C6D513529DFED81001C1DFD /* Helium.swift */,
-				0CC83A7229DF2D6700FDF1A1 /* MenuBar.swift */,
-				0C68297529DD2C7500A52EC6 /* Overlay.swift */,
-				0C68297329DD273A00A52EC6 /* Rekt.swift */,
-				0C68295229DD07F300A52EC6 /* SettingsViewController.swift */,
-				0C4E133229DFC5D300BBA8B3 /* Shortcuts.swift */,
-				0CD15E6729DD81D1006C101F /* Store.swift */,
-				0C68296A29DD0F8A00A52EC6 /* Types.swift */,
-				0C2A0B0829DECE8400E41EAC /* Bridge.h */,
-				0C2A0B0729DECE8400E41EAC /* Bridge.m */,
-				0C68295929DD07F400A52EC6 /* Helium.entitlements */,
-				0C68295429DD07F400A52EC6 /* Assets.xcassets */,
-				0C68296029DD0B9000A52EC6 /* Wacom */,
+				0CF647CF29E18B02005FA204 /* AppDelegate.swift */,
+				0C3C039929E1809100FF8FF3 /* Main.storyboard */,
+				0CF647CC29E18B02005FA204 /* Helium.swift */,
+				0CF647C729E18B02005FA204 /* MenuBar.swift */,
+				0CF647C829E18B02005FA204 /* Overlay.swift */,
+				0CF647CA29E18B02005FA204 /* Rekt.swift */,
+				0CF647CB29E18B02005FA204 /* SettingsViewController.swift */,
+				0CF647CD29E18B02005FA204 /* Shortcuts.swift */,
+				0CF647CE29E18B02005FA204 /* Store.swift */,
+				0CF647C929E18B02005FA204 /* Types.swift */,
+				0C3C039729E1809100FF8FF3 /* Assets.xcassets */,
+				0C3C039C29E1809100FF8FF3 /* Helium.entitlements */,
+				0C3C03D429E181F900FF8FF3 /* Bridge.h */,
+				0C3C03D329E181F900FF8FF3 /* Bridge.m */,
+				0C3C03C729E181F400FF8FF3 /* Wacom */,
 			);
 			path = Helium;
 			sourceTree = "<group>";
 		};
-		0C68296029DD0B9000A52EC6 /* Wacom */ = {
+		0C3C03C729E181F400FF8FF3 /* Wacom */ = {
 			isa = PBXGroup;
 			children = (
-				0C68296529DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.h */,
-				0C68296129DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m */,
-				0C68296629DD0B9000A52EC6 /* WacomTabletDriver.h */,
-				0C68296329DD0B9000A52EC6 /* WacomTabletDriver.m */,
-				0C68296229DD0B9000A52EC6 /* TabletAEDictionary.h */,
-				0C68296429DD0B9000A52EC6 /* LICENSE */,
+				0C3C03C829E181F400FF8FF3 /* NSAppleEventDescriptorHelperCategory.m */,
+				0C3C03C929E181F400FF8FF3 /* TabletAEDictionary.h */,
+				0C3C03CA29E181F400FF8FF3 /* WacomTabletDriver.m */,
+				0C3C03CB29E181F400FF8FF3 /* LICENSE */,
+				0C3C03CC29E181F400FF8FF3 /* README.md */,
+				0C3C03CD29E181F400FF8FF3 /* NSAppleEventDescriptorHelperCategory.h */,
+				0C3C03CE29E181F400FF8FF3 /* WacomTabletDriver.h */,
 			);
 			path = Wacom;
 			sourceTree = "<group>";
@@ -115,13 +118,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0C68294C29DD07F300A52EC6 /* Helium */ = {
+		0C3C038F29E1809100FF8FF3 /* Helium */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0C68295C29DD07F400A52EC6 /* Build configuration list for PBXNativeTarget "Helium" */;
+			buildConfigurationList = 0C3C039F29E1809100FF8FF3 /* Build configuration list for PBXNativeTarget "Helium" */;
 			buildPhases = (
-				0C68294929DD07F300A52EC6 /* Sources */,
-				0C68294A29DD07F300A52EC6 /* Frameworks */,
-				0C68294B29DD07F300A52EC6 /* Resources */,
+				0C3C038C29E1809100FF8FF3 /* Sources */,
+				0C3C038D29E1809100FF8FF3 /* Frameworks */,
+				0C3C038E29E1809100FF8FF3 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -129,28 +132,28 @@
 			);
 			name = Helium;
 			packageProductDependencies = (
-				0C4E133029DFC19000BBA8B3 /* MASShortcut */,
+				0C3C03C529E1818C00FF8FF3 /* MASShortcut */,
 			);
 			productName = Helium;
-			productReference = 0C68294D29DD07F300A52EC6 /* Helium.app */;
+			productReference = 0C3C039029E1809100FF8FF3 /* Helium.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		0C68294529DD07F300A52EC6 /* Project object */ = {
+		0C3C038829E1809100FF8FF3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					0C68294C29DD07F300A52EC6 = {
+					0C3C038F29E1809100FF8FF3 = {
 						CreatedOnToolsVersion = 14.3;
 					};
 				};
 			};
-			buildConfigurationList = 0C68294829DD07F300A52EC6 /* Build configuration list for PBXProject "Helium" */;
+			buildConfigurationList = 0C3C038B29E1809100FF8FF3 /* Build configuration list for PBXProject "Helium" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -158,59 +161,60 @@
 				en,
 				Base,
 			);
-			mainGroup = 0C68294429DD07F300A52EC6;
+			mainGroup = 0C3C038729E1809100FF8FF3;
 			packageReferences = (
-				0C4E132F29DFC19000BBA8B3 /* XCRemoteSwiftPackageReference "MASShortcut" */,
+				0C3C03C429E1818C00FF8FF3 /* XCRemoteSwiftPackageReference "MASShortcut" */,
 			);
-			productRefGroup = 0C68294E29DD07F300A52EC6 /* Products */;
+			productRefGroup = 0C3C039129E1809100FF8FF3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0C68294C29DD07F300A52EC6 /* Helium */,
+				0C3C038F29E1809100FF8FF3 /* Helium */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0C68294B29DD07F300A52EC6 /* Resources */ = {
+		0C3C038E29E1809100FF8FF3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C68296929DD0B9000A52EC6 /* LICENSE in Resources */,
-				0C68295529DD07F400A52EC6 /* Assets.xcassets in Resources */,
-				0C68295829DD07F400A52EC6 /* Main.storyboard in Resources */,
+				0C3C03D129E181F400FF8FF3 /* LICENSE in Resources */,
+				0C3C039829E1809100FF8FF3 /* Assets.xcassets in Resources */,
+				0C3C03D229E181F400FF8FF3 /* README.md in Resources */,
+				0C3C039B29E1809100FF8FF3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0C68294929DD07F300A52EC6 /* Sources */ = {
+		0C3C038C29E1809100FF8FF3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C6D513629DFED81001C1DFD /* Helium.swift in Sources */,
-				0C68297429DD273A00A52EC6 /* Rekt.swift in Sources */,
-				0C68297629DD2C7500A52EC6 /* Overlay.swift in Sources */,
-				0C2A0B0929DECE8400E41EAC /* Bridge.m in Sources */,
-				0C68296B29DD0F8A00A52EC6 /* Types.swift in Sources */,
-				0CC83A7329DF2D6700FDF1A1 /* MenuBar.swift in Sources */,
-				0C68296729DD0B9000A52EC6 /* NSAppleEventDescriptorHelperCategory.m in Sources */,
-				0C4E133329DFC5D300BBA8B3 /* Shortcuts.swift in Sources */,
-				0CD15E6829DD81D1006C101F /* Store.swift in Sources */,
-				0C68296829DD0B9000A52EC6 /* WacomTabletDriver.m in Sources */,
-				0C68295329DD07F300A52EC6 /* SettingsViewController.swift in Sources */,
-				0C68295129DD07F300A52EC6 /* AppDelegate.swift in Sources */,
+				0CF647D829E18B02005FA204 /* AppDelegate.swift in Sources */,
+				0C3C03D029E181F400FF8FF3 /* WacomTabletDriver.m in Sources */,
+				0C3C03CF29E181F400FF8FF3 /* NSAppleEventDescriptorHelperCategory.m in Sources */,
+				0CF647D129E18B02005FA204 /* Overlay.swift in Sources */,
+				0CF647D229E18B02005FA204 /* Types.swift in Sources */,
+				0CF647D029E18B02005FA204 /* MenuBar.swift in Sources */,
+				0C3C03D529E181F900FF8FF3 /* Bridge.m in Sources */,
+				0CF647D729E18B02005FA204 /* Store.swift in Sources */,
+				0CF647D329E18B02005FA204 /* Rekt.swift in Sources */,
+				0CF647D429E18B02005FA204 /* SettingsViewController.swift in Sources */,
+				0CF647D529E18B02005FA204 /* Helium.swift in Sources */,
+				0CF647D629E18B02005FA204 /* Shortcuts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0C68295629DD07F400A52EC6 /* Main.storyboard */ = {
+		0C3C039929E1809100FF8FF3 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0C68295729DD07F400A52EC6 /* Base */,
+				0C3C039A29E1809100FF8FF3 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -218,7 +222,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		0C68295A29DD07F400A52EC6 /* Debug */ = {
+		0C3C039D29E1809100FF8FF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -274,11 +278,12 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = Helium/Bridge;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		0C68295B29DD07F400A52EC6 /* Release */ = {
+		0C3C039E29E1809100FF8FF3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -327,18 +332,17 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = Helium/Bridge;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
-		0C68295D29DD07F400A52EC6 /* Debug */ = {
+		0C3C03A029E1809100FF8FF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Helium/Helium.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: Khang Nguyen (M8QD22MDJ5)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -347,7 +351,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSAppleEventsUsageDescription = "This app uses AppleEvents to communicate with the Tablet Driver.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -364,14 +367,12 @@
 			};
 			name = Debug;
 		};
-		0C68295E29DD07F400A52EC6 /* Release */ = {
+		0C3C03A129E1809100FF8FF3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Helium/Helium.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: Khang Nguyen (M8QD22MDJ5)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -380,7 +381,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSAppleEventsUsageDescription = "This app uses AppleEvents to communicate with the Tablet Driver.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -400,20 +400,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0C68294829DD07F300A52EC6 /* Build configuration list for PBXProject "Helium" */ = {
+		0C3C038B29E1809100FF8FF3 /* Build configuration list for PBXProject "Helium" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0C68295A29DD07F400A52EC6 /* Debug */,
-				0C68295B29DD07F400A52EC6 /* Release */,
+				0C3C039D29E1809100FF8FF3 /* Debug */,
+				0C3C039E29E1809100FF8FF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0C68295C29DD07F400A52EC6 /* Build configuration list for PBXNativeTarget "Helium" */ = {
+		0C3C039F29E1809100FF8FF3 /* Build configuration list for PBXNativeTarget "Helium" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0C68295D29DD07F400A52EC6 /* Debug */,
-				0C68295E29DD07F400A52EC6 /* Release */,
+				0C3C03A029E1809100FF8FF3 /* Debug */,
+				0C3C03A129E1809100FF8FF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -421,7 +421,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0C4E132F29DFC19000BBA8B3 /* XCRemoteSwiftPackageReference "MASShortcut" */ = {
+		0C3C03C429E1818C00FF8FF3 /* XCRemoteSwiftPackageReference "MASShortcut" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rxhanson/MASShortcut";
 			requirement = {
@@ -432,12 +432,12 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0C4E133029DFC19000BBA8B3 /* MASShortcut */ = {
+		0C3C03C529E1818C00FF8FF3 /* MASShortcut */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0C4E132F29DFC19000BBA8B3 /* XCRemoteSwiftPackageReference "MASShortcut" */;
+			package = 0C3C03C429E1818C00FF8FF3 /* XCRemoteSwiftPackageReference "MASShortcut" */;
 			productName = MASShortcut;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 0C68294529DD07F300A52EC6 /* Project object */;
+	rootObject = 0C3C038829E1809100FF8FF3 /* Project object */;
 }

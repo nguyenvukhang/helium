@@ -9,6 +9,7 @@ import Foundation
 
 class Store {
     private let x = UserDefaults.standard
+    init() { if !setupExists { initializeDefaults() } }
 
     var setupExists: Bool {
         get { x.bool(forKey: "init") }

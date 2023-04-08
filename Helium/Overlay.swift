@@ -5,7 +5,7 @@
 //  Created by khang on 5/4/23.
 //
 
-import Foundation
+import Cocoa
 
 extension NSBezierPath {
     func take(_ path: NSBezierPath) {

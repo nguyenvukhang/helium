@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SettingsViewController.swift
 //  Helium
 //
 //  Created by khang on 5/4/23.
@@ -14,18 +14,18 @@ import MASShortcut
  * with ./Base.lproj/Main.storyboard
  */
 class SettingsViewController: NSViewController {
-    @IBOutlet var scaleValue: NSTextField!
-    @IBOutlet var cornerLength: NSTextField!
-    @IBOutlet var scaleSlider: NSSliderCell!
     @IBOutlet var lineColor: NSColorWell!
     @IBOutlet var lineWidth: NSTextField!
+    @IBOutlet var cornerLength: NSTextField!
     @IBOutlet var aspectRatioWidth: NSTextField!
     @IBOutlet var aspectRatioHeight: NSTextField!
-    @IBOutlet var resetAll: NSButton!
+    @IBOutlet var scaleSlider: NSSlider!
+    @IBOutlet var scaleValue: NSTextField!
     @IBOutlet var moveOnEdgeTouch: NSButton!
     @IBOutlet var precisionModeAction: MASShortcutView!
     @IBOutlet var fullscreenModeAction: MASShortcutView!
     @IBOutlet var toggleModeAction: MASShortcutView!
+    @IBOutlet var resetAll: NSButton!
 
     private var helium: Helium?
     private var reset = Pair(on: "Confirm Restore", off: "Restore Defaults", false)
@@ -42,17 +42,6 @@ class SettingsViewController: NSViewController {
         Shortcuts.associateView(fullscreenModeAction, toKey: .fullscreen)
     }
 
-    private func loadAllFromStore() {
-        let helium = helium!
-        setScale(helium.scale)
-        lineColor.color = helium.lineColor
-        lineWidth.stringValue = round2(helium.lineWidth)
-        cornerLength.stringValue = round2(helium.cornerLength)
-        aspectRatioWidth.stringValue = String(helium.aspectRatioWidth)
-        aspectRatioHeight.stringValue = String(helium.aspectRatioHeight)
-        moveOnEdgeTouch.state = helium.moveOnEdgeTouch ? .on : .off
-    }
-
     override func awakeFromNib() {}
     private func round2(_ x: Double) -> String { String(format: "%0.2f", x) }
     private func preview() { helium?.reloadSettings() }
@@ -62,12 +51,21 @@ class SettingsViewController: NSViewController {
         helium?.scale = s
     }
 
+    private func loadAllSettings() {
+        if let helium = helium {
+            setScale(helium.scale)
+            lineColor.color = helium.lineColor
+            lineWidth.stringValue = round2(helium.lineWidth)
+            cornerLength.stringValue = round2(helium.cornerLength)
+            aspectRatioWidth.stringValue = String(helium.aspectRatioWidth)
+            aspectRatioHeight.stringValue = String(helium.aspectRatioHeight)
+            moveOnEdgeTouch.state = helium.moveOnEdgeTouch ? .on : .off
+        }
+    }
+
     func hydrate(helium: Helium) {
         self.helium = helium
-        if !helium.setupExists {
-            helium.initializeDefaults()
-        }
-        loadAllFromStore()
+        loadAllSettings()
     }
 
     @IBAction func scaleSliderDidChange(_ sender: AnyObject) {
@@ -119,7 +117,7 @@ class SettingsViewController: NSViewController {
         }
         sender.bezelColor = nil
         helium?.initializeDefaults()
-        loadAllFromStore()
+        loadAllSettings()
         [toggleModeAction, precisionModeAction, fullscreenModeAction].forEach { v in
             UserDefaults.standard.removeObject(forKey: v?.associatedUserDefaultsKey ?? "")
         }
