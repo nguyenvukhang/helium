@@ -11,18 +11,17 @@ import Foundation
  * Wraps Wacom with Helium's app state.
  * This includes preferences and running-state variables such as last-used tablet.
  */
-class Helium {
+class Helium: Store {
     var showBounds: Pair<String>
     var mode: Mode
-    var store: Store
     var lastUsedTablet = Ref(0) // invalid tablet ID
     private let overlay: Overlay
 
-    init() {
+    override init() {
         self.showBounds = Pair(on: "Hide Bounds", off: "Show Bounds", true)
         self.mode = .fullscreen
-        self.store = Store()
-        self.overlay = Overlay(store: store)
+        self.overlay = Overlay()
+        super.init()
     }
 
     func overlayWindow() -> Overlay { overlay }
@@ -38,7 +37,7 @@ class Helium {
     func setPrecisionMode(at: NSPoint) {
         mode = .precision
         let screen = NSRect.screen()
-        let area = screen.precision(at: at, scale: store.scale, aspectRatio: store.getAspectRatio())
+        let area = screen.precision(at: at, scale: scale, aspectRatio: getAspectRatio())
         setTablet(to: area)
         overlay.flash()
     }
@@ -47,15 +46,15 @@ class Helium {
     func setFullScreenMode() {
         mode = .fullscreen
         let screen = NSRect.screen()
-        let area = screen.fullscreen(withAspectRatio: store.getAspectRatio())
+        let area = screen.fullscreen(withAspectRatio: getAspectRatio())
         setTablet(to: area)
     }
 
     func reloadSettings() {
         let screen = NSRect.screen()
         let cursor = NSEvent.mouseLocation
-        let area = screen.precision(at: cursor, scale: store.scale, aspectRatio: store.getAspectRatio())
-        overlay.move(to: area)
+        let area = screen.precision(at: cursor, scale: scale, aspectRatio: getAspectRatio())
+        moveOverlay(to: area)
         overlay.flash()
     }
 
@@ -63,8 +62,12 @@ class Helium {
         ObjCWacom.setScreenMapArea(NSRect.screen(), tabletId: Int32(lastUsedTablet.val))
     }
 
+    private func moveOverlay(to: NSRect) {
+        overlay.move(to: to, lineColor: lineColor, lineWidth: lineWidth, cornerLength: cornerLength)
+    }
+
     private func setTablet(to: NSRect) {
         ObjCWacom.setScreenMapArea(to, tabletId: Int32(lastUsedTablet.val))
-        overlay.move(to: to)
+        moveOverlay(to: to)
     }
 }

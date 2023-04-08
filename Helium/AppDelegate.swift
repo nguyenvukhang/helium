@@ -52,7 +52,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     /** When tablet pen exits proximity */
     func handleProximityExit(_ event: NSEvent) {
-        if helium.store.moveOnEdgeTouch {
+        if helium.moveOnEdgeTouch {
             let cursor = NSEvent.mouseLocation
             if cursor.nearEdge(of: lastRect, by: 10) {
                 helium.setPrecisionMode(at: cursor)

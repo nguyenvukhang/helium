@@ -48,10 +48,8 @@ extension NSBezierPath {
 
 class Overlay: NSWindow {
     private let margin = 16.0
-    private let store: Store
 
-    init(store: Store) {
-        self.store = store
+    init() {
         super.init(contentRect: NSMakeRect(0, 0, 0, 1), styleMask: .borderless, backing: .buffered, defer: true)
         ignoresMouseEvents = true
         level = .screenSaver
@@ -62,7 +60,7 @@ class Overlay: NSWindow {
     func hide() { animateAlpha(to: 0, over: 1.0) }
     func flash() { show(); hide() }
 
-    func move(to: NSRect) {
+    func move(to: NSRect, lineColor: NSColor, lineWidth: Double, cornerLength: Double) {
         var target = to
         target.origin.x -= margin
         target.origin.y -= margin
@@ -76,7 +74,7 @@ class Overlay: NSWindow {
         target.size.width += margin * 2
         target.size.height += margin * 2
         setFrame(target, display: true)
-        drawBorder()
+        drawBorder(lineColor: lineColor, lineWidth: lineWidth, cornerLength: cornerLength)
     }
 
     // debugging function to add real bounds to the actual NSWindow boundary rect
@@ -87,18 +85,18 @@ class Overlay: NSWindow {
         bz.stroke()
     }
 
-    func drawBorder() {
+    func drawBorder(lineColor: NSColor, lineWidth: Double, cornerLength: Double) {
         let bg = NSImage(size: frame.size)
         bg.lockFocus()
 
-        store.lineColor.set()
+        lineColor.set()
 
         let bounds = NSBezierPath()
         bounds.lineJoinStyle = .round
 
-        bounds.lineWidth = store.lineWidth
+        bounds.lineWidth = lineWidth
         bounds.removeAllPoints()
-        bounds.drawBounds(rect: frame, length: store.cornerLength, margin: margin)
+        bounds.drawBounds(rect: frame, length: cornerLength, margin: margin)
         bounds.stroke()
 
         // addWindowBounds(color: .blue)

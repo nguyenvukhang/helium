@@ -43,14 +43,14 @@ class SettingsViewController: NSViewController {
     }
 
     private func loadAllFromStore() {
-        let store = helium!.store
-        setScale(store.scale)
-        lineColor.color = store.lineColor
-        lineWidth.stringValue = round2(store.lineWidth)
-        cornerLength.stringValue = round2(store.cornerLength)
-        aspectRatioWidth.stringValue = round2(store.aspectRatio.width)
-        aspectRatioHeight.stringValue = round2(store.aspectRatio.height)
-        moveOnEdgeTouch.state = store.moveOnEdgeTouch ? .on : .off
+        let helium = helium!
+        setScale(helium.scale)
+        lineColor.color = helium.lineColor
+        lineWidth.stringValue = round2(helium.lineWidth)
+        cornerLength.stringValue = round2(helium.cornerLength)
+        aspectRatioWidth.stringValue = round2(helium.aspectRatio.width)
+        aspectRatioHeight.stringValue = round2(helium.aspectRatio.height)
+        moveOnEdgeTouch.state = helium.moveOnEdgeTouch ? .on : .off
     }
 
     override func awakeFromNib() {}
@@ -59,13 +59,13 @@ class SettingsViewController: NSViewController {
     private func setScale(_ s: Double) {
         scaleValue.stringValue = round2(s * 100)
         scaleSlider.doubleValue = s
-        helium?.store.scale = s
+        helium?.scale = s
     }
 
     func hydrate(helium: Helium) {
         self.helium = helium
-        if !helium.store.setupExists {
-            helium.store.initializeDefaults()
+        if !helium.setupExists {
+            helium.initializeDefaults()
         }
         loadAllFromStore()
     }
@@ -81,39 +81,39 @@ class SettingsViewController: NSViewController {
     }
 
     @IBAction func colorDidChange(_ sender: NSColorWell) {
-        helium?.store.lineColor = sender.color
+        helium?.lineColor = sender.color
         preview()
     }
 
     @IBAction func lineWidthDidChange(_ sender: NSTextField) {
-        helium?.store.lineWidth = sender.doubleValue
+        helium?.lineWidth = sender.doubleValue
         preview()
     }
 
     @IBAction func aspectRatioWidthDidChange(_ sender: NSTextField) {
-        helium?.store.aspectRatio.width = sender.doubleValue
+        helium?.aspectRatio.width = sender.doubleValue
         preview()
     }
 
     @IBAction func aspectRatioHeightDidChange(_ sender: NSTextField) {
-        helium?.store.aspectRatio.height = sender.doubleValue
+        helium?.aspectRatio.height = sender.doubleValue
         preview()
     }
 
     @IBAction func cornerLengthDidChange(_ sender: NSTextField) {
-        helium?.store.cornerLength = sender.doubleValue
+        helium?.cornerLength = sender.doubleValue
         preview()
     }
 
     @IBAction func moveOnEdgeTouchDidChange(_ sender: NSButton) {
-        helium?.store.moveOnEdgeTouch = sender.state == .on
+        helium?.moveOnEdgeTouch = sender.state == .on
         preview()
     }
 
     @IBAction func resetDidRequest(_ sender: NSButton) {
         if reset.on {
             sender.bezelColor = nil
-            helium?.store.initializeDefaults()
+            helium?.initializeDefaults()
             loadAllFromStore()
             let d = UserDefaults.standard
             [toggleModeAction, precisionModeAction, fullscreenModeAction].forEach { view in
