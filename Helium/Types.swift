@@ -17,22 +17,17 @@ enum Mode {
     var image: NSImage? { NSImage(systemSymbolName: icon, accessibilityDescription: text) }
 }
 
+/** Bind a data pair that is likely to be toggled. */
 final class Pair<T> {
     private let v: (T, T)
     var on: Bool
-    init(on: T, off: T, _ x: Bool) {
-        self.v = (on, off)
-        self.on = x
-    }
-
+    init(on: T, off: T, _ x: Bool) { self.v = (on, off); self.on = x }
     func toggle() { on = !on }
     func get() -> T { on ? v.0 : v.1 }
 }
 
-final class Ref<T> {
-    var val: T
-    init(_ v: T) { self.val = v }
-}
+/** A simple reference class to store references to primitives */
+final class Ref<T> { var val: T; init(_ v: T) { self.val = v } }
 
 extension NSPoint {
     /** Checks if point is within a distance from edge of NSRect. */

@@ -13,7 +13,14 @@ extension NSBezierPath {
         append(path)
     }
 
-    // take a path and append it 4 times in all 4 flipped states
+    /**
+     * take a (bottom-left) path and add it 4 times in all 4 flipped states
+     *                        ┌─       ─┐
+     *
+     *      · (0,0)       →        · (0,0)
+     *
+     * └─                     └─       ─┘
+     */
     func addAll4Orientations(path: NSBezierPath) {
         let u = path, v = NSBezierPath()
         v.take(u)

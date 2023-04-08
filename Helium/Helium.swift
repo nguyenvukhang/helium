@@ -14,7 +14,7 @@ import Foundation
 class Helium: Store {
     var showBounds: Pair<String>
     var mode: Mode
-    var lastUsedTablet = Ref(0) // invalid tablet ID
+    var lastUsedTablet = Ref(0) // initialize with invalid tablet ID
     private let overlay: Overlay
 
     override init() {
@@ -30,10 +30,10 @@ class Helium: Store {
     func toggleMode() { mode.next(); refresh() }
     func refresh() { mode == .precision ? setPrecisionMode() : setFullScreenMode() }
 
-    /** Set focus on the area around the cursor's current location. */
+    /** Make the tablet cover the area around the cursor's current location. */
     func setPrecisionMode() { setPrecisionMode(at: NSEvent.mouseLocation) }
 
-    /** Set focus on the area around the specified point. */
+    /** Make the tablet cover the area around the specified point. */
     func setPrecisionMode(at: NSPoint) {
         mode = .precision
         let screen = NSRect.screen()
@@ -50,6 +50,7 @@ class Helium: Store {
         setTablet(to: area)
     }
 
+    /** Rehydrate running state after settings have changed */
     func reloadSettings() {
         let screen = NSRect.screen()
         let cursor = NSEvent.mouseLocation
@@ -58,16 +59,22 @@ class Helium: Store {
         overlay.flash()
     }
 
-    func reset() {
-        ObjCWacom.setScreenMapArea(NSRect.screen(), tabletId: Int32(lastUsedTablet.val))
-    }
-
+    /** Move overlay to cover target NSRect */
     private func moveOverlay(to: NSRect) {
         overlay.move(to: to, lineColor: lineColor, lineWidth: lineWidth, cornerLength: cornerLength)
     }
 
+    /**
+     * Sends a WacomTabletDriver API call to override tablet map area.
+     * Also makes the overlay follow wherever it goes.
+     */
     private func setTablet(to: NSRect) {
         ObjCWacom.setScreenMapArea(to, tabletId: Int32(lastUsedTablet.val))
         moveOverlay(to: to)
+    }
+
+    /** Reset screen map area to current screen. For use upon exiting. */
+    func reset() {
+        ObjCWacom.setScreenMapArea(NSRect.screen(), tabletId: Int32(lastUsedTablet.val))
     }
 }
