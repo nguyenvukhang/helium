@@ -12,26 +12,19 @@ class MenuBar {
     private let helium: Helium
     private var prefsWindowController: NSWindowController?
 
-    private enum Tag: Int {
-        case mode = 1
-        case bounds = 2
-        case prefs = 3
-        case quit = 4
-    }
-
     init(helium: Helium) {
         self.helium = helium
         self.bar = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
         bar.menu = NSMenu()
-        addItem(helium.mode.text, action: #selector(toggleMode), tag: .mode, key: "")
-        addItem(helium.showBounds.get(), action: #selector(toggleBounds), tag: .bounds, key: "")
-        addItem("Preferences…", action: #selector(openPreferences), tag: .prefs, key: "")
-        addItem("Quit Helium", action: #selector(quit), tag: .quit, key: "q")
+        addItem(helium.mode.text, action: #selector(toggleMode), tag: .toggleMode, key: "")
+        addItem(helium.showBounds.get(), action: #selector(toggleBounds), tag: .toggleBounds, key: "")
+        addItem(Action.openPreferences.displayName, action: #selector(openPreferences), tag: .openPreferences, key: "")
+        addItem(Action.quit.displayName, action: #selector(quit), tag: .quit, key: "q")
 
         bar.button?.image = helium.mode.image
-        item(.mode)?.title = helium.mode.text
-        item(.bounds)?.title = helium.showBounds.get()
+        item(.toggleMode)?.title = helium.mode.text
+        item(.toggleBounds)?.title = helium.showBounds.get()
     }
 
     /**
@@ -39,12 +32,16 @@ class MenuBar {
      */
     func update() {
         bar.button?.image = helium.mode.image
-        item(.mode)?.title = helium.mode.text
-        item(.bounds)?.title = helium.showBounds.get()
+        item(.toggleMode)?.title = helium.mode.text
+        item(.toggleBounds)?.title = helium.showBounds.get()
+        if let x = Shortcuts.getKeyEquivalent(.toggle), let key = x.0 {
+            item(.toggleMode)?.keyEquivalent = key
+            item(.toggleMode)?.keyEquivalentModifierMask = x.1
+        }
     }
 
-    private func item(_ tag: Tag) -> NSMenuItem? { bar.menu?.item(withTag: tag.rawValue) }
-    private func addItem(_ title: String, action: Selector?, tag: Tag, key: String) {
+    private func item(_ tag: Action) -> NSMenuItem? { bar.menu?.item(withTag: tag.rawValue) }
+    private func addItem(_ title: String, action: Selector?, tag: Action, key: String) {
         let item = NSMenuItem(title: title, action: action, keyEquivalent: key)
         item.tag = tag.rawValue
         item.target = self
