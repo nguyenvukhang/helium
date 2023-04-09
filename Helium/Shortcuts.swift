@@ -40,7 +40,6 @@ enum Action: Int {
 }
 
 enum Shortcuts {
-
     static func bind(_ action: Action, to: @escaping () -> Void) {
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: action.name, toAction: to)
     }
@@ -49,7 +48,7 @@ enum Shortcuts {
         view.associatedUserDefaultsKey = to.name
     }
 
-    static func getKeyEquivalent(_ action: Action) -> (String?, NSEvent.ModifierFlags)? {
+    static func get(_ action: Action) -> (String?, NSEvent.ModifierFlags)? {
         guard let m = MASShortcutBinder.shared()?.value(forKey: action.name) as? MASShortcut else { return nil }
         return (m.keyCodeStringForKeyEquivalent, m.modifierFlags)
     }

@@ -35,7 +35,7 @@ class MenuBar {
         item(.toggleMode)?.title = helium.mode.text
         NSLog("update bar!")
         item(.toggleBounds)?.title = helium.showBounds.get()
-        if let x = Shortcuts.getKeyEquivalent(.toggleMode), let key = x.0 {
+        if let x = Shortcuts.get(.toggleMode), let key = x.0 {
             item(.toggleMode)?.keyEquivalent = key
             item(.toggleMode)?.keyEquivalentModifierMask = x.1
         }
