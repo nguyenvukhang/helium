@@ -84,6 +84,25 @@ class Overlay: NSWindow {
         drawBorder(lineColor: lineColor, lineWidth: lineWidth, cornerLength: cornerLength)
     }
 
+    func circle(to: NSRect, lineWidth: Double, scale: Double) -> NSBezierPath {
+        var rect = to.fill(withAspectRatio: 1)
+        rect.scale(by: scale)
+        rect.center(within: to)
+        let p = NSBezierPath(ovalIn: rect)
+        p.lineWidth = lineWidth
+        return p
+    }
+
+    func fullscreen(to: NSRect, lineColor: NSColor, lineWidth: Double, cornerLength: Double) {
+        setFrame(to, display: true)
+        let bg = NSImage(size: frame.size)
+        bg.lockFocus()
+        lineColor.set()
+        circle(to: frame, lineWidth: lineWidth, scale: 0.1).stroke()
+        bg.unlockFocus()
+        backgroundColor = NSColor(patternImage: bg)
+    }
+
     // debugging function to add real bounds to the actual NSWindow boundary rect
     func addWindowBounds(color: NSColor) {
         let bz = NSBezierPath(rect: NSRect(origin: NSZeroPoint, size: frame.size))
@@ -102,7 +121,7 @@ class Overlay: NSWindow {
         bounds.lineJoinStyle = .round
 
         bounds.lineWidth = lineWidth
-        bounds.removeAllPoints()
+
         bounds.drawBounds(rect: frame, length: cornerLength, margin: margin)
         bounds.stroke()
 

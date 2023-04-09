@@ -33,7 +33,6 @@ class MenuBar {
     func update() {
         bar.button?.image = helium.mode.image
         item(.toggleMode)?.title = helium.mode.text
-        NSLog("update bar!")
         item(.toggleBounds)?.title = helium.showBounds.get()
         if let x = Shortcuts.get(.toggleMode), let key = x.0 {
             item(.toggleMode)?.keyEquivalent = key

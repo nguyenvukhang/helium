@@ -39,6 +39,7 @@ class Helium: Store {
         let screen = NSRect.screen()
         let area = screen.precision(at: at, scale: scale, aspectRatio: aspectRatio)
         setTablet(to: area)
+        moveOverlay(to: area)
         overlay.flash()
     }
 
@@ -46,8 +47,10 @@ class Helium: Store {
     func setFullScreenMode() {
         mode = .fullscreen
         let screen = NSRect.screen()
-        let area = screen.fullscreen(withAspectRatio: aspectRatio)
+        let area = screen.fill(withAspectRatio: aspectRatio)
         setTablet(to: area)
+        overlay.fullscreen(to: area, lineColor: lineColor, lineWidth: lineWidth, cornerLength: cornerLength)
+        overlay.flash()
     }
 
     /** Rehydrate running state after settings have changed */
@@ -70,7 +73,6 @@ class Helium: Store {
      */
     private func setTablet(to: NSRect) {
         ObjCWacom.setScreenMapArea(to, tabletId: Int32(lastUsedTablet.val))
-        moveOverlay(to: to)
     }
 
     /** Reset screen map area to current screen. For use upon exiting. */

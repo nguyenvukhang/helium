@@ -35,7 +35,7 @@ extension NSRect {
         origin.y = (within.height - height) / 2
     }
 
-    func fullscreen(withAspectRatio: Double) -> NSRect {
+    func fill(withAspectRatio: Double) -> NSRect {
         var rect = NSRect(parent: self, withAspectRatio: withAspectRatio)
         rect.center(within: self)
         return rect
