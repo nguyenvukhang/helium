@@ -63,12 +63,11 @@ class Overlay: NSWindow {
         alphaValue = 0
     }
 
-    func show() { alphaValue = 1 }
+    func show() { makeKeyAndOrderFront(nil); alphaValue = 1 }
     func hide() { animateAlpha(to: 0, over: 1.0) }
     func flash() { show(); hide() }
 
     func move(to: NSRect, lineColor: NSColor, lineWidth: Double, cornerLength: Double) {
-        level = .screenSaver
         var target = to
         target.origin.x -= margin
         target.origin.y -= margin
@@ -95,7 +94,6 @@ class Overlay: NSWindow {
     }
 
     func fullscreen(to: NSRect, lineColor: NSColor, lineWidth: Double, cornerLength: Double) {
-        level = .screenSaver
         setFrame(to, display: true)
         let bg = NSImage(size: frame.size)
         bg.lockFocus()
