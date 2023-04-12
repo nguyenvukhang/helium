@@ -68,6 +68,7 @@ class Overlay: NSWindow {
     func flash() { show(); hide() }
 
     func move(to: NSRect, lineColor: NSColor, lineWidth: Double, cornerLength: Double) {
+        level = .screenSaver
         var target = to
         target.origin.x -= margin
         target.origin.y -= margin
@@ -94,6 +95,7 @@ class Overlay: NSWindow {
     }
 
     func fullscreen(to: NSRect, lineColor: NSColor, lineWidth: Double, cornerLength: Double) {
+        level = .screenSaver
         setFrame(to, display: true)
         let bg = NSImage(size: frame.size)
         bg.lockFocus()
