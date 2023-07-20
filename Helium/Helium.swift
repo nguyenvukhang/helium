@@ -5,7 +5,7 @@
 //  Created by khang on 7/4/23.
 //
 
-import Foundation
+import Cocoa
 
 /**
  * Wraps Wacom with Helium's app state.
@@ -34,10 +34,10 @@ class Helium: Store {
     func setPrecisionMode() { setPrecisionMode(at: NSEvent.mouseLocation) }
 
     /** Make the tablet cover the area around the specified point. */
-    func setPrecisionMode(at: NSPoint) {
+    func setPrecisionMode(at point: NSPoint) {
         mode = .precision
         let screen = NSRect.screen()
-        let area = screen.precision(at: at, scale: scale, aspectRatio: aspectRatio)
+        let area = screen.precision(at: point, scale: scale, aspectRatio: aspectRatio)
         setTablet(to: area)
         moveOverlay(to: area)
         overlay.flash()
@@ -63,16 +63,16 @@ class Helium: Store {
     }
 
     /** Move overlay to cover target NSRect */
-    private func moveOverlay(to: NSRect) {
-        overlay.move(to: to, lineColor: lineColor, lineWidth: lineWidth, cornerLength: cornerLength)
+    private func moveOverlay(to rect: NSRect) {
+        overlay.move(to: rect, lineColor: lineColor, lineWidth: lineWidth, cornerLength: cornerLength)
     }
 
     /**
      * Sends a WacomTabletDriver API call to override tablet map area.
      * Also makes the overlay follow wherever it goes.
      */
-    private func setTablet(to: NSRect) {
-        ObjCWacom.setScreenMapArea(to, tabletId: Int32(lastUsedTablet.val))
+    private func setTablet(to rect: NSRect) {
+        ObjCWacom.setScreenMapArea(rect, tabletId: Int32(lastUsedTablet.val))
     }
 
     /** Reset screen map area to current screen. For use upon exiting. */

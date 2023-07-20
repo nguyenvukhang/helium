@@ -5,46 +5,59 @@
 //  Created by khang on 5/4/23.
 //
 
-import Foundation
+import Cocoa
 
 extension NSRect {
-    static func screen() -> Self { NSScreen.screens[0].frame }
+    static func screen() -> Self {
+        let mouseLocation = NSEvent.mouseLocation
+        let screens = NSScreen.screens
+        return (screens.first { NSMouseInRect(mouseLocation, $0.frame, false) })!.frame
+    }
 
     /** Fills a parent rect, given an aspect ratio constraint */
-    init(parent: NSRect, withAspectRatio: Double) {
+    init(parent: NSRect, withAspectRatio ratio: Double) {
         self.init()
-        size.width = min(parent.height * withAspectRatio, parent.width)
-        size.height = width / withAspectRatio
+        size.width = min(parent.height * ratio, parent.width)
+        size.height = width / ratio
+        origin = NSPoint(x: parent.midX, y: parent.midY)
     }
 
     /** Scales a rect. Origin is invariant. */
-    mutating func scale(by: Double) { size.width *= by; size.height *= by }
+    mutating func scale(by x: Double) { size.width *= x; size.height *= x }
 
     /**
      * Constrained inside of NSRect `within`, minimize the distance
      * from the center of the rect to NSPoint `to`.
      */
-    mutating func move(to: NSPoint, within: NSRect) {
-        origin.x = min(max(0, to.x - width / 2), within.width - width)
-        origin.y = min(max(0, to.y - height / 2), within.height - height)
+    mutating func move(to point: NSPoint, within screen: NSRect) {
+        origin.x = min(
+            max(screen.origin.x, point.x - width / 2),
+            screen.maxX - width
+        )
+        origin.y = min(
+            max(screen.origin.y, point.y - height / 2),
+            screen.maxY - height
+        )
     }
 
     /** Center a in a parent rect. Parent's origin is The origin. */
-    mutating func center(within: NSRect) {
-        origin.x = (within.width - width) / 2
-        origin.y = (within.height - height) / 2
+    mutating func center(within parent: NSRect) {
+        origin = NSPoint(x: parent.midX, y: parent.midY)
     }
 
-    func fill(withAspectRatio: Double) -> NSRect {
-        var rect = NSRect(parent: self, withAspectRatio: withAspectRatio)
+    func fill(withAspectRatio ratio: Double) -> NSRect {
+        var rect = NSRect(parent: self, withAspectRatio: ratio)
         rect.center(within: self)
         return rect
     }
 
-    func precision(at: NSPoint, scale: Double, aspectRatio: Double) -> NSRect {
+    /**
+     * self is the screen that precision is set in
+     */
+    func precision(at point: NSPoint, scale: Double, aspectRatio: Double) -> NSRect {
         var rect = NSRect(parent: self, withAspectRatio: aspectRatio)
         rect.scale(by: scale)
-        rect.move(to: at, within: self)
+        rect.move(to: point, within: self)
         return rect
     }
 }

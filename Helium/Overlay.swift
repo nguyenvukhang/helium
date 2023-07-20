@@ -63,18 +63,20 @@ class Overlay: NSWindow {
         alphaValue = 0
     }
 
-    func show() { makeKeyAndOrderFront(nil); alphaValue = 1 }
+    func show() {
+        alphaValue = 1
+    }
     func hide() { animateAlpha(to: 0, over: 1.0) }
     func flash() { show(); hide() }
 
-    func move(to: NSRect, lineColor: NSColor, lineWidth: Double, cornerLength: Double) {
-        var target = to
+    func move(to rect: NSRect, lineColor: NSColor, lineWidth: Double, cornerLength: Double) {
+        var target = rect
         target.origin.x -= margin
         target.origin.y -= margin
 
-        if frame.size.equalTo(to.size) {
+        if frame.size.equalTo(rect.size) {
             // no re-draw required, since rect is same size
-            setFrameOrigin(to.origin)
+            setFrameOrigin(rect.origin)
             return
         }
 
@@ -131,10 +133,10 @@ class Overlay: NSWindow {
         backgroundColor = NSColor(patternImage: bg)
     }
 
-    private func animateAlpha(to: Double, over: TimeInterval) {
+    private func animateAlpha(to alpha: Double, over interval: TimeInterval) {
         NSAnimationContext.beginGrouping()
-        NSAnimationContext.current.duration = over
-        animator().alphaValue = to
+        NSAnimationContext.current.duration = interval
+        animator().alphaValue = alpha
         NSAnimationContext.endGrouping()
     }
 }
