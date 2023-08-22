@@ -86,17 +86,17 @@ class Overlay: NSWindow {
         drawBorder(lineColor: lineColor, lineWidth: lineWidth, cornerLength: cornerLength)
     }
 
-    func circle(to: NSRect, lineWidth: Double, scale: Double) -> NSBezierPath {
-        var rect = to.fill(withAspectRatio: 1)
+    func circle(to rect: NSRect, lineWidth: Double, scale: Double) -> NSBezierPath {
+        var rect = rect.fill(withAspectRatio: 1)
         rect.scale(by: scale)
-        rect.center(within: to)
+        rect.center(within: rect)
         let p = NSBezierPath(ovalIn: rect)
         p.lineWidth = lineWidth
         return p
     }
 
-    func fullscreen(to: NSRect, lineColor: NSColor, lineWidth: Double, cornerLength: Double) {
-        setFrame(to, display: true)
+    func fullscreen(to rect: NSRect, lineColor: NSColor, lineWidth: Double, cornerLength: Double) {
+        setFrame(rect, display: true)
         let bg = NSImage(size: frame.size)
         bg.lockFocus()
         lineColor.set()
