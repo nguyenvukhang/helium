@@ -58,6 +58,7 @@ class Overlay: NSWindow {
 
     init() {
         super.init(contentRect: NSMakeRect(0, 0, 0, 1), styleMask: .borderless, backing: .buffered, defer: true)
+        collectionBehavior = .canJoinAllSpaces
         ignoresMouseEvents = true
         level = .screenSaver
         alphaValue = 0
@@ -66,8 +67,12 @@ class Overlay: NSWindow {
     func show() {
         alphaValue = 1
     }
-    func hide() { animateAlpha(to: 0, over: 1.0) }
-    func flash() { show(); hide() }
+    func hide() {
+        animateAlpha(to: 0, over: 1.0)
+    }
+    func flash() {
+        show(); hide()
+    }
 
     func move(to rect: NSRect, lineColor: NSColor, lineWidth: Double, cornerLength: Double) {
         var target = rect
