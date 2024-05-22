@@ -16,6 +16,7 @@ class Helium: Store {
     var mode: Mode
     var lastUsedTablet = Ref(0) // initialize with invalid tablet ID
     private let overlay: Overlay
+    var penIsProximate: Bool = false
 
     override init() {
         self.showBounds = Pair(on: "Hide Bounds", off: "Show Bounds", true)
@@ -29,6 +30,7 @@ class Helium: Store {
     func hideOverlay() { overlay.hide() }
     func toggleMode() { mode.next(); refresh() }
     func refresh() { mode == .precision ? setPrecisionMode() : setFullScreenMode() }
+    func toggleBounds() { self.showBounds.toggle(); hideOverlay(); showOverlay(); }
 
     /** Make the tablet cover the area around the cursor's current location. */
     func setPrecisionMode() { setPrecisionMode(at: NSEvent.mouseLocation) }
@@ -40,14 +42,18 @@ class Helium: Store {
         let area = screen.precision(at: point, scale: scale, aspectRatio: aspectRatio)
         setTablet(to: area)
         moveOverlay(to: area)
-        overlay.flash()
+        
+        if penIsProximate {
+            overlay.show()
+        } else {
+            overlay.flash()
+        }
     }
 
     /** Make the tablet cover the whole screen. */
     func setFullScreenMode() {
         mode = .fullscreen
-        let screen = NSRect.screen()
-        let area = screen.fill(withAspectRatio: aspectRatio)
+        let area = NSRect.primaryScreen()
         setTablet(to: area)
         overlay.fullscreen(to: area, lineColor: lineColor, lineWidth: lineWidth, cornerLength: cornerLength)
         overlay.flash()

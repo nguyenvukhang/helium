@@ -59,7 +59,7 @@ class MenuBar {
         prefsWindowController?.showWindow(self)
     }
 
-    @objc func toggleBounds() { helium.showBounds.toggle(); update() }
+    @objc func toggleBounds() { helium.toggleBounds(); update() }
     @objc func toggleMode() { helium.toggleMode(); update() }
     @objc func setPrecisionMode() { helium.setPrecisionMode(); update() }
     @objc func setFullScreenMode() { helium.setFullScreenMode(); update() }

@@ -21,6 +21,10 @@ extension NSRect {
         size.height = width / ratio
         origin = NSPoint(x: parent.midX, y: parent.midY)
     }
+    
+    static func primaryScreen() -> Self {
+            return NSScreen.main!.frame
+    }
 
     /** Scales a rect. Origin is invariant. */
     mutating func scale(by x: Double) { size.width *= x; size.height *= x }

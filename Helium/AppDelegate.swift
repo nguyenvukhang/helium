@@ -50,6 +50,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func handleProximityEntry(_ event: NSEvent) {
         helium.lastUsedTablet.val = event.systemTabletID
         helium.showOverlay()
+        helium.penIsProximate = true
     }
 
     /** When tablet pen exits proximity */
@@ -61,6 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         helium.hideOverlay()
+        helium.penIsProximate = false
     }
 
     /** Handles .tabletProximity events. */
