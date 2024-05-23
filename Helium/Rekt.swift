@@ -42,7 +42,7 @@ extension NSRect {
 
     /** Center a in a parent rect. Parent's origin is The origin. */
     mutating func center(within parent: NSRect) {
-        origin = NSPoint(x: parent.midX, y: parent.midY)
+        origin.x = parent.midX - width/2; origin.y = parent.midY - height/2;
     }
 
     func fill(withAspectRatio ratio: Double) -> NSRect {
