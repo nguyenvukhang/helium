@@ -31,26 +31,27 @@ class Helium: Store {
     func refresh() { mode == .precision ? setPrecisionMode() : setFullScreenMode() }
 
     /** Make the tablet cover the area around the cursor's current location. */
-    func setPrecisionMode() { setPrecisionMode(at: NSEvent.mouseLocation) }
+    func setPrecisionMode() {
+        setPrecisionMode(at: NSEvent.mouseLocation)
+    }
 
-    /** Make the tablet cover the area around the specified point. */
-    func setPrecisionMode(at point: NSPoint) {
+    func setPrecisionMode(at cursor: NSPoint) {
         mode = .precision
-        let screen = NSRect.screen()
-        let area = screen.precision(at: point, scale: scale, aspectRatio: aspectRatio)
+        let area = NSRect.screen().precision(at: cursor, scale: scale, aspectRatio: aspectRatio)
         setTablet(to: area)
         moveOverlay(to: area)
         overlay.flash()
     }
-
-    /** Make the tablet cover the whole screen. */
+    
+    /** Make the tablet cover the whole screen that contains the user's cursor. */
     func setFullScreenMode() {
         mode = .fullscreen
-        let screen = NSRect.screen()
-        let area = screen.fill(withAspectRatio: aspectRatio)
-        setTablet(to: area)
-        overlay.fullscreen(to: area, lineColor: lineColor, lineWidth: lineWidth, cornerLength: cornerLength)
-        overlay.flash()
+        if let screen = NSScreen.screens.first(where: { NSPointInRect(NSEvent.mouseLocation, $0.frame) }) {
+            let area = screen.frame.fill(withAspectRatio: aspectRatio)
+            setTablet(to: area)
+            overlay.fullscreen(to: area, lineColor: lineColor, lineWidth: lineWidth, cornerLength: cornerLength)
+            overlay.flash()
+        }
     }
 
     /** Rehydrate running state after settings have changed */

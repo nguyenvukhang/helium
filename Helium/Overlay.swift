@@ -92,10 +92,12 @@ class Overlay: NSWindow {
     }
 
     func circle(to rect: NSRect, lineWidth: Double, scale: Double) -> NSBezierPath {
-        var rect = rect.fill(withAspectRatio: 1)
-        rect.scale(by: scale)
-        rect.center(within: rect)
-        let p = NSBezierPath(ovalIn: rect)
+        var rect = rect
+        var circ = rect.fill(withAspectRatio: 1)
+        circ.scale(by: scale)
+        rect.origin = .zero
+        circ.center(within: rect)
+        let p = NSBezierPath(ovalIn: circ)
         p.lineWidth = lineWidth
         return p
     }
