@@ -50,19 +50,17 @@ class Store {
 
     var lineColor: NSColor {
         get {
-            guard
-                let s = x.data(forKey: "line-color"),
-                let u = try? NSKeyedUnarchiver.unarchivedObject(ofClass: NSColor.self, from: s),
-                let color = u as NSColor?
-            else {
-                return NSColor.black
-            }
-            return color
+            let r = x.double(forKey: "line-color-r")
+            let g = x.double(forKey: "line-color-g")
+            let b = x.double(forKey: "line-color-b")
+            let a = x.double(forKey: "line-color-a")
+            return NSColor(red: r, green: g, blue: b, alpha: a)
         }
         set(color) {
-            if let data = try? NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false) {
-                x.set(data, forKey: "line-color")
-            }
+            x.set(color.redComponent, forKey: "line-color-r")
+            x.set(color.greenComponent, forKey: "line-color-g")
+            x.set(color.blueComponent, forKey: "line-color-b")
+            x.set(color.alphaComponent, forKey: "line-color-a")
         }
     }
 
