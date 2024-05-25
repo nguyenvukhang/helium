@@ -14,7 +14,7 @@ import Cocoa
 class Helium: Store {
     var showBoundsMenubarText: Pair<String>
     var mode: Mode
-    var lastUsedTablet = Ref(0) // initialize with invalid tablet ID
+    var lastUsedTablet: Int32 = 0 // initialize with invalid tablet ID
     let overlay: Overlay
 
     override init() {
@@ -67,11 +67,11 @@ class Helium: Store {
      * Also makes the overlay follow wherever it goes.
      */
     private func setTablet(to rect: NSRect) {
-        ObjCWacom.setScreenMapArea(rect, tabletId: Int32(lastUsedTablet.val))
+        ObjCWacom.setScreenMapArea(rect, tabletId: lastUsedTablet)
     }
 
     /** Reset screen map area to current screen. For use upon exiting. */
     func reset() {
-        ObjCWacom.setScreenMapArea(NSScreen.main!.frame, tabletId: Int32(lastUsedTablet.val))
+        ObjCWacom.setScreenMapArea(NSScreen.main!.frame, tabletId: lastUsedTablet)
     }
 }

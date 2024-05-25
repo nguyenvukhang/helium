@@ -45,9 +45,6 @@ final class Pair<T> {
     func get() -> T { on ? v.0 : v.1 }
 }
 
-/** A simple reference class to store references to primitives */
-final class Ref<T> { var val: T; init(_ v: T) { self.val = v } }
-
 extension NSPoint {
     /** Checks if point is within a distance from edge of NSRect. */
     func nearEdge(of rect: NSRect, by x: Double) -> Bool {
