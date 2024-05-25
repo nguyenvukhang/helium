@@ -45,7 +45,7 @@ extension NSRect {
      * Creates a new `NSRect` smaller than `self`, centered within `self`,
      * and is of a particular aspect ratio.
      */
-    func fill(withAspectRatio ratio: Double) -> NSRect {
+    func centeredSubRect(withAspectRatio ratio: Double) -> NSRect {
         var rect = NSRect(parent: self, withAspectRatio: ratio)
         rect.center(within: self)
         return rect

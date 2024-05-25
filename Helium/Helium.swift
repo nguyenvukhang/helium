@@ -43,7 +43,7 @@ class Helium: Store {
     func setFullScreenMode() {
         mode = .fullscreen
         let frame = NSScreen.current().frame
-        var area = frame.fill(withAspectRatio: aspectRatio)
+        var area = frame.centeredSubRect(withAspectRatio: aspectRatio)
         setTablet(to: area)
         overlay.fullscreen(to: &area, lineColor: lineColor, lineWidth: lineWidth, cornerLength: cornerLength)
         overlay.flash()

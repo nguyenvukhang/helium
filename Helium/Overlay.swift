@@ -108,7 +108,7 @@ class Overlay: NSWindow {
         let bg = NSImage(size: rect.size)
         bg.lockFocus()
         lineColor.set()
-        var circRect = rect.fill(withAspectRatio: 1)
+        var circRect = rect.centeredSubRect(withAspectRatio: 1)
         circRect.scale(by: 0.1)
         circRect.center(within: rect)
         let circ = NSBezierPath(ovalIn: circRect)
