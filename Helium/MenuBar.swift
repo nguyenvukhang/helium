@@ -18,13 +18,13 @@ class MenuBar {
 
         bar.menu = NSMenu()
         addItem(helium.mode.menubarText, action: #selector(toggleMode), tag: .toggleMode, key: "")
-        addItem(helium.showBounds.get(), action: #selector(toggleBounds), tag: .toggleBounds, key: "")
+        addItem(helium.showBoundsMenubarText.get(), action: #selector(toggleBounds), tag: .toggleBounds, key: "")
         addItem(Action.openPreferences.displayName, action: #selector(openPreferences), tag: .openPreferences, key: "")
         addItem(Action.quit.displayName, action: #selector(quit), tag: .quit, key: "q")
 
         bar.button?.image = helium.mode.image
         getMenuItem(.toggleMode)?.title = helium.mode.menubarText
-        getMenuItem(.toggleBounds)?.title = helium.showBounds.get()
+        getMenuItem(.toggleBounds)?.title = helium.showBoundsMenubarText.get()
     }
 
     /**
@@ -33,7 +33,7 @@ class MenuBar {
     func update() {
         bar.button?.image = helium.mode.image
         getMenuItem(.toggleMode)?.title = helium.mode.menubarText
-        getMenuItem(.toggleBounds)?.title = helium.showBounds.get()
+        getMenuItem(.toggleBounds)?.title = helium.showBoundsMenubarText.get()
         if let x = Shortcuts.get(.toggleMode), let key = x.0 {
             getMenuItem(.toggleMode)?.keyEquivalent = key
             getMenuItem(.toggleMode)?.keyEquivalentModifierMask = x.1
@@ -62,7 +62,7 @@ class MenuBar {
         prefsWindowController?.showWindow(self)
     }
 
-    @objc func toggleBounds() { helium.showBounds.toggle(); update() }
+    @objc func toggleBounds() { helium.showBoundsMenubarText.toggle(); update() }
     @objc func toggleMode() { helium.toggleMode(); update() }
     @objc func setPrecisionMode() { helium.setPrecisionMode(); update() }
     @objc func setFullScreenMode() { helium.setFullScreenMode(); update() }

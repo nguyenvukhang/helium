@@ -12,19 +12,19 @@ import Cocoa
  * This includes preferences and running-state variables such as last-used tablet.
  */
 class Helium: Store {
-    var showBounds: Pair<String>
+    var showBoundsMenubarText: Pair<String>
     var mode: Mode
     var lastUsedTablet = Ref(0) // initialize with invalid tablet ID
     let overlay: Overlay
 
     override init() {
-        self.showBounds = Pair(on: "Hide Bounds", off: "Show Bounds", true)
+        self.showBoundsMenubarText = Pair(on: "Hide Bounds", off: "Show Bounds", true)
         self.mode = .fullscreen
         self.overlay = Overlay()
         super.init()
     }
 
-    func showOverlay() { if mode == .precision, showBounds.on { overlay.show() } }
+    func showOverlay() { if mode == .precision, showBoundsMenubarText.on { overlay.show() } }
     func hideOverlay() { overlay.hide() }
     func toggleMode() { mode.next(); refresh() }
     func refresh() { mode == .precision ? setPrecisionMode() : setFullScreenMode() }
