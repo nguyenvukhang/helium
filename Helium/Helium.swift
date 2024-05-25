@@ -50,9 +50,11 @@ class Helium: Store {
     }
 
     /** Rehydrate running state after settings have changed */
-    func reloadSettings() {
-        let cursor = NSEvent.mouseLocation
-        let area = NSScreen.current().frame.precisionModeFrame(at: cursor, scale: scale, aspectRatio: aspectRatio)
+    func previewOverlay() {
+        let area = NSScreen.current().frame.precisionModeFrame(
+            at: NSEvent.mouseLocation,
+            scale: scale,
+            aspectRatio: aspectRatio)
         moveOverlay(to: area)
         overlay.flash()
     }

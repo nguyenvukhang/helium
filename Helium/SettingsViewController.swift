@@ -45,7 +45,12 @@ class SettingsViewController: NSViewController {
 
     override func awakeFromNib() {}
     private func round2(_ x: Double) -> String { String(format: "%0.2f", x) }
-    private func preview() { helium?.reloadSettings(); updateBar?() }
+
+    private func preview() {
+        helium?.previewOverlay()
+        updateBar?()
+    }
+
     private func setScale(_ s: Double) {
         scaleValue.stringValue = round2(s * 100)
         scaleSlider.doubleValue = s
@@ -53,15 +58,14 @@ class SettingsViewController: NSViewController {
     }
 
     private func loadAllSettings() {
-        if let helium = helium {
-            setScale(helium.scale)
-            lineColor.color = helium.lineColor
-            lineWidth.stringValue = round2(helium.lineWidth)
-            cornerLength.stringValue = round2(helium.cornerLength)
-            aspectRatioWidth.stringValue = String(helium.aspectRatioWidth)
-            aspectRatioHeight.stringValue = String(helium.aspectRatioHeight)
-            moveOnEdgeTouch.state = helium.moveOnEdgeTouch ? .on : .off
-        }
+        guard let helium = helium else { return }
+        setScale(helium.scale)
+        lineColor.color = helium.lineColor
+        lineWidth.stringValue = round2(helium.lineWidth)
+        cornerLength.stringValue = round2(helium.cornerLength)
+        aspectRatioWidth.stringValue = String(helium.aspectRatioWidth)
+        aspectRatioHeight.stringValue = String(helium.aspectRatioHeight)
+        moveOnEdgeTouch.state = helium.moveOnEdgeTouch ? .on : .off
     }
 
     func hydrate(helium: Helium, updateBar: @escaping () -> Void) {
