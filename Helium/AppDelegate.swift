@@ -64,5 +64,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         event.isEnteringProximity ? handleProximityEntry(event) : handleProximityExit(event)
     }
 
-    private func applicationWillTerminate(_: NSApplication) { helium.reset() }
+    private func applicationWillTerminate(_: NSApplication) {
+        helium.reset()
+    }
 }

@@ -34,7 +34,7 @@ class Helium: Store {
         mode = .precision
         let frame = NSScreen.current().frame
         let area = frame.precisionModeFrame(at: NSEvent.mouseLocation, scale: scale, aspectRatio: aspectRatio)
-        setTablet(to: area)
+        setTabletMapArea(to: area)
         moveOverlay(to: area)
         overlay.flash()
     }
@@ -44,7 +44,7 @@ class Helium: Store {
         mode = .fullscreen
         let frame = NSScreen.current().frame
         var area = frame.centeredSubRect(withAspectRatio: aspectRatio)
-        setTablet(to: area)
+        setTabletMapArea(to: area)
         overlay.fullscreen(to: &area, lineColor: lineColor, lineWidth: lineWidth, cornerLength: cornerLength)
         overlay.flash()
     }
@@ -66,12 +66,12 @@ class Helium: Store {
      * Sends a WacomTabletDriver API call to override tablet map area.
      * Also makes the overlay follow wherever it goes.
      */
-    private func setTablet(to rect: NSRect) {
+    private func setTabletMapArea(to rect: NSRect) {
         ObjCWacom.setScreenMapArea(rect, tabletId: lastUsedTablet)
     }
 
     /** Reset screen map area to current screen. For use upon exiting. */
     func reset() {
-        ObjCWacom.setScreenMapArea(NSScreen.main!.frame, tabletId: lastUsedTablet)
+        ObjCWacom.setScreenMapArea(NSScreen.current().frame, tabletId: lastUsedTablet)
     }
 }
