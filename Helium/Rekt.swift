@@ -29,7 +29,7 @@ extension NSRect {
      * Constrained inside of NSRect `within`, minimize the distance
      * from the center of the rect to NSPoint `to`.
      */
-    mutating func move(to point: NSPoint, within screen: NSRect) {
+    mutating func moveCenter(to point: NSPoint, within screen: NSRect) {
         origin.x = min(
             max(screen.origin.x, point.x - width / 2),
             screen.maxX - width)
@@ -55,7 +55,7 @@ extension NSRect {
     func precision(at point: NSPoint, scale: Double, aspectRatio: Double) -> NSRect {
         var rect = NSRect(parent: self, withAspectRatio: aspectRatio)
         rect.scale(by: scale)
-        rect.move(to: point, within: self)
+        rect.moveCenter(to: point, within: self)
         return rect
     }
 }
