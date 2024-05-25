@@ -17,13 +17,13 @@ class MenuBar {
         self.bar = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
         bar.menu = NSMenu()
-        addItem(helium.mode.text, action: #selector(toggleMode), tag: .toggleMode, key: "")
+        addItem(helium.mode.menubarText, action: #selector(toggleMode), tag: .toggleMode, key: "")
         addItem(helium.showBounds.get(), action: #selector(toggleBounds), tag: .toggleBounds, key: "")
         addItem(Action.openPreferences.displayName, action: #selector(openPreferences), tag: .openPreferences, key: "")
         addItem(Action.quit.displayName, action: #selector(quit), tag: .quit, key: "q")
 
         bar.button?.image = helium.mode.image
-        item(.toggleMode)?.title = helium.mode.text
+        item(.toggleMode)?.title = helium.mode.menubarText
         item(.toggleBounds)?.title = helium.showBounds.get()
     }
 
@@ -32,7 +32,7 @@ class MenuBar {
      */
     func update() {
         bar.button?.image = helium.mode.image
-        item(.toggleMode)?.title = helium.mode.text
+        item(.toggleMode)?.title = helium.mode.menubarText
         item(.toggleBounds)?.title = helium.showBounds.get()
         if let x = Shortcuts.get(.toggleMode), let key = x.0 {
             item(.toggleMode)?.keyEquivalent = key

@@ -13,10 +13,27 @@ import Cocoa
 enum Mode {
     case precision
     case fullscreen
-    mutating func next() { self = self == .precision ? .fullscreen : .precision }
-    var text: String { self == .precision ? "Use Fullscreen Mode" : "Use Precision Mode" }
-    var icon: String { self == .precision ? "Precision" : "Fullscreen" }
-    var image: NSImage? { NSImage(named: icon) }
+
+    mutating func next() {
+        self = self == .precision
+            ? .fullscreen
+            : .precision
+    }
+
+    var menubarText: String { switch self {
+    case .precision: "Use Precision Mode"
+    case .fullscreen: "Use Fullscreen Mode"
+    } }
+
+    /** Icon named used to index `Assets.xcassets` */
+    private var iconName: String { switch self {
+    case .precision: "Precision"
+    case .fullscreen: "Fullscreen"
+    } }
+
+    var image: NSImage? {
+        NSImage(named: iconName)
+    }
 }
 
 /** Bind a data pair that is likely to be toggled. */
