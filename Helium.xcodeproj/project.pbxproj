@@ -15,6 +15,7 @@
 		0C3C03D129E181F400FF8FF3 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0C3C03CB29E181F400FF8FF3 /* LICENSE */; };
 		0C3C03D229E181F400FF8FF3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0C3C03CC29E181F400FF8FF3 /* README.md */; };
 		0C3C03D529E181F900FF8FF3 /* Bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C03D329E181F900FF8FF3 /* Bridge.m */; };
+		0CA554C62C019A430095B282 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 0CA554C52C019A430095B282 /* KeyboardShortcuts */; };
 		0CF647D029E18B02005FA204 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF647C729E18B02005FA204 /* MenuBar.swift */; };
 		0CF647D129E18B02005FA204 /* Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF647C829E18B02005FA204 /* Overlay.swift */; };
 		0CF647D229E18B02005FA204 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF647C929E18B02005FA204 /* Types.swift */; };
@@ -57,6 +58,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C3C03C629E1818C00FF8FF3 /* MASShortcut in Frameworks */,
+				0CA554C62C019A430095B282 /* KeyboardShortcuts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +135,7 @@
 			name = Helium;
 			packageProductDependencies = (
 				0C3C03C529E1818C00FF8FF3 /* MASShortcut */,
+				0CA554C52C019A430095B282 /* KeyboardShortcuts */,
 			);
 			productName = Helium;
 			productReference = 0C3C039029E1809100FF8FF3 /* Helium.app */;
@@ -164,6 +167,7 @@
 			mainGroup = 0C3C038729E1809100FF8FF3;
 			packageReferences = (
 				0C3C03C429E1818C00FF8FF3 /* XCRemoteSwiftPackageReference "MASShortcut" */,
+				0CA554C42C019A430095B282 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 			);
 			productRefGroup = 0C3C039129E1809100FF8FF3 /* Products */;
 			projectDirPath = "";
@@ -433,6 +437,14 @@
 				kind = branch;
 			};
 		};
+		0CA554C42C019A430095B282 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -440,6 +452,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0C3C03C429E1818C00FF8FF3 /* XCRemoteSwiftPackageReference "MASShortcut" */;
 			productName = MASShortcut;
+		};
+		0CA554C52C019A430095B282 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0CA554C42C019A430095B282 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
