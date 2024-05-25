@@ -7,8 +7,11 @@ APP:=Helium.app
 fmt:
 	swiftformat **/*.swift
 
-build: FORCE
-	$(BUILD) --build
+build-arm64:
+	$(BUILD) --build arm64
+
+build-x86_64:
+	$(BUILD) --build x86_64
 
 install:
 	$(BUILD) --install
@@ -29,5 +32,3 @@ all:
 
 size:
 	du -sh /Applications/$(APP)
-
-FORCE: ;

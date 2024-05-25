@@ -1,5 +1,5 @@
 //
-//  KeyboardShortcuts.swift
+//  Shortcuts.swift
 //  Helium
 //
 //  Created by khang on 7/4/23.

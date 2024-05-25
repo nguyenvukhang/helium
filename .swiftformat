@@ -12,18 +12,4 @@
 
 --closingparen same-line
 --commas inline
---comments indent
---decimalgrouping 3,5
---exponentcase lowercase
---exponentgrouping disabled
---extensionacl on-declarations
---fractiongrouping disabled
---ifdef no-indent
---importgrouping testable-top
---operatorfunc no-space
---nospaceoperators ..<, ...
 --self init-only
---stripunusedargs closure-only
---wraparguments preserve
---wrapcollections preserve
---wrapparameters preserve

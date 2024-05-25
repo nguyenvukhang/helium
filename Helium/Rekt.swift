@@ -32,17 +32,15 @@ extension NSRect {
     mutating func move(to point: NSPoint, within screen: NSRect) {
         origin.x = min(
             max(screen.origin.x, point.x - width / 2),
-            screen.maxX - width
-        )
+            screen.maxX - width)
         origin.y = min(
             max(screen.origin.y, point.y - height / 2),
-            screen.maxY - height
-        )
+            screen.maxY - height)
     }
 
     /** Center a in a parent rect. Parent's origin is The origin. */
     mutating func center(within parent: NSRect) {
-        origin.x = parent.midX - width/2; origin.y = parent.midY - height/2;
+        origin.x = parent.midX - width / 2; origin.y = parent.midY - height / 2
     }
 
     func fill(withAspectRatio ratio: Double) -> NSRect {

@@ -1,27 +1,30 @@
 #!/usr/bin/env bash
 
 APP=Helium.app
-BUILD_CMD='xcodebuild
-  -project Helium.xcodeproj
-  -scheme Helium
-  -configuration Release
-  -archivePath Helium.xcarchive
-  archive'
 
 # builds Helium using $BUILD_CMD, and uses xcpretty if it is installed
 build() {
-  if command -v xcpretty >/dev/null; then
-    $BUILD_CMD | xcpretty --color | sed s/Copying.*/Copying.../g
-  else
-    $BUILD_CMD
-  fi
+	ARCH=${1:x86_64}
+	BUILD_CMD="xcodebuild
+    -project Helium.xcodeproj
+    -scheme Helium
+    -configuration Release
+    -archivePath Helium.xcarchive
+    -destination platform=macOS,arch=${ARCH}
+    archive"
+	if command -v xcpretty >/dev/null; then
+		set -o pipefail
+		$BUILD_CMD | xcpretty --color | sed s/Copying.*/Copying.../g
+	else
+		$BUILD_CMD
+	fi
 }
 
 # builds Helium and installs it to /Applications/$APP
 install() {
-  rm -rf /Applications/$APP
-  build
-  cp -a Helium.xcarchive/Products/Applications/$APP /Applications/$APP
+	rm -rf /Applications/$APP
+	build
+	cp -a Helium.xcarchive/Products/Applications/$APP /Applications/$APP
 }
 
 HELP_TEXT="
@@ -32,10 +35,10 @@ Please supply an argument for the build script:
 
 case $1 in
 --build)
-  build
-  ;;
+	build $2
+	;;
 --install)
-  install
-  ;;
+	install
+	;;
 *) echo "$HELP_TEXT" ;;
 esac

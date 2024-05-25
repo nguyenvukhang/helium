@@ -120,7 +120,7 @@ class SettingsViewController: NSViewController {
         sender.bezelColor = nil
         helium?.initializeDefaults()
         loadAllSettings()
-        [toggleModeAction, precisionModeAction, fullscreenModeAction].forEach { v in
+        for v in [toggleModeAction, precisionModeAction, fullscreenModeAction] {
             UserDefaults.standard.removeObject(forKey: v?.associatedUserDefaultsKey ?? "")
         }
         helium?.refresh()

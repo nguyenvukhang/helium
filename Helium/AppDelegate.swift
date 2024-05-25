@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     override init() {
         self.helium = Helium()
         self.bar = MenuBar(helium: helium)
-        self.overlayWindowController = NSWindowController(window: helium.overlayWindow())
+        self.overlayWindowController = NSWindowController(window: helium.overlay)
         self.lastRect = NSZeroRect
         super.init()
         postInit()
@@ -25,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func postInit() {
         NSEvent.addGlobalMonitorForEvents(matching: .tabletProximity) { event in self.handleProximityEvent(event) }
-        overlayWindowController.showWindow(helium.overlayWindow())
+        overlayWindowController.showWindow(helium.overlay)
         helium.setFullScreenMode()
 
         Shortcuts.bind(.setFullscreen) {
@@ -42,7 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.helium.toggleMode()
             self.bar.update()
         }
-        
+
         bar.update()
     }
 
@@ -53,11 +53,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     /** When tablet pen exits proximity */
-    func handleProximityExit(_ event: NSEvent) {
+    func handleProximityExit(_: NSEvent) {
         if helium.moveOnEdgeTouch {
-            let cursor = NSEvent.mouseLocation
-            if cursor.nearEdge(of: lastRect, by: 10) {
-                helium.setPrecisionMode(at: cursor)
+            if NSEvent.mouseLocation.nearEdge(of: lastRect, by: 10) {
+                helium.setPrecisionMode()
             }
         }
         helium.hideOverlay()

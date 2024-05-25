@@ -8,11 +8,6 @@
 import Cocoa
 
 extension NSBezierPath {
-    func take(_ path: NSBezierPath) {
-        removeAllPoints()
-        append(path)
-    }
-
     /**
      * take a (bottom-left) path and add it 4 times in all 4 flipped states
      *                        ┌─       ─┐
@@ -21,17 +16,18 @@ extension NSBezierPath {
      *
      * └─                     └─       ─┘
      */
-    func addAll4Orientations(path: NSBezierPath) {
-        let u = path, v = NSBezierPath()
-        v.take(u)
+    func addAll4Orientations(path u: NSBezierPath) {
+        let v = u.copy() as! NSBezierPath
         v.transform(using: AffineTransform(scaleByX: -1, byY: 1))
         u.append(v)
-        v.take(u)
-        v.transform(using: AffineTransform(scaleByX: 1, byY: -1))
-        append(v)
+        append(u)
+        u.transform(using: AffineTransform(scaleByX: 1, byY: -1))
         append(u)
     }
 
+    /**
+     * Draws 4 Ls at each corner of the rect.
+     */
     func drawBounds(rect: NSRect, length: Double, margin: Double) {
         // px that the drawing will exceed the frame
         let exceed = lineWidth / 2
@@ -64,17 +60,31 @@ class Overlay: NSWindow {
         alphaValue = 0
     }
 
+    /**
+     * Shows the overlay window (instant).
+     */
     func show() {
         alphaValue = 1
     }
+
+    /**
+     * Hides the overlay window with a fade.
+     */
     func hide() {
         animateAlpha(to: 0, over: 1.0)
     }
+
+    /**
+     * Shows then hides the overlay window.
+     */
     func flash() {
         show(); hide()
     }
 
-    func move(to rect: NSRect, lineColor: NSColor, lineWidth: Double, cornerLength: Double) {
+    /**
+     * Sets all important parameters of the overlay
+     */
+    func set(to rect: NSRect, lineColor: NSColor, lineWidth: Double, cornerLength: Double) {
         var target = rect
         target.origin.x -= margin
         target.origin.y -= margin
@@ -88,26 +98,22 @@ class Overlay: NSWindow {
         target.size.width += margin * 2
         target.size.height += margin * 2
         setFrame(target, display: true)
-        drawBorder(lineColor: lineColor, lineWidth: lineWidth, cornerLength: cornerLength)
+        drawBounds(lineColor: lineColor, lineWidth: lineWidth, cornerLength: cornerLength)
     }
 
-    func circle(to rect: NSRect, lineWidth: Double, scale: Double) -> NSBezierPath {
-        var rect = rect
-        var circ = rect.fill(withAspectRatio: 1)
-        circ.scale(by: scale)
-        rect.origin = .zero
-        circ.center(within: rect)
-        let p = NSBezierPath(ovalIn: circ)
-        p.lineWidth = lineWidth
-        return p
-    }
-
-    func fullscreen(to rect: NSRect, lineColor: NSColor, lineWidth: Double, cornerLength: Double) {
+    func fullscreen(to rect: inout NSRect, lineColor: NSColor, lineWidth: Double, cornerLength _: Double) {
         setFrame(rect, display: true)
-        let bg = NSImage(size: frame.size)
+        rect.origin = .zero
+        // draw a circle in the middle of the screen being full-screened.
+        let bg = NSImage(size: rect.size)
         bg.lockFocus()
         lineColor.set()
-        circle(to: frame, lineWidth: lineWidth, scale: 0.1).stroke()
+        var circRect = rect.fill(withAspectRatio: 1)
+        circRect.scale(by: 0.1)
+        circRect.center(within: rect)
+        let circ = NSBezierPath(ovalIn: circRect)
+        circ.lineWidth = lineWidth
+        circ.stroke()
         bg.unlockFocus()
         backgroundColor = NSColor(patternImage: bg)
     }
@@ -120,26 +126,26 @@ class Overlay: NSWindow {
         bz.stroke()
     }
 
-    func drawBorder(lineColor: NSColor, lineWidth: Double, cornerLength: Double) {
+    /**
+     * Draws the 4 Ls around the window.
+     */
+    func drawBounds(lineColor: NSColor, lineWidth: Double, cornerLength: Double) {
         let bg = NSImage(size: frame.size)
         bg.lockFocus()
-
         lineColor.set()
-
         let bounds = NSBezierPath()
         bounds.lineJoinStyle = .round
-
         bounds.lineWidth = lineWidth
-
         bounds.drawBounds(rect: frame, length: cornerLength, margin: margin)
         bounds.stroke()
-
-        // addWindowBounds(color: .blue)
-
         bg.unlockFocus()
         backgroundColor = NSColor(patternImage: bg)
     }
 
+    /**
+     * Changes transparency of the overlay window, with an endpoint of `alpha`
+     * and over a time interval `interval`.
+     */
     private func animateAlpha(to alpha: Double, over interval: TimeInterval) {
         NSAnimationContext.beginGrouping()
         NSAnimationContext.current.duration = interval

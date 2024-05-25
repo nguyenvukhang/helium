@@ -37,3 +37,12 @@ extension NSPoint {
         min(abs(x - rect.minX), abs(x - rect.maxX)) <= x || min(abs(y - rect.minY), abs(y - rect.maxY)) <= x
     }
 }
+
+extension NSScreen {
+    /**
+     * Gets the screen that contains the user's cursor.
+     */
+    static func current() -> NSScreen {
+        NSScreen.screens.first { s in NSPointInRect(NSEvent.mouseLocation, s.frame) }!
+    }
+}
