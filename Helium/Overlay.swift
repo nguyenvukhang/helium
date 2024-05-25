@@ -59,6 +59,10 @@ class Overlay: NSWindow {
         level = .screenSaver
         alphaValue = 0
     }
+    
+    override var canBecomeKey: Bool {
+        true
+    }
 
     /**
      * Shows the overlay window (instant).
