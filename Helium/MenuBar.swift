@@ -23,8 +23,8 @@ class MenuBar {
         addItem(Action.quit.displayName, action: #selector(quit), tag: .quit, key: "q")
 
         bar.button?.image = helium.mode.image
-        item(.toggleMode)?.title = helium.mode.menubarText
-        item(.toggleBounds)?.title = helium.showBounds.get()
+        getMenuItem(.toggleMode)?.title = helium.mode.menubarText
+        getMenuItem(.toggleBounds)?.title = helium.showBounds.get()
     }
 
     /**
@@ -32,15 +32,18 @@ class MenuBar {
      */
     func update() {
         bar.button?.image = helium.mode.image
-        item(.toggleMode)?.title = helium.mode.menubarText
-        item(.toggleBounds)?.title = helium.showBounds.get()
+        getMenuItem(.toggleMode)?.title = helium.mode.menubarText
+        getMenuItem(.toggleBounds)?.title = helium.showBounds.get()
         if let x = Shortcuts.get(.toggleMode), let key = x.0 {
-            item(.toggleMode)?.keyEquivalent = key
-            item(.toggleMode)?.keyEquivalentModifierMask = x.1
+            getMenuItem(.toggleMode)?.keyEquivalent = key
+            getMenuItem(.toggleMode)?.keyEquivalentModifierMask = x.1
         }
     }
 
-    private func item(_ tag: Action) -> NSMenuItem? { bar.menu?.item(withTag: tag.rawValue) }
+    private func getMenuItem(_ tag: Action) -> NSMenuItem? {
+        bar.menu?.item(withTag: tag.rawValue)
+    }
+
     private func addItem(_ title: String, action: Selector?, tag: Action, key: String) {
         let item = NSMenuItem(title: title, action: action, keyEquivalent: key)
         item.tag = tag.rawValue
