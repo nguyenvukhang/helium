@@ -8,12 +8,6 @@
 import Cocoa
 
 extension NSRect {
-    static func screen() -> Self {
-        let mouseLocation = NSEvent.mouseLocation
-        let screens = NSScreen.screens
-        return (screens.first { NSMouseInRect(mouseLocation, $0.frame, false) })!.frame
-    }
-
     /** Fills a parent rect, given an aspect ratio constraint */
     init(parent: NSRect, withAspectRatio ratio: Double) {
         self.init()
@@ -23,7 +17,10 @@ extension NSRect {
     }
 
     /** Scales a rect. Origin is invariant. */
-    mutating func scale(by x: Double) { size.width *= x; size.height *= x }
+    mutating func scale(by x: Double) {
+        size.width *= x
+        size.height *= x
+    }
 
     /**
      * Constrained inside of NSRect `within`, minimize the distance
@@ -38,11 +35,16 @@ extension NSRect {
             screen.maxY - height)
     }
 
-    /** Center a in a parent rect. Parent's origin is The origin. */
+    /** Center self within a `parent` rect. */
     mutating func center(within parent: NSRect) {
-        origin.x = parent.midX - width / 2; origin.y = parent.midY - height / 2
+        origin.x = parent.midX - width / 2
+        origin.y = parent.midY - height / 2
     }
 
+    /**
+     * Creates a new `NSRect` smaller than `self`, centered within `self`,
+     * and is of a particular aspect ratio.
+     */
     func fill(withAspectRatio ratio: Double) -> NSRect {
         var rect = NSRect(parent: self, withAspectRatio: ratio)
         rect.center(within: self)
@@ -50,9 +52,9 @@ extension NSRect {
     }
 
     /**
-     * self is the screen that precision is set in
+     * Creates the `NSRect` which precision mode will be set to.
      */
-    func precision(at point: NSPoint, scale: Double, aspectRatio: Double) -> NSRect {
+    func precisionModeFrame(at point: NSPoint, scale: Double, aspectRatio: Double) -> NSRect {
         var rect = NSRect(parent: self, withAspectRatio: aspectRatio)
         rect.scale(by: scale)
         rect.moveCenter(to: point, within: self)

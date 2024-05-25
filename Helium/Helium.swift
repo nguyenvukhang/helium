@@ -33,7 +33,7 @@ class Helium: Store {
     func setPrecisionMode() {
         mode = .precision
         let frame = NSScreen.current().frame
-        let area = frame.precision(at: NSEvent.mouseLocation, scale: scale, aspectRatio: aspectRatio)
+        let area = frame.precisionModeFrame(at: NSEvent.mouseLocation, scale: scale, aspectRatio: aspectRatio)
         setTablet(to: area)
         moveOverlay(to: area)
         overlay.flash()
@@ -52,7 +52,7 @@ class Helium: Store {
     /** Rehydrate running state after settings have changed */
     func reloadSettings() {
         let cursor = NSEvent.mouseLocation
-        let area = NSScreen.current().frame.precision(at: cursor, scale: scale, aspectRatio: aspectRatio)
+        let area = NSScreen.current().frame.precisionModeFrame(at: cursor, scale: scale, aspectRatio: aspectRatio)
         moveOverlay(to: area)
         overlay.flash()
     }
