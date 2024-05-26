@@ -59,10 +59,6 @@ class Overlay: NSWindow {
         level = .screenSaver
         alphaValue = 0
     }
-    
-    override var canBecomeKey: Bool {
-        true
-    }
 
     /**
      * Shows the overlay window (instant).
@@ -155,5 +151,9 @@ class Overlay: NSWindow {
         NSAnimationContext.current.duration = interval
         animator().alphaValue = alpha
         NSAnimationContext.endGrouping()
+    }
+
+    override var canBecomeKey: Bool {
+        true
     }
 }

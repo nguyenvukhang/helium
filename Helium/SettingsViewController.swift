@@ -23,7 +23,7 @@ class SettingsViewController: NSViewController {
     @IBOutlet var scaleValue: NSTextField!
     @IBOutlet var moveOnEdgeTouch: NSButton!
     @IBOutlet var resetAll: NSButton!
-    
+
     @IBOutlet var toggleModeInput: NSView!
     @IBOutlet var setPrecisionModeInput: NSView!
     @IBOutlet var setFullscreenModeInput: NSView!
@@ -38,7 +38,7 @@ class SettingsViewController: NSViewController {
         // so that the color picker will have alpha
         NSColor.ignoresAlpha = false
         resetAll.title = reset.get()
-        
+
         // Link shortcut recorders
         var x: NSView
         x = KeyboardShortcuts.RecorderCocoa(for: .setPrecisionMode)
