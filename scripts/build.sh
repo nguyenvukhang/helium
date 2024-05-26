@@ -23,7 +23,7 @@ build() {
 # builds Helium and installs it to /Applications/$APP
 install() {
 	rm -rf /Applications/$APP
-	build
+	build arm64
 	cp -a Helium.xcarchive/Products/Applications/$APP /Applications/$APP
 }
 
