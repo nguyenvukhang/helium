@@ -21,7 +21,6 @@ class SettingsViewController: NSViewController {
     @IBOutlet var aspectRatioHeight: NSTextField!
     @IBOutlet var scaleSlider: NSSlider!
     @IBOutlet var scaleValue: NSTextField!
-    @IBOutlet var moveOnEdgeTouch: NSButton!
     @IBOutlet var fullscreenKeepAspectRatio: NSButton!
     @IBOutlet var resetAll: NSButton!
 
@@ -75,7 +74,6 @@ class SettingsViewController: NSViewController {
         cornerLength.stringValue = round2(helium.cornerLength)
         aspectRatioWidth.stringValue = String(helium.aspectRatioWidth)
         aspectRatioHeight.stringValue = String(helium.aspectRatioHeight)
-        moveOnEdgeTouch.state = helium.moveOnEdgeTouch ? .on : .off
         fullscreenKeepAspectRatio.state = helium.fullscreenKeepAspectRatio ? .on : .off
     }
 
@@ -117,11 +115,6 @@ class SettingsViewController: NSViewController {
 
     @IBAction func cornerLengthDidChange(_ sender: NSTextField) {
         helium?.cornerLength = sender.doubleValue
-        preview()
-    }
-
-    @IBAction func moveOnEdgeTouchDidChange(_ sender: NSButton) {
-        helium?.moveOnEdgeTouch = sender.state == .on
         preview()
     }
 

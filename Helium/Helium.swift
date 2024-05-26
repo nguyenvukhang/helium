@@ -36,7 +36,7 @@ class Helium: Store {
         let area = frame.precisionModeFrame(at: NSEvent.mouseLocation, scale: scale, aspectRatio: aspectRatio)
         setTabletMapArea(to: area)
         moveOverlay(to: area)
-        overlay.flash()
+        overlay.show()
     }
 
     /** Make the tablet cover the whole screen that contains the user's cursor. */

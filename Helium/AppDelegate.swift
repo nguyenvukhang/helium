@@ -13,7 +13,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let helium: Helium
     var bar: MenuBar
     var overlayWindowController: NSWindowController
-    var lastRect = NSZeroRect
 
     override init() {
         self.helium = Helium()
@@ -52,11 +51,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     /** When tablet pen exits proximity */
     func handleProximityExit(_: NSEvent) {
-        if helium.moveOnEdgeTouch {
-            if NSEvent.mouseLocation.nearEdge(of: lastRect, by: 10) {
-                helium.setPrecisionMode()
-            }
-        }
         helium.hideOverlay()
     }
 
