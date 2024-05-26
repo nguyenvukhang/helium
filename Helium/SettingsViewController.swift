@@ -6,7 +6,7 @@
 //
 
 import Cocoa
-import MASShortcut
+import KeyboardShortcuts
 
 /**
  * A whole bunch of pointing-and-clicking is required to build and
@@ -22,10 +22,11 @@ class SettingsViewController: NSViewController {
     @IBOutlet var scaleSlider: NSSlider!
     @IBOutlet var scaleValue: NSTextField!
     @IBOutlet var moveOnEdgeTouch: NSButton!
-    @IBOutlet var precisionModeAction: MASShortcutView!
-    @IBOutlet var fullscreenModeAction: MASShortcutView!
-    @IBOutlet var toggleModeAction: MASShortcutView!
     @IBOutlet var resetAll: NSButton!
+    
+    @IBOutlet var toggleModeInput: NSView!
+    @IBOutlet var setPrecisionModeInput: NSView!
+    @IBOutlet var setFullscreenModeInput: NSView!
 
     private var helium: Helium?
     private var updateBar: (() -> Void)?
@@ -37,10 +38,18 @@ class SettingsViewController: NSViewController {
         // so that the color picker will have alpha
         NSColor.ignoresAlpha = false
         resetAll.title = reset.get()
-
-        Shortcuts.associateView(toggleModeAction, to: .toggleMode)
-        Shortcuts.associateView(precisionModeAction, to: .setPrecision)
-        Shortcuts.associateView(fullscreenModeAction, to: .setFullscreen)
+        
+        // Link shortcut recorders
+        var x: NSView
+        x = KeyboardShortcuts.RecorderCocoa(for: .setPrecisionMode)
+        x.frame.size = setPrecisionModeInput.frame.size
+        setPrecisionModeInput.addSubview(x)
+        x = KeyboardShortcuts.RecorderCocoa(for: .setFullscreenMode)
+        x.frame.size = setFullscreenModeInput.frame.size
+        setFullscreenModeInput.addSubview(x)
+        x = KeyboardShortcuts.RecorderCocoa(for: .toggleMode)
+        x.frame.size = toggleModeInput.frame.size
+        toggleModeInput.addSubview(x)
     }
 
     override func awakeFromNib() {}
@@ -124,9 +133,7 @@ class SettingsViewController: NSViewController {
         sender.bezelColor = nil
         helium?.initializeDefaults()
         loadAllSettings()
-        for v in [toggleModeAction, precisionModeAction, fullscreenModeAction] {
-            UserDefaults.standard.removeObject(forKey: v?.associatedUserDefaultsKey ?? "")
-        }
+        KeyboardShortcuts.reset([.setPrecisionMode, .setFullscreenMode, .toggleMode])
         helium?.refresh()
     }
 }

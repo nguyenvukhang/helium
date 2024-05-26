@@ -1,5 +1,5 @@
 {
-  "originHash" : "b26ee8d937a08155066e5c270324df62774e2dc55df4b614798d998aed166151",
+  "originHash" : "69c39523ac0471922b625cc56b8722155cfd2afd660bdd4f5ff67335b5b87714",
   "pins" : [
     {
       "identity" : "keyboardshortcuts",
@@ -8,15 +8,6 @@
       "state" : {
         "revision" : "2e5f15581fefb821d4b366e57d817be8bf12aa58",
         "version" : "2.0.1"
-      }
-    },
-    {
-      "identity" : "masshortcut",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/rxhanson/MASShortcut",
-      "state" : {
-        "branch" : "master",
-        "revision" : "6f2603c6b6cc18f64a799e5d2c9d3bbc467c413a"
       }
     }
   ],

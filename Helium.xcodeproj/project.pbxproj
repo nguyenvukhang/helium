@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0C3C039829E1809100FF8FF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C3C039729E1809100FF8FF3 /* Assets.xcassets */; };
 		0C3C039B29E1809100FF8FF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C3C039929E1809100FF8FF3 /* Main.storyboard */; };
-		0C3C03C629E1818C00FF8FF3 /* MASShortcut in Frameworks */ = {isa = PBXBuildFile; productRef = 0C3C03C529E1818C00FF8FF3 /* MASShortcut */; };
 		0C3C03CF29E181F400FF8FF3 /* NSAppleEventDescriptorHelperCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C03C829E181F400FF8FF3 /* NSAppleEventDescriptorHelperCategory.m */; };
 		0C3C03D029E181F400FF8FF3 /* WacomTabletDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C03CA29E181F400FF8FF3 /* WacomTabletDriver.m */; };
 		0C3C03D129E181F400FF8FF3 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 0C3C03CB29E181F400FF8FF3 /* LICENSE */; };
@@ -57,7 +56,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C3C03C629E1818C00FF8FF3 /* MASShortcut in Frameworks */,
 				0CA554C62C019A430095B282 /* KeyboardShortcuts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,7 +132,6 @@
 			);
 			name = Helium;
 			packageProductDependencies = (
-				0C3C03C529E1818C00FF8FF3 /* MASShortcut */,
 				0CA554C52C019A430095B282 /* KeyboardShortcuts */,
 			);
 			productName = Helium;
@@ -166,7 +163,6 @@
 			);
 			mainGroup = 0C3C038729E1809100FF8FF3;
 			packageReferences = (
-				0C3C03C429E1818C00FF8FF3 /* XCRemoteSwiftPackageReference "MASShortcut" */,
 				0CA554C42C019A430095B282 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 			);
 			productRefGroup = 0C3C039129E1809100FF8FF3 /* Products */;
@@ -429,14 +425,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0C3C03C429E1818C00FF8FF3 /* XCRemoteSwiftPackageReference "MASShortcut" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/rxhanson/MASShortcut";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		0CA554C42C019A430095B282 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
@@ -448,11 +436,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0C3C03C529E1818C00FF8FF3 /* MASShortcut */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0C3C03C429E1818C00FF8FF3 /* XCRemoteSwiftPackageReference "MASShortcut" */;
-			productName = MASShortcut;
-		};
 		0CA554C52C019A430095B282 /* KeyboardShortcuts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0CA554C42C019A430095B282 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;

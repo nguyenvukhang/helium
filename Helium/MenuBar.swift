@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import KeyboardShortcuts
 
 class MenuBar {
     private let bar: NSStatusItem
@@ -34,10 +35,6 @@ class MenuBar {
         bar.button?.image = helium.mode.image
         getMenuItem(.toggleMode)?.title = helium.mode.menubarText
         getMenuItem(.toggleBounds)?.title = helium.showBoundsMenubarText.get()
-        if let x = Shortcuts.get(.toggleMode), let key = x.0 {
-            getMenuItem(.toggleMode)?.keyEquivalent = key
-            getMenuItem(.toggleMode)?.keyEquivalentModifierMask = x.1
-        }
     }
 
     private func getMenuItem(_ tag: Action) -> NSMenuItem? {

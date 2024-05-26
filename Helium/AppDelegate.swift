@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import KeyboardShortcuts
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -28,15 +29,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         overlayWindowController.showWindow(helium.overlay)
         helium.setFullScreenMode()
-        Shortcuts.bind(.setFullscreen) {
+        KeyboardShortcuts.onKeyDown(for: .setFullscreenMode) {
             self.helium.setFullScreenMode()
             self.bar.update()
         }
-        Shortcuts.bind(.setPrecision) {
+        KeyboardShortcuts.onKeyDown(for: .setPrecisionMode) {
             self.helium.setPrecisionMode()
             self.bar.update()
         }
-        Shortcuts.bind(.toggleMode) {
+        KeyboardShortcuts.onKeyDown(for: .toggleMode) {
             self.helium.toggleMode()
             self.bar.update()
         }

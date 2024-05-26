@@ -6,7 +6,13 @@
 //
 
 import Cocoa
-import MASShortcut
+import KeyboardShortcuts
+
+extension KeyboardShortcuts.Name {
+    static let toggleMode = Self("toggleMode")
+    static let setPrecisionMode = Self("setPrecisionMode")
+    static let setFullscreenMode = Self("setFullscreenMode")
+}
 
 enum Action: Int {
     case toggleMode = 1
@@ -36,20 +42,5 @@ enum Action: Int {
         case .openPreferences: return "Preferences…"
         case .quit: return "Quit Helium"
         }
-    }
-}
-
-enum Shortcuts {
-    static func bind(_ action: Action, to: @escaping () -> Void) {
-        MASShortcutBinder.shared().bindShortcut(withDefaultsKey: action.name, toAction: to)
-    }
-
-    static func associateView(_ view: MASShortcutView, to: Action) {
-        view.associatedUserDefaultsKey = to.name
-    }
-
-    static func get(_ action: Action) -> (String?, NSEvent.ModifierFlags)? {
-        guard let m = MASShortcutBinder.shared()?.value(forKey: action.name) as? MASShortcut else { return nil }
-        return (m.keyCodeStringForKeyEquivalent, m.modifierFlags)
     }
 }
