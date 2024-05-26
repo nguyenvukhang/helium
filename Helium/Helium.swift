@@ -14,8 +14,14 @@ import Cocoa
 class Helium: Store {
     var showBoundsMenubarText: Pair<String>
     var mode: Mode
-    var lastUsedTablet: Int32 = 0 // initialize with invalid tablet ID
     let overlay: Overlay
+    var lastUsedTablet: Int32 = 0 // initialize with invalid tablet ID
+
+    var penInProximity: Bool = false {
+        didSet {
+            if penInProximity { showOverlay() } else { hideOverlay() }
+        }
+    }
 
     override init() {
         self.showBoundsMenubarText = Pair(on: "Hide Bounds", off: "Show Bounds", true)
@@ -24,10 +30,24 @@ class Helium: Store {
         super.init()
     }
 
-    func showOverlay() { if mode == .precision, showBoundsMenubarText.on { overlay.show() } }
-    func hideOverlay() { overlay.hide() }
+    func showOverlay() {
+        if mode == .precision, showBoundsMenubarText.on {
+            overlay.show()
+        }
+    }
+
+    func hideOverlay() {
+        overlay.hide()
+    }
+
     func toggleMode() { mode.next(); refresh() }
-    func refresh() { mode == .precision ? setPrecisionMode() : setFullScreenMode() }
+
+    func refresh() {
+        switch mode {
+        case .precision: setPrecisionMode()
+        case .fullscreen: setFullScreenMode()
+        }
+    }
 
     /** Make the tablet cover the area around the cursor's current location. */
     func setPrecisionMode() {
@@ -36,7 +56,11 @@ class Helium: Store {
         let area = frame.precisionModeFrame(at: NSEvent.mouseLocation, scale: scale, aspectRatio: aspectRatio)
         setTabletMapArea(to: area)
         moveOverlay(to: area)
-        overlay.show()
+        if penInProximity {
+            overlay.show()
+        } else {
+            overlay.flash()
+        }
     }
 
     /** Make the tablet cover the whole screen that contains the user's cursor. */

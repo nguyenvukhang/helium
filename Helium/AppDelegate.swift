@@ -43,20 +43,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         bar.update()
     }
 
-    /** When tablet pen enters proximity */
-    func handleProximityEntry(_ event: NSEvent) {
-        helium.lastUsedTablet = Int32(event.systemTabletID)
-        helium.showOverlay()
-    }
-
-    /** When tablet pen exits proximity */
-    func handleProximityExit(_: NSEvent) {
-        helium.hideOverlay()
-    }
-
     /** Handles .tabletProximity events. */
     func handleProximityEvent(_ event: NSEvent) {
-        event.isEnteringProximity ? handleProximityEntry(event) : handleProximityExit(event)
+        helium.penInProximity = event.isEnteringProximity
+        helium.lastUsedTablet = Int32(event.systemTabletID)
     }
 
     private func applicationWillTerminate(_: NSApplication) {
