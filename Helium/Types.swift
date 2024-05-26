@@ -21,8 +21,8 @@ enum Mode {
     }
 
     var menubarText: String { switch self {
-    case .precision: "Use Precision Mode"
-    case .fullscreen: "Use Fullscreen Mode"
+    case .fullscreen: "Use Precision Mode" // when the mode is currently fullscreen, we want the button to show this
+    case .precision: "Use Fullscreen Mode"
     } }
 
     /** Icon named used to index `Assets.xcassets` */
