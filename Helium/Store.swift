@@ -20,6 +20,11 @@ class Store {
         get { x.bool(forKey: "move-on-edge-touch") }
         set(v) { x.set(v, forKey: "move-on-edge-touch") }
     }
+    
+    var fullscreenKeepAspectRatio: Bool {
+        get { x.bool(forKey: "fullscreen-keep-aspect-ratio") }
+        set(v) { x.set(v, forKey: "fullscreen-keep-aspect-ratio") }
+    }
 
     var scale: Double {
         get { x.double(forKey: "scale") }
@@ -72,5 +77,7 @@ class Store {
         aspectRatioHeight = 10
         cornerLength = 50
         lineWidth = 5
+        moveOnEdgeTouch = false
+        fullscreenKeepAspectRatio = true
     }
 }

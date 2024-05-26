@@ -42,10 +42,12 @@ class Helium: Store {
     /** Make the tablet cover the whole screen that contains the user's cursor. */
     func setFullScreenMode() {
         mode = .fullscreen
-        let frame = NSScreen.current().frame
-        var area = frame.centeredSubRect(withAspectRatio: aspectRatio)
-        setTabletMapArea(to: area)
-        overlay.fullscreen(to: &area, lineColor: lineColor, lineWidth: lineWidth, cornerLength: cornerLength)
+        var frame = NSScreen.current().frame
+        if fullscreenKeepAspectRatio {
+            frame = frame.centeredSubRect(withAspectRatio: aspectRatio)
+        }
+        setTabletMapArea(to: frame)
+        overlay.fullscreen(to: &frame, lineColor: lineColor, lineWidth: lineWidth, cornerLength: cornerLength)
         overlay.flash()
     }
 

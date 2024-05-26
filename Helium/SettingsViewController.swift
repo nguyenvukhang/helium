@@ -22,6 +22,7 @@ class SettingsViewController: NSViewController {
     @IBOutlet var scaleSlider: NSSlider!
     @IBOutlet var scaleValue: NSTextField!
     @IBOutlet var moveOnEdgeTouch: NSButton!
+    @IBOutlet var fullscreenKeepAspectRatio: NSButton!
     @IBOutlet var resetAll: NSButton!
 
     @IBOutlet var toggleModeInput: NSView!
@@ -75,6 +76,7 @@ class SettingsViewController: NSViewController {
         aspectRatioWidth.stringValue = String(helium.aspectRatioWidth)
         aspectRatioHeight.stringValue = String(helium.aspectRatioHeight)
         moveOnEdgeTouch.state = helium.moveOnEdgeTouch ? .on : .off
+        fullscreenKeepAspectRatio.state = helium.fullscreenKeepAspectRatio ? .on : .off
     }
 
     func hydrate(helium: Helium, updateBar: @escaping () -> Void) {
@@ -120,6 +122,11 @@ class SettingsViewController: NSViewController {
 
     @IBAction func moveOnEdgeTouchDidChange(_ sender: NSButton) {
         helium?.moveOnEdgeTouch = sender.state == .on
+        preview()
+    }
+
+    @IBAction func fullscreenKeepAspectRatioDidChange(_ sender: NSButton) {
+        helium?.fullscreenKeepAspectRatio = sender.state == .on
         preview()
     }
 
