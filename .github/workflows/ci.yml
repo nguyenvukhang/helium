@@ -9,18 +9,20 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: macos-12
-            arch: x86_64
+          # - os: macos-12
+          #   arch: x86_64
+          #   xcode: 14.2
           - os: macos-13
             arch: x86_64
+            xcode: 15.2
     timeout-minutes: 5
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - run: git submodule update --init
-
-      # this build requires XCode >= 15.3 and hence will fail on CI until
-      # that requirement is met. For some reason, the KeyboardShortcuts
-      # package requires Package.resolved from that version of XCode, so our
-      # hands are tied
-      # - run: make build-${{ matrix.arch }}
+      - name: Select XCode version
+        run: |
+          sudo ls -1 /Applications | grep "Xcode"
+          XCODE='/Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer'
+          sudo xcode-select -s $XCODE
+      - run: make build-${{ matrix.arch }}
