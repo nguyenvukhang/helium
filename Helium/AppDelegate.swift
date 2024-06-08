@@ -23,9 +23,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func postInit() {
-        NSEvent.addGlobalMonitorForEvents(matching: .tabletProximity) {
-            event in self.handleProximityEvent(event)
+        NSEvent.addLocalMonitorForEvents(matching: .tabletProximity) { event in
+            self.handleProximityEvent(event)
+            return nil
         }
+        NSEvent.addGlobalMonitorForEvents(matching: .tabletProximity, handler: self.handleProximityEvent)
         overlayWindowController.showWindow(helium.overlay)
         helium.setFullScreenMode()
         KeyboardShortcuts.onKeyDown(for: .setFullscreenMode) {
