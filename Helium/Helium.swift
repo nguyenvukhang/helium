@@ -13,13 +13,20 @@ import Cocoa
  */
 class Helium: Store {
     var showBoundsMenubarText: Pair<String>
-    var mode: Mode
     let overlay: Overlay
     var lastUsedTablet: Int32 = 0 // initialize with invalid tablet ID
 
     var penInProximity: Bool = false {
         didSet {
             if penInProximity { showOverlay() } else { hideOverlay() }
+        }
+    }
+    var mode: Mode = .fullscreen {
+        didSet {
+            switch mode {
+            case .fullscreen: setFullScreenMode()
+            case .precision : setPrecisionMode()
+            }
         }
     }
 
@@ -39,50 +46,42 @@ class Helium: Store {
     func hideOverlay() {
         overlay.hide()
     }
-
-    func toggleMode() { mode.next(); refresh() }
-
-    func refresh() {
+    
+    func display() {
         switch mode {
-        case .precision: setPrecisionMode()
-        case .fullscreen: setFullScreenMode()
+        case .precision: if penInProximity {
+            overlay.show()
+        } else {
+            overlay.flash()
+        }
+        case .fullscreen: overlay.flash()
         }
     }
 
     /** Make the tablet cover the area around the cursor's current location. */
     func setPrecisionMode() {
-        mode = .precision
         let frame = NSScreen.current().frame
         let area = frame.precisionModeFrame(at: NSEvent.mouseLocation, scale: scale, aspectRatio: aspectRatio)
         setTabletMapArea(to: area)
         moveOverlay(to: area)
-        if penInProximity {
-            overlay.show()
-        } else {
-            overlay.flash()
-        }
     }
 
     /** Make the tablet cover the whole screen that contains the user's cursor. */
     func setFullScreenMode() {
-        mode = .fullscreen
         var frame = NSScreen.current().frame
         if fullscreenKeepAspectRatio {
             frame = frame.centeredSubRect(withAspectRatio: aspectRatio)
         }
         setTabletMapArea(to: frame)
         overlay.fullscreen(to: &frame, lineColor: lineColor, lineWidth: lineWidth, cornerLength: cornerLength)
-        overlay.flash()
     }
 
     /** Rehydrate running state after settings have changed */
     func previewOverlay() {
-        let area = NSScreen.current().frame.precisionModeFrame(
-            at: NSEvent.mouseLocation,
-            scale: scale,
-            aspectRatio: aspectRatio)
-        moveOverlay(to: area)
-        overlay.flash()
+        let prevMode = self.mode
+        setPrecisionMode()
+        display()
+        mode = prevMode
     }
 
     /** Move overlay to cover target NSRect */

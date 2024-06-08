@@ -30,16 +30,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSEvent.addGlobalMonitorForEvents(matching: .tabletProximity, handler: self.handleProximityEvent)
         overlayWindowController.showWindow(helium.overlay)
         helium.setFullScreenMode()
+        helium.display()
         KeyboardShortcuts.onKeyDown(for: .setFullscreenMode) {
-            self.helium.setFullScreenMode()
+            self.helium.mode = .fullscreen
+            self.helium.display()
             self.bar.update()
         }
         KeyboardShortcuts.onKeyDown(for: .setPrecisionMode) {
-            self.helium.setPrecisionMode()
+            self.helium.mode = .precision
+            self.helium.display()
             self.bar.update()
         }
         KeyboardShortcuts.onKeyDown(for: .toggleMode) {
-            self.helium.toggleMode()
+            self.helium.mode.next()
+            self.helium.display()
             self.bar.update()
         }
         bar.update()

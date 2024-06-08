@@ -60,7 +60,7 @@ class MenuBar {
     }
 
     @objc func toggleBounds() { helium.showBoundsMenubarText.toggle(); update() }
-    @objc func toggleMode() { helium.toggleMode(); update() }
+    @objc func toggleMode() { helium.mode.next(); update() }
     @objc func setPrecisionMode() { helium.setPrecisionMode(); update() }
     @objc func setFullScreenMode() { helium.setFullScreenMode(); update() }
     @objc func quit() { helium.reset(); exit(EXIT_SUCCESS) }

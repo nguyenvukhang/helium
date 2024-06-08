@@ -134,6 +134,5 @@ class SettingsViewController: NSViewController {
         helium?.initializeDefaults()
         loadAllSettings()
         KeyboardShortcuts.reset([.setPrecisionMode, .setFullscreenMode, .toggleMode])
-        helium?.refresh()
     }
 }
